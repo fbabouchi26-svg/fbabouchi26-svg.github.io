@@ -246,47 +246,9 @@ body {
 .version-panel.active { display: block; }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-  .tab-panel { padding: 12px; max-width: 100%; }
-  .week-grid { gap: 4px; }
-  .day-col { min-width: 42px; padding: 6px 4px; }
-  .day-name { font-size: 0.6rem; }
-  .day-date { font-size: 0.95rem; }
-  .day-events { font-size: 0.58rem; }
-  .drill-meta { flex-wrap: wrap; gap: 4px; }
-  .video-btn { font-size: 0.75rem; padding: 5px 12px; }
-}
 @media (max-width: 480px) {
-  .header h1 { font-size: 1.05rem; }
-  .recovery-badge { font-size: 0.68rem; padding: 3px 8px; }
-  .tab-btn { padding: 0 10px; font-size: 0.75rem; }
-  .card { padding: 12px 14px; }
-  .card-title { font-size: 0.88rem; }
-  .sched-time { min-width: 58px; font-size: 0.72rem; }
-  .sched-title { font-size: 0.85rem; }
-  .philosophy { padding: 16px; }
-  .philosophy p, .philosophy li { font-size: 0.8rem; }
-  .version-toggle { flex-direction: column; gap: 6px; }
-  .version-btn { padding: 10px; }
-  .skill-category { padding: 10px 12px; }
-  .skill-cat-title { font-size: 0.92rem; }
-  .ex-name { font-size: 0.85rem; }
-  .ex-how { font-size: 0.82rem; }
-  .drill-name { font-size: 0.82rem; }
-  .drill-desc { font-size: 0.78rem; }
-  .chapter-row { gap: 8px; }
-  .ch-name { font-size: 0.8rem; }
-  .ch-label { font-size: 0.65rem; padding: 2px 6px; }
-}
-@media (max-width: 360px) {
-  .header { padding: 14px 14px 10px; }
-  .header h1 { font-size: 0.95rem; }
-  .recovery-badge { font-size: 0.62rem; padding: 2px 7px; }
-  .tab-btn { padding: 0 8px; font-size: 0.7rem; }
-  .card { padding: 10px 12px; }
-  .sched-time { min-width: 50px; font-size: 0.68rem; }
-  .ex-duration { font-size: 0.68rem; }
-  .pill { font-size: 0.68rem; padding: 3px 9px; }
+  .tab-btn { padding: 0 12px; font-size: 0.78rem; }
+  .card { padding: 14px 16px; }
 }
 </style>
 </head>
@@ -1152,9 +1114,7 @@ body {
     <button class="version-btn" onclick="switchReadingView('booksread')">✅ Books Read</button>
   </div>
 
-  <!-- CURRENTLY READING -->
   <div id="reading-current" class="version-panel active">
-
     <div class="card" style="background: linear-gradient(135deg, #1e3a5f, #0f2044); color:white;">
       <div style="font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; opacity:0.6; margin-bottom:6px;">Currently Reading</div>
       <div style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Essentialism</div>
@@ -1165,7 +1125,6 @@ body {
         <a href="https://essentialism.com/" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#d97706; color:white; text-decoration:none; padding:9px 16px; border-radius:10px; font-weight:700; font-size:0.83rem;">🌐 Official Site →</a>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title"><span class="icon">💡</span> Key Ideas</div>
       <div style="font-size:0.84rem; line-height:1.8;">
@@ -1176,39 +1135,29 @@ body {
         <em>"If you don't prioritize your life, someone else will."</em>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title"><span class="icon">🔗</span> Why This Book Now</div>
       <div style="font-size:0.84rem; line-height:1.7; color:var(--text);">You're managing soccer, recovery, algebra, Islam, Darija, research, and college prep simultaneously. Essentialism is the operating system for exactly this situation — it helps you stop doing 10 things at 60% and start doing the 3 things that actually move the needle at 100%.</div>
     </div>
-
   </div>
 
-  <!-- BOOKS READ -->
   <div id="reading-booksread" class="version-panel">
-
     <div class="card" style="background:#f0fdf4; border-color:#059669;">
       <div style="font-weight:800; color:#065f46; font-size:0.88rem; margin-bottom:4px;">📚 Your Reading Record</div>
       <div style="font-size:0.8rem; color:#047857;">Every book you finish is an edge. Log it, own it.</div>
     </div>
-
     <div class="card">
       <div style="font-size:0.78rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">In Progress</div>
       <div style="display:flex; align-items:center; gap:12px; padding:10px 0;">
         <div style="font-size:1.4rem;">📖</div>
-        <div>
-          <div style="font-weight:700; font-size:0.9rem;">Essentialism</div>
-          <div style="font-size:0.78rem; color:var(--muted);">Greg McKeown · In progress</div>
-        </div>
+        <div><div style="font-weight:700; font-size:0.9rem;">Essentialism</div><div style="font-size:0.78rem; color:var(--muted);">Greg McKeown · In progress</div></div>
         <span class="pill pill-navy" style="margin-left:auto;">Reading</span>
       </div>
     </div>
-
     <div class="card">
       <div style="font-size:0.78rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Completed</div>
       <div style="font-size:0.84rem; color:var(--muted); font-style:italic; padding:8px 0;">No completed books yet — Essentialism will be the first. Finish it.</div>
     </div>
-
   </div>
 
 </div>
@@ -1221,168 +1170,59 @@ body {
     <p>This is your long-term intellectual identity. Research is how you contribute something original to the world — not just consume information, but generate it. Every great researcher started by learning the craft before they had anything to say. Start building that foundation now.</p>
   </div>
 
-  <!-- ACADEMIC RESEARCH -->
   <div class="skill-category">
     <div class="skill-cat-title">🔬 Academic Research</div>
     <div class="skill-cat-subtitle">Understanding what research is and how to enter the field.</div>
-    <div class="drill">
-      <div class="drill-name">What Is Academic Research?</div>
-      <div class="drill-desc">Academic research is the systematic process of investigating a question no one has definitively answered. It involves a literature review (what's already known), a hypothesis or question, a methodology, data or evidence, analysis, and a conclusion. The goal is to add something new — even a small piece — to human knowledge.</div>
-      <div class="drill-meta"><span class="drill-tag">Foundation</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Fields to Explore</div>
-      <div class="drill-desc">Behavioral science, sports science, psychology, economics, public health, computer science. You don't have to pick one yet — read across fields and notice where your questions live. Research careers often start with a single genuine curiosity.</div>
-      <div class="drill-meta"><span class="drill-tag">Exploration</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Start a Research Journal</div>
-      <div class="drill-desc">Keep a running document of questions that genuinely interest you. Not answers — questions. "Why do athletes perform better under pressure sometimes?" "What causes habit formation?" These questions become your first research directions.</div>
-      <div class="drill-meta"><span class="drill-tag solo">Solo</span><span class="drill-tag">Daily habit</span></div>
-    </div>
+    <div class="drill"><div class="drill-name">What Is Academic Research?</div><div class="drill-desc">Academic research is the systematic process of investigating a question no one has definitively answered. It involves a literature review, a hypothesis, a methodology, data or evidence, analysis, and a conclusion. The goal is to add something new to human knowledge.</div><div class="drill-meta"><span class="drill-tag">Foundation</span></div></div>
+    <div class="drill"><div class="drill-name">Fields to Explore</div><div class="drill-desc">Behavioral science, sports science, psychology, economics, public health, computer science. Read across fields and notice where your questions live.</div><div class="drill-meta"><span class="drill-tag">Exploration</span></div></div>
+    <div class="drill"><div class="drill-name">Start a Research Journal</div><div class="drill-desc">Keep a running document of questions that genuinely interest you. Not answers — questions. These become your first research directions.</div><div class="drill-meta"><span class="drill-tag solo">Solo</span><span class="drill-tag">Daily habit</span></div></div>
   </div>
 
-  <!-- HOW TO DO RESEARCH -->
   <div class="skill-category" style="border-left-color: var(--blue);">
     <div class="skill-cat-title">🧭 How to Do Research</div>
     <div class="skill-cat-subtitle">The actual process — step by step.</div>
-    <div class="drill">
-      <div class="drill-name">Step 1 — Find a Question</div>
-      <div class="drill-desc">Start with genuine curiosity. A good research question is specific, answerable, and not already fully solved. Bad: "What is motivation?" Good: "Does goal-setting improve sprint performance in adolescent athletes?"</div>
-      <div class="drill-meta"><span class="drill-tag">Process</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Step 2 — Literature Review</div>
-      <div class="drill-desc">Before doing any original work, read everything already published on your topic. Use Google Scholar, PubMed, or JSTOR. Summarize what's known, what's debated, and what's missing. That gap is where your research lives.</div>
-      <div class="drill-meta"><span class="drill-tag">Process</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Step 3 — Methodology</div>
-      <div class="drill-desc">How will you answer your question? Survey? Experiment? Data analysis? Case study? Each method has strengths and weaknesses. Choose the one that fits your question and resources. Start simple — complexity comes later.</div>
-      <div class="drill-meta"><span class="drill-tag">Process</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Step 4 — Analyze & Write</div>
-      <div class="drill-desc">Collect your data or evidence, analyze it honestly (including results that don't support your hypothesis), and write it up clearly. Research writing is precise and structured: Abstract → Introduction → Methods → Results → Discussion → Conclusion.</div>
-      <div class="drill-meta"><span class="drill-tag">Process</span></div>
-    </div>
+    <div class="drill"><div class="drill-name">Step 1 — Find a Question</div><div class="drill-desc">Start with genuine curiosity. A good research question is specific, answerable, and not already fully solved.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Step 2 — Literature Review</div><div class="drill-desc">Read everything already published on your topic. Summarize what's known, what's debated, and what's missing. That gap is where your research lives.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Step 3 — Methodology</div><div class="drill-desc">How will you answer your question? Survey? Experiment? Data analysis? Choose the method that fits your question and resources.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Step 4 — Analyze & Write</div><div class="drill-desc">Collect data, analyze it honestly, and write it up clearly. Structure: Abstract → Introduction → Methods → Results → Discussion → Conclusion.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
   </div>
 
-  <!-- READ THE WORK OF OTHERS -->
   <div class="skill-category" style="border-left-color: var(--gold);">
     <div class="skill-cat-title">📖 Read the Work of Others</div>
-    <div class="skill-cat-subtitle">You can't write what you haven't read. Read widely and deeply.</div>
-    <div class="drill">
-      <div class="drill-name">How to Read a Research Paper</div>
-      <div class="drill-desc">Don't read start to finish. Use the IMRaD method: read the Abstract first (is this relevant?), then the Introduction (what's the question?), then jump to the Discussion/Conclusion (what did they find?), then go back to Methods/Results if you need detail. Most papers can be assessed in 10–15 minutes this way.</div>
-      <div class="drill-meta"><span class="drill-tag">Skill</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Where to Find Papers</div>
-      <div class="drill-desc">Google Scholar (scholar.google.com) — free abstracts, often free PDFs. PubMed — biomedical research. JSTOR — humanities and social science. Semantic Scholar — AI-powered research discovery. ResearchGate — authors often post free copies of their work.</div>
-      <div class="drill-meta"><span class="drill-tag">Resource</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Follow Researchers You Respect</div>
-      <div class="drill-desc">Find researchers in your area of interest and follow their work. Google Scholar lets you follow authors and get alerts when they publish. Twitter/X is where a lot of researchers share new findings informally. This keeps you current.</div>
-      <div class="drill-meta"><span class="drill-tag">Habit</span></div>
-    </div>
+    <div class="skill-cat-subtitle">You can't write what you haven't read.</div>
+    <div class="drill"><div class="drill-name">How to Read a Research Paper</div><div class="drill-desc">Use IMRaD: Abstract first → Introduction → Discussion/Conclusion → Methods/Results if needed. Most papers can be assessed in 10–15 minutes.</div><div class="drill-meta"><span class="drill-tag">Skill</span></div></div>
+    <div class="drill"><div class="drill-name">Where to Find Papers</div><div class="drill-desc">Google Scholar, PubMed, JSTOR, Semantic Scholar, ResearchGate. Authors often post free copies of their work.</div><div class="drill-meta"><span class="drill-tag">Resource</span></div></div>
+    <div class="drill"><div class="drill-name">Follow Researchers You Respect</div><div class="drill-desc">Find researchers in your area and follow their work. Google Scholar lets you follow authors and get alerts when they publish.</div><div class="drill-meta"><span class="drill-tag">Habit</span></div></div>
   </div>
 
-  <!-- GETTING PUBLISHED -->
   <div class="skill-category" style="border-left-color: var(--green);">
     <div class="skill-cat-title">📝 Getting Published</div>
     <div class="skill-cat-subtitle">The path from research to publication.</div>
-    <div class="drill">
-      <div class="drill-name">Start with High School Journals</div>
-      <div class="drill-desc">You don't need to publish in Nature. Start with journals designed for high school researchers: Journal of Emerging Investigators (JEI), Regeneron Science Talent Search, Concord Review (humanities), and the American Junior Academy of Science. These are legitimate, peer-reviewed, and taken seriously.</div>
-      <div class="drill-meta"><span class="drill-tag">Entry point</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">The Submission Process</div>
-      <div class="drill-desc">Write your paper → format it to the journal's guidelines → submit → peer review (reviewers critique your work anonymously) → revise → acceptance or rejection → publication. Rejection is normal and part of the process. Every researcher gets rejected.</div>
-      <div class="drill-meta"><span class="drill-tag">Process</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Co-Author with a Mentor</div>
-      <div class="drill-desc">The fastest path to publication as a student is finding a professor or graduate student willing to mentor you. You contribute the work, they provide guidance and credibility. Reach out cold via email — one in ten will respond positively. That's enough.</div>
-      <div class="drill-meta"><span class="drill-tag">Strategy</span></div>
-    </div>
+    <div class="drill"><div class="drill-name">Start with High School Journals</div><div class="drill-desc">Journal of Emerging Investigators (JEI), Regeneron Science Talent Search, Concord Review (humanities), American Junior Academy of Science. Legitimate, peer-reviewed, taken seriously.</div><div class="drill-meta"><span class="drill-tag">Entry point</span></div></div>
+    <div class="drill"><div class="drill-name">The Submission Process</div><div class="drill-desc">Write → format to journal guidelines → submit → peer review → revise → acceptance or rejection → publication. Rejection is normal. Every researcher gets rejected.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Co-Author with a Mentor</div><div class="drill-desc">Find a professor or graduate student willing to mentor you. Reach out cold via email — one in ten will respond. That's enough.</div><div class="drill-meta"><span class="drill-tag">Strategy</span></div></div>
   </div>
 
-  <!-- PROGRAMS -->
   <div class="skill-category" style="border-left-color: #7c3aed;">
     <div class="skill-cat-title">🏛️ Programs</div>
     <div class="skill-cat-subtitle">Research programs, internships, and competitions for high school students.</div>
-    <div class="drill">
-      <div class="drill-name">Regeneron Science Talent Search</div>
-      <div class="drill-desc">The most prestigious high school science research competition in the US. Submit original research. Top 40 finalists go to Washington D.C. and compete for $250,000 in prizes. Deadline: mid-November each year. Start now.</div>
-      <div class="drill-meta"><span class="drill-tag">Competition</span><span class="drill-tag">High impact</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Research Science Institute (RSI)</div>
-      <div class="drill-desc">6-week free summer research program at MIT. One of the most selective in the world (~80 spots globally). Sponsored by the Center for Excellence in Education. Apply junior year. The application requires prior research experience — start building yours now.</div>
-      <div class="drill-meta"><span class="drill-tag">Summer program</span><span class="drill-tag">Highly selective</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">University Summer Research Programs</div>
-      <div class="drill-desc">Many universities offer free summer research programs for high schoolers: MIT PRIMES, Harvard Secondary School Program, Johns Hopkins CTY, Stanford OHS. Some are paid internships in labs. Search "[university name] high school research program" to find opportunities near you.</div>
-      <div class="drill-meta"><span class="drill-tag">Summer</span><span class="drill-tag">Paid &amp; free options</span></div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Intel ISEF</div>
-      <div class="drill-desc">International Science and Engineering Fair — the world's largest pre-college science competition. You qualify through local and state fairs. Over $9 million in awards. Any field of science or engineering. A strong ISEF project significantly strengthens college applications.</div>
-      <div class="drill-meta"><span class="drill-tag">Competition</span><span class="drill-tag">International</span></div>
-    </div>
+    <div class="drill"><div class="drill-name">Regeneron Science Talent Search</div><div class="drill-desc">Most prestigious US high school science competition. Submit original research. Top 40 finalists compete for $250,000. Deadline: mid-November each year.</div><div class="drill-meta"><span class="drill-tag">Competition</span><span class="drill-tag">High impact</span></div></div>
+    <div class="drill"><div class="drill-name">Research Science Institute (RSI)</div><div class="drill-desc">6-week free summer research program at MIT. ~80 spots globally. Apply junior year. Requires prior research experience — start building yours now.</div><div class="drill-meta"><span class="drill-tag">Summer program</span><span class="drill-tag">Highly selective</span></div></div>
+    <div class="drill"><div class="drill-name">University Summer Research Programs</div><div class="drill-desc">MIT PRIMES, Harvard Secondary School Program, Johns Hopkins CTY, Stanford OHS. Some are paid internships in labs.</div><div class="drill-meta"><span class="drill-tag">Summer</span></div></div>
+    <div class="drill"><div class="drill-name">Intel ISEF</div><div class="drill-desc">World's largest pre-college science competition. Qualify through local/state fairs. Over $9 million in awards. Strengthens college applications significantly.</div><div class="drill-meta"><span class="drill-tag">Competition</span><span class="drill-tag">International</span></div></div>
   </div>
 
-  <!-- TOOLS -->
   <div class="skill-category" style="border-left-color: var(--muted);">
     <div class="skill-cat-title">🛠️ Tools</div>
-    <div class="skill-cat-subtitle">The researcher's toolkit — start using these now.</div>
-    <div class="drill">
-      <div class="drill-name">Zotero — Reference Manager</div>
-      <div class="drill-desc">Free tool to collect, organize, cite, and share research sources. Install the browser extension and every paper you find gets saved automatically. Generates citations in any format (APA, MLA, Chicago). Essential for any serious research project.</div>
-      <div class="drill-meta">
-        <span class="drill-tag">Free</span>
-        <a href="https://www.zotero.org" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ zotero.org</a>
-      </div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Google Scholar</div>
-      <div class="drill-desc">Search engine for academic papers. Set up alerts for keywords in your research area — you'll get emailed when new papers are published. Create a profile to track your own citations one day.</div>
-      <div class="drill-meta">
-        <span class="drill-tag">Free</span>
-        <a href="https://scholar.google.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ scholar.google.com</a>
-      </div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Notion or Obsidian — Research Notes</div>
-      <div class="drill-desc">Build a personal knowledge base. Every paper you read, every idea you have, every question that comes up — log it. Obsidian links ideas together like a web. Notion is more structured. Either one creates a compounding system: the more you add, the more valuable it becomes.</div>
-      <div class="drill-meta">
-        <span class="drill-tag">Free</span>
-        <a href="https://www.notion.so" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ notion.so</a>
-      </div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Connected Papers</div>
-      <div class="drill-desc">Enter any research paper and get a visual graph of all related papers — what it cites and what cites it. Incredible for mapping a new field quickly and finding the key foundational papers you need to read.</div>
-      <div class="drill-meta">
-        <span class="drill-tag">Free</span>
-        <a href="https://www.connectedpapers.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ connectedpapers.com</a>
-      </div>
-    </div>
-    <div class="drill">
-      <div class="drill-name">Overleaf — LaTeX Writing</div>
-      <div class="drill-desc">The standard tool for writing academic papers in science and math. LaTeX produces professional-quality documents with proper formatting for equations, citations, and figures. Free online version at overleaf.com. Learning this now puts you ahead of most undergraduates.</div>
-      <div class="drill-meta">
-        <span class="drill-tag">Free tier</span>
-        <a href="https://www.overleaf.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ overleaf.com</a>
-      </div>
-    </div>
+    <div class="skill-cat-subtitle">The researcher's toolkit.</div>
+    <div class="drill"><div class="drill-name">Zotero</div><div class="drill-desc">Free reference manager. Saves papers automatically via browser extension. Generates citations in any format.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://www.zotero.org" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ zotero.org</a></div></div>
+    <div class="drill"><div class="drill-name">Google Scholar</div><div class="drill-desc">Search engine for academic papers. Set up keyword alerts to get emailed when new papers are published in your area.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://scholar.google.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ scholar.google.com</a></div></div>
+    <div class="drill"><div class="drill-name">Notion or Obsidian</div><div class="drill-desc">Build a personal knowledge base. Every paper, idea, and question — log it. The more you add, the more valuable it becomes.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://www.notion.so" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ notion.so</a></div></div>
+    <div class="drill"><div class="drill-name">Connected Papers</div><div class="drill-desc">Visual graph of all papers related to any paper you enter. Maps a new field quickly and surfaces the key foundational papers.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://www.connectedpapers.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ connectedpapers.com</a></div></div>
+    <div class="drill"><div class="drill-name">Overleaf — LaTeX Writing</div><div class="drill-desc">Standard tool for writing academic papers. LaTeX produces professional-quality documents. Learning this now puts you ahead of most undergraduates.</div><div class="drill-meta"><span class="drill-tag">Free tier</span><a href="https://www.overleaf.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ overleaf.com</a></div></div>
     <div class="drill" style="border-left: 3px solid var(--gold); background: rgba(212,175,55,0.05);">
       <div class="drill-name">📚 Franklin Public Library — Free Online Databases</div>
-      <div class="drill-desc">Your library card unlocks free access to premium research databases — academic journals, newspapers, encyclopedias, and more. This is the same content universities pay thousands for, available to you at no cost. Use this before paying for anything.<br><br>
+      <div class="drill-desc">Your library card unlocks free access to premium research databases — academic journals, newspapers, encyclopedias, and more. Same content universities pay thousands for, free for you.<br><br>
       🔑 <strong>Your Library Card #:</strong> <span style="font-family:monospace; font-size:1rem; letter-spacing:1px; color:var(--gold);">26998000846068</span></div>
       <div class="drill-meta">
         <span class="drill-tag">Free with library card</span>
