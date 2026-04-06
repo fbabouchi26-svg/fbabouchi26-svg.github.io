@@ -3,1096 +3,1447 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ibrahim's Algebra 2 Mastery Hub</title>
+<title>Ibrahim's Algebra 2 — Chapter 1 Tutor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primary: #1a73e8;
-  --secondary: #34a853;
-  --accent: #ea4335;
-  --dark: #202124;
-  --light: #f8f9fa;
-  --card: #ffffff;
-  --shadow: 0 2px 8px rgba(0,0,0,0.12);
-  --radius: 12px;
+  --navy:#07111f; --navy2:#0d1f3c; --blue:#2563eb; --blue-lt:#3b82f6;
+  --gold:#f59e0b; --gold-lt:#fbbf24; --green:#10b981; --green-dk:#059669;
+  --red:#ef4444; --purple:#8b5cf6; --pink:#ec4899;
+  --text:#1e293b; --muted:#64748b; --border:#e2e8f0;
+  --radius:16px; --radius-sm:10px;
+  --shadow:0 4px 24px rgba(0,0,0,.10);
+  --shadow-md:0 8px 32px rgba(0,0,0,.14);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.18);
+  --card:#fff; --bg:#eef2ff;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--light);
-  color: var(--dark);
-  line-height: 1.6;
-}
-.header {
-  background: linear-gradient(135deg, #1a73e8, #0d47a1);
-  color: white;
-  padding: 24px 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow);
-}
-.header h1 { font-size: 1.5rem; margin-bottom: 4px; }
-.header p { opacity: 0.85; font-size: 0.9rem; }
-.streak-bar {
-  background: rgba(255,255,255,0.15);
-  border-radius: 20px;
-  padding: 6px 16px;
-  margin-top: 10px;
-  display: inline-block;
-  font-size: 0.85rem;
-}
-.nav {
-  display: flex;
-  overflow-x: auto;
-  gap: 8px;
-  padding: 12px 16px;
-  background: white;
-  border-bottom: 1px solid #e0e0e0;
-  -webkit-overflow-scrolling: touch;
-}
-.nav button {
-  flex-shrink: 0;
-  padding: 8px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 20px;
-  background: white;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-.nav button:hover { border-color: var(--primary); color: var(--primary); }
-.nav button.active { background: var(--primary); color: white; border-color: var(--primary); }
-.container { max-width: 800px; margin: 0 auto; padding: 16px; }
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: var(--shadow);
-}
-.card h2 { font-size: 1.2rem; margin-bottom: 12px; color: var(--primary); }
-.card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--dark); }
-
-/* Tab sections */
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-/* Chapter Grid */
-.chapter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-}
-.chapter-btn {
-  padding: 16px 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: var(--radius);
-  background: white;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s;
-}
-.chapter-btn:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow); }
-.chapter-btn.current { border-color: var(--secondary); background: #e8f5e9; }
-.chapter-btn .ch-num { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-.chapter-btn .ch-title { font-weight: 700; font-size: 0.95rem; margin-top: 4px; }
-.chapter-btn .ch-diff { margin-top: 6px; font-size: 0.8rem; }
-
-/* Flashcards */
-.flashcard-container { perspective: 1000px; margin: 16px 0; }
-.flashcard {
-  width: 100%;
-  min-height: 200px;
-  position: relative;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-.flashcard.flipped { transform: rotateY(180deg); }
-.flashcard-face {
-  position: absolute;
-  width: 100%;
-  min-height: 200px;
-  backface-visibility: hidden;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-  font-size: 1.1rem;
-}
-.flashcard-front {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-.flashcard-back {
-  background: white;
-  border: 2px solid #667eea;
-  color: var(--dark);
-  transform: rotateY(180deg);
-}
-.flashcard-nav { display: flex; justify-content: center; gap: 12px; margin-top: 12px; }
-.flashcard-nav button {
-  padding: 10px 24px;
-  border: none;
-  border-radius: 8px;
-  background: var(--primary);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-.flashcard-nav button:hover { opacity: 0.9; }
-.flashcard-counter { text-align: center; margin-top: 8px; color: #666; font-size: 0.85rem; }
-
-/* Quiz */
-.quiz-question {
-  background: #f8f9fa;
-  border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 12px;
-}
-.quiz-question p { font-weight: 600; margin-bottom: 10px; }
-.quiz-option {
-  display: block;
-  width: 100%;
-  padding: 10px 16px;
-  margin: 6px 0;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  background: white;
-  cursor: pointer;
-  text-align: left;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-.quiz-option:hover { border-color: var(--primary); background: #e8f0fe; }
-.quiz-option.correct { border-color: var(--secondary); background: #e8f5e9; color: #1b5e20; }
-.quiz-option.wrong { border-color: var(--accent); background: #fce8e6; color: #b71c1c; }
-.quiz-option.disabled { pointer-events: none; }
-.quiz-explanation {
-  margin-top: 8px;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  display: none;
-}
-.quiz-explanation.show { display: block; }
-.quiz-explanation.correct-exp { background: #e8f5e9; color: #1b5e20; }
-.quiz-explanation.wrong-exp { background: #fce8e6; color: #b71c1c; }
-.quiz-score {
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(135deg, var(--secondary), #0d7a30);
-  color: white;
-  border-radius: var(--radius);
-  margin-top: 16px;
-  display: none;
-}
-.quiz-score h2 { color: white; }
-.btn-primary {
-  padding: 12px 24px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.95rem;
-  display: inline-block;
-  text-decoration: none;
-}
-.btn-primary:hover { opacity: 0.9; }
-.btn-secondary {
-  padding: 10px 20px;
-  background: white;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.9rem;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  min-height:100vh;
+  background-image:
+    radial-gradient(ellipse at 10% 0%,rgba(37,99,235,.08) 0%,transparent 55%),
+    radial-gradient(ellipse at 90% 100%,rgba(139,92,246,.08) 0%,transparent 55%);
 }
 
-/* Video list */
-.video-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  transition: background 0.2s;
-}
-.video-item:hover { background: #f0f0f0; }
-.video-icon {
-  width: 40px;
-  height: 40px;
-  background: #ff0000;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-.video-item a { color: var(--dark); text-decoration: none; font-weight: 600; }
-.video-item a:hover { color: var(--primary); }
-.video-item .channel { font-size: 0.8rem; color: #666; }
+/* ══ ANIMATIONS ══ */
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(245,158,11,.4)}50%{box-shadow:0 0 22px rgba(245,158,11,.8)}}
+@keyframes popIn{from{transform:scale(.82) translateY(16px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.panel.active > *{animation:fadeUp .35s ease both}
+.panel.active > *:nth-child(2){animation-delay:.05s}
+.panel.active > *:nth-child(3){animation-delay:.1s}
+.panel.active > *:nth-child(4){animation-delay:.15s}
 
-/* Progress */
-.progress-bar { background: #e0e0e0; border-radius: 10px; height: 12px; margin: 8px 0; overflow: hidden; }
-.progress-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--primary), var(--secondary)); transition: width 0.5s; }
-.progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; }
+/* ══ BACK LINK ══ */
+.back-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--blue);font-size:.82rem;font-weight:700;text-decoration:none;
+  padding:7px 14px;background:#fff;border-radius:30px;
+  margin:12px 14px 0;box-shadow:var(--shadow);
+  border:1.5px solid var(--border);
+  transition:all .2s;
+}
+.back-link:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-1px)}
 
-/* Textbook link banner */
-.textbook-banner {
-  background: linear-gradient(135deg, #ff6f00, #ff8f00);
-  color: white;
-  padding: 16px 20px;
-  border-radius: var(--radius);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+/* ══ HEADER ══ */
+.header{
+  background:linear-gradient(135deg,var(--navy) 0%,#122348 50%,#0d2a5e 100%);
+  color:#fff;padding:20px 20px 16px;text-align:center;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 4px 24px rgba(0,0,0,.4);
+  overflow:hidden;
 }
-.textbook-banner .book-icon { font-size: 2rem; }
-.textbook-banner a { color: white; font-weight: 700; text-decoration: underline; }
+.header::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(37,99,235,.12) 50%,transparent 70%);
+  background-size:800px 100%;
+  animation:shimmer 4s infinite linear;
+  pointer-events:none;
+}
+.header-inner{position:relative;z-index:1}
+.header h1{font-size:1.45rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.header h1 span{color:var(--gold-lt)}
+.header .sub{opacity:.75;font-size:.78rem;margin-top:3px;letter-spacing:.3px}
+.xp-row{display:flex;align-items:center;gap:10px;max-width:340px;margin:12px auto 0}
+.xp-icon{font-size:1rem;flex-shrink:0}
+.xp-bar-wrap{flex:1;background:rgba(255,255,255,.15);border-radius:20px;height:9px;overflow:hidden}
+.xp-bar-fill{
+  background:linear-gradient(90deg,var(--gold),var(--gold-lt));
+  height:100%;border-radius:20px;transition:width .5s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 10px rgba(245,158,11,.5);
+}
+.xp-label{font-size:.73rem;opacity:.8;margin-top:5px;font-weight:500}
 
-/* Sports problems */
-.sports-problem {
-  background: linear-gradient(135deg, #1b5e20, #2e7d32);
-  color: white;
-  padding: 20px;
-  border-radius: var(--radius);
-  margin: 12px 0;
+/* ══ MODE NAV ══ */
+.mode-nav{
+  display:flex;gap:0;
+  background:#fff;
+  border-bottom:2px solid var(--border);
+  overflow-x:auto;scrollbar-width:none;
+  padding:0 8px;
 }
-.sports-problem h3 { color: #a5d6a7; margin-bottom: 8px; }
-.sports-problem .answer-reveal {
-  margin-top: 12px;
-  padding: 10px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 8px;
-  display: none;
+.mode-nav::-webkit-scrollbar{display:none}
+.mode-btn{
+  flex-shrink:0;border:none;background:transparent;
+  color:var(--muted);padding:14px 18px;
+  font-size:.83rem;font-weight:700;cursor:pointer;
+  transition:all .2s;white-space:nowrap;
+  border-bottom:3px solid transparent;margin-bottom:-2px;
+  font-family:'Inter',system-ui,sans-serif;
+  display:flex;align-items:center;gap:6px;
 }
-.sports-problem button {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: 2px solid rgba(255,255,255,0.5);
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+.mode-btn.active{color:var(--blue);border-bottom-color:var(--blue);background:rgba(37,99,235,.04)}
+.mode-btn:hover:not(.active){color:var(--text);background:rgba(0,0,0,.03)}
+.mode-btn .mode-ico{font-size:1rem}
+
+/* ══ PANELS ══ */
+.panel{display:none;max-width:880px;margin:0 auto;padding:20px 14px 48px}
+.panel.active{display:block}
+
+/* ══ SECTION CARDS ══ */
+.section-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);margin-bottom:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.8);
+  transition:box-shadow .25s;
+}
+.section-card:hover{box-shadow:var(--shadow-md)}
+.section-header{
+  padding:16px 20px;display:flex;align-items:center;gap:12px;
+  cursor:pointer;user-select:none;position:relative;overflow:hidden;
+}
+.section-header::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.06);
+  opacity:0;transition:opacity .2s;
+}
+.section-header:hover::after{opacity:1}
+.sh-gold{background:linear-gradient(135deg,#92400e,#b45309,#d97706)}
+.sh-purple{background:linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed)}
+.sh-green{background:linear-gradient(135deg,#064e3b,#065f46,#059669)}
+.sh-red{background:linear-gradient(135deg,#7f1d1d,#991b1b,#dc2626)}
+.section-header{color:#fff}
+.section-header .sh-num{
+  width:32px;height:32px;background:rgba(255,255,255,.18);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;flex-shrink:0;
+}
+.section-header h2{font-size:1rem;font-weight:800;flex:1;letter-spacing:-.2px}
+.section-header .arrow{font-size:.8rem;transition:transform .3s;opacity:.7}
+.section-header.open .arrow{transform:rotate(180deg)}
+.section-body{display:none;padding:20px}
+.section-body.open{display:block}
+
+/* ══ LESSON BOXES ══ */
+.coach-box{
+  background:linear-gradient(135deg,#fefce8,#fef9c3);
+  border:1.5px solid #fde68a;border-radius:var(--radius-sm);
+  padding:16px 18px;margin-bottom:16px;position:relative;overflow:hidden;
+}
+.coach-box::before{content:'';position:absolute;top:-10px;right:-10px;width:60px;height:60px;background:rgba(245,158,11,.1);border-radius:50%}
+.coach-box .label{
+  font-size:.68rem;font-weight:800;color:#92400e;
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;
+  display:flex;align-items:center;gap:5px;
+}
+.coach-box p{font-size:.9rem;color:#78350f;line-height:1.6}
+
+.concept-box{
+  background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  border:1.5px solid #bfdbfe;border-radius:var(--radius-sm);
+  padding:16px 18px;margin-bottom:16px;
+}
+.concept-box .label{font-size:.68rem;font-weight:800;color:#1d4ed8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+
+.example-box{
+  background:linear-gradient(135deg,#f0fdf4,#dcfce7);
+  border:1.5px solid #bbf7d0;border-radius:var(--radius-sm);
+  padding:16px 18px;margin-bottom:16px;
+}
+.example-box .label{font-size:.68rem;font-weight:800;color:#065f46;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+
+.tip-box{
+  background:linear-gradient(135deg,#fdf4ff,#f3e8ff);
+  border:1.5px solid #e9d5ff;border-radius:var(--radius-sm);
+  padding:16px 18px;margin-bottom:16px;
+}
+.tip-box .label{font-size:.68rem;font-weight:800;color:#6d28d9;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.tip-box p{font-size:.88rem;color:#4c1d95;line-height:1.6}
+
+.warning-box{
+  background:linear-gradient(135deg,#fff1f2,#ffe4e6);
+  border:1.5px solid #fecdd3;border-radius:var(--radius-sm);
+  padding:16px 18px;margin-bottom:16px;
+}
+.warning-box .label{font-size:.68rem;font-weight:800;color:#be123c;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.warning-box p{font-size:.88rem;color:#9f1239;line-height:1.6}
+
+.formula{
+  background:linear-gradient(135deg,var(--navy),#1a3a6e);
+  color:#fff;border-radius:var(--radius-sm);
+  padding:16px 20px;text-align:center;
+  font-size:1.1rem;font-weight:800;margin:14px 0;
+  letter-spacing:.5px;
+  box-shadow:0 4px 20px rgba(7,17,31,.25);
+  font-family:'Courier New',monospace;
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;overflow:hidden;
+}
+.formula::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);
+  background-size:300% 100%;
+  animation:shimmer 3s infinite;
 }
 
-/* Speed round */
-.speed-problem { font-size: 1.3rem; font-weight: 700; text-align: center; margin: 20px 0; }
-.speed-input {
-  display: block;
-  width: 200px;
-  margin: 10px auto;
-  padding: 12px;
-  font-size: 1.2rem;
-  text-align: center;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.step-num{
+  background:linear-gradient(135deg,var(--blue),var(--blue-lt));
+  color:#fff;border-radius:50%;width:24px;height:24px;
+  font-size:.72rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;
+  box-shadow:0 2px 8px rgba(37,99,235,.35);
 }
-.speed-input:focus { border-color: var(--primary); outline: none; }
-.timer { font-size: 2rem; font-weight: 700; text-align: center; color: var(--accent); margin: 10px 0; }
+.step p{font-size:.9rem;line-height:1.55}
 
-/* Today's plan */
-.today-plan {
-  background: linear-gradient(135deg, #0d47a1, #1565c0);
-  color: white;
-  padding: 20px;
-  border-radius: var(--radius);
-  margin-bottom: 16px;
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:520px){.grid-2{grid-template-columns:1fr}}
+.mini-card{
+  background:linear-gradient(135deg,#f8faff,#eff2ff);
+  border:1.5px solid #c7d2fe;border-radius:var(--radius-sm);
+  padding:14px;text-align:center;
+  transition:transform .2s,box-shadow .2s;
 }
-.today-plan h2 { color: #bbdefb; }
-.today-step {
-  display: flex;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  align-items: flex-start;
-}
-.today-step:last-child { border-bottom: none; }
-.step-num {
-  width: 28px;
-  height: 28px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-.step-check {
-  width: 22px;
-  height: 22px;
-  border: 2px solid rgba(255,255,255,0.5);
-  border-radius: 4px;
-  cursor: pointer;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-.step-check.checked { background: var(--secondary); border-color: var(--secondary); }
+.mini-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.12)}
+.mini-card .title{font-size:.78rem;font-weight:800;color:var(--blue);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.mini-card p{font-size:.85rem;color:var(--text)}
 
-@media (max-width: 600px) {
-  .header h1 { font-size: 1.2rem; }
-  .chapter-grid { grid-template-columns: repeat(2, 1fr); }
-  .card { padding: 16px; }
+table.clean{width:100%;border-collapse:collapse;margin:12px 0;border-radius:8px;overflow:hidden}
+table.clean th{background:var(--navy);color:#fff;padding:10px 14px;font-size:.8rem;font-weight:700;text-align:left}
+table.clean td{padding:9px 14px;font-size:.85rem;border-bottom:1px solid var(--border)}
+table.clean tr:nth-child(even) td{background:#f8fafc}
+table.clean tr:hover td{background:#eff6ff;transition:background .15s}
+
+/* ══ PRACTICE ══ */
+.progress-row{
+  display:flex;gap:10px;align-items:center;margin-bottom:20px;
+  padding:14px 18px;background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);border:1px solid var(--border);
 }
+.progress-row span{font-size:.85rem;color:var(--muted);font-weight:500}
+.score-badge{
+  background:linear-gradient(135deg,var(--blue),var(--blue-lt));
+  color:#fff;border-radius:20px;padding:5px 16px;
+  font-size:.85rem;font-weight:800;margin-left:auto;
+  box-shadow:0 2px 10px rgba(37,99,235,.3);
+}
+.prob-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden;
+  border:1px solid var(--border);
+  transition:box-shadow .2s,transform .2s;
+}
+.prob-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.prob-header{
+  background:linear-gradient(135deg,var(--navy),#1a3a6e);
+  color:#fff;padding:12px 18px;display:flex;align-items:center;gap:12px;
+}
+.prob-num{
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  color:var(--navy);border-radius:50%;width:30px;height:30px;
+  font-size:.85rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  box-shadow:0 2px 8px rgba(245,158,11,.4);
+}
+.prob-topic{font-size:.72rem;opacity:.65;margin-left:auto;text-transform:uppercase;letter-spacing:.8px;font-weight:700}
+.prob-body{padding:18px}
+.prob-question{font-size:.95rem;font-weight:600;margin-bottom:14px;line-height:1.5}
+.prob-input-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.prob-input{
+  flex:1;min-width:140px;padding:10px 15px;
+  border:2px solid var(--border);border-radius:var(--radius-sm);
+  font-size:.9rem;font-family:'Inter',system-ui,sans-serif;
+  transition:border-color .2s,box-shadow .2s;
+  background:#fafbff;
+}
+.prob-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);background:#fff}
+.btn{
+  padding:10px 20px;border:none;border-radius:var(--radius-sm);
+  font-size:.87rem;font-weight:700;cursor:pointer;
+  transition:all .2s;font-family:'Inter',system-ui,sans-serif;
+}
+.btn-check{background:linear-gradient(135deg,var(--blue),var(--blue-lt));color:#fff;box-shadow:0 3px 12px rgba(37,99,235,.3)}
+.btn-hint{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.btn-show{background:#fff;color:var(--muted);border:2px solid var(--border)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn:active{transform:translateY(0)}
+.feedback{
+  border-radius:var(--radius-sm);padding:11px 16px;
+  margin-top:10px;font-size:.88rem;font-weight:600;display:none;
+}
+.feedback.correct{background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:var(--green-dk);border:1.5px solid #bbf7d0}
+.feedback.wrong{background:linear-gradient(135deg,#fff1f2,#fee2e2);color:#be123c;border:1.5px solid #fecdd3}
+.hint-box{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1.5px solid #fde68a;border-radius:var(--radius-sm);padding:12px 16px;margin-top:10px;font-size:.87rem;display:none}
+.solution-box{background:linear-gradient(135deg,#f8faff,#eef2ff);border:1.5px solid #c7d2fe;border-radius:var(--radius-sm);padding:14px 16px;margin-top:10px;font-size:.87rem;display:none}
+.solution-box .sol-step{margin-bottom:5px;color:var(--text);padding-left:4px}
+.xp-earned{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  color:var(--navy);border-radius:12px;padding:2px 10px;
+  font-size:.75rem;font-weight:800;margin-left:8px;
+  box-shadow:0 1px 6px rgba(245,158,11,.35);
+  animation:glow 2s ease-in-out 3;
+}
+
+/* ══ FLASHCARDS ══ */
+.fc-panel-wrap{max-width:520px;margin:0 auto}
+.fc-controls{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.fc-area{
+  perspective:1200px;margin:0 auto 18px;
+  height:240px;cursor:pointer;
+  filter:drop-shadow(0 8px 28px rgba(0,0,0,.14));
+}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.fc-area.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{
+  position:absolute;width:100%;height:100%;backface-visibility:hidden;
+  border-radius:var(--radius);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:28px;text-align:center;
+}
+.fc-front{
+  background:linear-gradient(135deg,var(--navy) 0%,#123270 60%,#1a3a8f 100%);
+  color:#fff;
+}
+.fc-front::before{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);
+  background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.06),transparent 60%);
+}
+.fc-front .fc-label{
+  font-size:.68rem;font-weight:800;opacity:.5;
+  text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;
+  background:rgba(255,255,255,.15);padding:3px 12px;border-radius:20px;
+}
+.fc-front .fc-word{font-size:1.5rem;font-weight:900;letter-spacing:-.3px;line-height:1.2}
+.fc-tap-hint{font-size:.7rem;opacity:.4;margin-top:16px;text-transform:uppercase;letter-spacing:.8px}
+.fc-back{
+  background:linear-gradient(135deg,#1e40af 0%,#2563eb 50%,#3b82f6 100%);
+  color:#fff;transform:rotateY(180deg);
+}
+.fc-back::before{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);
+  background:radial-gradient(circle at 30% 70%,rgba(255,255,255,.07),transparent 60%);
+}
+.fc-back .fc-def{font-size:.92rem;line-height:1.6;font-weight:500;position:relative}
+.fc-back .fc-example{
+  font-size:.78rem;opacity:.8;margin-top:10px;font-style:italic;
+  background:rgba(255,255,255,.12);padding:5px 12px;border-radius:20px;position:relative;
+}
+.fc-nav{display:flex;gap:10px;justify-content:center;align-items:center;margin-bottom:12px}
+.fc-counter{
+  font-size:.88rem;color:var(--muted);font-weight:700;min-width:70px;
+  text-align:center;background:var(--card);border-radius:20px;
+  padding:5px 12px;box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.fc-rating{display:flex;gap:12px;justify-content:center;margin-bottom:22px}
+.btn-know{
+  background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#065f46;
+  border:2px solid #6ee7b7;font-weight:800;padding:10px 26px;border-radius:30px;
+  cursor:pointer;font-size:.87rem;font-family:'Inter',system-ui,sans-serif;
+  transition:all .2s;box-shadow:0 2px 10px rgba(16,185,129,.2);
+}
+.btn-know:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(16,185,129,.3)}
+.btn-learn{
+  background:linear-gradient(135deg,#fee2e2,#fecaca);color:#be123c;
+  border:2px solid #fca5a5;font-weight:800;padding:10px 26px;border-radius:30px;
+  cursor:pointer;font-size:.87rem;font-family:'Inter',system-ui,sans-serif;
+  transition:all .2s;box-shadow:0 2px 10px rgba(239,68,68,.2);
+}
+.btn-learn:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(239,68,68,.3)}
+.fc-progress{
+  background:var(--card);border-radius:var(--radius);
+  padding:16px 18px;box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.fc-progress h3{font-size:.88rem;font-weight:800;margin-bottom:12px;color:var(--navy)}
+.progress-bar{background:#f1f5f9;border-radius:20px;height:10px;margin-bottom:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:20px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.fill-green{background:linear-gradient(90deg,var(--green-dk),var(--green))}
+.fill-red{background:linear-gradient(90deg,#dc2626,var(--red))}
+.progress-label{font-size:.78rem;color:var(--muted);margin-bottom:8px;font-weight:600}
+
+/* ══ JEOPARDY ══ */
+.jep-score-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(135deg,var(--navy),#1a3a6e);
+  color:#fff;border-radius:var(--radius);padding:14px 20px;
+  margin-bottom:16px;box-shadow:var(--shadow-md);
+}
+.jep-score-bar .score-wrap{}
+.jep-score-bar .score-label{font-size:.65rem;opacity:.6;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.jep-score-bar .score{
+  font-size:1.7rem;font-weight:900;color:var(--gold-lt);
+  text-shadow:0 0 20px rgba(245,158,11,.5);letter-spacing:-1px;
+}
+.jep-score-bar .streak{
+  font-size:.82rem;opacity:.85;
+  background:rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;
+}
+.jep-board{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:6px;margin-bottom:18px;
+}
+.jep-cat{
+  background:linear-gradient(135deg,var(--navy),#1a3a6e);
+  color:#fff;text-align:center;padding:12px 6px;
+  font-size:.7rem;font-weight:800;border-radius:var(--radius-sm);
+  text-transform:uppercase;line-height:1.3;letter-spacing:.3px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.jep-cell{
+  background:linear-gradient(135deg,var(--blue),#1d50c8);
+  color:#fff;text-align:center;padding:12px 4px;
+  font-size:.95rem;font-weight:900;border-radius:var(--radius-sm);
+  cursor:pointer;transition:all .18s;min-height:54px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.08);
+  text-shadow:0 1px 4px rgba(0,0,0,.3);
+}
+.jep-cell:hover:not(.done){
+  background:linear-gradient(135deg,#1e40af,#2563eb);
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 6px 20px rgba(37,99,235,.5);
+}
+.jep-cell.done{
+  background:linear-gradient(135deg,#1e293b,#334155);
+  color:#475569;cursor:default;transform:none;
+  box-shadow:none;font-size:1.1rem;
+}
+.jep-modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(6px);
+  z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.jep-modal.hidden{display:none}
+.jep-modal-box{
+  background:var(--card);border-radius:var(--radius);
+  max-width:540px;width:100%;padding:28px;
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+  animation:popIn .22s cubic-bezier(.34,1.56,.64,1);
+  border:1px solid rgba(255,255,255,.5);
+}
+.jep-modal-cat{
+  font-size:.68rem;font-weight:800;color:var(--blue);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;
+}
+.jep-modal-val{
+  font-size:1.6rem;font-weight:900;color:var(--gold);
+  margin-bottom:16px;letter-spacing:-1px;
+}
+.jep-modal-q{font-size:1.05rem;font-weight:700;margin-bottom:20px;line-height:1.5;color:var(--text)}
+.jep-choices{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.jep-choice{
+  background:#f8faff;border:2px solid var(--border);
+  border-radius:var(--radius-sm);padding:12px 18px;
+  font-size:.9rem;cursor:pointer;transition:all .18s;text-align:left;
+  font-family:'Inter',system-ui,sans-serif;font-weight:500;
+}
+.jep-choice:hover:not(.picked){background:#eff6ff;border-color:var(--blue);transform:translateX(4px)}
+.jep-choice.correct{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-color:var(--green);color:var(--green-dk);font-weight:700}
+.jep-choice.wrong{background:linear-gradient(135deg,#fff1f2,#fee2e2);border-color:var(--red);color:#be123c;font-weight:700}
+.jep-feedback{
+  font-size:.9rem;font-weight:700;padding:12px 16px;
+  border-radius:var(--radius-sm);margin-bottom:14px;display:none;line-height:1.5;
+}
+.jep-feedback.win{background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:var(--green-dk);border:1.5px solid #bbf7d0}
+.jep-feedback.lose{background:linear-gradient(135deg,#fff1f2,#fee2e2);color:#be123c;border:1.5px solid #fecdd3}
+.btn-close-jep{
+  background:linear-gradient(135deg,var(--navy),#1a3a6e);
+  color:#fff;border:none;border-radius:var(--radius-sm);
+  padding:12px 24px;font-size:.9rem;font-weight:700;
+  cursor:pointer;width:100%;font-family:'Inter',system-ui,sans-serif;
+  transition:opacity .2s;
+}
+.btn-close-jep:hover{opacity:.85}
+
+/* ══ VIDEOS ══ */
+.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.vid-grid{grid-template-columns:1fr}}
+.vid-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+  display:flex;flex-direction:column;
+  border:1px solid var(--border);
+  transition:transform .2s,box-shadow .2s;
+}
+.vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.vid-thumb{
+  position:relative;color:#fff;padding:24px 20px;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;min-height:130px;overflow:hidden;
+}
+.vid-thumb::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(0,0,0,.15);
+}
+.vid-thumb .play-btn{
+  position:relative;z-index:1;
+  width:44px;height:44px;background:rgba(255,255,255,.2);
+  border:2px solid rgba(255,255,255,.4);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;margin-bottom:10px;
+  backdrop-filter:blur(4px);
+  transition:all .2s;
+}
+.vid-card:hover .play-btn{background:rgba(255,255,255,.35);transform:scale(1.1)}
+.vid-thumb .vid-title{position:relative;z-index:1;font-size:.9rem;font-weight:800;margin-bottom:6px}
+.vid-thumb .duration{
+  position:relative;z-index:1;
+  background:rgba(0,0,0,.35);border-radius:12px;
+  padding:3px 10px;font-size:.72rem;font-weight:700;
+  backdrop-filter:blur(4px);
+}
+.vid-info{padding:14px 16px;flex:1;display:flex;flex-direction:column}
+.vid-info h3{font-size:.88rem;font-weight:700;margin-bottom:4px;line-height:1.35}
+.vid-info .why{font-size:.8rem;color:var(--muted);margin-bottom:12px;flex:1;line-height:1.5}
+.vid-info .topic-tag{
+  background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  border:1px solid #bfdbfe;border-radius:20px;
+  padding:3px 12px;font-size:.72rem;color:var(--blue);
+  font-weight:700;display:inline-block;margin-bottom:10px;
+}
+.btn-watch{
+  background:linear-gradient(135deg,#dc2626,var(--red));
+  color:#fff;border:none;border-radius:var(--radius-sm);
+  padding:9px 18px;font-size:.84rem;font-weight:700;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:all .2s;font-family:'Inter',system-ui,sans-serif;
+  box-shadow:0 2px 10px rgba(239,68,68,.3);
+  align-self:flex-start;
+}
+.btn-watch:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(239,68,68,.4)}
+.vid-section-header{
+  background:linear-gradient(135deg,var(--navy),#1a3a6e);
+  color:#fff;border-radius:var(--radius);
+  padding:14px 20px;margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+.vid-section-header h2{font-size:.95rem;font-weight:800}
+.vid-section-header p{font-size:.78rem;opacity:.7;margin-top:3px}
 </style>
 </head>
 <body>
 
+<a href="../../index.html" class="back-link">← Back to Hub</a>
+
 <div class="header">
-  <h1>Ibrahim's Algebra 2 Mastery Hub</h1>
-  <p>Test out by July 2026 — Chapter by chapter, no shortcuts</p>
-  <div class="streak-bar" id="streakBar">Day 1 — Let's get it</div>
+  <div class="header-inner">
+    <h1>📐 Chapter 1 — <span>Linear Functions</span></h1>
+    <div class="sub">Algebra 2 · Big Ideas Math · Coach Mode ON 🦁 · ⚽🏀🇲🇦</div>
+    <div class="xp-row">
+      <span class="xp-icon">⚡</span>
+      <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpFill" style="width:0%"></div></div>
+    </div>
+    <div class="xp-label" id="xpLabel">0 XP — Let's get it!</div>
+  </div>
 </div>
 
-<nav class="nav" id="mainNav">
-  <button class="active" onclick="showTab('today')">Today</button>
-  <button onclick="showTab('chapters')">Chapters</button>
-  <button onclick="showTab('flashcards')">Flashcards</button>
-  <button onclick="showTab('quiz')">Quiz</button>
-  <button onclick="showTab('speed')">Speed Round</button>
-  <button onclick="showTab('sports')">Sports Math</button>
-  <button onclick="showTab('videos')">Videos</button>
-  <button onclick="showTab('progress')">Progress</button>
+<nav class="mode-nav">
+  <button class="mode-btn active" onclick="switchMode('lesson')"><span class="mode-ico">📖</span> Lesson</button>
+  <button class="mode-btn" onclick="switchMode('practice')"><span class="mode-ico">📝</span> Practice</button>
+  <button class="mode-btn" onclick="switchMode('flashcards')"><span class="mode-ico">🃏</span> Flashcards</button>
+  <button class="mode-btn" onclick="switchMode('jeopardy')"><span class="mode-ico">🎮</span> Jeopardy</button>
+  <button class="mode-btn" onclick="switchMode('videos')"><span class="mode-ico">🎬</span> Videos</button>
 </nav>
 
-<div class="container">
+<!-- ══════════════ LESSON ══════════════ -->
+<div class="panel active" id="panel-lesson">
 
-<!-- ==================== TODAY TAB ==================== -->
-<div id="today" class="tab-content active">
+  <!-- PLAYER BANNER -->
+  <div style="background:linear-gradient(135deg,var(--navy),#0e1f3d,#112240);border-radius:var(--radius);padding:18px 18px 16px;margin-bottom:20px;box-shadow:var(--shadow-md);border:1px solid rgba(255,255,255,.07)">
+    <div style="font-size:.62rem;font-weight:800;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:12px">⚽ Your Squad — Math Examples Powered By These Players</div>
 
-  <div class="today-plan">
-    <h2>Tuesday, March 24 — Game Plan</h2>
-    <p style="opacity:0.85;margin:8px 0 16px">No soccer practice tonight. Let's use this time to kick off Chapter 1.</p>
-
-    <div class="today-step">
-      <div class="step-num">1</div>
-      <div>
-        <strong>Open the Textbook (5 min)</strong><br>
-        <span style="opacity:0.8">Go to Chapter 1, Section 1.1 — Parent Functions & Transformations. Read pages 2-9.</span><br>
-        <a href="https://bim.easyaccessmaterials.com/?level=13.00&p=chapter1" target="_blank" style="color:#bbdefb">Open Textbook →</a>
+    <!-- Team badges -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+      <div style="background:rgba(198,160,0,.15);border:1px solid rgba(198,160,0,.35);border-radius:20px;padding:5px 14px;display:flex;align-items:center;gap:6px">
+        <span style="font-size:1.05rem">🇲🇦</span><span style="font-size:.8rem;font-weight:800;color:#fbbf24">Morocco NT</span>
+      </div>
+      <div style="background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.35);border-radius:20px;padding:5px 14px;display:flex;align-items:center;gap:6px">
+        <span style="font-size:1rem">🔴</span><span style="font-size:.8rem;font-weight:800;color:#fca5a5">Liverpool FC</span>
+      </div>
+      <div style="background:rgba(0,122,51,.12);border:1px solid rgba(0,122,51,.35);border-radius:20px;padding:5px 14px;display:flex;align-items:center;gap:6px">
+        <span style="font-size:1rem">🍀</span><span style="font-size:.8rem;font-weight:800;color:#6ee7b7">Boston Celtics</span>
       </div>
     </div>
 
-    <div class="today-step">
-      <div class="step-num">2</div>
-      <div>
-        <strong>Watch the Video Lesson (15 min)</strong><br>
-        <span style="opacity:0.8">Search YouTube: "Parent Functions and Transformations Algebra 2 Organic Chemistry Tutor" — watch the first 15 minutes.</span>
-      </div>
+    <!-- Divider label -->
+    <div style="font-size:.6rem;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">🇲🇦 Morocco Players</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Achraf Hakimi</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Hakim Ziyech</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Yassine Bounou</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Brahim Díaz</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Sofiane Boufal</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Anas El Aynaoui</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Ilyes Ben Seghir</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Yassine Ghaesim</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Abde Ezzalzouli</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Bilal El Khanous</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Salim Louza</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Adam El Azrak (Maama)</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Adam El Nassiri</span>
+      <span style="font-size:.75rem;background:rgba(196,148,0,.12);color:#fcd34d;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(196,148,0,.2)">Azzedine Ounahi (Zabiri)</span>
     </div>
 
-    <div class="today-step">
-      <div class="step-num">3</div>
-      <div>
-        <strong>Flashcard Review (10 min)</strong><br>
-        <span style="opacity:0.8">Go to the Flashcards tab here and go through all Chapter 1 cards. Flip each one, say the answer out loud first.</span>
-      </div>
+    <!-- Divider label -->
+    <div style="font-size:.6rem;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">🔴 Liverpool · ⚡ Other · 🍀 Celtics</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <span style="font-size:.75rem;background:rgba(200,16,46,.1);color:#fca5a5;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(200,16,46,.2)">Szoboszlai #8</span>
+      <span style="font-size:.75rem;background:rgba(200,16,46,.1);color:#fca5a5;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(200,16,46,.2)">Darwin Núñez</span>
+      <span style="font-size:.75rem;background:rgba(200,16,46,.1);color:#fca5a5;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(200,16,46,.2)">Mo Salah</span>
+      <span style="font-size:.75rem;background:rgba(200,16,46,.1);color:#fca5a5;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(200,16,46,.2)">Trent Alexander-Arnold</span>
+      <span style="font-size:.75rem;background:rgba(255,140,0,.1);color:#fdba74;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(255,140,0,.2)">Hugo Ekitike</span>
+      <span style="font-size:.75rem;background:rgba(0,122,51,.1);color:#6ee7b7;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(0,122,51,.2)">Payton Pritchard</span>
+      <span style="font-size:.75rem;background:rgba(0,122,51,.1);color:#6ee7b7;padding:3px 11px;border-radius:12px;font-weight:600;border:1px solid rgba(0,122,51,.2)">Jaylen Brown</span>
     </div>
+  </div>
 
-    <div class="today-step">
-      <div class="step-num">4</div>
-      <div>
-        <strong>Take the Quiz (15 min)</strong><br>
-        <span style="opacity:0.8">Hit the Quiz tab and test yourself on Section 1.1 concepts. Aim for 80%+.</span>
-      </div>
+  <!-- SECTION 1: PARENT FUNCTIONS -->
+  <div class="section-card">
+    <div class="section-header sh-gold open" onclick="toggleSection(this)">
+      <div class="sh-num">1️⃣</div>
+      <h2>Parent Functions &amp; Function Notation</h2>
+      <span class="arrow">▾</span>
     </div>
-
-    <div class="today-step">
-      <div class="step-num">5</div>
-      <div>
-        <strong>Speed Round (5 min)</strong><br>
-        <span style="opacity:0.8">Quick-fire linear function problems. Try to beat 60 seconds for 10 problems.</span>
+    <div class="section-body open">
+      <div class="coach-box">
+        <div class="label">🦁 Coach Ibrahim Says</div>
+        <p>Think of a <strong>parent function</strong> like Morocco's <strong>4-3-3 base formation</strong> — Bounou in goal, Hakimi at right back, <strong>El Khanous</strong> and <strong>El Aynaoui</strong> controlling the midfield, <strong>Brahim Díaz</strong> and <strong>Boufal</strong> on the wings, <strong>Abde Ezzalzouli</strong> pressing high. That lineup is the parent. Every tweak is a transformation of it. Szoboszlai doesn't reinvent his game each match — he adapts from his base. Same idea here.</p>
       </div>
-    </div>
 
-    <div class="today-step">
-      <div class="step-num">6</div>
-      <div>
-        <strong>Sports Math Challenge (10 min)</strong><br>
-        <span style="opacity:0.8">Real-world problems using soccer and basketball stats. This is where it gets fun.</span>
+      <div class="concept-box">
+        <div class="label">📌 Core Concept</div>
+        <p>A <strong>parent function</strong> is the simplest, most basic function in a family. All other functions in that family are transformations of the parent.</p>
+        <br>
+        <table class="clean">
+          <tr><th>Family</th><th>Parent Function</th><th>Shape</th></tr>
+          <tr><td>Linear</td><td>f(x) = x</td><td>Straight line through origin</td></tr>
+          <tr><td>Absolute Value</td><td>f(x) = |x|</td><td>V-shape</td></tr>
+          <tr><td>Quadratic</td><td>f(x) = x²</td><td>Parabola (U-shape)</td></tr>
+        </table>
+      </div>
+
+      <div class="concept-box">
+        <div class="label">📌 Function Notation — f(x)</div>
+        <p><strong>f(x)</strong> is just a fancy way of writing "y" — it means "the output when you plug in x." You read it as "f of x."</p>
+      </div>
+      <div class="formula">f(x) = 2x + 3 means: take x, multiply by 2, then add 3</div>
+
+      <div class="example-box">
+        <div class="label">🔴 Liverpool — Szoboszlai #8</div>
+        <p>Szoboszlai's shot accuracy this season is modeled by <strong>f(x) = 6x + 5</strong> where x = hours of extra training per week.</p>
+        <div class="step"><div class="step-num">1</div><p>Find f(3): Plug in x = 3</p></div>
+        <div class="step"><div class="step-num">2</div><p>f(3) = 6(3) + 5 = 18 + 5 = <strong>23</strong></p></div>
+        <div class="step"><div class="step-num">3</div><p>After 3 hours of training, accuracy score = 23. Makes sense!</p></div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">🔢 Try This One (from your book)</div>
+        <p><strong>h(x) = 4x + 3</strong>. Find h(10).</p>
+        <div class="step"><div class="step-num">1</div><p>Replace x with 10: h(10) = 4(10) + 3</p></div>
+        <div class="step"><div class="step-num">2</div><p>= 40 + 3 = <strong>43</strong> ✅</p></div>
+      </div>
+
+      <div class="tip-box">
+        <div class="label">💡 Pro Tip — "Is this point on the graph?"</div>
+        <p>To check if (−1, 2) is on f(x) = 3x + 5:<br>
+        Plug in x = −1 → f(−1) = 3(−1) + 5 = −3 + 5 = <strong>2</strong>. Yes! Output matches. ✅<br>
+        To check if (−3, −19) is on h(x) = 7x − 2:<br>
+        h(−3) = 7(−3) − 2 = −21 − 2 = −23 ≠ −19. ❌ NOT on the graph.</p>
+      </div>
+
+      <div class="concept-box">
+        <div class="label">📌 Absolute Value Function</div>
+        <p><strong>f(x) = |x|</strong> — absolute value makes everything positive (or zero). Think of it as distance — distance is never negative.</p>
+        <br>
+        <p>Example: <strong>h(x) = |3x − 8|</strong>. Find h(1):<br>
+        h(1) = |3(1) − 8| = |3 − 8| = |−5| = <strong>5</strong></p>
       </div>
     </div>
   </div>
 
-  <div class="textbook-banner">
-    <div class="book-icon">📖</div>
-    <div>
-      <strong>Full Textbook — Free, No Login</strong><br>
-      <a href="https://bim.easyaccessmaterials.com/?level=13.00" target="_blank">bim.easyaccessmaterials.com</a><br>
-      <span style="font-size:0.85rem">Works on any device. 647 pages, all 11 chapters.</span>
+  <!-- SECTION 2: TRANSFORMATIONS -->
+  <div class="section-card">
+    <div class="section-header sh-purple" onclick="toggleSection(this)">
+      <div class="sh-num">2️⃣</div>
+      <h2>Transformations of Functions</h2>
+      <span class="arrow">▾</span>
     </div>
-  </div>
+    <div class="section-body">
+      <div class="coach-box">
+        <div class="label">🦁 Coach Ibrahim Says</div>
+        <p>Transformations are like tactical tweaks on Morocco's 4-3-3. Push <strong>Abde Ezzalzouli</strong> higher up the wing (translation up). Swap the wingers — put <strong>Boufal</strong> on the right instead of left (reflection). Tell <strong>Hakimi</strong> to overlap harder (vertical stretch). Drop <strong>El Aynaoui</strong> deeper into a double pivot with <strong>El Khanous</strong> (vertical shrink of the midfield line). The formation is the same parent — you're just transforming it.</p>
+      </div>
 
-  <div class="card">
-    <h2>Your Mission</h2>
-    <p>You need to master ALL of Algebra 2 by early July to test out of it for next year. That's 11 chapters in 14 weeks. You're strong in algebra — this is about building on that foundation and tackling the geometry-connected topics head on.</p>
-    <div class="progress-bar" style="margin-top:12px">
-      <div class="progress-fill" style="width: 0%"></div>
-    </div>
-    <div class="progress-label">
-      <span>Chapter 0 of 11</span>
-      <span>0% complete</span>
-    </div>
-  </div>
-</div>
+      <div class="concept-box">
+        <div class="label">📌 The Big 4 Transformations</div>
+        <table class="clean">
+          <tr><th>Transformation</th><th>What Changes</th><th>Example</th></tr>
+          <tr><td>Translation (shift)</td><td>Moves graph up/down/left/right</td><td>f(x) + 3 shifts UP 3</td></tr>
+          <tr><td>Reflection</td><td>Flips graph over an axis</td><td>−f(x) flips over x-axis</td></tr>
+          <tr><td>Vertical Stretch</td><td>Makes graph taller/steeper</td><td>2f(x) doubles height</td></tr>
+          <tr><td>Vertical Shrink</td><td>Makes graph shorter/flatter</td><td>½f(x) halves height</td></tr>
+        </table>
+      </div>
 
-<!-- ==================== CHAPTERS TAB ==================== -->
-<div id="chapters" class="tab-content">
-  <div class="card">
-    <h2>Chapter Roadmap</h2>
-    <p style="margin-bottom:16px">Tap a chapter to see what's inside. Current chapter is highlighted green.</p>
-    <div class="chapter-grid">
-      <button class="chapter-btn current" onclick="selectChapter(1)">
-        <div class="ch-num">Chapter 1</div>
-        <div class="ch-title">Linear Functions</div>
-        <div class="ch-diff">⭐⭐ Easy-Medium</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(2)">
-        <div class="ch-num">Chapter 2</div>
-        <div class="ch-title">Quadratic Functions</div>
-        <div class="ch-diff">⭐⭐⭐ Medium</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(3)">
-        <div class="ch-num">Chapter 3</div>
-        <div class="ch-title">Quadratic Equations</div>
-        <div class="ch-diff">⭐⭐⭐⭐ Hard</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(4)">
-        <div class="ch-num">Chapter 4</div>
-        <div class="ch-title">Polynomial Functions</div>
-        <div class="ch-diff">⭐⭐⭐ Medium</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(5)">
-        <div class="ch-num">Chapter 5</div>
-        <div class="ch-title">Radical Functions</div>
-        <div class="ch-diff">⭐⭐⭐⭐ Hard</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(6)">
-        <div class="ch-num">Chapter 6</div>
-        <div class="ch-title">Exponential & Logs</div>
-        <div class="ch-diff">⭐⭐⭐⭐⭐ Hardest</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(7)">
-        <div class="ch-num">Chapter 7</div>
-        <div class="ch-title">Rational Functions</div>
-        <div class="ch-diff">⭐⭐⭐⭐ Hard</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(8)">
-        <div class="ch-num">Chapter 8</div>
-        <div class="ch-title">Sequences & Series</div>
-        <div class="ch-diff">⭐⭐⭐ Medium</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(9)">
-        <div class="ch-num">Chapter 9</div>
-        <div class="ch-title">Trigonometry</div>
-        <div class="ch-diff">⭐⭐⭐⭐⭐ Hardest</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(10)">
-        <div class="ch-num">Chapter 10</div>
-        <div class="ch-title">Probability</div>
-        <div class="ch-diff">⭐⭐⭐ Medium</div>
-      </button>
-      <button class="chapter-btn" onclick="selectChapter(11)">
-        <div class="ch-num">Chapter 11</div>
-        <div class="ch-title">Data & Statistics</div>
-        <div class="ch-diff">⭐⭐⭐ Medium</div>
-      </button>
-    </div>
-  </div>
+      <div class="formula">g(x) = a·f(x − h) + k</div>
 
-  <div class="card" id="chapterDetail">
-    <h2>Chapter 1: Linear Functions</h2>
-    <p><strong>Sections:</strong></p>
-    <p>1.1 — Parent Functions and Transformations</p>
-    <p>1.2 — Transformations of Linear and Absolute Value Functions</p>
-    <p>1.3 — Modeling with Linear Functions</p>
-    <p>1.4 — Solving Linear Systems</p>
-    <p style="margin-top:12px"><strong>Key Skills:</strong> Identify parent functions, graph transformations (shifts, reflections, stretches), write equations from graphs, systems of equations (graphing, substitution, elimination), scatter plots & regression</p>
-    <p style="margin-top:12px"><strong>Geometry Connection:</strong> Transformations (translations, reflections, rotations) are the SAME concepts you see in geometry — just applied to function graphs instead of shapes. Master this and geometry transformations click too.</p>
-    <div style="margin-top:16px">
-      <a href="https://bim.easyaccessmaterials.com/?level=13.00&p=chapter1" target="_blank" class="btn-primary">Open Chapter 1 in Textbook →</a>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== FLASHCARDS TAB ==================== -->
-<div id="flashcards" class="tab-content">
-  <div class="card">
-    <h2>Chapter 1 Flashcards</h2>
-    <p>Tap the card to flip it. Say your answer out loud BEFORE flipping.</p>
-
-    <div class="flashcard-container">
-      <div class="flashcard" id="flashcard" onclick="flipCard()">
-        <div class="flashcard-face flashcard-front" id="cardFront">
-          What is a <strong>parent function</strong>?
+      <div class="grid-2">
+        <div class="mini-card">
+          <div class="title">k value (outside)</div>
+          <p>+ k → shifts UP<br>− k → shifts DOWN</p>
         </div>
-        <div class="flashcard-face flashcard-back" id="cardBack">
-          The most basic function in a family of functions. Example: f(x) = x is the parent of all linear functions, f(x) = x² is the parent of all quadratics.
+        <div class="mini-card">
+          <div class="title">h value (inside)</div>
+          <p>− h → shifts RIGHT<br>+ h → shifts LEFT</p>
+        </div>
+        <div class="mini-card">
+          <div class="title">a > 1</div>
+          <p>Vertical STRETCH (taller)</p>
+        </div>
+        <div class="mini-card">
+          <div class="title">0 < a < 1</div>
+          <p>Vertical SHRINK (flatter)</p>
         </div>
       </div>
+
+      <div class="example-box">
+        <div class="label">💥 Liverpool — Darwin Núñez</div>
+        <p>Núñez's goal rate per intensity level: parent f(x) = |x|<br>
+        After a training upgrade: <strong>g(x) = 2|x − 1| + 3</strong></p>
+        <div class="step"><div class="step-num">1</div><p>The <strong>2</strong> = vertical stretch — he scores twice as often now (Núñez mentality 🔥)</p></div>
+        <div class="step"><div class="step-num">2</div><p>The <strong>−1 inside</strong> shifts the graph <em>right</em> by 1 (takes 1 extra unit to warm up)</p></div>
+        <div class="step"><div class="step-num">3</div><p>The <strong>+3 outside</strong> shifts the graph <em>up</em> by 3 (baseline output raised by 3)</p></div>
+      </div>
+
+      <div class="warning-box">
+        <div class="label">⚠️ Common Mistake</div>
+        <p>Inside changes are <strong>opposite</strong> to what you think! f(x − 3) shifts RIGHT (not left), f(x + 3) shifts LEFT (not right). It's counterintuitive — memorize it!</p>
+      </div>
+
+      <div class="tip-box">
+        <div class="label">💡 How to Describe Any Transformation</div>
+        <p>Given g(x) = −3f(x) + 2:<br>
+        → <strong>Reflection</strong> over x-axis (negative sign)<br>
+        → <strong>Vertical stretch</strong> by factor of 3<br>
+        → <strong>Translation up</strong> 2 units</p>
+      </div>
     </div>
-    <div class="flashcard-counter" id="cardCounter">Card 1 of 15</div>
-    <div class="flashcard-nav">
-      <button onclick="prevCard()">← Prev</button>
-      <button onclick="nextCard()">Next →</button>
+  </div>
+
+  <!-- SECTION 3: SLOPE-INTERCEPT & MODELING -->
+  <div class="section-card">
+    <div class="section-header sh-green" onclick="toggleSection(this)">
+      <div class="sh-num">3️⃣</div>
+      <h2>Slope-Intercept Form &amp; Linear Modeling</h2>
+      <span class="arrow">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="coach-box">
+        <div class="label">🦁 Coach Ibrahim Says</div>
+        <p>Slope = <em>rate of change</em>. <strong>Szoboszlai</strong> covers ~12km a match — that distance per minute is a slope. <strong>Trent Alexander-Arnold</strong> creates ~3 chances per game — rate per game is a slope. The y-intercept is your starting point before anything happens: <strong>Mo Salah</strong> has a reputation already at 10 before kickoff, that's your b. And <strong>Brahim Díaz</strong>? His dribble success rate in Morocco's system starts high from game one — high b-value, steep positive slope. That's a great linear model.</p>
+      </div>
+
+      <div class="formula">y = mx + b &nbsp;&nbsp;|&nbsp;&nbsp; m = slope, b = y-intercept</div>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <div class="title">Slope (m)</div>
+          <p>Rise over run.<br>Rate of change.<br>How steep the line is.</p>
+        </div>
+        <div class="mini-card">
+          <div class="title">Y-intercept (b)</div>
+          <p>Where the line crosses the y-axis.<br>The starting value (x = 0).</p>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">📖 Book Example — Reading Slope from Equation</div>
+        <p><strong>y = −3x − 8</strong></p>
+        <div class="step"><div class="step-num">1</div><p>Already in y = mx + b form</p></div>
+        <div class="step"><div class="step-num">2</div><p>Slope m = <strong>−3</strong> (line goes down 3 for every 1 right)</p></div>
+        <div class="step"><div class="step-num">3</div><p>Y-intercept b = <strong>−8</strong> (line crosses y-axis at −8)</p></div>
+      </div>
+
+      <div class="concept-box">
+        <div class="label">📌 Finding Intercepts from Standard Form (ax + by = c)</div>
+        <p><strong>x-intercept:</strong> Set y = 0, solve for x<br>
+        <strong>y-intercept:</strong> Set x = 0, solve for y</p>
+      </div>
+
+      <div class="example-box">
+        <div class="label">📖 Book Example — 2x + 3y = 12</div>
+        <div class="step"><div class="step-num">1</div><p>x-intercept: set y = 0 → 2x = 12 → x = <strong>6</strong> → point (6, 0)</p></div>
+        <div class="step"><div class="step-num">2</div><p>y-intercept: set x = 0 → 3y = 12 → y = <strong>4</strong> → point (0, 4)</p></div>
+        <div class="step"><div class="step-num">3</div><p>Plot both points, draw the line ✅</p></div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">🇲🇦 Morocco — Real-World Model</div>
+        <p>Morocco's stadium ticket revenue at the Africa Cup: <strong>C(x) = 49.5x + 19.5</strong><br>
+        x = group ticket packages sold, C = total revenue in hundreds of dollars</p>
+        <div class="step"><div class="step-num">1</div><p>C(4) = 49.5(4) + 19.5 = 198 + 19.5 = <strong>$217.50</strong></p></div>
+        <div class="step"><div class="step-num">2</div><p>For $465: 465 = 49.5x + 19.5 → 445.5 = 49.5x → x = <strong>9 tickets</strong></p></div>
+      </div>
+
+      <div class="tip-box">
+        <div class="label">💡 Line of Fit vs Line of Best Fit</div>
+        <p><strong>Line of fit:</strong> A line you draw that seems to fit scattered data points (your judgment call).<br>
+        <strong>Line of best fit:</strong> Calculated mathematically to minimize total error — the most accurate fit.<br>
+        <strong>Correlation coefficient (r):</strong> From −1 to 1. Closer to ±1 = stronger relationship. 0 = no relationship.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: SYSTEMS OF EQUATIONS -->
+  <div class="section-card">
+    <div class="section-header sh-red" onclick="toggleSection(this)">
+      <div class="sh-num">4️⃣</div>
+      <h2>Systems of Equations</h2>
+      <span class="arrow">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="coach-box">
+        <div class="label">🦁 Coach Ibrahim Says</div>
+        <p>A system of equations is like <strong>Hakimi and Ziyech</strong> making overlapping runs on the right side — the <em>solution</em> is where they meet on the pitch. Sometimes those runs never cross (no solution — parallel lines). Sometimes they're on exactly the same path (infinite solutions). Usually they meet at one exact point, and that's your answer.</p>
+        <p style="margin-top:8px">Think of <strong>Payton Pritchard</strong> cutting off a screen to meet a Jaylen Brown drive — if their paths line up perfectly, that's exactly one solution. 🍀 Or picture <strong>Ben Seghir</strong> making a run while <strong>Louza</strong> plays a through ball — the exact spot where they connect is the (x, y) solution.</p>
+      </div>
+
+      <div class="concept-box">
+        <div class="label">📌 Three Methods</div>
+        <table class="clean">
+          <tr><th>Method</th><th>Best When</th><th>How</th></tr>
+          <tr><td>Graphing</td><td>Visual check, estimate</td><td>Graph both lines, find intersection</td></tr>
+          <tr><td>Substitution</td><td>One equation solved for a variable</td><td>Plug one equation into the other</td></tr>
+          <tr><td>Elimination</td><td>Coefficients can cancel</td><td>Add/subtract equations to eliminate one variable</td></tr>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="label">📖 Book — Substitution Method</div>
+        <p>Solve: <strong>y = 1 − x</strong> and <strong>−2x + y = 4</strong></p>
+        <div class="step"><div class="step-num">1</div><p>First equation is solved for y, so substitute: −2x + (1 − x) = 4</p></div>
+        <div class="step"><div class="step-num">2</div><p>−2x + 1 − x = 4 → −3x = 3 → x = <strong>−1</strong></p></div>
+        <div class="step"><div class="step-num">3</div><p>Plug back: y = 1 − (−1) = <strong>2</strong></p></div>
+        <div class="step"><div class="step-num">4</div><p>Solution: <strong>(−1, 2)</strong> ✅</p></div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">📖 Book — Elimination Method</div>
+        <p>Solve: <strong>−2x + 2y = −2</strong> and <strong>2x + y = 5</strong></p>
+        <div class="step"><div class="step-num">1</div><p>Add the equations together: (−2x + 2x) + (2y + y) = (−2 + 5)</p></div>
+        <div class="step"><div class="step-num">2</div><p>3y = 3 → y = <strong>1</strong></p></div>
+        <div class="step"><div class="step-num">3</div><p>Sub y = 1 into 2x + y = 5: 2x + 1 = 5 → x = <strong>2</strong></p></div>
+        <div class="step"><div class="step-num">4</div><p>Solution: <strong>(2, 1)</strong> ✅</p></div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">📖 Trickier Elimination — x − 4y = −3 and 4x + y = 5</div>
+        <div class="step"><div class="step-num">1</div><p>Multiply row 2 by 4: 16x + 4y = 20</p></div>
+        <div class="step"><div class="step-num">2</div><p>Add to row 1: (x + 16x) + (−4y + 4y) = (−3 + 20) → 17x = 17 → x = <strong>1</strong></p></div>
+        <div class="step"><div class="step-num">3</div><p>Sub x = 1: 4(1) + y = 5 → y = <strong>1</strong></p></div>
+        <div class="step"><div class="step-num">4</div><p>Solution: <strong>(1, 1)</strong> ✅</p></div>
+      </div>
+
+      <div class="warning-box">
+        <div class="label">⚠️ Special Cases — Know These!</div>
+        <p><strong>No Solution:</strong> When you eliminate both variables and get something FALSE like 0 = −20. Lines are parallel (never meet).<br>
+        Example: 2x + 3y = 5 and 4x + 6y = −10 → multiply row 1 by 2 → 4x + 6y = 10 ≠ −10. No solution ❌<br><br>
+        <strong>Infinitely Many Solutions:</strong> You get something TRUE like 0 = 0. Lines are identical (perfectly overlapping).</p>
+      </div>
+
+      <div class="tip-box">
+        <div class="label">💡 Always Check Your Answer</div>
+        <p>Plug your (x, y) back into BOTH original equations. If both work — you're right. One wrong — recheck your algebra.</p>
+      </div>
+    </div>
+  </div>
+</div><!-- end lesson panel -->
+
+
+<!-- ══════════════ PRACTICE ══════════════ -->
+<div class="panel" id="panel-practice">
+  <div class="progress-row">
+    <span>📝 Chapter 1 — 15 Problems</span>
+    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:.72rem;color:var(--muted)">🔴🇲🇦🍀</span>
+      <div class="score-badge" id="practiceScore">0 / 15 ✓</div>
+    </div>
+  </div>
+  <div id="practiceProblems"></div>
+</div>
+
+
+<!-- ══════════════ FLASHCARDS ══════════════ -->
+<div class="panel" id="panel-flashcards">
+<div class="fc-panel-wrap">
+  <div class="fc-controls">
+    <button class="btn btn-hint" onclick="shuffleCards()">🔀 Shuffle</button>
+    <button class="btn btn-check" onclick="resetCards()">↩️ Reset All</button>
+  </div>
+
+  <div class="fc-area" id="fcArea" onclick="flipCard()">
+    <div class="fc-inner" id="fcInner">
+      <div class="fc-face fc-front">
+        <div class="fc-label">VOCABULARY TERM</div>
+        <div class="fc-word" id="fcFront">—</div>
+        <div class="fc-tap-hint">tap to reveal definition</div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-def" id="fcBack">—</div>
+        <div class="fc-example" id="fcEx"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc-nav">
+    <button class="btn btn-hint" onclick="prevCard()">← Prev</button>
+    <div class="fc-counter" id="fcCounter">1 / 13</div>
+    <button class="btn btn-check" onclick="nextCard()">Next →</button>
+  </div>
+
+  <div class="fc-rating">
+    <button class="btn-know" onclick="rateCard(true)">✅ Know It</button>
+    <button class="btn-learn" onclick="rateCard(false)">🔄 Still Learning</button>
+  </div>
+
+  <div class="fc-progress">
+    <h3>📊 Your Progress</h3>
+    <div class="progress-bar"><div class="progress-fill fill-green" id="fcKnowBar" style="width:0%"></div></div>
+    <div class="progress-label" id="fcKnowLabel">Know It: 0 / 13</div>
+    <div class="progress-bar"><div class="progress-fill fill-red" id="fcLearnBar" style="width:0%"></div></div>
+    <div class="progress-label" id="fcLearnLabel">Still Learning: 0 / 13</div>
+  </div>
+</div><!-- end fc-panel-wrap -->
+</div>
+
+
+<!-- ══════════════ JEOPARDY ══════════════ -->
+<div class="panel" id="panel-jeopardy">
+  <div class="jep-score-bar">
+    <div class="score-wrap">
+      <div class="score-label">Score</div>
+      <div class="score" id="jepScore">$0</div>
+    </div>
+    <div class="streak" id="jepStreak">🔥 Streak: 0</div>
+    <button class="btn btn-hint" onclick="resetJeopardy()" style="font-size:.78rem;padding:6px 12px">↩ Reset</button>
+  </div>
+
+  <div class="jep-board" id="jepBoard"></div>
+
+  <!-- Jeopardy Modal -->
+  <div class="jep-modal hidden" id="jepModal">
+    <div class="jep-modal-box">
+      <div class="jep-modal-cat" id="jepModalCat">Category</div>
+      <div class="jep-modal-val" id="jepModalVal">$200</div>
+      <div class="jep-modal-q" id="jepModalQ">Question text</div>
+      <div class="jep-choices" id="jepChoices"></div>
+      <div class="jep-feedback" id="jepFeedback"></div>
+      <button class="btn-close-jep" id="jepCloseBtn" onclick="closeJeopardy()" style="display:none">Continue →</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== QUIZ TAB ==================== -->
-<div id="quiz" class="tab-content">
-  <div class="card">
-    <h2>Chapter 1 Quiz — Section 1.1</h2>
-    <p style="margin-bottom:16px">Test your understanding. Pick the best answer for each question.</p>
-    <div id="quizContainer"></div>
-    <div class="quiz-score" id="quizScore">
-      <h2>Quiz Complete!</h2>
-      <p id="quizScoreText"></p>
-      <button class="btn-primary" onclick="resetQuiz()" style="margin-top:12px">Try Again</button>
-    </div>
-  </div>
-</div>
 
-<!-- ==================== SPEED ROUND TAB ==================== -->
-<div id="speed" class="tab-content">
-  <div class="card">
-    <h2>Speed Round — Linear Functions</h2>
-    <p>Solve each problem as fast as you can. Type your answer and hit Enter.</p>
-    <div class="timer" id="speedTimer">0.0s</div>
-    <div class="speed-problem" id="speedProblem">Press Start to begin!</div>
-    <input type="text" class="speed-input" id="speedInput" placeholder="Your answer" onkeydown="if(event.key==='Enter')checkSpeed()" style="display:none">
-    <div style="text-align:center;margin-top:12px">
-      <button class="btn-primary" id="speedStartBtn" onclick="startSpeed()">Start Speed Round</button>
-    </div>
-    <div id="speedResults" style="margin-top:16px;display:none"></div>
-  </div>
-</div>
-
-<!-- ==================== SPORTS MATH TAB ==================== -->
-<div id="sports" class="tab-content">
-  <div class="card">
-    <h2>Sports Math — Real Problems, Real Numbers</h2>
-    <p style="margin-bottom:16px">Algebra 2 concepts using soccer and basketball stats. This is what makes math click.</p>
+<!-- ══════════════ VIDEOS ══════════════ -->
+<div class="panel" id="panel-videos">
+  <div class="vid-section-header">
+    <h2>🎬 Hand-Picked Videos — Under 10 Minutes Each</h2>
+    <p>Every video chosen for speed and clarity. No fluff. Watch one, do the problems, repeat.</p>
   </div>
 
-  <div class="sports-problem" id="sp1">
-    <h3>⚽ Soccer — Sprint Speed Analysis</h3>
-    <p>During a beep test, you cover 20 meters per shuttle. Your first shuttle takes 6 seconds, and each subsequent shuttle takes 0.5 seconds longer due to fatigue.</p>
-    <p style="margin-top:8px"><strong>a)</strong> Write a linear function f(n) for the time of the nth shuttle.</p>
-    <p><strong>b)</strong> How long will your 14th shuttle take?</p>
-    <p><strong>c)</strong> If the beep test level requires completing a shuttle in under 10 seconds, what's the maximum shuttle number you can complete?</p>
-    <button onclick="revealAnswer('sp1')">Show Solution</button>
-    <div class="answer-reveal" id="sp1-answer">
-      <p><strong>a)</strong> f(n) = 0.5n + 5.5 (slope = 0.5 sec/shuttle, first shuttle at n=1 gives 6)</p>
-      <p><strong>b)</strong> f(14) = 0.5(14) + 5.5 = 12.5 seconds</p>
-      <p><strong>c)</strong> Solve 0.5n + 5.5 < 10 → 0.5n < 4.5 → n < 9. Max shuttle = 8</p>
-      <p style="margin-top:8px;opacity:0.8"><em>This is a linear function with slope (rate of fatigue) and y-intercept (base time). The same concept as Section 1.1!</em></p>
-    </div>
-  </div>
-
-  <div class="sports-problem" id="sp2">
-    <h3>🏀 Basketball — Vertical Jump Training</h3>
-    <p>You start PJF Vert Code with a standing vertical jump of 24 inches. The program claims you'll gain about 1.5 inches per week for the first 8 weeks.</p>
-    <p style="margin-top:8px"><strong>a)</strong> Write a function V(w) for your vertical jump after w weeks.</p>
-    <p><strong>b)</strong> A 10-foot rim is 120 inches. You're 5'10" (70 inches) with a standing reach of 88 inches. How many inches of vertical do you need to touch rim?</p>
-    <p><strong>c)</strong> After how many weeks would the model predict you can touch rim?</p>
-    <button onclick="revealAnswer('sp2')">Show Solution</button>
-    <div class="answer-reveal" id="sp2-answer">
-      <p><strong>a)</strong> V(w) = 1.5w + 24</p>
-      <p><strong>b)</strong> Need: 120 - 88 = 32 inches of vertical to touch rim</p>
-      <p><strong>c)</strong> Solve 1.5w + 24 ≥ 32 → 1.5w ≥ 8 → w ≥ 5.33 → After 6 weeks of training!</p>
-      <p style="margin-top:8px;opacity:0.8"><em>Linear model with slope = rate of improvement. Real talk: gains slow down after 8 weeks (non-linear), but this is a solid starting model.</em></p>
-    </div>
-  </div>
-
-  <div class="sports-problem" id="sp3">
-    <h3>⚽ Soccer — Pass Completion System</h3>
-    <p>In a match, you attempt x short passes and y long passes. Short passes have a 90% completion rate, long passes have 60%. You want at least 20 completed passes total, and you attempt no more than 30 passes total.</p>
-    <p style="margin-top:8px"><strong>a)</strong> Write a system of inequalities.</p>
-    <p><strong>b)</strong> If you attempt 18 short passes and 12 long passes, do you meet both conditions?</p>
-    <p><strong>c)</strong> Graph the system (or describe the feasible region).</p>
-    <button onclick="revealAnswer('sp3')">Show Solution</button>
-    <div class="answer-reveal" id="sp3-answer">
-      <p><strong>a)</strong> System: { 0.9x + 0.6y ≥ 20 and x + y ≤ 30, x ≥ 0, y ≥ 0 }</p>
-      <p><strong>b)</strong> Check: 0.9(18) + 0.6(12) = 16.2 + 7.2 = 23.4 ≥ 20 ✓ and 18 + 12 = 30 ≤ 30 ✓ — Yes!</p>
-      <p><strong>c)</strong> The feasible region is the area where both shaded regions overlap, bounded by the two lines and the axes. All points in that region represent valid pass combinations.</p>
-      <p style="margin-top:8px;opacity:0.8"><em>This is a system of linear inequalities — Section 1.4 material. You'll see this on the test.</em></p>
-    </div>
-  </div>
-
-  <div class="sports-problem" id="sp4">
-    <h3>🏀 Basketball — Points Per Game Trend</h3>
-    <p>Your scoring over 6 games: (1, 8), (2, 11), (3, 10), (4, 14), (5, 13), (6, 16).</p>
-    <p style="margin-top:8px"><strong>a)</strong> Plot these points and describe the correlation.</p>
-    <p><strong>b)</strong> Estimate the line of best fit (use two points that seem to represent the trend).</p>
-    <p><strong>c)</strong> Predict your scoring in game 10 using your line.</p>
-    <button onclick="revealAnswer('sp4')">Show Solution</button>
-    <div class="answer-reveal" id="sp4-answer">
-      <p><strong>a)</strong> Positive correlation — as games increase, points generally increase.</p>
-      <p><strong>b)</strong> Using (1, 8) and (6, 16): slope = (16-8)/(6-1) = 8/5 = 1.6. Equation: y - 8 = 1.6(x - 1) → y = 1.6x + 6.4</p>
-      <p><strong>c)</strong> y = 1.6(10) + 6.4 = 22.4 → About 22 points in game 10!</p>
-      <p style="margin-top:8px;opacity:0.8"><em>Scatter plots, correlation, and linear regression — Section 1.3 material. The same math scouts use to analyze player development.</em></p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== VIDEOS TAB ==================== -->
-<div id="videos" class="tab-content">
-  <div class="card">
-    <h2>Chapter 1 Video Lessons</h2>
-    <p style="margin-bottom:16px">Watch these in order. Each one covers a key section.</p>
-
-    <div class="video-item">
-      <div class="video-icon">▶</div>
-      <div>
-        <a href="https://www.youtube.com/results?search_query=parent+functions+and+transformations+algebra+2+organic+chemistry+tutor" target="_blank">Parent Functions & Transformations</a>
-        <div class="channel">Organic Chemistry Tutor — Best first watch</div>
+  <div class="vid-grid">
+    <div class="vid-card">
+      <div class="vid-thumb" style="background:linear-gradient(135deg,#1e3a8a,#2563eb,#3b82f6)">
+        <div class="play-btn">▶</div>
+        <div class="vid-title">Function Notation</div>
+        <div class="duration">⏱ ~6 min</div>
+      </div>
+      <div class="vid-info">
+        <div class="topic-tag">📌 Section 1</div>
+        <h3>Evaluating Functions — Khan Academy</h3>
+        <p class="why">Plugging in values, reading f(x), g(x), h(x). Exactly what your homework covers. Clean and fast.</p>
+        <a class="btn-watch" href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:functions/x2f8bb11595b61c86:evaluating-functions/v/what-is-a-function" target="_blank">Watch →</a>
       </div>
     </div>
 
-    <div class="video-item">
-      <div class="video-icon">▶</div>
-      <div>
-        <a href="https://www.youtube.com/results?search_query=transformations+of+functions+algebra+2+khan+academy" target="_blank">Transformations of Functions</a>
-        <div class="channel">Khan Academy — Clear and short</div>
+    <div class="vid-card">
+      <div class="vid-thumb" style="background:linear-gradient(135deg,#064e3b,#059669,#34d399)">
+        <div class="play-btn">▶</div>
+        <div class="vid-title">Slope-Intercept Form</div>
+        <div class="duration">⏱ ~8 min</div>
+      </div>
+      <div class="vid-info">
+        <div class="topic-tag">📌 Section 3</div>
+        <h3>y = mx + b — Math Antics</h3>
+        <p class="why">Fast and visual. Slope, y-intercept, graphing a line. Directly matches your Chapter 1 problems.</p>
+        <a class="btn-watch" href="https://www.youtube.com/watch?v=hJm7mOFJLeg" target="_blank">Watch →</a>
       </div>
     </div>
 
-    <div class="video-item">
-      <div class="video-icon">▶</div>
-      <div>
-        <a href="https://www.youtube.com/results?search_query=graphing+absolute+value+functions+algebra+2" target="_blank">Graphing Absolute Value Functions</a>
-        <div class="channel">Khan Academy — Visual approach</div>
+    <div class="vid-card">
+      <div class="vid-thumb" style="background:linear-gradient(135deg,#7f1d1d,#dc2626,#f87171)">
+        <div class="play-btn">▶</div>
+        <div class="vid-title">Transformations</div>
+        <div class="duration">⏱ ~7 min</div>
+      </div>
+      <div class="vid-info">
+        <div class="topic-tag">📌 Section 2</div>
+        <h3>Graph Transformations — Professor Leonard</h3>
+        <p class="why">All 4 types: shifts, reflections, stretches, shrinks. Best single video for this topic.</p>
+        <a class="btn-watch" href="https://www.youtube.com/watch?v=ioBJkCYdmCs" target="_blank">Watch →</a>
       </div>
     </div>
 
-    <div class="video-item">
-      <div class="video-icon">▶</div>
-      <div>
-        <a href="https://www.youtube.com/results?search_query=solving+systems+of+equations+three+methods+algebra+2+organic+chemistry+tutor" target="_blank">Solving Systems of Equations (3 Methods)</a>
-        <div class="channel">Organic Chemistry Tutor — Graphing, substitution, elimination</div>
+    <div class="vid-card">
+      <div class="vid-thumb" style="background:linear-gradient(135deg,#4c1d95,#7c3aed,#a78bfa)">
+        <div class="play-btn">▶</div>
+        <div class="vid-title">Systems of Equations</div>
+        <div class="duration">⏱ ~9 min</div>
       </div>
-    </div>
-
-    <div class="video-item">
-      <div class="video-icon">▶</div>
-      <div>
-        <a href="https://www.youtube.com/results?search_query=scatter+plots+line+of+best+fit+algebra+2" target="_blank">Scatter Plots & Line of Best Fit</a>
-        <div class="channel">Khan Academy — Great for the data section</div>
-      </div>
-    </div>
-
-    <div class="video-item">
-      <div class="video-icon">▶</div>
-      <div>
-        <a href="https://www.youtube.com/results?search_query=linear+functions+review+algebra+2+mario+math+tutoring" target="_blank">Full Chapter 1 Review</a>
-        <div class="channel">Mario's Math Tutoring — Big Ideas Math aligned</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Go-To Channels for All Chapters</h2>
-    <div class="video-item">
-      <div class="video-icon" style="background:var(--primary)">1</div>
-      <div>
-        <a href="https://www.youtube.com/@TheOrganicChemistryTutor" target="_blank">Organic Chemistry Tutor</a>
-        <div class="channel">Best for first-time learning. Clear, thorough, example-heavy.</div>
-      </div>
-    </div>
-    <div class="video-item">
-      <div class="video-icon" style="background:var(--primary)">2</div>
-      <div>
-        <a href="https://www.youtube.com/@ProfessorLeonard" target="_blank">Professor Leonard</a>
-        <div class="channel">Full college lectures. Deep understanding when you need it.</div>
-      </div>
-    </div>
-    <div class="video-item">
-      <div class="video-icon" style="background:var(--primary)">3</div>
-      <div>
-        <a href="https://www.youtube.com/@khanacademy" target="_blank">Khan Academy</a>
-        <div class="channel">Short, structured + built-in practice on khanacademy.org</div>
-      </div>
-    </div>
-    <div class="video-item">
-      <div class="video-icon" style="background:var(--primary)">4</div>
-      <div>
-        <a href="https://www.youtube.com/@BrianMcLogan" target="_blank">Brian McLogan</a>
-        <div class="channel">Quick single-problem walkthroughs when you're stuck.</div>
+      <div class="vid-info">
+        <div class="topic-tag">📌 Section 4</div>
+        <h3>Substitution &amp; Elimination — Organic Chem Tutor</h3>
+        <p class="why">Step-by-step through both methods. Lines up exactly with exercises 59–62 in your book.</p>
+        <a class="btn-watch" href="https://www.youtube.com/watch?v=V7H1oUHXPkg" target="_blank">Watch →</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ==================== PROGRESS TAB ==================== -->
-<div id="progress" class="tab-content">
-  <div class="card">
-    <h2>Mastery Progress</h2>
-    <p style="margin-bottom:16px">Track your chapter test scores. 80+ to advance.</p>
 
-    <div id="progressTracker"></div>
-
-    <div style="margin-top:20px;padding:16px;background:#fff3e0;border-radius:8px;">
-      <strong>The Rule:</strong> Score 80+ on the chapter test before moving on. Below 80? Spend an extra day fixing mistakes and retake. No skipping ahead with gaps.
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Weekly Schedule</h2>
-    <p>Each chapter follows this cycle:</p>
-    <table style="width:100%;border-collapse:collapse;margin-top:12px;">
-      <tr style="background:#e8f0fe"><td style="padding:8px;font-weight:600">Day 1-2</td><td style="padding:8px">LEARN — Watch videos + read textbook section</td></tr>
-      <tr><td style="padding:8px;font-weight:600">Day 3</td><td style="padding:8px">PRACTICE — Section exercises + flashcards</td></tr>
-      <tr style="background:#e8f0fe"><td style="padding:8px;font-weight:600">Day 4</td><td style="padding:8px">DEEP PRACTICE — Mixed problems + games</td></tr>
-      <tr><td style="padding:8px;font-weight:600">Day 5</td><td style="padding:8px">TEST — Chapter quiz + review</td></tr>
-      <tr style="background:#e8f0fe"><td style="padding:8px;font-weight:600">Day 6</td><td style="padding:8px">FIX — Error correction + performance task</td></tr>
-    </table>
-  </div>
-</div>
-
-</div><!-- end container -->
-
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
 <script>
-// ===== TAB NAVIGATION =====
-function showTab(tabId) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  const btns = document.querySelectorAll('.nav button');
-  const tabs = ['today','chapters','flashcards','quiz','speed','sports','videos','progress'];
-  const idx = tabs.indexOf(tabId);
-  if (idx >= 0 && btns[idx]) btns[idx].classList.add('active');
+// ── XP System ──
+let xp = parseInt(localStorage.getItem('alg2xp') || '0');
+const MAX_XP = 500;
+function addXP(pts){
+  xp = Math.min(xp + pts, MAX_XP);
+  localStorage.setItem('alg2xp', xp);
+  renderXP();
+}
+function renderXP(){
+  document.getElementById('xpFill').style.width = (xp/MAX_XP*100)+'%';
+  const labels = [[0,'Just starting — let\'s go!'],[100,'Warming up 🔥'],[200,'Getting there 💪'],[300,'Locked in 🎯'],[400,'Almost elite 🏆'],[500,'Chapter 1 MASTERED 🥇']];
+  let label = labels[0][1];
+  for(const [threshold,text] of labels) if(xp>=threshold) label=text;
+  document.getElementById('xpLabel').textContent = xp+' XP — '+label;
+}
+renderXP();
+
+// ── Mode Switching ──
+function switchMode(mode){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+mode).classList.add('active');
+  event.target.classList.add('active');
 }
 
-// ===== FLASHCARDS =====
-const flashcards = [
-  {q: "What is a <strong>parent function</strong>?", a: "The most basic function in a family of functions. Examples: f(x) = x (linear), f(x) = x² (quadratic), f(x) = |x| (absolute value)."},
-  {q: "Name the 6 <strong>parent functions</strong> you need to know.", a: "1) Linear: f(x) = x<br>2) Quadratic: f(x) = x²<br>3) Absolute Value: f(x) = |x|<br>4) Square Root: f(x) = √x<br>5) Cubic: f(x) = x³<br>6) Exponential: f(x) = 2ˣ"},
-  {q: "What does <strong>f(x) + k</strong> do to a graph?", a: "Shifts the graph UP by k units (vertical translation). Example: f(x) = x² + 3 moves the parabola up 3."},
-  {q: "What does <strong>f(x) - k</strong> do to a graph?", a: "Shifts the graph DOWN by k units. Example: f(x) = |x| - 2 moves the V-shape down 2."},
-  {q: "What does <strong>f(x - h)</strong> do to a graph?", a: "Shifts the graph RIGHT by h units. ⚠️ It's OPPOSITE of what you'd expect! f(x - 3) shifts RIGHT 3."},
-  {q: "What does <strong>f(x + h)</strong> do to a graph?", a: "Shifts the graph LEFT by h units. f(x + 2) shifts LEFT 2. Again — opposite of the sign!"},
-  {q: "What does <strong>-f(x)</strong> do to a graph?", a: "Reflects the graph over the X-AXIS. Every y-value becomes its opposite. If a point was (2, 5), it becomes (2, -5)."},
-  {q: "What does <strong>f(-x)</strong> do to a graph?", a: "Reflects the graph over the Y-AXIS. Every x-value becomes its opposite. If a point was (3, 4), it becomes (-3, 4)."},
-  {q: "What does <strong>a·f(x)</strong> do when a > 1?", a: "VERTICAL STRETCH — makes the graph taller/narrower. Example: 2f(x) = 2x² is narrower than x²."},
-  {q: "What does <strong>a·f(x)</strong> do when 0 < a < 1?", a: "VERTICAL COMPRESSION — makes the graph shorter/wider. Example: 0.5f(x) = 0.5x² is wider than x²."},
-  {q: "What is a <strong>system of linear equations</strong>?", a: "Two or more linear equations with the same variables. The solution is the point(s) where the lines intersect."},
-  {q: "Name the 3 methods for solving <strong>systems of equations</strong>.", a: "1) GRAPHING — plot both lines, find intersection<br>2) SUBSTITUTION — solve one equation for a variable, plug into the other<br>3) ELIMINATION — add/subtract equations to eliminate a variable"},
-  {q: "What does it mean if a system has <strong>no solution</strong>?", a: "The lines are PARALLEL — same slope, different y-intercepts. They never intersect. The system is called 'inconsistent.'"},
-  {q: "What does it mean if a system has <strong>infinitely many solutions</strong>?", a: "The lines are the SAME LINE — identical equations. Every point on the line is a solution. The system is called 'dependent.'"},
-  {q: "What is a <strong>scatter plot</strong>?", a: "A graph of data points (x, y) plotted on a coordinate plane. Used to see if there's a CORRELATION (positive, negative, or none) between two variables."}
-];
-
-let currentCard = 0;
-let isFlipped = false;
-
-function updateCard() {
-  const card = flashcards[currentCard];
-  document.getElementById('cardFront').innerHTML = card.q;
-  document.getElementById('cardBack').innerHTML = card.a;
-  document.getElementById('cardCounter').textContent = `Card ${currentCard + 1} of ${flashcards.length}`;
-  if (isFlipped) { document.getElementById('flashcard').classList.remove('flipped'); isFlipped = false; }
+// ── Section Toggles ──
+function toggleSection(header){
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
 }
 
-function flipCard() {
-  document.getElementById('flashcard').classList.toggle('flipped');
-  isFlipped = !isFlipped;
-}
-
-function nextCard() {
-  currentCard = (currentCard + 1) % flashcards.length;
-  updateCard();
-}
-
-function prevCard() {
-  currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
-  updateCard();
-}
-
-// ===== QUIZ =====
-const quizQuestions = [
+// ══════════ PRACTICE DATA ══════════
+const problems = [
   {
-    q: "Which of these is the parent function for the absolute value family?",
-    opts: ["f(x) = |x + 2|", "f(x) = |x|", "f(x) = 2|x|", "f(x) = |x| - 1"],
-    correct: 1,
-    explain: "The parent function is the simplest form — no shifts, stretches, or reflections. f(x) = |x| is the base V-shape."
+    topic:'Function Notation',
+    q:'Szoboszlai's pass accuracy model: <strong>f(x) = x + 9</strong> where x = match intensity (1–10).<br>Find <strong>f(8)</strong>.',
+    hint:'Replace x with 8 in f(x) = x + 9',
+    answer:'17',
+    steps:['f(8) = (8) + 9','= 17 ✅']
   },
   {
-    q: "The graph of g(x) = (x - 4)² is the graph of f(x) = x² shifted:",
-    opts: ["Left 4 units", "Right 4 units", "Up 4 units", "Down 4 units"],
-    correct: 1,
-    explain: "f(x - h) shifts RIGHT by h. Since it's (x - 4), the graph shifts right 4. Remember: the shift is OPPOSITE the sign inside."
+    topic:'Function Notation',
+    q:'<strong>Bilal El Khanous</strong> defensive pressure model: <strong>g(x) = 6 − 5x</strong><br>Find <strong>g(−1)</strong>.',
+    hint:'Replace x with −1. Remember: 5×(−1) = −5, and 6−(−5) = 6+5',
+    answer:'11',
+    steps:['g(−1) = 6 − 5(−1)','= 6 − (−5)','= 6 + 5','= 11 ✅']
   },
   {
-    q: "If f(x) = x² and g(x) = -f(x), what transformation occurred?",
-    opts: ["Reflection over the y-axis", "Reflection over the x-axis", "Vertical stretch by 2", "Shift down 1"],
-    correct: 1,
-    explain: "-f(x) means every y-value gets negated. That's a reflection over the x-axis. The parabola flips upside down."
+    topic:'Function Notation',
+    q:'Payton Pritchard\'s 3-point model: <strong>h(x) = 4x + 3</strong><br>Find <strong>h(10)</strong>.',
+    hint:'Plug in x = 10',
+    answer:'43',
+    steps:['h(10) = 4(10) + 3','= 40 + 3','= 43 ✅']
   },
   {
-    q: "Solve the system: y = 2x + 1 and y = -x + 7",
-    opts: ["(2, 5)", "(3, 4)", "(1, 3)", "(4, 3)"],
-    correct: 0,
-    explain: "Set equal: 2x + 1 = -x + 7 → 3x = 6 → x = 2. Then y = 2(2) + 1 = 5. Solution: (2, 5)."
+    topic:'Absolute Value',
+    q:'<strong>Sofiane Boufal</strong>\'s dribble power model: <strong>h(x) = |3x − 8|</strong><br>Find <strong>h(1)</strong>.',
+    hint:'Plug in x = 1 first, THEN take absolute value of the result',
+    answer:'5',
+    steps:['h(1) = |3(1) − 8|','= |3 − 8|','= |−5|','= 5 ✅']
   },
   {
-    q: "A scatter plot shows data points going from lower-left to upper-right. This is:",
-    opts: ["Negative correlation", "Positive correlation", "No correlation", "A function"],
-    correct: 1,
-    explain: "Points going up from left to right = positive correlation. As x increases, y increases."
+    topic:'Function Notation',
+    q:'<strong>Anas El Aynaoui</strong>\'s pass rating is <strong>f(x) = 3x + 5</strong>. Is the point <strong>(−1, 2)</strong> on this model?<br>Type YES or NO.',
+    hint:'Plug x = −1 into f(x) = 3x + 5. Does the output equal 2?',
+    answer:'yes',
+    steps:['f(−1) = 3(−1) + 5','= −3 + 5','= 2','Output = 2, which matches! → YES ✅']
   },
   {
-    q: "Which transformation does g(x) = f(x) + 5 represent?",
-    opts: ["Shift right 5", "Shift left 5", "Shift up 5", "Vertical stretch by 5"],
-    correct: 2,
-    explain: "f(x) + k shifts the entire graph UP by k units. Every y-value increases by 5."
+    topic:'Function Notation',
+    q:'<strong>Ben Seghir</strong>\'s xG model is <strong>h(x) = 7x − 2</strong>. Is <strong>(−3, −19)</strong> on it?<br>Type YES or NO.',
+    hint:'Plug x = −3 into h(x) = 7x − 2. Does the output equal −19?',
+    answer:'no',
+    steps:['h(−3) = 7(−3) − 2','= −21 − 2','= −23','−23 ≠ −19 → NO ✅']
   },
   {
-    q: "The system y = 3x + 2 and y = 3x - 4 has:",
-    opts: ["One solution", "No solution", "Infinitely many solutions", "Two solutions"],
-    correct: 1,
-    explain: "Both lines have slope 3 but different y-intercepts (2 and -4). Parallel lines = no intersection = no solution."
+    topic:'Slope & Lines',
+    q:'<strong>y = −3x − 8</strong><br>What is the <strong>slope</strong>? (just type the number)',
+    hint:'y = mx + b. The slope is the coefficient of x.',
+    answer:'-3',
+    steps:['y = −3x − 8 is already in y = mx + b form','m = −3 ✅']
   },
   {
-    q: "If g(x) = 3f(x), and f(x) = x², what is g(2)?",
-    opts: ["6", "12", "9", "36"],
-    correct: 1,
-    explain: "g(2) = 3·f(2) = 3·(2²) = 3·4 = 12. The vertical stretch multiplies every output by 3."
+    topic:'Slope & Lines',
+    q:'<strong>y = −3x − 8</strong><br>What is the <strong>y-intercept</strong>? (just type the number)',
+    hint:'y = mx + b. The y-intercept is the constant term b.',
+    answer:'-8',
+    steps:['y = −3x − 8','b = −8 ✅']
   },
   {
-    q: "Which method is best when one equation is already solved for a variable?",
-    opts: ["Graphing", "Substitution", "Elimination", "Factoring"],
-    correct: 1,
-    explain: "If you already have y = (something) or x = (something), just plug it directly into the other equation. That's substitution."
+    topic:'Slope & Lines',
+    q:'<strong>2x + 3y = 12</strong><br>Find the <strong>x-intercept</strong>. (type the x-coordinate only)',
+    hint:'Set y = 0 and solve for x.',
+    answer:'6',
+    steps:['Set y = 0: 2x + 3(0) = 12','2x = 12','x = 6 → x-intercept is (6, 0) ✅']
   },
   {
-    q: "The graph of h(x) = |x + 3| - 2 has its vertex at:",
-    opts: ["(3, -2)", "(-3, -2)", "(-3, 2)", "(3, 2)"],
-    correct: 1,
-    explain: "|x + 3| shifts left 3 (opposite the sign), and -2 shifts down 2. Vertex moves from (0,0) to (-3, -2)."
+    topic:'Slope & Lines',
+    q:'<strong>2x − 5y = 10</strong><br>Find the <strong>y-intercept</strong>. (type the y-coordinate only)',
+    hint:'Set x = 0 and solve for y.',
+    answer:'-2',
+    steps:['Set x = 0: 2(0) − 5y = 10','−5y = 10','y = −2 → y-intercept is (0, −2) ✅']
+  },
+  {
+    topic:'Systems',
+    q:'Solve by substitution:<br><strong>y = 1 − x</strong><br><strong>−2x + y = 4</strong><br>Type the x-value only.',
+    hint:'Substitute y = 1 − x into the second equation.',
+    answer:'-1',
+    steps:['Sub y=1−x into −2x + y = 4:','−2x + (1 − x) = 4','−3x + 1 = 4','−3x = 3','x = −1 ✅']
+  },
+  {
+    topic:'Systems',
+    q:'Solve by substitution:<br><strong>y = 1 − x</strong><br><strong>−2x + y = 4</strong><br>Now find y. Type the y-value.',
+    hint:'You found x = −1. Plug into y = 1 − x.',
+    answer:'2',
+    steps:['y = 1 − (−1)','= 1 + 1','= 2 ✅','Solution: (−1, 2)']
+  },
+  {
+    topic:'Systems',
+    q:'Solve by elimination:<br><strong>−2x + 2y = −2</strong><br><strong>2x + y = 5</strong><br>Type the y-value.',
+    hint:'Add both equations together — what happens to x?',
+    answer:'1',
+    steps:['Add equations: (−2x+2x) + (2y+y) = (−2+5)','0 + 3y = 3','y = 1 ✅']
+  },
+  {
+    topic:'Systems',
+    q:'Continuing the elimination problem above:<br><strong>2x + y = 5</strong>, y = 1<br>Find x.',
+    hint:'Substitute y = 1 into 2x + y = 5.',
+    answer:'2',
+    steps:['2x + 1 = 5','2x = 4','x = 2 ✅','Solution: (2, 1)']
+  },
+  {
+    topic:'Systems — Special Case',
+    q:'Salim Louza and Abde Ezzalzouli\'s overlapping run paths are modeled by:<br><strong>2x + 3y = 5</strong> and <strong>4x + 6y = −10</strong><br>How many times do their paths cross? Type: ONE, NONE, or INFINITE',
+    hint:'Multiply the first equation by 2 and compare to the second.',
+    answer:'none',
+    steps:['Multiply eq 1 by 2: 4x + 6y = 10','Compare to eq 2: 4x + 6y = −10','10 ≠ −10 → Contradiction!','Parallel lines → NO SOLUTION ✅']
   }
 ];
 
-let quizAnswered = 0;
-let quizCorrect = 0;
+let practiceCorrect = 0;
+const probAnswered = new Array(problems.length).fill(false);
+const probCorrectArr = new Array(problems.length).fill(false);
 
-function buildQuiz() {
-  const container = document.getElementById('quizContainer');
-  container.innerHTML = '';
-  quizQuestions.forEach((q, i) => {
-    let html = `<div class="quiz-question" id="qq${i}"><p>${i+1}. ${q.q}</p>`;
-    q.opts.forEach((opt, j) => {
-      html += `<button class="quiz-option" onclick="answerQuiz(${i},${j})">${opt}</button>`;
-    });
-    html += `<div class="quiz-explanation" id="qe${i}"></div></div>`;
-    container.innerHTML += html;
-  });
-}
-
-function answerQuiz(qIdx, aIdx) {
-  const q = quizQuestions[qIdx];
-  const qEl = document.getElementById('qq' + qIdx);
-  const btns = qEl.querySelectorAll('.quiz-option');
-  const expEl = document.getElementById('qe' + qIdx);
-
-  btns.forEach((b, i) => {
-    b.classList.add('disabled');
-    if (i === q.correct) b.classList.add('correct');
-    if (i === aIdx && aIdx !== q.correct) b.classList.add('wrong');
-  });
-
-  expEl.textContent = q.explain;
-  expEl.classList.add('show');
-  if (aIdx === q.correct) {
-    expEl.classList.add('correct-exp');
-    quizCorrect++;
-  } else {
-    expEl.classList.add('wrong-exp');
-  }
-
-  quizAnswered++;
-  if (quizAnswered === quizQuestions.length) {
-    const pct = Math.round((quizCorrect / quizQuestions.length) * 100);
-    document.getElementById('quizScore').style.display = 'block';
-    document.getElementById('quizScoreText').textContent =
-      `You got ${quizCorrect}/${quizQuestions.length} (${pct}%). ${pct >= 80 ? "You're ready to move on!" : "Review the ones you missed and try again."}`;
-  }
-}
-
-function resetQuiz() {
-  quizAnswered = 0;
-  quizCorrect = 0;
-  document.getElementById('quizScore').style.display = 'none';
-  buildQuiz();
-}
-
-// ===== SPEED ROUND =====
-const speedProblems = [
-  {q: "Slope of the line through (1, 3) and (4, 9)?", a: "2"},
-  {q: "y-intercept of y = 5x - 7?", a: "-7"},
-  {q: "Solve for x: 2x + 6 = 14", a: "4"},
-  {q: "Slope of y = -3x + 1?", a: "-3"},
-  {q: "If f(x) = 2x + 1, what is f(5)?", a: "11"},
-  {q: "Solve for y: 3y = 18", a: "6"},
-  {q: "Slope of a horizontal line?", a: "0"},
-  {q: "If (2, y) is on y = 4x - 3, what is y?", a: "5"},
-  {q: "x-intercept of y = 2x - 8? (just x value)", a: "4"},
-  {q: "Solve: x + 7 = 3x - 1", a: "4"},
+const playerBadges = [
+  '🔴 Szoboszlai #8','🇲🇦 Brahim Díaz','🍀 Pritchard','💥 Darwin Núñez',
+  '🔴 Mo Salah','🇲🇦 Hakimi','🇲🇦 Sofiane Boufal','🇲🇦 Ziyech',
+  '🔴 Trent A-A','🇲🇦 Abde Ezzalzouli','🇲🇦 El Khanous','🍀 J. Brown',
+  '🇲🇦 El Aynaoui','🇲🇦 Ben Seghir','💡 Special Case'
 ];
-
-let speedIdx = 0;
-let speedTimer = null;
-let speedStart = 0;
-let speedCorrectCount = 0;
-
-function startSpeed() {
-  speedIdx = 0;
-  speedCorrectCount = 0;
-  speedStart = Date.now();
-  document.getElementById('speedInput').style.display = 'block';
-  document.getElementById('speedStartBtn').style.display = 'none';
-  document.getElementById('speedResults').style.display = 'none';
-  showSpeedProblem();
-  speedTimer = setInterval(() => {
-    const elapsed = ((Date.now() - speedStart) / 1000).toFixed(1);
-    document.getElementById('speedTimer').textContent = elapsed + 's';
-  }, 100);
-}
-
-function showSpeedProblem() {
-  document.getElementById('speedProblem').textContent = `(${speedIdx + 1}/10) ${speedProblems[speedIdx].q}`;
-  document.getElementById('speedInput').value = '';
-  document.getElementById('speedInput').focus();
-}
-
-function checkSpeed() {
-  const input = document.getElementById('speedInput').value.trim();
-  if (input === speedProblems[speedIdx].a) speedCorrectCount++;
-  speedIdx++;
-  if (speedIdx >= speedProblems.length) {
-    clearInterval(speedTimer);
-    const totalTime = ((Date.now() - speedStart) / 1000).toFixed(1);
-    document.getElementById('speedInput').style.display = 'none';
-    document.getElementById('speedStartBtn').style.display = 'inline-block';
-    document.getElementById('speedStartBtn').textContent = 'Play Again';
-    document.getElementById('speedProblem').textContent = 'Done!';
-    const results = document.getElementById('speedResults');
-    results.style.display = 'block';
-    results.innerHTML = `
-      <div style="text-align:center;padding:16px;background:${speedCorrectCount >= 8 ? '#e8f5e9' : '#fff3e0'};border-radius:8px;">
-        <div style="font-size:2rem;font-weight:700">${totalTime}s</div>
-        <div style="font-size:1.1rem;margin-top:4px">${speedCorrectCount}/10 correct</div>
-        <div style="margin-top:8px;color:#666">${totalTime < 60 ? 'Under a minute — solid!' : 'Keep practicing to get under 60 seconds!'}</div>
-      </div>`;
-  } else {
-    showSpeedProblem();
-  }
-}
-
-// ===== SPORTS PROBLEMS =====
-function revealAnswer(id) {
-  const el = document.getElementById(id + '-answer');
-  el.style.display = el.style.display === 'block' ? 'none' : 'block';
-}
-
-// ===== CHAPTER SELECTION =====
-function selectChapter(num) {
-  const titles = {
-    1: "Linear Functions", 2: "Quadratic Functions", 3: "Quadratic Equations & Complex Numbers",
-    4: "Polynomial Functions", 5: "Rational Exponents & Radical Functions",
-    6: "Exponential & Logarithmic Functions", 7: "Rational Functions",
-    8: "Sequences and Series", 9: "Trigonometric Ratios & Functions",
-    10: "Probability", 11: "Data Analysis & Statistics"
-  };
-  const sections = {
-    1: ["1.1 Parent Functions & Transformations","1.2 Transformations of Linear & Absolute Value Functions","1.3 Modeling with Linear Functions","1.4 Solving Linear Systems"],
-    2: ["2.1 Transformations of Quadratic Functions","2.2 Characteristics of Quadratic Functions","2.3 Focus of a Parabola","2.4 Modeling with Quadratic Functions"],
-    3: ["3.1 Solving Quadratic Equations","3.2 Complex Numbers","3.3 Completing the Square","3.4 The Quadratic Formula","3.5 Solving Nonlinear Systems"],
-    4: ["4.1 Graphing Polynomial Functions","4.2 Adding/Subtracting/Multiplying Polynomials","4.3 Dividing Polynomials","4.4 Factoring Polynomials","4.5 Solving Polynomial Equations","4.6 The Fundamental Theorem of Algebra"],
-    5: ["5.1 nth Roots & Rational Exponents","5.2 Properties of Rational Exponents","5.3 Graphing Radical Functions","5.4 Solving Radical Equations","5.5 Function Operations","5.6 Inverse Functions"],
-    6: ["6.1 Exponential Growth & Decay","6.2 The Natural Base e","6.3 Logarithms & Log Functions","6.4 Transformations of Exp & Log","6.5 Properties of Logarithms","6.6 Solving Exp & Log Equations","6.7 Modeling with Exp & Log"],
-    7: ["7.1 Inverse Variation","7.2 Graphing Rational Functions","7.3 Multiplying & Dividing Rational Expressions","7.4 Adding & Subtracting Rational Expressions","7.5 Solving Rational Equations"],
-    8: ["8.1 Defining & Using Sequences & Series","8.2 Analyzing Arithmetic Sequences & Series","8.3 Analyzing Geometric Sequences & Series","8.4 Finding Sums of Infinite Geometric Series","8.5 Using Recursive Rules"],
-    9: ["9.1 Right Triangle Trigonometry","9.2 Angles & Radian Measure","9.3 Trigonometric Functions of Any Angle","9.4 Graphing Sine & Cosine","9.5 Graphing Other Trig Functions","9.6 Modeling with Trig Functions"],
-    10: ["10.1 Sample Spaces & Probability","10.2 Independent & Dependent Events","10.3 Two-Way Tables & Probability","10.4 Probability of Disjoint & Overlapping Events","10.5 Permutations & Combinations","10.6 Binomial Distributions"],
-    11: ["11.1 Using Normal Distributions","11.2 Populations, Samples & Hypotheses","11.3 Collecting Data","11.4 Experimental Design","11.5 Making Inferences from Sample Surveys","11.6 Making Inferences from Experiments"]
-  };
-  const geoConnect = {
-    1: "Transformations here are the SAME as in geometry — just on graphs instead of shapes.",
-    2: "Parabolas connect to geometric conic sections. The focus/directrix is pure geometry.",
-    3: "Complex numbers connect to the coordinate plane. Completing the square relates to area models.",
-    4: "Polynomial graphs involve end behavior — understanding how shapes behave at extremes.",
-    5: "Radical functions connect to the Pythagorean theorem and distance formula.",
-    6: "Exponential growth models area and volume scaling — geometry in real life.",
-    7: "Asymptotes are geometric concepts — lines that graphs approach but never touch.",
-    8: "Series connect to geometric patterns — think tiling, fractals, and growth patterns.",
-    9: "THIS IS GEOMETRY HEAVY — all about triangles, angles, circles. Your geometry class directly helps here.",
-    10: "Counting principles use geometric arrangements and spatial reasoning.",
-    11: "Normal distributions have geometric properties — area under the curve = probability."
-  };
-  const detail = document.getElementById('chapterDetail');
-  let secHtml = sections[num] ? sections[num].map(s => `<p>${s}</p>`).join('') : '<p>Details coming soon</p>';
-  detail.innerHTML = `
-    <h2>Chapter ${num}: ${titles[num]}</h2>
-    <p><strong>Sections:</strong></p>
-    ${secHtml}
-    <p style="margin-top:12px;padding:12px;background:#e8f5e9;border-radius:8px"><strong>Geometry Connection:</strong> ${geoConnect[num]}</p>
-    <div style="margin-top:16px">
-      <a href="https://bim.easyaccessmaterials.com/?level=13.00&p=chapter${num}" target="_blank" class="btn-primary">Open Chapter ${num} in Textbook →</a>
-    </div>`;
-}
-
-// ===== PROGRESS TRACKER =====
-function buildProgress() {
-  const chapters = [
-    "Linear Functions","Quadratic Functions","Quadratic Equations","Polynomial Functions",
-    "Radical Functions","Exponential & Logs","Rational Functions","Sequences & Series",
-    "Trigonometry","Probability","Data & Statistics"
-  ];
-  const container = document.getElementById('progressTracker');
-  let html = '';
-  chapters.forEach((ch, i) => {
-    const num = i + 1;
-    const status = num === 1 ? 'In Progress' : 'Not Started';
-    const color = num === 1 ? '#1a73e8' : '#e0e0e0';
-    const width = num === 1 ? '10%' : '0%';
-    html += `
-      <div style="margin-bottom:16px">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <strong>Ch ${num}: ${ch}</strong>
-          <span style="font-size:0.8rem;color:#666">${status}</span>
+function renderProblems(){
+  const container = document.getElementById('practiceProblems');
+  container.innerHTML = problems.map((p,i)=>`
+    <div class="prob-card" id="pc${i}">
+      <div class="prob-header">
+        <div class="prob-num">${i+1}</div>
+        <div style="font-size:.88rem;font-weight:700;flex:1">${p.topic}</div>
+        <div style="font-size:.75rem;opacity:.7;background:rgba(255,255,255,.12);padding:2px 10px;border-radius:12px;font-weight:600">${playerBadges[i]||''}</div>
+        <div class="prob-topic" id="pt${i}" style="margin-left:8px"></div>
+      </div>
+      <div class="prob-body">
+        <div class="prob-question">${p.q}</div>
+        <div class="prob-input-row">
+          <input class="prob-input" id="pi${i}" placeholder="Your answer..." onkeydown="if(event.key==='Enter')checkProb(${i})">
+          <button class="btn btn-check" onclick="checkProb(${i})">Check ✓</button>
+          <button class="btn btn-hint" onclick="showHint(${i})">Hint 💡</button>
+          <button class="btn btn-show" onclick="showSolution(${i})">Show Steps</button>
         </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width:${width};background:${color}"></div>
-        </div>
-      </div>`;
-  });
-  container.innerHTML = html;
+        <div class="feedback" id="fb${i}"></div>
+        <div class="hint-box" id="hb${i}">💡 ${p.hint}</div>
+        <div class="solution-box" id="sb${i}">${p.steps.map(s=>`<div class="sol-step">→ ${s}</div>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
 }
 
-// ===== INIT =====
-buildQuiz();
-buildProgress();
-updateCard();
+function normalizeAns(s){ return s.toLowerCase().trim().replace(/\s+/g,'').replace(/^\+/,''); }
+
+function checkProb(i){
+  if(probAnswered[i]) return;
+  const input = document.getElementById('pi'+i);
+  const fb = document.getElementById('fb'+i);
+  const userAns = normalizeAns(input.value);
+  const correct = normalizeAns(problems[i].answer);
+  fb.style.display='block';
+  if(userAns===correct || userAns===correct.replace('-','−')){
+    fb.className='feedback correct';
+    fb.innerHTML='✅ Correct! <span class="xp-earned">+10 XP</span>';
+    probCorrectArr[i]=true;
+    practiceCorrect++;
+    document.getElementById('practiceScore').textContent=practiceCorrect+' / 15 ✓';
+    addXP(10);
+    document.getElementById('pt'+i).textContent='✅';
+  } else {
+    fb.className='feedback wrong';
+    fb.innerHTML='❌ Not quite — try again or check the hint!';
+    document.getElementById('pt'+i).textContent='';
+    // Don't lock — allow retry
+    return;
+  }
+  probAnswered[i]=true;
+  input.disabled=true;
+}
+
+function showHint(i){ document.getElementById('hb'+i).style.display='block'; }
+function showSolution(i){ document.getElementById('sb'+i).style.display='block'; }
+
+renderProblems();
+
+
+// ══════════ FLASHCARDS ══════════
+const cards = [
+  { front:'parent function', back:'The most basic function in a family of functions.', ex:'f(x) = x is the parent of all linear functions' },
+  { front:'transformation', back:'A change in size, shape, position, or orientation of a graph.', ex:'Shifting, reflecting, stretching, shrinking' },
+  { front:'translation', back:'A transformation that moves every point of a figure the same distance and direction (a shift).', ex:'f(x) + 3 shifts the graph UP 3 units' },
+  { front:'reflection', back:'A transformation that flips a graph over a line (like the x-axis or y-axis).', ex:'−f(x) reflects over the x-axis' },
+  { front:'vertical stretch', back:'A transformation that multiplies all y-values by a factor greater than 1, making the graph taller/steeper.', ex:'2f(x) stretches vertically by factor of 2' },
+  { front:'vertical shrink', back:'A transformation that multiplies all y-values by a factor between 0 and 1, making the graph flatter.', ex:'½f(x) shrinks vertically — graph gets flatter' },
+  { front:'horizontal stretch', back:'A transformation that multiplies all x-values by a factor greater than 1, making the graph wider.', ex:'f(½x) stretches horizontally' },
+  { front:'horizontal shrink', back:'A transformation that divides all x-values by a factor greater than 1, making the graph narrower.', ex:'f(2x) shrinks horizontally' },
+  { front:'correlation coefficient', back:'A number r between −1 and 1 that describes the strength and direction of a linear relationship.\nr ≈ ±1 → strong | r ≈ 0 → weak', ex:'r = 0.95 means strong positive correlation' },
+  { front:'line of fit', back:'A line drawn on a scatter plot that is close to most data points — used to model a trend.', ex:'Drawn by visual judgment (not calculated)' },
+  { front:'line of best fit', back:'The mathematically calculated line that minimizes total distance to all data points. More precise than a line of fit.', ex:'Found using linear regression / calculator' },
+  { front:'ordered triple', back:'A solution (x, y, z) to a system of three linear equations in three variables.', ex:'(1, 2, 3) satisfies x + y + z = 6' },
+  { front:'system of equations', back:'A set of two or more equations with the same variables. The solution is the point(s) that satisfy ALL equations.', ex:'Three methods: graphing, substitution, elimination' }
+];
+
+let deck = [...cards];
+let fcIdx = 0;
+let fcKnow = new Set(), fcStillLearning = new Set();
+
+function renderCard(){
+  const c = deck[fcIdx];
+  document.getElementById('fcFront').textContent = c.front;
+  document.getElementById('fcBack').textContent = c.back;
+  document.getElementById('fcEx').textContent = c.ex || '';
+  document.getElementById('fcCounter').textContent = (fcIdx+1)+' / '+deck.length;
+  document.getElementById('fcArea').classList.remove('flipped');
+}
+
+function flipCard(){ document.getElementById('fcArea').classList.toggle('flipped'); }
+
+function nextCard(){
+  fcIdx = (fcIdx+1) % deck.length;
+  renderCard();
+}
+function prevCard(){
+  fcIdx = (fcIdx-1+deck.length) % deck.length;
+  renderCard();
+}
+
+function rateCard(know){
+  const card = deck[fcIdx];
+  if(know){ fcKnow.add(card.front); fcStillLearning.delete(card.front); addXP(5); }
+  else { fcStillLearning.add(card.front); fcKnow.delete(card.front); }
+  updateFCProgress();
+  nextCard();
+}
+
+function updateFCProgress(){
+  const total = cards.length;
+  const k = fcKnow.size, l = fcStillLearning.size;
+  document.getElementById('fcKnowBar').style.width = (k/total*100)+'%';
+  document.getElementById('fcKnowLabel').textContent = 'Know It: '+k+' / '+total;
+  document.getElementById('fcLearnBar').style.width = (l/total*100)+'%';
+  document.getElementById('fcLearnLabel').textContent = 'Still Learning: '+l+' / '+total;
+}
+
+function shuffleCards(){
+  deck = [...cards].sort(()=>Math.random()-.5);
+  fcIdx=0; renderCard();
+}
+
+function resetCards(){
+  deck = [...cards]; fcIdx=0;
+  fcKnow.clear(); fcStillLearning.clear();
+  updateFCProgress(); renderCard();
+}
+
+renderCard();
+
+
+// ══════════ JEOPARDY ══════════
+const categories = ['Function Facts','Slope & Lines','Transformations','Systems','Sports Math'];
+const jepData = [
+  // Function Facts
+  [
+    { q:'What does f(x) mean?', choices:['The letter f times x','The output of function f at x','A fraction','None of these'], a:1, explanation:'f(x) is read "f of x" — it\'s the output value when you input x.' },
+    { q:'Find f(5) if f(x) = 2x + 1', choices:['10','11','12','9'], a:1, explanation:'f(5) = 2(5)+1 = 10+1 = 11 ✅' },
+    { q:'Which is the parent function of all linear functions?', choices:['f(x) = x²','f(x) = |x|','f(x) = x','f(x) = 1'], a:2, explanation:'f(x) = x is the simplest linear function — the parent.' },
+    { q:'Is (2, 7) on f(x) = 3x + 1?', choices:['Yes','No','Can\'t tell','Only if x>0'], a:0, explanation:'f(2) = 3(2)+1 = 7 ✅ Yes, (2,7) is on the graph.' },
+    { q:'h(x) = |3x − 8|. Find h(1).', choices:['5','−5','11','3'], a:0, explanation:'h(1) = |3(1)−8| = |3−8| = |−5| = 5 ✅' }
+  ],
+  // Slope & Lines
+  [
+    { q:'In y = mx + b, what does m represent?', choices:['y-intercept','x-intercept','slope','constant'], a:2, explanation:'m is the slope — how steep the line is.' },
+    { q:'What is the slope of y = −3x + 7?', choices:['7','3','−3','−7'], a:2, explanation:'y = mx + b → m = −3 ✅' },
+    { q:'Find the y-intercept of 4x + 2y = 8', choices:['2','4','8','−4'], a:1, explanation:'Set x=0: 2y=8 → y=4 ✅' },
+    { q:'Find the x-intercept of 2x + 3y = 12', choices:['4','6','12','3'], a:1, explanation:'Set y=0: 2x=12 → x=6 ✅' },
+    { q:'What slope indicates a horizontal line?', choices:['Undefined','1','−1','0'], a:3, explanation:'Horizontal lines have slope = 0. Vertical lines have undefined slope.' }
+  ],
+  // Transformations
+  [
+    { q:'g(x) = f(x) + 5 shifts the graph...', choices:['Right 5','Left 5','Up 5','Down 5'], a:2, explanation:'Adding outside the function shifts UP. ✅' },
+    { q:'g(x) = f(x − 3) shifts the graph...', choices:['Right 3','Left 3','Up 3','Down 3'], a:0, explanation:'Inside changes: (x−3) → shift RIGHT. Counter-intuitive but true! ✅' },
+    { q:'g(x) = −f(x) is a reflection over the...', choices:['y-axis','x-axis','origin','z-axis'], a:1, explanation:'Negating the output flips over the x-axis. ✅' },
+    { q:'g(x) = 3f(x) is a vertical...', choices:['stretch by 3','shrink by 3','shift up 3','shift right 3'], a:0, explanation:'Multiplying by 3 (>1) stretches vertically. ✅' },
+    { q:'g(x) = ½f(x) is a vertical...', choices:['stretch','shrink','reflection','translation'], a:1, explanation:'Multiplying by ½ (between 0 and 1) shrinks vertically. ✅' }
+  ],
+  // Systems
+  [
+    { q:'The solution to a system of equations is...', choices:['Any point on one line','The point where both lines meet','The slope','The y-intercept'], a:1, explanation:'The solution satisfies BOTH equations — where the lines intersect. ✅' },
+    { q:'Solve: y = 3 and x + y = 7. Find x.', choices:['10','4','3','7'], a:1, explanation:'Sub y=3: x+3=7 → x=4 ✅' },
+    { q:'When elimination gives 0 = 5, the system has...', choices:['One solution','No solution','Infinite solutions','Two solutions'], a:1, explanation:'0=5 is always false → contradiction → no solution (parallel lines). ✅' },
+    { q:'Best method when one equation is already solved for y?', choices:['Graphing','Elimination','Substitution','Guessing'], a:2, explanation:'Substitution! Plug the solved equation directly into the other. ✅' },
+    { q:'Solve: 2x+y=7 and x−y=2. Find x.', choices:['1','3','5','9'], a:1, explanation:'Add equations: 3x=9 → x=3 ✅' }
+  ],
+  // Sports Math
+  [
+    { q:'Szoboszlai (#8 Liverpool) covers distance f(x) = 1.5x + 2 km where x = match minutes. Distance at minute 60?', choices:['90 km','92 km','95 km','89 km'], a:1, explanation:'f(60) = 1.5(60)+2 = 90+2 = 92 km ✅' },
+    { q:'Brahim Díaz\'s dribble success: d(x) = 3x + 1 where x = games played. After 4 games?', choices:['11','13','12','10'], a:1, explanation:'d(4) = 3(4)+1 = 12+1 = 13 ✅' },
+    { q:'Payton Pritchard\'s 3PM function: h(x) = 2x. He attempts 6 shots. 3PMs made?', choices:['4','10','12','6'], a:2, explanation:'h(6) = 2(6) = 12 ✅' },
+    { q:'Abde Ezzalzouli\'s crosses: C(x) = 4x − 2 per match where x = games started. Find C(3).', choices:['8','10','12','6'], a:1, explanation:'C(3) = 4(3)−2 = 12−2 = 10 ✅' },
+    { q:'Bilal El Khanous and Ben Seghir\'s passes converge. El Khanous: y = 2x+1. Ben Seghir: y = x+4. Where do they meet?', choices:['(3,7)','(2,5)','(4,9)','(1,3)'], a:0, explanation:'Set equal: 2x+1=x+4 → x=3, y=7. Meeting point: (3,7) ✅' }
+  ]
+];
+
+const values = [200, 400, 600, 800, 1000];
+let jepScore = 0, jepStreak = 0;
+const jepDone = Array.from({length:5},()=>new Array(5).fill(false));
+let currentCell = null;
+
+function buildJepBoard(){
+  const board = document.getElementById('jepBoard');
+  board.innerHTML = '';
+  // Category headers
+  categories.forEach(c=>{
+    const el = document.createElement('div');
+    el.className='jep-cat';
+    el.textContent=c;
+    board.appendChild(el);
+  });
+  // Cells
+  for(let row=0;row<5;row++){
+    for(let col=0;col<5;col++){
+      const el = document.createElement('div');
+      el.className='jep-cell'+(jepDone[col][row]?' done':'');
+      el.textContent = jepDone[col][row] ? '✓' : '$'+values[row];
+      el.id='jc'+col+'_'+row;
+      if(!jepDone[col][row]) el.onclick=()=>openJeopardy(col,row);
+      board.appendChild(el);
+    }
+  }
+}
+
+function openJeopardy(col,row){
+  currentCell={col,row};
+  const q = jepData[col][row];
+  document.getElementById('jepModalCat').textContent = categories[col];
+  document.getElementById('jepModalVal').textContent = '$'+values[row];
+  document.getElementById('jepModalQ').textContent = q.q;
+  const choicesEl = document.getElementById('jepChoices');
+  choicesEl.innerHTML = q.choices.map((c,i)=>`<button class="jep-choice" onclick="answerJep(${i})">${c}</button>`).join('');
+  document.getElementById('jepFeedback').style.display='none';
+  document.getElementById('jepCloseBtn').style.display='none';
+  document.getElementById('jepModal').classList.remove('hidden');
+}
+
+function answerJep(idx){
+  const {col,row} = currentCell;
+  const q = jepData[col][row];
+  const choices = document.querySelectorAll('.jep-choice');
+  choices.forEach(c=>c.classList.add('picked'));
+  choices[idx].classList.add(idx===q.a?'correct':'wrong');
+  choices[q.a].classList.add('correct');
+
+  const fb = document.getElementById('jepFeedback');
+  fb.style.display='block';
+  if(idx===q.a){
+    jepScore += values[row];
+    jepStreak++;
+    fb.className='jep-feedback win';
+    fb.textContent = '✅ Correct! +$'+values[row]+' 🔥 Streak: '+jepStreak+' — '+q.explanation;
+    addXP(values[row]/40);
+  } else {
+    jepStreak=0;
+    fb.className='jep-feedback lose';
+    fb.textContent = '❌ Not quite. '+q.explanation;
+  }
+  document.getElementById('jepScore').textContent = '$'+jepScore;
+  document.getElementById('jepStreak').textContent = '🔥 Streak: '+jepStreak;
+  jepDone[col][row]=true;
+  document.getElementById('jepCloseBtn').style.display='block';
+}
+
+function closeJeopardy(){
+  document.getElementById('jepModal').classList.add('hidden');
+  buildJepBoard();
+}
+
+function resetJeopardy(){
+  jepScore=0; jepStreak=0;
+  for(let c=0;c<5;c++) for(let r=0;r<5;r++) jepDone[c][r]=false;
+  document.getElementById('jepScore').textContent='$0';
+  document.getElementById('jepStreak').textContent='🔥 Streak: 0';
+  buildJepBoard();
+}
+
+buildJepBoard();
 </script>
-
 </body>
 </html>
