@@ -559,11 +559,11 @@ table.clean tr:hover td{background:#eff6ff;transition:background .15s}
 </div>
 
 <nav class="mode-nav">
-  <button class="mode-btn active" onclick="switchMode('lesson')"><span class="mode-ico">📖</span> Lesson</button>
-  <button class="mode-btn" onclick="switchMode('practice')"><span class="mode-ico">📝</span> Practice</button>
-  <button class="mode-btn" onclick="switchMode('flashcards')"><span class="mode-ico">🃏</span> Flashcards</button>
-  <button class="mode-btn" onclick="switchMode('jeopardy')"><span class="mode-ico">🎮</span> Jeopardy</button>
-  <button class="mode-btn" onclick="switchMode('videos')"><span class="mode-ico">🎬</span> Videos</button>
+  <button class="mode-btn active" onclick="switchMode('lesson',this)"><span class="mode-ico">📖</span> Lesson</button>
+  <button class="mode-btn" onclick="switchMode('practice',this)"><span class="mode-ico">📝</span> Practice</button>
+  <button class="mode-btn" onclick="switchMode('flashcards',this)"><span class="mode-ico">🃏</span> Flashcards</button>
+  <button class="mode-btn" onclick="switchMode('jeopardy',this)"><span class="mode-ico">🎮</span> Jeopardy</button>
+  <button class="mode-btn" onclick="switchMode('videos',this)"><span class="mode-ico">🎬</span> Videos</button>
 </nav>
 
 <!-- ══════════════ LESSON ══════════════ -->
@@ -1052,11 +1052,11 @@ function renderXP(){
 renderXP();
 
 // ── Mode Switching ──
-function switchMode(mode){
+function switchMode(mode, el){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('panel-'+mode).classList.add('active');
-  event.target.classList.add('active');
+  el.classList.add('active');
 }
 
 // ── Section Toggles ──
