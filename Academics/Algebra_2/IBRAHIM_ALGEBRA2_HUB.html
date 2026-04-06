@@ -37,10 +37,7 @@ body{
 @keyframes glow{0%,100%{box-shadow:0 0 8px rgba(245,158,11,.4)}50%{box-shadow:0 0 22px rgba(245,158,11,.8)}}
 @keyframes popIn{from{transform:scale(.82) translateY(16px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
-.panel.active > *{animation:fadeUp .35s ease both}
-.panel.active > *:nth-child(2){animation-delay:.05s}
-.panel.active > *:nth-child(3){animation-delay:.1s}
-.panel.active > *:nth-child(4){animation-delay:.15s}
+/* no entrance animations — keeps panels reliably visible */
 
 /* ══ BACK LINK ══ */
 .back-link{
@@ -559,11 +556,11 @@ table.clean tr:hover td{background:#eff6ff;transition:background .15s}
 </div>
 
 <nav class="mode-nav">
-  <button class="mode-btn active" onclick="switchMode('lesson',this)"><span class="mode-ico">📖</span> Lesson</button>
-  <button class="mode-btn" onclick="switchMode('practice',this)"><span class="mode-ico">📝</span> Practice</button>
-  <button class="mode-btn" onclick="switchMode('flashcards',this)"><span class="mode-ico">🃏</span> Flashcards</button>
-  <button class="mode-btn" onclick="switchMode('jeopardy',this)"><span class="mode-ico">🎮</span> Jeopardy</button>
-  <button class="mode-btn" onclick="switchMode('videos',this)"><span class="mode-ico">🎬</span> Videos</button>
+  <button class="mode-btn active" data-mode="lesson"><span class="mode-ico">📖</span> Lesson</button>
+  <button class="mode-btn" data-mode="practice"><span class="mode-ico">📝</span> Practice</button>
+  <button class="mode-btn" data-mode="flashcards"><span class="mode-ico">🃏</span> Flashcards</button>
+  <button class="mode-btn" data-mode="jeopardy"><span class="mode-ico">🎮</span> Jeopardy</button>
+  <button class="mode-btn" data-mode="videos"><span class="mode-ico">🎬</span> Videos</button>
 </nav>
 
 <!-- ══════════════ LESSON ══════════════ -->
@@ -1052,12 +1049,17 @@ function renderXP(){
 renderXP();
 
 // ── Mode Switching ──
-function switchMode(mode, el){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('panel-'+mode).classList.add('active');
-  el.classList.add('active');
-}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.mode-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var mode = this.getAttribute('data-mode');
+      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelectorAll('.mode-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.getElementById('panel-'+mode).classList.add('active');
+      this.classList.add('active');
+    });
+  });
+});
 
 // ── Section Toggles ──
 function toggleSection(header){
