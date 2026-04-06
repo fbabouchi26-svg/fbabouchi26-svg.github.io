@@ -1049,15 +1049,14 @@ function renderXP(){
 renderXP();
 
 // ── Mode Switching ──
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.mode-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var mode = this.getAttribute('data-mode');
-      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
-      document.querySelectorAll('.mode-btn').forEach(function(b){ b.classList.remove('active'); });
-      document.getElementById('panel-'+mode).classList.add('active');
-      this.classList.add('active');
-    });
+// Script is at end of body so DOM is already ready — bind directly
+document.querySelectorAll('.mode-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var mode = this.getAttribute('data-mode');
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelectorAll('.mode-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById('panel-'+mode).classList.add('active');
+    this.classList.add('active');
   });
 });
 
