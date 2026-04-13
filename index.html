@@ -313,6 +313,8 @@ body {
   <button class="tab-btn" onclick="switchTab('reading')">📚 Reading</button>
   <button class="tab-btn" onclick="switchTab('research')">🔬 Research</button>
   <button class="tab-btn" onclick="switchTab('cns')">🧠 CNS Plan</button>
+  <button class="tab-btn" onclick="switchTab('extra')">⚡ Extra Stuff</button>
+  <button class="tab-btn" onclick="switchTab('schedule')">📋 Schedule</button>
 </div>
 
 <!-- ===================== TODAY ===================== -->
@@ -2002,6 +2004,452 @@ body {
 
 </div>
 
+<!-- ===================== EXTRA STUFF ===================== -->
+<div id="tab-extra" class="tab-panel">
+<style>
+@keyframes breatheAnim{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+@keyframes wobbleAnim{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(15deg)}}
+@keyframes rollAnim{0%{transform:translateX(-7px) rotate(0deg)}50%{transform:translateX(7px) rotate(180deg)}100%{transform:translateX(-7px) rotate(360deg)}}
+@keyframes bounceAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes pulseAnim{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.85);opacity:.65}}
+@keyframes swayAnim{0%,100%{transform:rotate(-10deg) translateX(-3px)}50%{transform:rotate(10deg) translateX(3px)}}
+@keyframes spinAnim{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes scanAnim{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes pingAnim{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.35)}50%{box-shadow:0 0 0 10px rgba(124,58,237,0)}}
+.anim-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.anim-breathe{background:#ede9fe;animation:breatheAnim 3s ease-in-out infinite}
+.anim-wobble{background:#fef3c7;animation:wobbleAnim 1.6s ease-in-out infinite}
+.anim-roll{background:#d1fae5;animation:rollAnim 2s linear infinite}
+.anim-bounce{background:#dbeafe;animation:bounceAnim .9s ease-in-out infinite}
+.anim-pulse{background:#fee2e2;animation:pulseAnim 1.4s ease-in-out infinite}
+.anim-sway{background:#fce7f3;animation:swayAnim 2.5s ease-in-out infinite}
+.anim-spin{background:#e0f2fe;animation:spinAnim 3s linear infinite}
+.anim-float{background:#f0fdf4;animation:floatAnim 3s ease-in-out infinite}
+.anim-scan{background:#fff7ed;animation:scanAnim 2s ease-in-out infinite}
+.anim-ping{background:#ede9fe;animation:pingAnim 2s ease-in-out infinite}
+.extra-section{margin-bottom:20px}
+.extra-sub-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;padding-bottom:2px}
+.extra-sub-tab{flex-shrink:0;padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
+.extra-sub-tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.extra-panel{display:none}
+.extra-panel.active{display:block}
+.xex{background:white;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.xex-header{display:flex;align-items:center;gap:12px;padding:13px 15px;cursor:pointer;transition:background .15s}
+.xex-header:hover{background:#f8fafc}
+.xex-name{flex:1;font-size:.88rem;font-weight:700;color:var(--text)}
+.xex-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:3px}
+.xex-arrow{color:var(--muted);font-size:.75rem;transition:transform .2s;flex-shrink:0}
+.xex.open .xex-arrow{transform:rotate(90deg)}
+.xex-body{display:none;padding:0 15px 14px;border-top:1px solid var(--border);background:#fafafa;font-size:.82rem;color:#475569;line-height:1.7}
+.xex.open .xex-body{display:block}
+.xex-body p{margin-top:10px}
+.xex-body p:first-child{margin-top:8px}
+.freq-tag{font-size:.65rem;padding:2px 7px;border-radius:8px;font-weight:700}
+.freq-daily{background:#d1fae5;color:#065f46}
+.freq-gym{background:#dbeafe;color:#1e40af}
+.freq-3x{background:#fef3c7;color:#92400e}
+.freq-asneeded{background:#f1f5f9;color:#475569}
+.dur-tag{font-size:.65rem;padding:2px 7px;border-radius:8px;font-weight:600;background:#f1f5f9;color:var(--muted)}
+.xex-why{background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:8px 11px;margin-top:10px;font-size:.77rem;color:#5b21b6}
+.xex-why strong{color:#7c3aed}
+.section-note{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:14px;padding:10px 14px;background:white;border-radius:10px;border:1px solid var(--border)}
+</style>
+
+<div class="philosophy" style="margin-bottom:14px">
+  <h3>⚡ The Extra Stuff</h3>
+  <p>These are the things that separate good athletes from elite ones. Not all of these happen every day — the schedule tab tells you what to hit when. Each one has a reason it's here.</p>
+</div>
+
+<div class="extra-sub-tabs">
+  <button class="extra-sub-tab active" onclick="switchExtra('pregym',this)">🔥 Pre-Gym</button>
+  <button class="extra-sub-tab" onclick="switchExtra('postgym',this)">💆 Post-Gym</button>
+  <button class="extra-sub-tab" onclick="switchExtra('handeye',this)">👁️ Hand & Eye</button>
+  <button class="extra-sub-tab" onclick="switchExtra('strength',this)">🦵 Strength</button>
+  <button class="extra-sub-tab" onclick="switchExtra('sleepfuel',this)">🛌 Sleep & Fuel</button>
+</div>
+
+<!-- PRE-GYM -->
+<div id="extra-pregym" class="extra-panel active">
+  <div class="section-note">10 minutes before every YMCA session. This primes the joints and activates the muscles that actually need to fire during your workout. Do not skip this.</div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-spin">🔄</div>
+      <div style="flex:1"><div class="xex-name">Hip 90/90 Mobility</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Sit on the floor with both knees bent at 90 degrees — front shin parallel to you, back shin behind you. Sit tall and drive your hip toward the floor. Don't round your back. Hold 45 seconds, lean forward for a deeper stretch, then switch sides. Repeat twice per side.</p>
+      <p>Progression: once comfortable, rotate your torso toward the front knee and add a reach.</p>
+      <div class="xex-why"><strong>Why:</strong> Tight hips are one of the biggest performance limiters in soccer and a direct contributor to lower leg overload. Loose hips = better mechanics = less stress on your tibia and fibula.</div>
+      <a href="https://www.youtube.com/results?search_query=hip+90+90+mobility+tutorial" target="_blank" class="video-btn" style="margin-top:10px;display:inline-flex">▶ Watch Demo</a>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-wobble">🦶</div>
+      <div style="flex:1"><div class="xex-name">Dynamic Ankle Circles + Dorsiflexion</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Seated or standing. Draw slow full circles with your foot — 10 clockwise, 10 counterclockwise per ankle. Then: pull toes toward shin (dorsiflexion), hold 2 seconds, release. 10 reps per foot. Finish with 5 slow ankle alphabet letters per foot.</p>
+      <div class="xex-why"><strong>Why:</strong> Restricted ankle dorsiflexion forces compensation up the chain — knees cave, hips compensate, and load transfers to the lower leg. You have stress fracture history here. Mobility is injury prevention.</div>
+      <a href="https://www.youtube.com/results?search_query=ankle+mobility+dorsiflexion+drill+warm+up" target="_blank" class="video-btn" style="margin-top:10px;display:inline-flex">▶ Watch Demo</a>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-pulse">⚡</div>
+      <div style="flex:1"><div class="xex-name">Banded Glute Activation</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Place a resistance band just above your knees. Do 3 exercises back-to-back with no rest:</p>
+      <p>① Clamshells — side-lying, feet together, open top knee like a clamshell. 15 reps per side.<br>② Lateral band walks — slight squat, step side to side keeping tension on band. 10 steps each direction × 2.<br>③ Glute bridge — feet flat, drive hips up, squeeze hard at top. 15 reps. Hold last rep for 5 seconds.</p>
+      <div class="xex-why"><strong>Why:</strong> You are almost certainly quad-dominant. Weak glutes shift all force onto your lower leg — this is a direct cause of your stress fractures. Non-negotiable before every session.</div>
+      <a href="https://www.youtube.com/results?search_query=banded+glute+activation+clamshell+bridge+warm+up" target="_blank" class="video-btn" style="margin-top:10px;display:inline-flex">▶ Watch Demo</a>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-breathe">🌬️</div>
+      <div style="flex:1"><div class="xex-name">Diaphragmatic Breathing Drill</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Lie on your back, one hand on chest, one on belly. Breathe so only the belly hand moves — chest stays still. Inhale 4 counts through nose, feel belly rise. Exhale 6 counts through mouth. 10 slow breaths.</p>
+      <p>Then stand up and take 3 deep diaphragmatic breaths in the same pattern before starting your workout.</p>
+      <div class="xex-why"><strong>Why:</strong> Most athletes breathe with their chest and neck — this keeps the nervous system in sympathetic mode and limits oxygen delivery during high output. Diaphragmatic breathing at rest trains the pattern so it carries into training.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-bounce">🦵</div>
+      <div style="flex:1"><div class="xex-name">Slow Soleus Calf Raises</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">1 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Stand on the edge of a step or flat. Slight bend in the knee (this targets the soleus, not the gastrocnemius). Rise slowly on 2 counts, hold at the top for 1 second, lower on 3 counts. 10 controlled reps per foot.</p>
+      <div class="xex-why"><strong>Why:</strong> The soleus is the most undertrained calf muscle and the primary load absorber during running. Strengthening it is the single biggest long-term prevention tool for tibial stress fractures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- POST-GYM -->
+<div id="extra-postgym" class="extra-panel">
+  <div class="section-note">15-20 minutes after every YMCA session, while muscles are still warm. This is when fascia and soft tissue respond best. Don't skip it because you're tired.</div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-roll">⚽</div>
+      <div style="flex:1"><div class="xex-name">Spiky Ball: Plantar Fascia + Arch</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Standing or seated, place the spiky ball under your foot. Apply moderate pressure. Roll slowly from heel to ball of foot — pause on any tight spot for 10-15 seconds. Then do small circles in one place before moving on. 90 seconds per foot.</p>
+      <p>Do NOT roll aggressively over the exact fracture site. Work around it.</p>
+      <div class="xex-why"><strong>Why:</strong> The plantar fascia connects to the entire posterior chain. Tight fascia in the sole pulls on the lower leg structures. You've already been doing this — keep it consistent now.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-roll">🎱</div>
+      <div style="flex:1"><div class="xex-name">Lacrosse Ball: Glute + Hip Flexor</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">4 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p><strong>Glute:</strong> Sit on the lacrosse ball, cross one ankle over the opposite knee. Lean into the ball and find tight spots. Hold 20-30 seconds, then make small circles. 60 sec per side.</p>
+      <p><strong>Hip flexor:</strong> Lie face down, place ball in the crease of your hip (where thigh meets pelvis). Slow, sustained pressure — don't just roll. Let the tissue release over 30-40 seconds. Switch sides.</p>
+      <div class="xex-why"><strong>Why:</strong> After a YMCA session the glute and hip flexor are the most loaded structures. Releasing them post-session preserves mobility and prevents the compensatory patterns that cause lower leg overload.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-roll">🔵</div>
+      <div style="flex:1"><div class="xex-name">Foam Roller: Thoracic Spine</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Place the foam roller horizontally across your mid-back. Support your head with your hands. Slowly extend your back over the roller, opening your chest. Move up one vertebra at a time — do not roll the lower back. Spend 15-20 seconds at each level. Cover from mid-back to shoulder blades.</p>
+      <div class="xex-why"><strong>Why:</strong> A stiff thoracic spine limits rotation — in soccer that means your body compensates with your lumbar spine and hips. Relevant to your back pain episode. 3 minutes here pays dividends on the field.</div>
+      <a href="https://www.youtube.com/results?search_query=foam+roller+thoracic+spine+extension+tutorial" target="_blank" class="video-btn" style="margin-top:10px;display:inline-flex">▶ Watch Demo</a>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-sway">🧘</div>
+      <div style="flex:1"><div class="xex-name">Hip Flexor + Quad Static Stretch</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Low lunge: right foot forward, left knee on floor. Tuck your pelvis slightly (don't arch). Feel the stretch in the left hip flexor. Hold 45 seconds. For a quad addition: reach back and grab your left ankle, pull gently. Switch sides.</p>
+      <div class="xex-why"><strong>Why:</strong> Hip flexors shorten during lifting and running. Tight hip flexors anteriorly tilt the pelvis, which increases lower back compression and reduces glute activation — both things you're working against.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-sway">🕊️</div>
+      <div style="flex:1"><div class="xex-name">Pigeon Pose (or Supine Pigeon)</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p><strong>Floor version:</strong> From tabletop, bring your right shin forward across your body (angled). Extend left leg back. Sink your hips. Fold forward over the front shin. Hold 60-90 seconds per side.</p>
+      <p><strong>Easier version (Supine Pigeon):</strong> Lie on your back. Cross right ankle over left thigh just above the knee. Pull both legs toward your chest. Same stretch, less intensity.</p>
+      <div class="xex-why"><strong>Why:</strong> The deepest hip external rotator (piriformis) is almost never stretched by standard exercises but gets loaded hard in soccer cutting movements. This is the stretch for it.</div>
+      <a href="https://www.youtube.com/results?search_query=pigeon+pose+tutorial+hip+opener" target="_blank" class="video-btn" style="margin-top:10px;display:inline-flex">▶ Watch Demo</a>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-sway">↔️</div>
+      <div style="flex:1"><div class="xex-name">Adductor / Groin Stretch</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Seated straddle stretch: sit on the floor, legs wide apart. Keep your back straight (don't round). Walk your hands forward slowly. Hold the furthest comfortable position for 60 seconds. Alternative: lying butterfly stretch — soles of feet together, let knees drop, gentle pressure on inner thighs.</p>
+      <div class="xex-why"><strong>Why:</strong> Adductor tears are the most common soft tissue injury in soccer. Tight adductors also limit hip mobility and alter your running mechanics. Non-negotiable for any serious soccer player.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HAND & EYE -->
+<div id="extra-handeye" class="extra-panel">
+  <div class="section-note">3x per week on non-consecutive days. Zero impact. Best done in a hallway, driveway, or against a wall. Takes 10 minutes. The cognitive edge this builds compounds over months.</div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-bounce">🎾</div>
+      <div style="flex:1"><div class="xex-name">Reaction Ball Wall Throws</div><div class="xex-tags"><span class="freq-tag freq-3x">3× / week</span><span class="dur-tag">5 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Get a reaction ball (~$8–12 on Amazon — bumpy rubber ball that bounces unpredictably). Stand 3-4 feet from a wall. Throw against the wall and react to wherever it bounces. Catch with both hands, then alternate: throw with right, catch with left. Then eyes closed — listen for the bounce and react.</p>
+      <p>Progression: step back further. Add a clap before catching. Have someone call out "left" or "right" after the throw — you catch one-handed on that side only.</p>
+      <div class="xex-why"><strong>Why:</strong> Reaction time is trainable. Elite midfielders process visual input and decide in under 200ms. This drill literally wires faster pathways between what you see and what your hands/feet do. Carries directly to first touch and defensive reactions.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-bounce">🎾</div>
+      <div style="flex:1"><div class="xex-name">Opposite-Hand Tennis Ball Catch</div><div class="xex-tags"><span class="freq-tag freq-3x">3× / week</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Stand 6 feet from a wall. Throw a tennis ball against the wall with your right hand — catch with your left. Then throw with left, catch with right. Start slow and build speed. 90 seconds, then try two balls alternating.</p>
+      <p>Harder version: throw against the wall and let it bounce once on the floor before catching.</p>
+      <div class="xex-why"><strong>Why:</strong> Cross-body hand-eye coordination activates both hemispheres simultaneously. This strengthens the neural pathways that control split-second spatial awareness — the thing that makes a player look like they "see the game differently."</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-scan">👁️</div>
+      <div style="flex:1"><div class="xex-name">Peripheral Vision Awareness Drill</div><div class="xex-tags"><span class="freq-tag freq-3x">3× / week</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Stand in a room. Fix your gaze on one point straight ahead — don't move your eyes. Now, without looking, identify objects in your peripheral vision left and right. Count them. Try to expand how far out you can identify.</p>
+      <p>Level 2: have someone hold up fingers in your periphery while you hold your gaze center — call out how many fingers without looking directly at them.</p>
+      <p>Level 3 (outside): walk slowly while keeping your eyes softly focused ahead, not on the ground. Notice what you see in your periphery. This is the "soft focus" scanning that elite players use constantly.</p>
+      <div class="xex-why"><strong>Why:</strong> Scanning and peripheral awareness is the difference between knowing where your teammates are before the ball arrives vs. after. Your dad's players had this. It's trained, not gifted.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STRENGTH -->
+<div id="extra-strength" class="extra-panel">
+  <div class="section-note">These target the exact structures that failed on you — tibialis posterior, soleus, intrinsic foot muscles, and the proprioceptive system. 3× per week, can be done at home with no equipment except your ankle board.</div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-bounce">🦵</div>
+      <div style="flex:1"><div class="xex-name">Tibialis Anterior Raises</div><div class="xex-tags"><span class="freq-tag freq-3x">3× / week</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Stand with your back against a wall, heels 6 inches from the wall. Lift your toes and forefoot off the ground, pulling them toward your shin as high as possible. Hold 1 second at the top. Lower slowly. 3 sets × 20 reps. Rest 30-45 seconds between sets.</p>
+      <p>Progression: add a light resistance band around the forefoot pulling down as you raise up.</p>
+      <div class="xex-why"><strong>Why:</strong> The tibialis anterior is the muscle on the front of your shin. Weakness here is directly linked to tibial stress fractures — it can't absorb impact properly so the bone compensates. This is one of the most important exercises on this entire page.</div>
+      <a href="https://www.youtube.com/results?search_query=tibialis+anterior+raise+wall+exercise" target="_blank" class="video-btn" style="margin-top:10px;display:inline-flex">▶ Watch Demo</a>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-bounce">🦵</div>
+      <div style="flex:1"><div class="xex-name">Soleus Raises (Bent Knee)</div><div class="xex-tags"><span class="freq-tag freq-3x">3× / week</span><span class="dur-tag">3 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Seated on a chair, feet flat. Place a weight or heavy backpack on your thighs (optional). Rise onto the balls of your feet as high as possible. Hold 1 second. Lower slowly on 3 counts. 3 sets × 25 reps. The bent knee position isolates the soleus (not the gastrocnemius).</p>
+      <p>Standing version: stand with knees slightly bent, same motion. Harder, more sport-specific.</p>
+      <div class="xex-why"><strong>Why:</strong> The soleus is your primary load-absorber during walking and running — it takes 6-8x your bodyweight with every step. Yours has been underloaded since July. This rebuilds the capacity you lost.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-wobble">🦶</div>
+      <div style="flex:1"><div class="xex-name">Towel Toe Curls + Marble Pickups</div><div class="xex-tags"><span class="freq-tag freq-3x">3× / week</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p><strong>Towel curls:</strong> Lay a small towel flat on the floor. Seated, use your toes to scrunch and pull the towel toward you. 3 sets × 10 scrunch cycles per foot.</p>
+      <p><strong>Marble pickups:</strong> Place 10 marbles on the floor. Pick them up one at a time with your toes and place them in a cup. You've done this before — keep doing it.</p>
+      <div class="xex-why"><strong>Why:</strong> Intrinsic foot muscles are almost never trained directly. They create the arch stability your foot needs under load — without them, force transfers directly to the bones. Your entire injury history traces back here.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-ping">🎯</div>
+      <div style="flex:1"><div class="xex-name">Ankle Board — Proprioception Circuits</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">5 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>You have the board and barely use it. Here's the circuit — all single leg:</p>
+      <p>① Balance on one leg on the board, eyes open — 30 seconds per side<br>② Same but eyes closed — 20 seconds per side<br>③ Balance while slowly tracing letters of your name with the foot in the air<br>④ Balance while catching and throwing a ball (reaction ball or tennis ball) against a wall</p>
+      <p>When comfortable: do small quarter squats while balancing.</p>
+      <div class="xex-why"><strong>Why:</strong> After two stress fractures your proprioceptive system has been disrupted for months. The nerve pathways between your ankle and brain have degraded from disuse. This literally rewires them. Re-injury risk is highest in the 12 months after return — this is how you prevent it.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-float">🧘</div>
+      <div style="flex:1"><div class="xex-name">Single-Leg Balance — Eyes Closed</div><div class="xex-tags"><span class="freq-tag freq-daily">Daily</span><span class="dur-tag">2 min</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Stand on one leg. Close your eyes. Hold for 30 seconds. Switch. That's it. Do it while brushing your teeth, while waiting for something, while on the phone.</p>
+      <p>If it's easy: stand on a folded towel or pillow. If that's easy: do small arm movements while balancing.</p>
+      <div class="xex-why"><strong>Why:</strong> Eyes closed removes visual compensation and forces your ankle and foot to do all the proprioceptive work. Two minutes a day. The easiest high-leverage thing on this page.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLEEP & FUEL -->
+<div id="extra-sleepfuel" class="extra-panel">
+  <div class="section-note">These are daily habits, not exercises. They determine 30-40% of your recovery quality — which determines how fast your bone heals and how well your CNS retrains. Non-negotiable.</div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-float">💤</div>
+      <div style="flex:1"><div class="xex-name">Sleep Protocol</div><div class="xex-tags"><span class="freq-tag freq-daily">Daily</span><span class="dur-tag">Target: 10:30pm</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p><strong>30 min before bed:</strong> No screens. Dim the lights. This is the minimum viable wind-down that actually shifts your melatonin.</p>
+      <p><strong>Room conditions:</strong> Cool (65-68°F), dark, quiet. These three factors alone improve deep sleep stages by 15-20% in studies. Non-negotiable for bone healing — growth hormone is released during deep sleep.</p>
+      <p><strong>Morning:</strong> Get sunlight within 30 minutes of waking. Step outside, even for 5 minutes. This anchors your circadian rhythm and makes falling asleep earlier genuinely easier over time.</p>
+      <p><strong>Realistic target:</strong> In bed by 10:30pm = 8 hours at 6:30am wake. 11pm is the hard limit, not the default.</p>
+      <div class="xex-why"><strong>Why:</strong> Bone remodeling, nervous system repair, and muscle recovery all peak during deep sleep stages 3-4. If you're sleeping 7 hours instead of 8, you're healing at roughly 70% the rate you could be.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-pulse">⚡</div>
+      <div style="flex:1"><div class="xex-name">Pre-Workout Fuel Timing</div><div class="xex-tags"><span class="freq-tag freq-gym">Every gym day</span><span class="dur-tag">30-60 min before</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>30-60 minutes before YMCA, eat a mix of fast carbs + moderate protein. Examples: rice + chicken, banana + peanut butter, toast + eggs. Around 40-60g carbs, 20-30g protein.</p>
+      <p><strong>What to avoid:</strong> Training fasted, training on only protein (no carbs), or eating a huge meal right before (causes blood pooling in digestion).</p>
+      <p>Since you go to gym around 6:30pm, your pre-workout meal should be around 5:30-6:00pm — not later.</p>
+      <div class="xex-why"><strong>Why:</strong> Muscle glycogen is the primary fuel for lifting and bike HIIT. If glycogen is low, you're training on empty — performance drops, cortisol spikes, and recovery is slower. You mentioned glycogen timing is something you want to implement. This is it.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-float">🥗</div>
+      <div style="flex:1"><div class="xex-name">Post-Workout Recovery Window</div><div class="xex-tags"><span class="freq-tag freq-gym">Within 30 min of YMCA</span><span class="dur-tag">Habit</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>Within 30 minutes of finishing your session: 30-40g protein + 40-60g carbs. This is the anabolic window — muscle protein synthesis is highest here. A protein shake + banana is enough if you can't eat a full meal.</p>
+      <p><strong>Bone healing note:</strong> Add calcium + Vitamin D either here or in the morning. Bone repair specifically requires calcium, phosphorus, and Vitamin D. If you're not supplementing Vitamin D (especially in New England in April), you're likely deficient and it's directly slowing healing.</p>
+      <div class="xex-why"><strong>Why:</strong> You're on a cut, which means you're in a slight caloric deficit. The post-workout window is the one time when nutrient partitioning strongly favors muscle repair over fat storage — this is when to eat, even on a cut.</div>
+    </div>
+  </div>
+
+  <div class="xex" onclick="toggleEx(this)">
+    <div class="xex-header">
+      <div class="anim-icon anim-breathe">👃</div>
+      <div style="flex:1"><div class="xex-name">Nasal Breathing During Low-Intensity Work</div><div class="xex-tags"><span class="freq-tag freq-daily">Daily habit</span><span class="dur-tag">Ongoing</span></div></div>
+      <span class="xex-arrow">▶</span>
+    </div>
+    <div class="xex-body">
+      <p>During your bike warm-up, walking, and any low-intensity activity: breathe exclusively through your nose. It will feel restrictive at first — that's the point. You're training CO2 tolerance.</p>
+      <p>If you can't maintain nasal breathing, you're going too hard. Slow down until you can.</p>
+      <p>During high-intensity work (bike HIIT, hard sets): mouth breathing is fine.</p>
+      <div class="xex-why"><strong>Why:</strong> Nasal breathing produces nitric oxide (which opens blood vessels and increases O2 delivery), increases CO2 tolerance (which actually improves oxygen extraction from blood), and keeps the nervous system calmer during exercise — relevant for your CNS situation.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ===================== SCHEDULE ===================== -->
+<div id="tab-schedule" class="tab-panel">
+<style>
+.sched-hero{background:linear-gradient(135deg,var(--navy),#1e3a5f);color:white;border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.sched-hero h2{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.sched-hero p{font-size:.82rem;opacity:.85;line-height:1.6}
+.chatbot-wrap{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}
+.chat-msgs{margin-bottom:14px}
+.chat-bubble{max-width:85%;margin-bottom:10px;padding:10px 13px;border-radius:14px;font-size:.84rem;line-height:1.6}
+.chat-bot{background:#f1f5f9;color:var(--text);border-radius:14px 14px 14px 4px;align-self:flex-start}
+.chat-user{background:var(--navy);color:white;border-radius:14px 14px 4px 14px;margin-left:auto;text-align:right}
+.chat-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chat-opt-btn{padding:8px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;font-size:.8rem;font-weight:700;color:var(--text);cursor:pointer;transition:all .2s}
+.chat-opt-btn:hover{background:var(--navy);color:white;border-color:var(--navy)}
+.chat-opt-btn.selected{background:var(--blue);color:white;border-color:var(--blue)}
+.chat-reset-btn{margin-top:12px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:white;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer}
+.chat-reset-btn:hover{background:#fee2e2;color:var(--red);border-color:var(--red)}
+.sched-output{margin-top:4px}
+.sched-day-title{font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sched-block{background:white;border:1px solid var(--border);border-left:4px solid;border-radius:0 10px 10px 0;padding:11px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:background .15s;box-shadow:var(--shadow)}
+.sched-block:hover{background:#f8fafc}
+.sched-block.no-nav{cursor:default}
+.sched-block.no-nav:hover{background:white}
+.sb-time{font-size:.72rem;font-weight:800;color:var(--muted);min-width:60px;padding-top:2px;flex-shrink:0}
+.sb-icon{font-size:1.1rem;flex-shrink:0}
+.sb-content{flex:1}
+.sb-title{font-size:.88rem;font-weight:700;color:var(--text)}
+.sb-note{font-size:.75rem;color:var(--muted);margin-top:2px}
+.sb-nav-hint{font-size:.68rem;color:var(--blue);font-weight:600;margin-top:2px}
+.sched-summary{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:.82rem;color:#065f46}
+.sched-summary strong{color:#059669}
+</style>
+
+<div class="sched-hero">
+  <h2>📋 Daily Schedule Builder</h2>
+  <p>Tell me what today looks like and I'll build your schedule. Homework before gym — that's the rule that fixes procrastination. Click any block to jump to that section.</p>
+</div>
+
+<div class="chatbot-wrap">
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div id="chatOptions"></div>
+  <button class="chat-reset-btn" onclick="resetChat()">↺ Rebuild schedule</button>
+</div>
+
+<div class="sched-output" id="schedOutput" style="display:none"></div>
+
+</div>
+
 <script>
 // ---- TAB SWITCHING ----
 function switchTab(id) {
@@ -2023,6 +2471,192 @@ function switchVersion(v) {
   document.getElementById('version-' + v).classList.add('active');
   event.target.classList.add('active');
 }
+
+// ---- EXTRA STUFF SUB-TABS ----
+function switchExtra(id, btn) {
+  document.querySelectorAll('.extra-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.extra-sub-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('extra-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ---- SCHEDULE CHATBOT ----
+const chatState = { step: 0, hw: null, day: new Date().getDay() };
+const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const GYM_DAYS = [1,2,4,5,6]; // Mon Tue Thu Fri Sat
+
+function addMinutes(t, m) {
+  const [h, min] = t.split(':').map(Number);
+  const tot = h * 60 + min + m;
+  return `${Math.floor(tot/60)%24}:${(tot%60).toString().padStart(2,'0')}`;
+}
+function fmt(t) {
+  const [h, m] = t.split(':').map(Number);
+  const p = h >= 12 ? 'PM' : 'AM';
+  const fh = h > 12 ? h-12 : (h===0?12:h);
+  return `${fh}:${m.toString().padStart(2,'0')} ${p}`;
+}
+
+function botMsg(text) {
+  const d = document.getElementById('chatMsgs');
+  const b = document.createElement('div');
+  b.className = 'chat-bubble chat-bot';
+  b.textContent = text;
+  d.appendChild(b);
+}
+function userMsg(text) {
+  const d = document.getElementById('chatMsgs');
+  const b = document.createElement('div');
+  b.className = 'chat-bubble chat-user';
+  b.textContent = text;
+  d.appendChild(b);
+}
+function setOptions(opts) {
+  const c = document.getElementById('chatOptions');
+  c.innerHTML = '';
+  opts.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'chat-opt-btn';
+    btn.textContent = o.label;
+    btn.onclick = () => o.fn();
+    c.appendChild(btn);
+  });
+}
+
+function resetChat() {
+  chatState.step = 0; chatState.hw = null; chatState.day = new Date().getDay();
+  document.getElementById('chatMsgs').innerHTML = '';
+  document.getElementById('chatOptions').innerHTML = '';
+  document.getElementById('schedOutput').style.display = 'none';
+  startChat();
+}
+
+function startChat() {
+  const isGym = GYM_DAYS.includes(chatState.day);
+  const dayStr = DAY_NAMES[chatState.day];
+  setTimeout(() => botMsg(`Hey. It's ${dayStr} — ${isGym ? 'gym day 🏋️' : 'rest day 🧘'}. Let\'s plan it.`), 200);
+  setTimeout(() => botMsg('How much homework do you have today?'), 700);
+  setTimeout(() => setOptions([
+    { label: '📚 Loaded (2.5+ hrs)', fn: () => pickHW('alot', 'Loaded — got it.') },
+    { label: '📖 Average (1-2 hrs)',  fn: () => pickHW('some',  'Average load.') },
+    { label: '📄 Light (<1 hr)',      fn: () => pickHW('little','Light day.') },
+    { label: '🎉 None',               fn: () => pickHW('none',  'No homework — nice.') }
+  ]), 1200);
+}
+
+function pickHW(amount, label) {
+  chatState.hw = amount;
+  userMsg(label);
+  document.getElementById('chatOptions').innerHTML = '';
+  setTimeout(() => botMsg('Any appointments today?'), 600);
+  setTimeout(() => setOptions([
+    { label: '🏥 Amelia (PT)',  fn: () => pickAppt('amelia') },
+    { label: '🩺 Doctor',       fn: () => pickAppt('doctor') },
+    { label: '✅ Clear day',    fn: () => pickAppt('none') }
+  ]), 1100);
+}
+
+function pickAppt(appt) {
+  const labels = { amelia:'Amelia session noted.', doctor:'Doctor appointment noted.', none:'Clear day — good.' };
+  userMsg(labels[appt]);
+  document.getElementById('chatOptions').innerHTML = '';
+  setTimeout(() => { botMsg("Here's your schedule. Tap any block to open that section."); buildSchedule(appt); }, 800);
+}
+
+function buildSchedule(appt) {
+  const d = chatState.day;
+  const hw = chatState.hw;
+  const isGym = GYM_DAYS.includes(d);
+  const isSat = d === 6;
+  const isSun = d === 0;
+  const isWed = d === 3;
+
+  const hwMins = { alot: 180, some: 120, little: 60, none: 0 }[hw] || 120;
+
+  const blocks = [];
+  const push = (time, icon, label, note, nav, color) => blocks.push({time, icon, label, note, nav, color});
+
+  // Universal morning
+  push('6:40','🧠','Morning CNS Block','Breathing + intention setting — 7 min','cns','#7c3aed');
+  push('7:00','🏫','School','Focus, observe, scan — be present','','#94a3b8');
+
+  if (!isSun) {
+    push('2:30','😮‍💨','Settle In','Decompress. Eat something. Drink water.','','#94a3b8');
+    push('3:00','🧠','CNS Afternoon Block','Laterality + desensitization + motor imagery — 20 min','cns','#7c3aed');
+
+    if (appt === 'amelia') push('3:30','🏥','Amelia — PT Session','Bring your pain log. Update her on new locations.','','#dc2626');
+    if (appt === 'doctor') push('TBD','🩺','Doctor Appointment','Bring questions written down.','','#dc2626');
+
+    let hwStart = appt === 'amelia' ? '5:00' : '3:20';
+    if (hwMins > 0) {
+      push(hwStart,'📚','Homework','Hard stop at gym time — the deadline is the point.','','#1d4ed8');
+    }
+
+    const afterHW = hwMins > 0 ? addMinutes(hwStart, hwMins) : hwStart;
+
+    if (isSat) {
+      push('11:00','📚','Homework (morning)','Get it done early — gym closes at 5pm.','','#1d4ed8');
+      push('13:00','⚡','Pre-Gym Activation','Hip mobility + glute activation + breathing — 10 min','extra','#d97706');
+      push('13:10','🏋️','YMCA','Lift + bike. No impact.','','#0f2044');
+      push('15:00','💆','Post-Gym Recovery','Spiky ball, lacrosse ball, stretching — 20 min','extra','#d97706');
+      push('15:30','🎾','Hand & Eye','Reaction ball wall throws — 10 min','extra','#059669');
+      push('16:00','🕌','Free / Valeo Game Support','Family time, Darija, or just decompress','','#94a3b8');
+      push('21:30','🧠','Evening CNS Block','Breathing + neutral body awareness — 15 min','cns','#7c3aed');
+      push('22:30','💤','In Bed','Target 10:30pm. Cool room, dark, no screens.','','#1e40af');
+    } else if (isWed) {
+      push(afterHW,'🎾','Hand & Eye Training','Reaction ball + peripheral vision drill — 10 min','extra','#059669');
+      push(addMinutes(afterHW,10),'🦵','Soleus + Tibialis Work','Raises, toe curls — 10 min','extra','#d97706');
+      push(addMinutes(afterHW,20),'📖','Reading / Darija / Islam','Essentialism 20-30 min or Darija session','','#94a3b8');
+      push('21:00','🧠','Evening CNS Block','Breathing + neutral body awareness','cns','#7c3aed');
+      push('22:30','💤','In Bed','Rest day sleep target: 10:30pm.','','#1e40af');
+    } else if (!isSun) {
+      const preGym = addMinutes(afterHW, -10);
+      push(preGym,'⚡','Pre-Gym Activation','Hip mobility + glute activation + breathing — 10 min','extra','#d97706');
+      push(afterHW,'🏋️','YMCA','Lift + bike. No impact.','','#0f2044');
+      const postGym = addMinutes(afterHW, 75);
+      push(postGym,'💆','Post-Gym Recovery','Spiky ball, lacrosse ball, stretching — 20 min','extra','#d97706');
+      const shower = addMinutes(postGym, 20);
+      push(shower,'🚿','Shower + Refuel','Protein + carbs within 30 min of finishing','','#94a3b8');
+      const wind = addMinutes(shower, 30);
+      push(wind,'📖','Wind-Down','Reading, Darija, or just decompress','','#94a3b8');
+      const cnsPM = addMinutes(wind, 30);
+      push(cnsPM,'🧠','Evening CNS Block','Breathing + neutral body awareness — 15 min','cns','#7c3aed');
+      const sleep = addMinutes(cnsPM, 15);
+      push(sleep,'💤','In Bed',`Target ${fmt(sleep)}. Cool, dark room. No screens.`,'','#1e40af');
+    }
+  } else {
+    // Sunday
+    push('9:00','☀️','Morning Light','Outside for 5 min within 30 min of waking. Anchors your sleep cycle.','','#d97706');
+    push('10:00','📚','Homework Catch-Up','Clear anything left from the week.','','#1d4ed8');
+    push('14:00','⚽','Valeo Game Support','Show up, observe, stay connected to the team.','','#059669');
+    push('20:00','🦵','Strength Work (home)','Tibialis, soleus, toe curls, ankle board — 15 min','extra','#d97706');
+    push('21:00','🧠','Evening CNS Block','Hardest push of the week — in bed by 10:30 for Monday.','cns','#7c3aed');
+    push('22:30','💤','In Bed','Sunday sleep matters most. Early start tomorrow.','','#1e40af');
+  }
+
+  // Render
+  const out = document.getElementById('schedOutput');
+  out.style.display = 'block';
+  let html = `<div class="sched-day-title">📅 ${DAY_NAMES[d]}'s Schedule</div>`;
+  html += `<div class="sched-summary">Homework: <strong>${{alot:'Loaded (2.5+ hrs)',some:'Average (1-2 hrs)',little:'Light (<1 hr)',none:'None'}[hw]}</strong> · ${isGym?'Gym day 🏋️':'Rest day 🧘'} · Tap any block to open that section</div>`;
+
+  blocks.forEach(b => {
+    const nav = b.nav ? `onclick="switchTab('${b.nav}')"` : '';
+    const cls = b.nav ? 'sched-block' : 'sched-block no-nav';
+    const hint = b.nav ? `<div class="sb-nav-hint">Tap to open → ${b.nav === 'cns' ? 'CNS Plan' : 'Extra Stuff'}</div>` : '';
+    html += `<div class="${cls}" style="border-left-color:${b.color}" ${nav}>
+      <div class="sb-time">${b.time.includes(':') ? fmt(b.time) : b.time}</div>
+      <div class="sb-icon">${b.icon}</div>
+      <div class="sb-content"><div class="sb-title">${b.label}</div><div class="sb-note">${b.note}</div>${hint}</div>
+    </div>`;
+  });
+
+  out.innerHTML = html;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('chatMsgs')) startChat();
+});
 
 // ---- CNS SUB-TAB SWITCHING ----
 function switchCNS(id, btn) {
