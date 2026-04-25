@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNS Recovery Plan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f0f13;
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 40px 24px 32px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a4a;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: #8888aa;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .header-badge {
+    display: inline-block;
+    background: #7c3aed22;
+    border: 1px solid #7c3aed55;
+    color: #a78bfa;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* PHASE TABS */
+  .phase-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: #1a1a24;
+    border-radius: 12px;
+    padding: 6px;
+    border: 1px solid #2a2a3a;
+  }
+  .phase-tab {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .phase-tab.active {
+    background: #7c3aed;
+    color: #fff;
+    box-shadow: 0 2px 12px #7c3aed55;
+  }
+  .phase-tab:hover:not(.active) { color: #aaa; background: #ffffff0a; }
+
+  .phase-content { display: none; }
+  .phase-content.active { display: block; }
+
+  /* UNDERSTAND SECTION */
+  .info-card {
+    background: #1a1a24;
+    border: 1px solid #2a2a3a;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .info-card-header .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .info-card-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e0e0f0;
+    flex: 1;
+  }
+  .chevron {
+    color: #555;
+    font-size: 12px;
+    transition: transform 0.2s;
+  }
+  .info-card.open .chevron { transform: rotate(180deg); }
+  .info-card-body {
+    display: none;
+    padding-top: 16px;
+    border-top: 1px solid #2a2a3a;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #aaa;
+  }
+  .info-card.open .info-card-body { display: block; }
+  .info-card-body p { margin-bottom: 12px; }
+  .info-card-body p:last-child { margin-bottom: 0; }
+  .highlight { color: #a78bfa; font-weight: 600; }
+  .highlight-green { color: #34d399; font-weight: 600; }
+  .highlight-red { color: #f87171; font-weight: 600; }
+  .highlight-yellow { color: #fbbf24; font-weight: 600; }
+
+  /* DAILY BLOCKS */
+  .block-card {
+    background: #1a1a24;
+    border: 1px solid #2a2a3a;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .block-header:hover { background: #ffffff05; }
+  .block-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .block-meta { flex: 1; }
+  .block-meta h3 { font-size: 15px; font-weight: 700; color: #e0e0f0; }
+  .block-meta span { font-size: 12px; color: #666; margin-top: 2px; display: block; }
+  .block-duration {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .block-chevron { color: #444; font-size: 12px; transition: transform 0.2s; }
+  .block-card.open .block-chevron { transform: rotate(180deg); }
+
+  .block-body { display: none; border-top: 1px solid #2a2a3a; }
+  .block-card.open .block-body { display: block; }
+
+  /* EXERCISES */
+  .exercise {
+    padding: 18px 20px;
+    border-bottom: 1px solid #1e1e2a;
+  }
+  .exercise:last-child { border-bottom: none; }
+  .exercise-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+  .exercise-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid #333;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 11px;
+    color: transparent;
+  }
+  .exercise-check.checked {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: white;
+  }
+  .exercise-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    color: #d0d0e8;
+  }
+  .exercise-duration {
+    font-size: 11px;
+    color: #666;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .exercise-toggle { color: #444; font-size: 11px; flex-shrink: 0; margin-top: 3px; transition: transform 0.2s; }
+  .exercise.open .exercise-toggle { transform: rotate(180deg); }
+  .exercise-body {
+    display: none;
+    margin-top: 14px;
+    margin-left: 32px;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.7;
+  }
+  .exercise.open .exercise-body { display: block; }
+  .exercise-body p { margin-bottom: 10px; }
+  .exercise-body p:last-child { margin-bottom: 0; }
+  .steps { list-style: none; padding: 0; }
+  .steps li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2a2a3a;
+    color: #a78bfa;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .why-box {
+    background: #7c3aed11;
+    border: 1px solid #7c3aed33;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #9d7fe8;
+  }
+  .why-box strong { color: #a78bfa; }
+
+  /* BEHAVIORAL RULES */
+  .rule-card {
+    background: #1a1a24;
+    border: 1px solid #2a2a3a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .rule-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: #f8717122;
+    border: 1px solid #f8717144;
+    color: #f87171;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .rule-content h4 { font-size: 14px; font-weight: 700; color: #f0d0d0; margin-bottom: 6px; }
+  .rule-content p { font-size: 13px; color: #888; line-height: 1.65; }
+
+  /* PHASE TRACKER */
+  .phase-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .phase-item {
+    background: #1a1a24;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .phase-item.current {
+    border-color: #7c3aed55;
+    background: #7c3aed11;
+  }
+  .phase-item .phase-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .phase-item.current .phase-label { color: #a78bfa; }
+  .phase-item h4 { font-size: 13px; font-weight: 600; color: #888; margin-bottom: 4px; }
+  .phase-item.current h4 { color: #e0e0f0; }
+  .phase-item p { font-size: 11px; color: #555; }
+  .phase-item.current p { color: #888; }
+  .current-badge {
+    display: inline-block;
+    background: #7c3aed;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  /* WATCH LIST */
+  .watch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .watch-card {
+    background: #1a1a24;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid;
+  }
+  .watch-card.good { border-color: #34d39933; }
+  .watch-card.flag { border-color: #f8717133; }
+  .watch-card h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .watch-card.good h4 { color: #34d399; }
+  .watch-card.flag h4 { color: #f87171; }
+  .watch-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #888;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .watch-item:last-child { margin-bottom: 0; }
+  .watch-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .good .watch-dot { background: #34d399; }
+  .flag .watch-dot { background: #f87171; }
+
+  /* EDUCATION CARD */
+  .book-card {
+    background: linear-gradient(135deg, #1e1a2e, #1a1a24);
+    border: 1px solid #7c3aed44;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .book-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+  .book-info h4 { font-size: 15px; font-weight: 700; color: #e0e0f0; margin-bottom: 4px; }
+  .book-info p { font-size: 13px; color: #888; line-height: 1.6; }
+  .book-tag {
+    display: inline-block;
+    background: #7c3aed22;
+    border: 1px solid #7c3aed44;
+    color: #a78bfa;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+  }
+
+  /* NAV dots */
+  .nav-hint {
+    text-align: center;
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 20px;
+  }
+
+  /* COLORS */
+  .morning-dot { background: #f59e0b; }
+  .morning-duration { background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44; }
+  .afternoon-dot { background: #7c3aed; }
+  .afternoon-duration { background: #7c3aed22; color: #a78bfa; border: 1px solid #7c3aed44; }
+  .evening-dot { background: #3b82f6; }
+  .evening-duration { background: #3b82f622; color: #93c5fd; border: 1px solid #3b82f644; }
+  .morning-icon { background: #f59e0b22; }
+  .afternoon-icon { background: #7c3aed22; }
+  .evening-icon { background: #3b82f622; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-badge">Recovery Protocol</div>
+    <h1>Central Sensitization Plan</h1>
+    <p>Your nervous system has been in threat mode since July. This plan retrains it — one block at a time.</p>
+  </div>
+
+  <div class="phase-tabs">
+    <button class="phase-tab active" onclick="showTab('understand')">Understand</button>
+    <button class="phase-tab" onclick="showTab('daily')">Daily Protocol</button>
+    <button class="phase-tab" onclick="showTab('rules')">Rules</button>
+    <button class="phase-tab" onclick="showTab('progress')">Progress</button>
+  </div>
+
+  <!-- ═══════════════════ UNDERSTAND ═══════════════════ -->
+  <div class="phase-content active" id="tab-understand">
+
+    <div class="info-card open">
+      <div class="info-card-header" onclick="toggleCard(this)">
+        <div class="icon morning-icon">🧠</div>
+        <h3>What's Actually Happening</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="info-card-body">
+        <p>Your nervous system has been in threat-detection mode since July — that's <span class="highlight">9 months</span>. It learned that your lower leg equals danger. It's gotten so efficient at this that it's now generating signals in your face, your back, and other places. This is called <span class="highlight">central sensitization</span>.</p>
+        <p>Your threat threshold has dropped so low that almost any input — touch, movement, attention, even answering questions — can trigger a pain response. That's why your back fired while you were just sitting and typing.</p>
+        <p>This plan works by teaching your nervous system that your body is safe again.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-header" onclick="toggleCard(this)">
+        <div class="icon afternoon-icon">🦴</div>
+        <h3>Can nerve pain imitate bone tenderness?</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="info-card-body">
+        <p><span class="highlight-green">Yes — you were right.</span> This is called <span class="highlight">allodynia</span>. Your brain has a threat map assigned to specific coordinates on your lower leg. When Amelia pressed those coordinates, your brain fired the alarm regardless of whether the bone was actually being aggravated.</p>
+        <p>Pain that moves to multiple spots, pain that appeared in your back unprompted, pain that exploded during Amelia's session as your anxiety rose — none of that is structural. Structures don't move around. That's your nervous system.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-header" onclick="toggleCard(this)">
+        <div class="icon" style="background:#f8717122;">⚡</div>
+        <h3>The face + chills event</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="info-card-body">
+        <p>The shooting/zapping pain in your fibula followed immediately by your face vibrating and chills running down it — that is not a bone event. <span class="highlight-red">Bones don't do that.</span></p>
+        <p>The front of your face is innervated by the trigeminal nerve. A pain signal in your leg should not cause facial sensations unless your <span class="highlight">central nervous system</span> is involved. This is the clearest sign that your sensitization has become systemic, not just local to your leg.</p>
+        <p>If this happens again, note exactly what you were doing, your stress level, and whether you had been thinking about pain. Bring that to the June 29th appointment.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-header" onclick="toggleCard(this)">
+        <div class="icon" style="background:#34d39922;">🎯</div>
+        <h3>5 things this plan does</h3>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="info-card-body">
+        <p><span class="highlight-green">1. Accurate information</span> — Your brain needs to learn there is no ongoing damage. Pain neuroscience education literally reduces pain intensity.</p>
+        <p><span class="highlight-green">2. Sensory normalization</span> — Gradually re-exposing the sensitized area to safe input so the brain stops treating touch as a threat.</p>
+        <p><span class="highlight-green">3. Motor map retraining</span> — Rebuilding the movement programs your brain has been avoiding since July (Graded Motor Imagery).</p>
+        <p><span class="highlight-green">4. Nervous system regulation</span> — Physiologically shifting out of the sympathetic overdrive state your system is stuck in.</p>
+        <p><span class="highlight-green">5. Breaking the attention loop</span> — Every time you scan or probe a spot, you reinforce the threat map. Stopping that behavior is half the work.</p>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-icon">📖</div>
+      <div class="book-info">
+        <h4>Explain Pain — Moseley & Butler</h4>
+        <p>The clinical standard for pain neuroscience education. Reading and understanding this is an active intervention, not background reading. Studies show measurable pain reduction in patients who receive this education.</p>
+        <div class="book-tag">Start this week — non-negotiable</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ DAILY PROTOCOL ═══════════════════ -->
+  <div class="phase-content" id="tab-daily">
+
+    <!-- MORNING -->
+    <div class="block-card open">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-dot morning-dot"></div>
+        <div class="block-meta">
+          <h3>Morning Block</h3>
+          <span>Before you leave the house — 6:40am</span>
+        </div>
+        <div class="block-duration morning-duration">7 min</div>
+        <span class="block-chevron">▼</span>
+      </div>
+      <div class="block-body">
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Extended Exhale Breathing</div>
+            <div class="exercise-duration">5 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p>Inhale through your nose for <strong style="color:#e0e0e0">4 counts</strong>. Exhale through your mouth for <strong style="color:#e0e0e0">6–8 counts</strong>. Repeat for 5 minutes.</p>
+            <div class="why-box"><strong>Why:</strong> The extended exhale directly activates the vagus nerve and shifts you toward parasympathetic state. You're starting your day by telling your threat system to stand down before school stress hits.</div>
+          </div>
+        </div>
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Intention Setting</div>
+            <div class="exercise-duration">2 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p>Before you leave, say this once — out loud or in your head:</p>
+            <p style="color:#a78bfa; font-style:italic; padding: 10px 14px; background:#7c3aed11; border-radius:8px; border-left: 3px solid #7c3aed;">"I am not checking my leg today. If pain appears, I will notice it and move on."</p>
+            <div class="why-box"><strong>Why:</strong> Behavioral priming. You're setting the rule before the situations that test it arise, not reacting to them in the moment.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- AFTERNOON -->
+    <div class="block-card">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-dot afternoon-dot"></div>
+        <div class="block-meta">
+          <h3>Afternoon Block</h3>
+          <span>3:00–3:30pm — do this BEFORE gym or bike</span>
+        </div>
+        <div class="block-duration afternoon-duration">20 min</div>
+        <span class="block-chevron">▼</span>
+      </div>
+      <div class="block-body">
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Laterality Training — Recognise App</div>
+            <div class="exercise-duration">8 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p>Download the <strong style="color:#e0e0e0">Recognise app by NOI Group</strong> (free version). Select the foot and ankle program.</p>
+            <p>The app shows photos of feet at different angles. You tap left or right as fast as you can. It tracks speed and accuracy.</p>
+            <ul class="steps">
+              <li><div class="step-num">1</div><span>Open app → Foot & Ankle program</span></li>
+              <li><div class="step-num">2</div><span>Work toward <strong style="color:#e0e0e0">80%+ accuracy</strong> before moving to Phase 2</span></li>
+              <li><div class="step-num">3</div><span>If this reliably triggers pain — stop and retry tomorrow</span></li>
+            </ul>
+            <div class="why-box"><strong>Why:</strong> Sensitized brains show measurably reduced left/right limb accuracy. This distorts your brain's body map. Retraining laterality literally rewires the threat map assigned to that limb.</div>
+          </div>
+        </div>
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Sensory Desensitization</div>
+            <div class="exercise-duration">7 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p><strong style="color:#e0e0e0">Materials:</strong> one soft cloth (old t-shirt) + one slightly coarser cloth (towel)</p>
+            <ul class="steps">
+              <li><div class="step-num">1</div><span>Start on your upper leg / thigh — stroke slowly with soft cloth — 1 min</span></li>
+              <li><div class="step-num">2</div><span>Move to your knee area — 1 min</span></li>
+              <li><div class="step-num">3</div><span>Move to your calf — 1 min</span></li>
+              <li><div class="step-num">4</div><span>Move toward lower leg/fibula area <strong style="color:#e0e0e0">only if no significant pain</strong></span></li>
+              <li><div class="step-num">5</div><span>Never force it onto the most sensitive spot — stay at whatever level feels manageable</span></li>
+            </ul>
+            <div class="why-box"><strong>Why:</strong> Normalizes sensory processing by working from areas the brain maps as safe toward areas it has flagged as dangerous. The boundary moves over days and weeks.</div>
+          </div>
+        </div>
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Motor Imagery</div>
+            <div class="exercise-duration">5 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p>Sit or lie down. Close your eyes. Vividly imagine these movements — ~60 seconds each:</p>
+            <ul class="steps">
+              <li><div class="step-num">1</div><span>Walking normally across a grass field</span></li>
+              <li><div class="step-num">2</div><span>Lateral shuffle, side to side</span></li>
+              <li><div class="step-num">3</div><span>Striking a ball cleanly with your left foot</span></li>
+              <li><div class="step-num">4</div><span>A short explosive sprint</span></li>
+              <li><div class="step-num">5</div><span>Jumping and landing clean</span></li>
+            </ul>
+            <p>You are <strong style="color:#a78bfa">not moving</strong>. Only your brain is. Vividness matters — feel the ground, the ball, the air. Dim imagery is less effective.</p>
+            <div class="why-box"><strong>Why:</strong> Reactivates dormant motor programs your brain has been avoiding since July, without triggering a pain response. Rebuilds the movement maps.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EVENING -->
+    <div class="block-card">
+      <div class="block-header" onclick="toggleBlock(this)">
+        <div class="block-dot evening-dot"></div>
+        <div class="block-meta">
+          <h3>Evening Block</h3>
+          <span>Before bed</span>
+        </div>
+        <div class="block-duration evening-duration">15 min</div>
+        <span class="block-chevron">▼</span>
+      </div>
+      <div class="block-body">
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Mirror Therapy</div>
+            <div class="exercise-duration">7 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p><strong style="color:#e0e0e0">Setup:</strong> Sit in a chair. Place your full-length mirror vertically between your legs, angled to reflect your RIGHT (unaffected) leg. Cover your left leg completely — it must be out of sight.</p>
+            <p>Perform these movements with your <strong style="color:#e0e0e0">right foot</strong> while watching only the mirror:</p>
+            <ul class="steps">
+              <li><div class="step-num">1</div><span>Slow foot circles — both directions</span></li>
+              <li><div class="step-num">2</div><span>Flex and point the foot</span></li>
+              <li><div class="step-num">3</div><span>Heel raises</span></li>
+              <li><div class="step-num">4</div><span>Ankle tilts side to side</span></li>
+            </ul>
+            <p>Start at <strong style="color:#e0e0e0">5 min</strong> week 1 → build to <strong style="color:#e0e0e0">10–12 min</strong> by week 2.</p>
+            <div class="why-box"><strong>Why:</strong> Your brain receives visual input of two normal legs moving. This directly conflicts with the threat map and begins to override it. Mirror therapy has the strongest evidence base in this entire plan for CRPS and central sensitization.</div>
+          </div>
+        </div>
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Wind-Down Breathing</div>
+            <div class="exercise-duration">5 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p>Same as morning — 4 count inhale, 6–8 count exhale. Do it in bed.</p>
+            <p>You are telling your system: the day is done, the threat is not active.</p>
+          </div>
+        </div>
+
+        <div class="exercise">
+          <div class="exercise-header" onclick="toggleExercise(this)">
+            <div class="exercise-check" onclick="toggleCheck(event, this)"></div>
+            <div class="exercise-title">Neutral Body Awareness</div>
+            <div class="exercise-duration">3 min</div>
+            <span class="exercise-toggle">▼</span>
+          </div>
+          <div class="exercise-body">
+            <p>Lie flat, eyes closed. Move your awareness through each area for ~10 seconds in order: feet → calves → knees → thighs → hips → stomach → chest → shoulders → arms → face.</p>
+            <p><strong style="color:#f87171">This is NOT scanning for pain.</strong> You are visiting each area neutrally and leaving. You are not checking whether something hurts. Neutral awareness only.</p>
+            <div class="why-box"><strong>Why:</strong> Trains you to have non-threatening body awareness, which gradually reduces the hyper-vigilance your nervous system has developed.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ RULES ═══════════════════ -->
+  <div class="phase-content" id="tab-rules">
+
+    <div style="margin-bottom:16px; padding:16px 18px; background:#f8717111; border:1px solid #f8717133; border-radius:12px; font-size:13px; color:#f87171; line-height:1.6;">
+      These are not suggestions. The behavioral rules are just as important as the exercises. Breaking them reinforces the exact neural patterns you're trying to erase.
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">1</div>
+      <div class="rule-content">
+        <h4>No Body Scanning</h4>
+        <p>You do not check your leg. You do not press on it to see if it's tender. You do not lie in bed running through whether it hurts. Every time you scan, you send a threat signal to your brain and reinforce the map you're trying to erase.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">2</div>
+      <div class="rule-content">
+        <h4>The New Spot Rule</h4>
+        <p>When pain appears in a new location — like your back did while you were answering questions — respond with exactly this: <em style="color:#a78bfa">"That's my nervous system. It's not damage."</em> Redirect your attention to something external. Do not press on the new spot. Do not analyze it. Acknowledge and redirect.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">3</div>
+      <div class="rule-content">
+        <h4>Keep a Brief Daily Pain Log</h4>
+        <p>Two minutes per day. Date, location(s) of pain, intensity out of 10, what you were doing. This is data collection — not attention to pain. It shows you the trend over weeks, and trends are what matter, not individual days.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">4</div>
+      <div class="rule-content">
+        <h4>No Pre-Loading the MRI Results</h4>
+        <p>Whatever the MRIs show, this plan continues. Even if there is residual bone stress present, the nervous system work runs in parallel. These are not competing approaches.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px; margin-bottom:16px;">
+      <h3 style="font-size:15px; font-weight:700; color:#e0e0f0; margin-bottom:12px;">Conditioning (Keep Doing)</h3>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div style="background:#1a1a24; border:1px solid #2a2a3a; border-radius:12px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">🚴</div>
+        <div style="font-size:14px; font-weight:600; color:#e0e0f0; margin-bottom:4px;">Bike HIIT</div>
+        <div style="font-size:12px; color:#888;">Continue as is. Cardiovascular conditioning, zero ground impact, bilateral rhythm calms the nervous system.</div>
+      </div>
+      <div style="background:#1a1a24; border:1px solid #2a2a3a; border-radius:12px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">🏊</div>
+        <div style="font-size:14px; font-weight:600; color:#e0e0f0; margin-bottom:4px;">Swimming / Aqua Jogging</div>
+        <div style="font-size:12px; color:#888;">Reintroduce if not happening. Hydrostatic pressure has a documented calming effect on the autonomic nervous system.</div>
+      </div>
+      <div style="background:#1a1a24; border:1px solid #2a2a3a; border-radius:12px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">🧻</div>
+        <div style="font-size:14px; font-weight:600; color:#e0e0f0; margin-bottom:4px;">Foam Rolling</div>
+        <div style="font-size:12px; color:#888;">Continue. Avoid rolling directly over the fibula. Everything else is fine.</div>
+      </div>
+      <div style="background:#1a1a24; border:1px solid #2a2a3a; border-radius:12px; padding:16px;">
+        <div style="font-size:20px; margin-bottom:8px;">🏋️</div>
+        <div style="font-size:14px; font-weight:600; color:#e0e0f0; margin-bottom:4px;">Lifting</div>
+        <div style="font-size:12px; color:#888;">You have this handled. Keep going. Eric resumes with impact-appropriate sessions once the MRIs clear it.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ PROGRESS ═══════════════════ -->
+  <div class="phase-content" id="tab-progress">
+
+    <div class="phase-track">
+      <div class="phase-item current">
+        <div class="current-badge">You Are Here</div>
+        <div class="phase-label">Phase 1</div>
+        <h4>Weeks 1–2</h4>
+        <p>Build the habit. Start laterality training from scratch.</p>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Phase 2</div>
+        <h4>Weeks 3–4</h4>
+        <p>80%+ laterality accuracy. Sport-specific motor imagery. Mirror therapy 10–12 min.</p>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Phase 3</div>
+        <h4>Week 5+</h4>
+        <p>Graded impact return if MRIs support it and pain trend is consistently down.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:700; color:#e0e0f0; margin-bottom:12px;">What to Track Weekly</h3>
+    <div style="background:#1a1a24; border:1px solid #2a2a3a; border-radius:12px; padding:18px; margin-bottom:20px; font-size:13px; color:#888; line-height:1.9;">
+      <div>📊 <strong style="color:#d0d0e8">Recognise accuracy %</strong> — your laterality score improving = brain map rewiring</div>
+      <div>🪞 <strong style="color:#d0d0e8">Mirror therapy response</strong> — any change in sensation during sessions?</div>
+      <div>📍 <strong style="color:#d0d0e8">New pain locations</strong> — are new spots appearing or is it staying contained?</div>
+      <div>📈 <strong style="color:#d0d0e8">Pain trend</strong> — better, same, or worse vs last week overall</div>
+      <div>✅ <strong style="color:#d0d0e8">Compliance</strong> — which sessions you missed and why</div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:700; color:#e0e0f0; margin-bottom:12px;">Signs to Watch</h3>
+    <div class="watch-grid">
+      <div class="watch-card good">
+        <h4>Good Signs</h4>
+        <div class="watch-item"><div class="watch-dot"></div><span>Laterality accuracy improving week over week</span></div>
+        <div class="watch-item"><div class="watch-dot"></div><span>Mirror therapy with less or no pain response</span></div>
+        <div class="watch-item"><div class="watch-dot"></div><span>Pain staying in fewer spots, not spreading</span></div>
+        <div class="watch-item"><div class="watch-dot"></div><span>New-spot redirect getting easier to execute</span></div>
+      </div>
+      <div class="watch-card flag">
+        <h4>Flag for Doctors</h4>
+        <div class="watch-item"><div class="watch-dot"></div><span>Pain spreading to upper body or opposite leg</span></div>
+        <div class="watch-item"><div class="watch-dot"></div><span>Face/chills event repeating or intensifying</span></div>
+        <div class="watch-item"><div class="watch-dot"></div><span>Skin color or temperature changes in the limb</span></div>
+        <div class="watch-item"><div class="watch-dot"></div><span>Sweating differences between legs</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; padding:16px 18px; background:#fbbf2411; border:1px solid #fbbf2433; border-radius:12px; font-size:13px; color:#fbbf24; line-height:1.65;">
+      <strong>June 29th — Pain Specialists.</strong> If the face/chills event repeats before then, document the exact circumstances each time and bring it. That detail is not nothing and they need to hear it.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.phase-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.phase-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleCard(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  function toggleBlock(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  function toggleExercise(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  function toggleCheck(e, box) {
+    e.stopPropagation();
+    box.classList.toggle('checked');
+    box.textContent = box.classList.contains('checked') ? '✓' : '';
+  }
+</script>
+</body>
+</html>
