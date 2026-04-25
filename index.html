@@ -846,6 +846,515 @@ body {
     </div>
   </div>
 
+  <!-- ===================== ATHLETIC EVOLUTION PROTOCOL ===================== -->
+  <style>
+    .proto-divider {
+      display: flex; align-items: center; gap: 10px;
+      margin: 28px 0 18px;
+    }
+    .proto-divider-line { flex: 1; height: 1px; background: var(--border); }
+    .proto-divider-label {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold);
+      background: #fef3c7; border: 1px solid #fcd34d;
+      padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+    }
+    .proto-sub-tabs {
+      display: flex; gap: 6px; overflow-x: auto;
+      margin-bottom: 16px; padding-bottom: 2px; scrollbar-width: none;
+    }
+    .proto-sub-tabs::-webkit-scrollbar { display: none; }
+    .proto-sub-tab {
+      flex-shrink: 0; padding: 7px 14px; border-radius: 20px;
+      border: 1.5px solid var(--border); background: white;
+      font-size: .78rem; font-weight: 700; color: var(--muted);
+      cursor: pointer; transition: all .2s; white-space: nowrap;
+    }
+    .proto-sub-tab.active { background: var(--gold); color: white; border-color: var(--gold); }
+    .proto-panel { display: none; }
+    .proto-panel.active { display: block; }
+    .pillar-cards { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 14px; }
+    .pillar-c {
+      background: white; border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0; padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+    .pillar-c-num { font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 4px; text-transform: uppercase; }
+    .pillar-c h4 { font-size: 0.92rem; font-weight: 800; margin-bottom: 6px; }
+    .pillar-c p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .proto-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .proto-table th {
+      text-align: left; padding: 10px 12px;
+      background: var(--navy); color: white;
+      font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .proto-table th:first-child { border-radius: 8px 0 0 0; }
+    .proto-table th:last-child { border-radius: 0 8px 0 0; }
+    .proto-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .proto-table tr:last-child td { border-bottom: none; }
+    .proto-table tr:nth-child(even) td { background: #f8fafc; }
+    .proto-badge {
+      display: inline-block; background: #dbeafe; color: var(--blue);
+      font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+    }
+    .proto-routine {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+      margin-bottom: 10px; box-shadow: var(--shadow);
+    }
+    .proto-routine-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: #fef3c7; border: 1px solid #fcd34d;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .proto-routine h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+    .proto-routine p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+    .day-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 14px; }
+    .day-c {
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px; box-shadow: var(--shadow);
+    }
+    .day-c .day-tag { font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
+    .day-c h4 { font-size: 0.85rem; font-weight: 800; margin-bottom: 5px; }
+    .day-c p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .hormone-cards { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 14px; }
+    .hormone-c {
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px; box-shadow: var(--shadow);
+    }
+    .hormone-c h4 { font-size: 0.88rem; font-weight: 800; margin-bottom: 6px; }
+    .hormone-c p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .kpi-row {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; box-shadow: var(--shadow);
+    }
+    .kpi-num-badge {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--navy); color: white;
+      font-size: 0.85rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .kpi-row h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+    .kpi-row p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+    .vid-strip {
+      display: flex; gap: 8px; overflow-x: auto;
+      padding-bottom: 8px; margin-bottom: 16px; scrollbar-width: none;
+    }
+    .vid-strip::-webkit-scrollbar { display: none; }
+    .vid-card {
+      flex-shrink: 0; display: flex; gap: 10px; align-items: center;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px;
+      text-decoration: none; color: inherit;
+      box-shadow: var(--shadow); transition: border-color 0.2s, box-shadow 0.2s;
+      min-width: 200px; max-width: 220px;
+    }
+    .vid-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(217,119,6,0.15); }
+    .vid-icon {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white; font-size: 11px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vid-acct { font-size: 0.72rem; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+    .vid-label { font-size: 0.7rem; color: var(--muted); line-height: 1.3; }
+    .safety-note {
+      background: #fef3c7; border: 1px solid #fcd34d;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0; padding: 14px 16px; margin-top: 14px;
+    }
+    .safety-note strong { color: var(--gold); }
+    .safety-note p { font-size: 0.82rem; color: #92400e; line-height: 1.65; }
+  </style>
+
+  <div class="proto-divider">
+    <div class="proto-divider-line"></div>
+    <div class="proto-divider-label">🧬 Athletic Evolution Protocol</div>
+    <div class="proto-divider-line"></div>
+  </div>
+
+  <div class="philosophy">
+    <h3>The Human Spring</h3>
+    <p>This protocol integrates unconventional biomechanics (GOATA, Tensegrity), advanced cellular physiology (Piezoelectricity, CIRP), and holistic health (Grounding, Hormonal Optimization) to rebuild your body from the ground up — literally. The goal is to transition from a "collapsing" athlete to a "bow-tension" athlete who utilizes the fascia as a spring rather than relying solely on muscular contraction.</p>
+  </div>
+
+  <div class="proto-sub-tabs">
+    <button class="proto-sub-tab active" onclick="switchProto('philosophy',this)">🧠 Core Philosophy</button>
+    <button class="proto-sub-tab" onclick="switchProto('level1',this)">🏗️ Level 1 — Foundation</button>
+    <button class="proto-sub-tab" onclick="switchProto('level2',this)">⚡ Level 2 — The Spring</button>
+    <button class="proto-sub-tab" onclick="switchProto('sched',this)">📆 Schedule</button>
+    <button class="proto-sub-tab" onclick="switchProto('nutrition',this)">🍎 Nutrition & Hormones</button>
+    <button class="proto-sub-tab" onclick="switchProto('kpi',this)">📊 KPIs & Safety</button>
+  </div>
+
+  <!-- PROTO TAB: CORE PHILOSOPHY -->
+  <div id="proto-philosophy" class="proto-panel active">
+    <div class="pillar-cards">
+      <div class="pillar-c">
+        <div class="pillar-c-num">Pillar 01</div>
+        <h4>Tensegrity (Tension + Integrity)</h4>
+        <p>Your body is a continuous web of fascia. If the big toe is weak, the hip cannot fire. We train the <em>system</em>, not the muscle. Every chain matters.</p>
+      </div>
+      <div class="pillar-c">
+        <div class="pillar-c-num">Pillar 02</div>
+        <h4>Piezoelectricity</h4>
+        <p>Bone and fascia generate electric charges when compressed or stretched. High-tension movements like ISO holds literally "recharge" your cellular matrix and accelerate tissue repair.</p>
+      </div>
+      <div class="pillar-c">
+        <div class="pillar-c-num">Pillar 03</div>
+        <h4>The Bio-Electric Environment</h4>
+        <p>Gerald Pollack's "4th Phase of Water" (EZ water) — activated through grounding and sunlight — improves cellular viscosity and signalling. You optimize your body's environment, not just its mechanics.</p>
+      </div>
+    </div>
+    <div class="card" style="background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%); color: white; border: none;">
+      <div class="card-title" style="color: var(--gold);">💡 The GOATA + Fascial System</div>
+      <p style="font-size: 0.84rem; line-height: 1.7; opacity: 0.9;">Every exercise in this protocol reinforces "bow-tension" posture — a state where the fascial system stores and releases energy like a loaded spring. This reduces joint stress, amplifies power output, and is the defining trait of elite movers.</p>
+    </div>
+    <div class="section-label">📱 Your Saved Videos — Tensegrity & The Spring</div>
+    <div class="vid-strip">
+      <a class="vid-card" href="https://www.instagram.com/reel/DWJ21vjjXGN/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@zinsegrity</div><div class="vid-label">Tensegrity in motion</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DXRi6xMjcwP/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@zinsegrity</div><div class="vid-label">Fascial chain loading</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWtrgZsEcNt/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@zinsegrity</div><div class="vid-label">Bow-tension pattern</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWv4LLgE4l3/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@elastaboy</div><div class="vid-label">Elastic recoil drills</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DVeNFPmkpAG/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@elastaboy</div><div class="vid-label">Spring athlete mechanics</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWSufMCksNK/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@the.ancestral.athlete</div><div class="vid-label">Natural movement patterns</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PROTO TAB: LEVEL 1 -->
+  <div id="proto-level1" class="proto-panel">
+    <div class="section-label">Weeks 1–4 · Daily Morning Routine</div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">☀️</div>
+      <div>
+        <h4>Grounding & Vitamin D</h4>
+        <p>15 minutes barefoot on grass or dirt. Face the sun to optimize T3/T4 thyroid conversion and establish a healthy Cortisol rhythm for the day.</p>
+      </div>
+    </div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">👁️</div>
+      <div>
+        <h4>Neuro-Vision</h4>
+        <p>Eye tracking drills — Brock String or thumb circles — to improve depth perception and develop "Body Dissociation" awareness.</p>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:4px;">📱 Neuro-Vision Reference</div>
+    <div class="vid-strip">
+      <a class="vid-card" href="https://www.instagram.com/p/DXDqDdYDtgx/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@drshah_neurovision</div><div class="vid-label">Vision & athletic performance</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/p/DVITYgZiI1z/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@drshah_neurovision</div><div class="vid-label">Eye tracking drills</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DS9b_bEEdwd/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@drshah_neurovision</div><div class="vid-label">Depth perception training</div></div>
+      </a>
+    </div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">🦶</div>
+      <div>
+        <h4>The Big Toe Pull</h4>
+        <p>Sit and manually pull the big toe into extension while keeping the ball of the foot expanded. Activates the Plantar Fascia chain.</p>
+      </div>
+    </div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">🔄</div>
+      <div>
+        <h4>Toe Retraction</h4>
+        <p>Pull toes back without losing arch height. Trains intrinsic foot musculature essential for fascial tensioning up the entire chain.</p>
+      </div>
+    </div>
+
+    <div class="section-label">Level 1 Workout — 3× Per Week</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="proto-table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Intent</th>
+            <th>Protocol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bow External Sit ISO</strong></td>
+            <td>Creates hip-to-ankle tension chain</td>
+            <td><span class="proto-badge">3 × 60 sec</span></td>
+          </tr>
+          <tr>
+            <td><strong>Ankle Dorsiflexion (Dynamic)</strong></td>
+            <td>Mobilizes the talus bone</td>
+            <td><span class="proto-badge">20 reps / side</span></td>
+          </tr>
+          <tr>
+            <td><strong>Ball of Foot Expansion</strong></td>
+            <td>Splaying the metatarsals</td>
+            <td><span class="proto-badge">Constant awareness</span></td>
+          </tr>
+          <tr>
+            <td><strong>Wall Tibialis Raises</strong></td>
+            <td>Deceleration & eccentric strength</td>
+            <td><span class="proto-badge">2 × 25 reps</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-label">📱 Your Saved Videos — Foot, Arch & Barefoot</div>
+    <div class="vid-strip">
+      <a class="vid-card" href="https://www.instagram.com/reel/DWnGTavjCeN/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@barefootstrength</div><div class="vid-label">Arch building barefoot</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DXPK4RWCJR0/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@hft.archives</div><div class="vid-label">Arch & foot protocol</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DXIEl0GiBZ7/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@hft.archives</div><div class="vid-label">Foot tensegrity drills</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DXFgP31jfmw/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@theprehabguys</div><div class="vid-label">Foot & ankle prehab</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DXRrY5-DphM/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@tailoredfitpt</div><div class="vid-label">Pronation correction</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DUT8DfbjrWR/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@dr.schutza.pt</div><div class="vid-label">Stress fracture prevention</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DUQlPFFiHyF/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@zinsegrity</div><div class="vid-label">Barefoot foot activation</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PROTO TAB: LEVEL 2 -->
+  <div id="proto-level2" class="proto-panel">
+    <div class="section-label">Weeks 5–12 · Daily Additions</div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">🧊</div>
+      <div>
+        <h4>Cold Exposure</h4>
+        <p>Induces Cold Inducible RNA Binding Protein (CIRP) for tissue repair and systemic inflammation control. Cold plunges or cold showers.</p>
+      </div>
+    </div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">🦶</div>
+      <div>
+        <h4>Hyper-arch Engagement</h4>
+        <p>Walk barefoot with deliberate focus on "clawing" the ground with the foot. Progressively reinforces the medial arch spring mechanism.</p>
+      </div>
+    </div>
+
+    <div class="section-label">High-Speed Eccentric Overload Workout</div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">⚡</div>
+      <div>
+        <h4>High-Speed Eccentric Squats</h4>
+        <p>Drop fast and "catch" yourself at the bottom. Trains the fascia's elastic recoil response — the defining quality of a spring athlete.</p>
+      </div>
+    </div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">🦵</div>
+      <div>
+        <h4>Hip Flexor ISO (Knee Above Hip)</h4>
+        <p>Hold a high-knee position to activate the deep psoas for hip control and dissociation from lumbar spine movement.</p>
+      </div>
+    </div>
+    <div class="proto-routine">
+      <div class="proto-routine-icon">🏃</div>
+      <div>
+        <h4>Ziani-Style Bounce</h4>
+        <p>Low-amplitude, high-frequency hopping on the balls of the feet. Stimulates BDNF and IGF-1 for tissue remodelling. Do after meals for insulin sensitivity too.</p>
+      </div>
+    </div>
+    <div class="section-label">📱 Your Saved Videos — Power, Spring & Eccentrics</div>
+    <div class="vid-strip">
+      <a class="vid-card" href="https://www.instagram.com/reel/DV2-ECfDH0n/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@garcia_effect_official</div><div class="vid-label">GOATA movement pattern</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWmLZscDD8n/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@garcia_effect_official</div><div class="vid-label">Bow-tension running</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWYrXUaDZcD/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@pjfperformance</div><div class="vid-label">Eccentric loading & vert</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DVtG8wClLar/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@pjfperformance</div><div class="vid-label">Elastic power training</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWad3SEExhr/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@quintin.torres36</div><div class="vid-label">Hip dissociation drill</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWND7ynijJ6/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@parisibrothers2.0</div><div class="vid-label">Athletic spring mechanics</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWa_c8-DFtU/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@workout_athletics</div><div class="vid-label">Plyometric progressions</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DW4Kytakhj7/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@maxi_move_</div><div class="vid-label">Movement & coordination</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PROTO TAB: SCHEDULE -->
+  <div id="proto-sched" class="proto-panel">
+    <div class="section-label">Weekly Split</div>
+    <div class="day-cards">
+      <div class="day-c">
+        <div class="day-tag">Mon & Thu</div>
+        <h4>⚡ Power & Elasticity</h4>
+        <p>High-speed eccentrics, sprints, and GOATA movement patterns.</p>
+      </div>
+      <div class="day-c">
+        <div class="day-tag">Tue & Fri</div>
+        <h4>🧘 Tensegrity & ISO</h4>
+        <p>Long-duration holds, toe work, and hip dissociation drills.</p>
+      </div>
+      <div class="day-c">
+        <div class="day-tag">Wed & Sat</div>
+        <h4>🌿 Recovery & Environment</h4>
+        <p>Extended grounding, cold plunges, light mobility work.</p>
+      </div>
+      <div class="day-c">
+        <div class="day-tag">Sunday</div>
+        <h4>😴 Complete Rest</h4>
+        <p>Sunlight exposure only. Full nervous system recovery.</p>
+      </div>
+    </div>
+
+    <div class="section-label">Monthly Macro-Cycle</div>
+    <div class="card">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <div style="background:var(--blue); color:white; border-radius:8px; padding:4px 10px; font-size:0.72rem; font-weight:800; white-space:nowrap;">Weeks 1–3</div>
+          <div style="font-size:0.83rem; color:var(--text); line-height:1.55;">Progressive Loading — steadily increase time under tension across all exercises each week.</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <div style="background:var(--gold); color:white; border-radius:8px; padding:4px 10px; font-size:0.72rem; font-weight:800; white-space:nowrap;">Week 4</div>
+          <div style="font-size:0.83rem; color:var(--text); line-height:1.55;">Deload — focus purely on grounding and neuro-vision drills to lower Cortisol and allow deep adaptation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTO TAB: NUTRITION -->
+  <div id="proto-nutrition" class="proto-panel">
+    <div class="hormone-cards">
+      <div class="hormone-c">
+        <h4>🍚 Insulin Sensitivity</h4>
+        <p>Perform Ziani Bounces or air squats immediately after meals to shuttle glucose into the myofibrils rather than adipose tissue. Even 5 minutes makes a measurable difference in blood sugar response.</p>
+      </div>
+      <div class="hormone-c">
+        <h4>💤 Growth Hormone & IGF-1</h4>
+        <p>Prioritize 8 hours of sleep in a pitch-black room to maximize the nocturnal Growth Hormone pulse — the primary driver of tissue repair and IGF-1 secretion for muscle and tendon remodelling.</p>
+      </div>
+      <div class="hormone-c">
+        <h4>💧 Viscoelasticity & EZ Water</h4>
+        <p>Hydrate with mineral-rich water to support the EZ (Exclusion Zone) water phase in your fascia, per Gerald Pollack's research. Sunlight and grounding also actively enhance this phase.</p>
+      </div>
+      <div class="hormone-c">
+        <h4>☀️ T3/T4 & Cortisol Rhythm</h4>
+        <p>Morning barefoot sun exposure — even 10–15 min — regulates thyroid hormone conversion and establishes a healthy cortisol rhythm that sets the tone for the entire day's recovery and adaptation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROTO TAB: KPIs & SAFETY -->
+  <div id="proto-kpi" class="proto-panel">
+    <div class="section-label">Key Performance Indicators</div>
+    <div class="kpi-row">
+      <div class="kpi-num-badge">1</div>
+      <div>
+        <h4>Ankle Mobility</h4>
+        <p>Ability to achieve deep dorsiflexion without the heel lifting — a direct measure of talus and Achilles health. Track this weekly.</p>
+      </div>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-num-badge">2</div>
+      <div>
+        <h4>Toe Splay</h4>
+        <p>Visible space between every toe when standing naturally — indicates healthy intrinsic foot muscle activation and metatarsal spreading.</p>
+      </div>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-num-badge">3</div>
+      <div>
+        <h4>Elastic Recoil</h4>
+        <p>Feeling "light" and effortless during sprints rather than "heavy" or "muscular" — the hallmark of a functional fascial spring system working properly.</p>
+      </div>
+    </div>
+
+    <div class="safety-note">
+      <strong>⚠️ Safety Note</strong>
+      <p style="margin-top: 6px;">When transitioning to barefoot or high-speed eccentric training, begin at <strong>50% intensity</strong> to allow tendons to adapt to the new piezoelectric loads. Tendons adapt more slowly than muscle — a 6–8 week accommodation window is normal. Consult a qualified professional if you have pre-existing tendon tears or chronic joint issues before beginning.</p>
+    </div>
+    <div class="section-label" style="margin-top:18px;">📱 Your Saved Videos — Recovery & Pain Mechanics</div>
+    <div class="vid-strip">
+      <a class="vid-card" href="https://www.instagram.com/p/DWrmXuYDdnZ/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@yourpainmechanic</div><div class="vid-label">Pain & tissue mechanics</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DXIK3cbjVNi/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@prehabnyc</div><div class="vid-label">Injury prevention drills</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DVwxvEFDlro/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@strong_by_science</div><div class="vid-label">Science of recovery</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWCly46kZi1/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@elevatemethods</div><div class="vid-label">Elevate recovery method</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/reel/DWo0RiRjCBs/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@youngeryoudoc</div><div class="vid-label">Longevity & tissue health</div></div>
+      </a>
+      <a class="vid-card" href="https://www.instagram.com/p/DWcIOC7lBpi/" target="_blank">
+        <div class="vid-icon">▶</div>
+        <div><div class="vid-acct">@neurolab._</div><div class="vid-label">Neuromuscular recovery</div></div>
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <!-- ===================== SOCCER ===================== -->
@@ -2470,6 +2979,14 @@ function switchVersion(v) {
   document.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('version-' + v).classList.add('active');
   event.target.classList.add('active');
+}
+
+// ---- PROTOCOL SUB-TABS ----
+function switchProto(id, btn) {
+  document.querySelectorAll('.proto-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.proto-sub-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('proto-' + id).classList.add('active');
+  btn.classList.add('active');
 }
 
 // ---- EXTRA STUFF SUB-TABS ----
