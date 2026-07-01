@@ -1,5 +1,5 @@
 # IBRAHIM — MASTER FILE
-### Last Updated: June 10, 2026
+### Last Updated: June 30, 2026 (Ibrahim is now 15)
 
 ---
 
@@ -514,6 +514,70 @@ Evening: Did sessions happen? Quality? What needs to change tomorrow?
 **Push to GitHub main branch to deploy.**
 
 **Chatbot concept (future):** Claude chatbot embedded in site → Cloudflare Worker → Anthropic API. Build when API key ready.
+
+---
+
+---
+
+# ═══════════════════════════════════════════
+# SESSION UPDATE — June 30, 2026
+# ═══════════════════════════════════════════
+
+## STATUS
+- Ibrahim is now **15**. Healthy. Full summer mode.
+- **HEAT WAVE:** June 30 – July 4 will be 100°F+. Outdoor training moves to **after 7pm today, 5–7am Wed(7/1)–Sat(7/4)**. Midday = indoors (AC): academics, recovery, reading.
+
+## ⚠️ #1 RULE — LOAD MANAGEMENT (injury prevention)
+Last year, overtraining caused **stress fractures.** This now governs everything.
+- **One impact activity per day, MAX. Never two.**
+- **Impact** = field/soccer, basketball, running, jumping. **Low-impact** = swimming (zero), biking, fascia/mobility, grounding. **No load** = academics, reading, deen.
+- Swim/bike can accompany an impact session as recovery; impact never stacks on impact.
+- **Strength = fascia-driven resistance only** (bands, bodyweight, slow eccentrics, ISO holds). **No heavy lifting.** Keep leg-heavy work off impact days.
+- **Daily end-of-day check-in + pain diary** (what he actually did + pain: none/niggle/pain, where, trigger). Pain → next day rest/pool. Recurring shin/foot pain → professional. A **7-day load monitor** counts impact sessions.
+
+## DAILY RHYTHM + PREFERENCES
+- Up at **sunrise, grounding first** (he loves it). Bed by **10:30**.
+- Heat rule: outdoor before 11am / after 7pm.
+- **Mon–Thu soccer/basketball training = 9:30–10:45** (Fatima's preferred window; heat wave overrides to 5–7am this week).
+
+## WEEKLY SHAPE (set fresh each Sunday around weather/appointments/matches)
+- **Field:** Mon / Wed / Sat · **Basketball:** Tue / Thu
+- **Swim:** Mon / Wed / Fri evening (never Tue) · **Bike:** Fri + easy Sun
+- **Sunday** = rest/reset + weekly planning. **Thursdays** often have PT — protect it, don't overload.
+
+## THE OPERATING MODEL
+Fatima **brain-dumps the week**; Claude turns it into **detailed, self-serve day sheets** for Ibrahim — time-blocked, each block opens to exact exercises/sets/reps/durations + a video per item. No planning visible to him, just "here's today." Plans are NOT fixed templates.
+
+## SUBJECT STATE
+- **Athletics/Fascia:** GOATA + fascia FIRST (his favorite). Recovery stack daily; fascia deep work; fascia-driven strength (no heavy). GOATA/Fascia **research folder started:** `Athletics/GOATA_Fascia/` (Fatima feeding research from phone).
+- **Soccer:** Built the **Soccer Lab** (`Athletics/Soccer/SOCCER_LAB.html`) — a 45-session progressive **Persianball deliberate-practice** program (~90–110 min/day, 3 phases), a plain-English **Moves dictionary with embedded press-play videos** (La Croqueta, Elastico, Cruyff, stepover, etc.), and a **Soccer IQ** film-study library. NOTE: these are impact sessions → run on field days (~3×/wk), not 45 days straight.
+- **Algebra:** The dedicated hub `Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html` is the strongest asset — **complete Chapter 1** (all 4 sections), coach-mode explanations tied to Morocco NT / Liverpool / Celtics players, 15 problems, flashcards, Jeopardy, XP, videos. GAP: only Ch 1 built; Ch 2–11 still needed by late-July deadline. Plan: extend this exact format chapter by chapter + add full-course chapter map/deadline tracker + embed lesson videos.
+- **Quran:** Local 1:1 tutor for tajweed. Site = **review/recite + notes** (solid vs needs review) → bring stumbles to tutor. Currently doing a **baseline review** to see where he stands.
+- **Reading:** Now on **The Prince (Machiavelli)** — slow, a chapter at a time, one takeaway (ties to his psychology interest). (Essentialism is done.)
+- **Mind (psychology):** Yale Intro Psych (Paul Bloom, free) + Sapolsky's Human Behavioral Biology. **Research Lab** built into the Mind tab: how research works, study-based vs in-person studies, how to read papers, Franklin library databases (card #26998000846068), a **mentor cold-email playbook + template + outreach tracker**, and XP milestones. He wants to **find a research mentor** and learn how psychology research is actually conducted.
+
+## THE SITE — CURRENT STATE & KNOWN ISSUE
+- Live URL: **https://fbabouchi26-svg.github.io** (GitHub Pages, static, repo `fbabouchi26-svg/fbabouchi26-svg.github.io`, deploys from `main`).
+- **The homepage is now the arcade/video-game hub** (`index.html` = former `hub_v2.html`): dark theme, Level/XP bar, ranks, badges, 🔥 streak, bottom icon nav (Today · Algebra · Train · Soccer · Ball · Mind · Read · Deen), day-aware Today mission + load banner + pain check-in. Soccer Lab + Algebra tutor are linked in.
+- **⚠️ DEPLOY ISSUE:** GitHub Pages had been **frozen on an ancient build** (injury "REST WEEK / CNS Plan" era = `index_BACKUP.html` content) because the Jekyll builder was silently failing on every push since ~May. FIX APPLIED: added **`.nojekyll`** (disables Jekyll, serves files as-is). Needs one clean build to take effect — re-triggered with an empty commit. If still stuck, check GitHub → Settings → Pages (source should be `main` / root).
+
+## KEY FILES
+- `index.html` / `IBRAHIM_HUB.html` — the live arcade hub (identical).
+- `index_OLD_basic_backup.html` — the previous (basic) homepage, saved.
+- `index_BACKUP.html` — the ancient injury-era hub (what was stuck live).
+- `hub_v2.html` — arcade source (same as index).
+- `ibrahim_wed_jun24.html`, `ibrahim_day.html` — detailed self-serve day sheets (need re-dating to the real week + heat times).
+- `Athletics/Soccer/SOCCER_LAB.html` — 45-day soccer program.
+- `Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html` — algebra tutor (Ch 1).
+- `PLANNING_NOTES.md` — Claude's working planning rules.
+- `PUBLISH_TO_SITE.command` — double-click publish helper.
+
+## OPEN / NEXT
+- Confirm the arcade homepage is actually **live** (Pages rebuild after `.nojekyll`).
+- Re-date day sheets to the real week + bake in heat times (after-7pm today, 5–7am Wed–Sat).
+- Build **Algebra Ch 2 (Quadratics)** in the Ch 1 format; then roll out the rest.
+- File the **GOATA/fascia research** once transferred.
+- Optional: Sunday-night weekly planning ping.
 
 ---
 
