@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim's Hub</title>
+<style>
+:root {
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --navy: #0f2044;
+  --blue: #1d4ed8;
+  --gold: #d97706;
+  --green: #059669;
+  --red: #dc2626;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --tab-h: 52px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: var(--navy);
+  color: white;
+  padding: 18px 20px 14px;
+  position: sticky; top: 0; z-index: 200;
+}
+.header-top { display:flex; align-items:center; justify-content:space-between; }
+.header h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+.header h1 span { color: var(--gold); }
+.header-date { font-size: 0.78rem; opacity: 0.7; margin-top: 2px; }
+.recovery-badge {
+  background: #ef4444; color: white;
+  border-radius: 20px; padding: 3px 10px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
+}
+.recovery-badge.rest { background: #7c3aed; }
+.recovery-badge.fifty { background: #059669; }
+
+/* TAB NAV */
+.tab-nav {
+  display: flex; overflow-x: auto; gap: 0;
+  background: white; border-bottom: 2px solid var(--border);
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0; padding: 0 16px; height: var(--tab-h);
+  border: none; background: none; cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; color: var(--muted);
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: all 0.2s; white-space: nowrap;
+}
+.tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+
+/* CONTENT */
+.tab-panel { display: none; padding: 16px; max-width: 760px; margin: 0 auto; }
+.tab-panel.active { display: block; }
+
+/* CARDS */
+.card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 18px 20px; margin-bottom: 14px;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.card-title {
+  font-size: 0.95rem; font-weight: 700; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-title .icon { font-size: 1.1rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted);
+  margin: 18px 0 8px;
+}
+
+/* TODAY — schedule blocks */
+.schedule-block {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+.schedule-block:last-child { border-bottom: none; }
+.sched-time {
+  font-size: 0.75rem; font-weight: 700; color: var(--muted);
+  min-width: 68px; padding-top: 2px;
+}
+.sched-content { flex: 1; }
+.sched-title { font-weight: 600; font-size: 0.9rem; }
+.sched-note { font-size: 0.78rem; color: var(--muted); margin-top: 1px; }
+.sched-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 5px;
+}
+.dot-blue { background: var(--blue); }
+.dot-green { background: var(--green); }
+.dot-gold { background: var(--gold); }
+.dot-red { background: var(--red); }
+.dot-purple { background: #7c3aed; }
+.dot-gray { background: #94a3b8; }
+
+/* STATUS PILLS */
+.status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.pill {
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 0.75rem; font-weight: 700;
+}
+.pill-navy { background: #dbeafe; color: var(--blue); }
+.pill-gold { background: #fef3c7; color: var(--gold); }
+.pill-green { background: #d1fae5; color: var(--green); }
+.pill-red { background: #fee2e2; color: var(--red); }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+
+/* WEEK GRID */
+.week-grid { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+.day-col {
+  flex: 1; min-width: 80px; background: var(--bg);
+  border-radius: 10px; padding: 8px 6px; text-align: center;
+}
+.day-col.today { background: #dbeafe; border: 2px solid var(--blue); }
+.day-col.rest { background: #ede9fe; }
+.day-name { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; }
+.day-date { font-size: 1.1rem; font-weight: 800; margin: 2px 0; }
+.day-events { font-size: 0.65rem; color: var(--muted); line-height: 1.4; }
+
+/* EXERCISE ITEMS */
+.exercise {
+  border: 1px solid var(--border); border-radius: 10px;
+  margin-bottom: 10px; overflow: hidden;
+}
+.exercise-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; cursor: pointer;
+  background: white; transition: background 0.15s;
+}
+.exercise-header:hover { background: #f8fafc; }
+.ex-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--navy); color: white;
+  font-size: 0.72rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ex-name { font-weight: 700; font-size: 0.9rem; flex: 1; }
+.ex-duration {
+  font-size: 0.72rem; color: var(--blue); font-weight: 600;
+  background: #dbeafe; padding: 2px 8px; border-radius: 10px;
+}
+.ex-arrow { color: var(--muted); transition: transform 0.2s; font-size: 0.8rem; }
+.exercise.open .ex-arrow { transform: rotate(90deg); }
+.exercise-body {
+  display: none; padding: 0 14px 14px;
+  border-top: 1px solid var(--border); background: #fafafa;
+}
+.exercise.open .exercise-body { display: block; }
+.ex-how { font-size: 0.85rem; color: var(--text); margin: 10px 0 8px; line-height: 1.6; }
+.ex-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ex-tag {
+  font-size: 0.7rem; padding: 2px 8px; border-radius: 8px;
+  font-weight: 600;
+}
+.tag-short { background: #d1fae5; color: var(--green); }
+.tag-full { background: #fef3c7; color: var(--gold); }
+.tag-core { background: #ede9fe; color: #6d28d9; }
+.video-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--red); color: white;
+  text-decoration: none; padding: 6px 14px;
+  border-radius: 20px; font-size: 0.78rem; font-weight: 700;
+}
+.video-btn:hover { opacity: 0.9; }
+
+/* SKILL SECTIONS */
+.skill-category {
+  border-left: 4px solid var(--blue);
+  padding: 12px 14px; margin-bottom: 10px;
+  background: white; border-radius: 0 10px 10px 0;
+  box-shadow: var(--shadow);
+}
+.skill-cat-title { font-weight: 800; font-size: 1rem; margin-bottom: 4px; }
+.skill-cat-subtitle { font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; }
+.drill {
+  background: var(--bg); border-radius: 8px;
+  padding: 10px 12px; margin-bottom: 8px;
+}
+.drill-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+.drill-desc { font-size: 0.8rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+.drill-meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.drill-tag {
+  font-size: 0.68rem; padding: 2px 7px; border-radius: 6px;
+  font-weight: 600; background: #e2e8f0; color: var(--muted);
+}
+.drill-tag.solo { background: #d1fae5; color: var(--green); }
+.drill-tag.partner { background: #dbeafe; color: var(--blue); }
+
+/* PHILOSOPHY BOX */
+.philosophy {
+  background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+  color: white; border-radius: var(--radius);
+  padding: 20px; margin-bottom: 16px;
+}
+.philosophy h3 { font-size: 1rem; margin-bottom: 8px; color: var(--gold); }
+.philosophy p { font-size: 0.85rem; line-height: 1.7; opacity: 0.9; }
+.philosophy ul { padding-left: 18px; margin-top: 8px; }
+.philosophy li { font-size: 0.82rem; opacity: 0.9; margin-bottom: 4px; }
+
+/* PROGRESS BAR */
+.progress-bar-wrap { background: var(--border); border-radius: 10px; height: 8px; overflow: hidden; margin-top: 6px; }
+.progress-bar-fill { height: 100%; border-radius: 10px; background: var(--blue); transition: width 0.3s; }
+
+/* ALGEBRA CHAPTERS */
+.chapter-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.chapter-row:last-child { border-bottom: none; }
+.ch-status { font-size: 1rem; width: 24px; text-align: center; }
+.ch-name { font-size: 0.85rem; flex: 1; }
+.ch-label { font-size: 0.7rem; padding: 2px 8px; border-radius: 8px; font-weight: 700; }
+.ch-current { background: #dbeafe; color: var(--blue); }
+.ch-done { background: #d1fae5; color: var(--green); }
+.ch-hard { background: #fee2e2; color: var(--red); }
+.ch-pending { background: var(--border); color: var(--muted); }
+
+/* VERSION TABS */
+.version-toggle { display: flex; gap: 8px; margin-bottom: 14px; }
+.version-btn {
+  flex: 1; padding: 8px; border: 2px solid var(--border);
+  border-radius: 8px; background: white; cursor: pointer;
+  font-size: 0.82rem; font-weight: 700; color: var(--muted);
+  text-align: center; transition: all 0.2s;
+}
+.version-btn.active { border-color: var(--blue); color: var(--blue); background: #dbeafe; }
+.version-panel { display: none; }
+.version-panel.active { display: block; }
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .tab-btn { padding: 0 12px; font-size: 0.78rem; }
+  .card { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>Ibrahim's <span>Hub</span></h1>
+      <div class="header-date" id="headerDate"></div>
+    </div>
+    <span class="recovery-badge fifty" id="recoveryBadge">SUMMER MODE 🔥</span>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('today')">📅 Today</button>
+  <button class="tab-btn" onclick="switchTab('week')">📆 This Week</button>
+  <button class="tab-btn" onclick="switchTab('athletics')">💪 Athletics</button>
+  <button class="tab-btn" onclick="switchTab('soccer')">⚽ Soccer</button>
+  <button class="tab-btn" onclick="switchTab('algebra')">📐 Algebra</button>
+  <button class="tab-btn" onclick="switchTab('spirit')">🌙 Islam</button>
+  <button class="tab-btn" onclick="switchTab('darija')">🇲🇦 Darija</button>
+  <button class="tab-btn" onclick="switchTab('reading')">📚 Reading</button>
+  <button class="tab-btn" onclick="switchTab('research')">🔬 Research</button>
+  <button class="tab-btn" onclick="switchTab('basketball')">🏀 Basketball</button>
+</div>
+
+<!-- ===================== TODAY ===================== -->
+<div id="tab-today" class="tab-panel active">
+
+
+
+  <div class="card" id="todayScheduleCard">
+    <div class="card-title"><span class="icon">🕐</span> Today's Schedule</div>
+    <div id="todaySchedule"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">✅</span> Today's Priorities</div>
+    <div id="todayPriorities"></div>
+  </div>
+
+</div>
+
+<!-- ===================== THIS WEEK ===================== -->
+<div id="tab-week" class="tab-panel">
+  <div class="card">
+    <div class="card-title"><span class="icon">📆</span> Week of June 10 – 16</div>
+    <div class="week-grid">
+      <div class="day-col today">
+        <div class="day-name">TUE</div>
+        <div class="day-date">10</div>
+        <div class="day-events">🏫 School<br>🌅 Field AM<br>💪 Gym PM</div>
+      </div>
+      <div class="day-col">
+        <div class="day-name">WED</div>
+        <div class="day-date">11</div>
+        <div class="day-events">🏫 School<br>💪 Gym AM<br>🏀 Ball PM</div>
+      </div>
+      <div class="day-col">
+        <div class="day-name">THU</div>
+        <div class="day-date">12</div>
+        <div class="day-events">🏫 School<br>🌅 Field AM<br>🧘 Fascia PM</div>
+      </div>
+      <div class="day-col rest">
+        <div class="day-name">FRI</div>
+        <div class="day-date">13</div>
+        <div class="day-events">🇲🇦 World Cup<br>BLOCK DAY<br>Light only</div>
+      </div>
+      <div class="day-col">
+        <div class="day-name">SAT</div>
+        <div class="day-date">14</div>
+        <div class="day-events">🌅 Field AM<br>💪 Gym<br>🏀 Ball PM</div>
+      </div>
+      <div class="day-col">
+        <div class="day-name">SUN</div>
+        <div class="day-date">15</div>
+        <div class="day-events">🧘 Light fascia<br>Family time<br>📋 Plan wk</div>
+      </div>
+      <div class="day-col">
+        <div class="day-name">MON</div>
+        <div class="day-date">16</div>
+        <div class="day-events">🏫 ½ day<br>🌅 Field AM<br>💪 Gym PM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Daily Breakdown</div>
+
+  <!-- TUE June 10 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Tuesday, June 10 <span class="pill pill-green" style="margin-left:8px;font-size:0.7rem;">FOUNDATION PHASE</span></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">6:30am</div><div class="sched-content"><div class="sched-title">Wake — barefoot 5 min outside</div><div class="sched-note">Ground yourself. Big toe extension holds. Start the chain.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:00–8:30</div><div class="sched-content"><div class="sched-title">⚽ Field Session — Touch Day</div><div class="sched-note">Before 11am. Tiny touches, inside/outside, wall work. See Soccer tab.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">School</div><div class="sched-content"><div class="sched-title">School</div><div class="sched-note">Minimal demands. Coast.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">2:30pm</div><div class="sched-content"><div class="sched-title">Home — check-in</div><div class="sched-note">What sessions still need to happen? How's the heat?</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">3:00–4:00</div><div class="sched-content"><div class="sched-title">💪 Gym — Session A (Hip Hinge)</div><div class="sched-note">Indoor. Single-leg RDL, Nordic curl, Paloff press, dead hang. See Athletics tab.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">4:00–4:20</div><div class="sched-content"><div class="sched-title">Recovery Stack</div><div class="sched-note">Foam roll, spiky ball, hip flexor stretch, child's pose.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">4:30–5:30</div><div class="sched-content"><div class="sched-title">📐 Algebra 2 — Ch1</div><div class="sched-note">Video → read → 10 problems. Khan Academy first.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">5:30–7pm</div><div class="sched-content"><div class="sched-title">Reading + Quran</div><div class="sched-note">Mindset (Dweck) 20 min. Quran review 15 min.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gray"></div><div class="sched-time">9:30pm</div><div class="sched-content"><div class="sched-title">Bed — legs up wall 5 min before</div></div></div>
+  </div>
+
+  <!-- WED June 11 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Wednesday, June 11</div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">6:30am</div><div class="sched-content"><div class="sched-title">Wake — barefoot outside</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:00–8:30</div><div class="sched-content"><div class="sched-title">💪 Gym — Session B (Single Leg)</div><div class="sched-note">Bulgarian split squat, Copenhagen plank, lateral band walk, soleus raises.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">School</div><div class="sched-content"><div class="sched-title">School</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">3:00–4:00</div><div class="sched-content"><div class="sched-title">📐 Algebra 2 — Ch1</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">4:00–4:30</div><div class="sched-content"><div class="sched-title">Fascia deep work</div><div class="sched-note">PNF stretching, posterior sling work, foot intrinsics.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">4:30–5:30</div><div class="sched-content"><div class="sched-title">Psychology + Reading</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:00–7:45</div><div class="sched-content"><div class="sched-title">🏀 Basketball — Shooting + Handles</div><div class="sched-note">Form shooting 25 makes. Ball handling 10 min. Keep it short.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gray"></div><div class="sched-time">9:30pm</div><div class="sched-content"><div class="sched-title">Bed</div></div></div>
+  </div>
+
+  <!-- THU June 12 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Thursday, June 12</div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">6:30am</div><div class="sched-content"><div class="sched-title">Wake — barefoot outside</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:00–8:30</div><div class="sched-content"><div class="sched-title">⚽ Field — Turns Day</div><div class="sched-note">Cruyff, inside hook, outside chop, body feint. Cone approach + fake combos.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">School</div><div class="sched-content"><div class="sched-title">School</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">3:00–4:00</div><div class="sched-content"><div class="sched-title">📐 Algebra 2 — Ch1 wrap-up</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">4:00–4:30</div><div class="sched-content"><div class="sched-title">🧘 GOATA work</div><div class="sched-note">Hip hinge at wall, GOATA squat, lateral bounding, depth drop.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">4:30–5:30</div><div class="sched-content"><div class="sched-title">Quran + Islam study</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gray"></div><div class="sched-time">9:30pm</div><div class="sched-content"><div class="sched-title">Bed</div></div></div>
+  </div>
+
+  <!-- FRI June 13 — World Cup -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Friday, June 13 <span class="pill pill-purple" style="margin-left:8px;font-size:0.7rem;">🇲🇦 WORLD CUP DAY</span></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">Morning</div><div class="sched-content"><div class="sched-title">Light field touch session (optional)</div><div class="sched-note">30 min max. Juggling, wall passes. Keep energy for the match.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">Match time</div><div class="sched-content"><div class="sched-title">🇲🇦 Morocco World Cup — BLOCK</div><div class="sched-note">Full attention. This is culture, identity, and joy. No schedule conflict.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">Post-match</div><div class="sched-content"><div class="sched-title">Light recovery + family time</div></div></div>
+  </div>
+
+  <!-- SAT June 14 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Saturday, June 14</div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">7:00am</div><div class="sched-content"><div class="sched-title">Wake — barefoot outside</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:30–9:00</div><div class="sched-content"><div class="sched-title">⚽ Field — Wall Day</div><div class="sched-note">Angled wall passes, both feet, speed ladder + wall combo.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">9:30–11:00</div><div class="sched-content"><div class="sched-title">💪 Gym — Session C (Upper + Integrated)</div><div class="sched-note">Pull-up negatives, single-arm row, farmer carry, dead bug.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">11:00–11:30</div><div class="sched-content"><div class="sched-title">Recovery stack</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">11:30–1:00</div><div class="sched-content"><div class="sched-title">📐 Algebra 2 — Ch2 begin</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">1:00–3pm</div><div class="sched-content"><div class="sched-title">Lunch + reading + free time</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:00–7:45</div><div class="sched-content"><div class="sched-title">🏀 Basketball — Handles + Mid-range</div></div></div>
+  </div>
+
+  <!-- SUN June 15 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Sunday, June 15 — Rest + Plan</div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">Morning</div><div class="sched-content"><div class="sched-title">Light fascia only — 20 min</div><div class="sched-note">No gym, no field. Foam roll, hip CARs, grounding barefoot outside.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">Afternoon</div><div class="sched-content"><div class="sched-title">Family time / free time</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">Evening</div><div class="sched-content"><div class="sched-title">📋 Weekly Planning</div><div class="sched-note">Any WC matches this week? Town team game? Set Algebra targets for the week. Check heat forecast.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">Evening</div><div class="sched-content"><div class="sched-title">Quran + Reading</div></div></div>
+  </div>
+
+  <!-- MON June 16 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🗓️</span> Monday, June 16 <span class="pill pill-gold" style="margin-left:8px;font-size:0.7rem;">½ DAY STARTS</span></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">7:00am</div><div class="sched-content"><div class="sched-title">Wake — barefoot outside</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">7:30–9:00</div><div class="sched-content"><div class="sched-title">⚽ Field — Game Intelligence Day</div><div class="sched-note">Shadow dribbling, cone defender, fake-and-go, finishing.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">~9:30–12:30</div><div class="sched-content"><div class="sched-title">School — Half Day</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">1:00–2:30</div><div class="sched-content"><div class="sched-title">💪 Gym — Session A</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">2:30–3:00</div><div class="sched-content"><div class="sched-title">Recovery stack</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">3:00–4:30</div><div class="sched-content"><div class="sched-title">📐 Algebra 2 + SAT preview</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">4:30–7pm</div><div class="sched-content"><div class="sched-title">Reading / Quran / Psychology / Family</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gray"></div><div class="sched-time">9:30pm</div><div class="sched-content"><div class="sched-title">Bed</div></div></div>
+  </div>
+
+</div>
+
+<!-- ===================== ATHLETICS ===================== -->
+<div id="tab-athletics" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>The Foundation: Fascia-First Training</h3>
+    <p>The goal is NOT to make you a gym bodybuilder who plays soccer. The goal is a <strong>spring athlete</strong> — someone whose fascia stores and releases energy, whose glutes fire properly, whose foot and big toe connect to the entire chain. This changes how we train everything. <strong>Tensegrity. GOATA. Elastic Recoil.</strong> The body is a continuous web, not isolated muscles. Every session reinforces this.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🎯</span> Session Rules (Every Gym Day)</div>
+    <div style="font-size:0.84rem; line-height:1.8;">
+      ✅ Barefoot warm-up first — foot intrinsics, arch lifts, big toe extension<br>
+      ✅ Hip activation before every session — glute bridge, clamshells, band walks<br>
+      ✅ Slow eccentrics — 3–4 sec down, control the negative<br>
+      ✅ ISO holds — time under tension, not just reps<br>
+      ✅ Fascial cool-down — spiky ball, foam roll, 45-sec holds<br>
+      ❌ No leg press machine (quad dominant)<br>
+      ❌ No grinding reps with bad form<br>
+      ❌ No skipping the warm-up or cool-down
+    </div>
+  </div>
+
+  <div class="version-toggle">
+    <button class="version-btn active" onclick="switchVersion('short')">⚡ Short (30 min)<br><small>Practice days</small></button>
+    <button class="version-btn" onclick="switchVersion('full')">💪 Full (60 min)<br><small>Off days</small></button>
+  </div>
+
+  <div id="version-short" class="version-panel active">
+    <div class="section-label">Section 1 — Fascia Release (5 min)</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">1</div>
+        <div class="ex-name">Foam Roller — Full Body Circuit</div>
+        <div class="ex-duration">5 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Slowly roll along each area — calves, quads, hamstrings, IT band, glutes, upper back. Pause on tender spots for 10–30 seconds. Avoid rolling directly on bones or spine. Use your bodyweight to control pressure.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+          <span class="ex-tag tag-core">Foam roller needed</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=foam+rolling+full+body+tutorial+proper+technique" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Section 2 — Hip Mobility (10 min)</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">2</div>
+        <div class="ex-name">90/90 Hip Stretch</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Sit on floor with front leg bent 90° and back leg bent 90° behind you. Keep a tall spine — don't slouch. Lean forward gently over the front leg. Hold 30–60 seconds each side, 2 rounds. This is one of the most effective hip openers for athletes.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=90+90+stretch+hip+mobility+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">3</div>
+        <div class="ex-name">Couch Stretch — Hip Flexor Opener</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">One knee on the floor, opposite foot forward. Squeeze your glute on the down leg and tuck your pelvis slightly. Keep chest upright — do NOT arch your lower back. Build up slowly. This opens the hip flexor and quad, which gets chronically tight from sitting and soccer.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=couch+stretch+hip+flexor+tutorial+proper+form" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">4</div>
+        <div class="ex-name">Glute Bridges — Hip Activation</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Lie on your back, knees bent, heels 6–8 inches from your glutes. Drive through heels to lift hips toward ceiling. Squeeze your glutes hard at the top for 3 seconds. Lower slowly. Keep core tight. 3 sets × 15 reps.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=glute+bridge+hip+activation+form+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">5</div>
+        <div class="ex-name">Lateral Band Walks — Hip Abductor</div>
+        <div class="ex-duration">2 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Resistance band around ankles or above knees. Quarter-squat stance. Step sideways 12–15 steps in each direction while keeping tension on the band. Control each step — no bouncing. 3 sets each direction. Activates the glute med which stabilizes the entire lower leg chain.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+          <span class="ex-tag tag-core">Resistance band needed</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=lateral+band+walk+hip+strengthening+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Section 3 — Ankle Mobility (5 min)</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">6</div>
+        <div class="ex-name">Single-Leg Calf Raises</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Stand on the edge of a step, heels hanging. Rise up on your toes (2-count up), hold 1 second at top, lower slowly (3-count down). One leg at a time. Touch wall for balance only. 3 sets × 12–15 reps per leg. Builds the soleus and calf chain — critical for absorbing impact and powering the posterior chain.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=single+leg+calf+raise+ankle+strength+rehab" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">7</div>
+        <div class="ex-name">Ankle Mobility — 4-Way Range</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Seated or standing. Work through all 4 ankle directions: point toes down (plantarflexion), pull toes up (dorsiflexion), roll sole inward (inversion), roll sole outward (eversion). 20–30 seconds each direction, 2 rounds. Slow and controlled — feel the range at each end.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=ankle+mobility+4+direction+range+of+motion+exercises" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Section 4 — Flexibility (5 min)</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">8</div>
+        <div class="ex-name">World's Greatest Stretch</div>
+        <div class="ex-duration">4 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Low lunge with right foot forward. Right hand on ground outside your right foot. Rotate left arm up toward ceiling. Then walk hands to downward dog. Step left foot forward and repeat on other side. Flow through 6–8 reps per side. This is a full-body chain opener in one movement.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=world%27s+greatest+stretch+full+body+mobility" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">9</div>
+        <div class="ex-name">Child's Pose — Lower Back + Hip Release</div>
+        <div class="ex-duration">2 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">From tabletop, sink hips back toward heels, arms extended forward or at sides. Breathe deeply into the stretch — each exhale lets you sink a little deeper. 2 holds of 45 seconds each. Pure recovery for the lower back and hip joints after a training session.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=child%27s+pose+lower+back+hip+release+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">10</div>
+        <div class="ex-name">Lying Hamstring Stretch</div>
+        <div class="ex-duration">2 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Lie on your back. Extend one leg up, keeping it as straight as possible. Use both hands on the back of the thigh to gently draw it toward you. Hold 45–60 seconds per leg. Tight hamstrings pull on the pelvis and compress the lower back — this is daily maintenance.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=lying+hamstring+stretch+proper+form" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Section 5 — Core + Control (5 min)</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">11</div>
+        <div class="ex-name">Bird Dog — Spine Stability</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Tabletop position. Extend right arm forward and left leg back simultaneously. Hold 3 seconds. Return. Switch sides. Keep your back completely flat — don't rotate your hips or arch your spine. 3 sets × 10 per side. Teaches the spine to stabilize under load — directly transfers to every athletic movement.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=bird+dog+exercise+core+stability+proper+form" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">12</div>
+        <div class="ex-name">Dead Bug — Core Bracing + Coordination</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Lie on back. Knees bent 90°, shins parallel to floor. Arms straight up. Brace core hard. Slowly lower right arm overhead and extend left leg down — don't let your lower back lift off the floor. Return. Switch. 3 sets × 8 per side. This is the gold standard for core stability that doesn't compress the spine.</div>
+        <div class="ex-meta">
+          <span class="ex-tag tag-short">SHORT ✓</span>
+          <span class="ex-tag tag-full">FULL ✓</span>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+stability+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="card" style="background:#d1fae5; border-color:#059669;">
+      <div style="font-weight:800; color:#059669; font-size:0.9rem;">⚡ Short Version Total: ~33 minutes</div>
+      <div style="font-size:0.8rem; margin-top:4px; color:#065f46;">Perfect for practice days or when time is tight. Hits all the essential categories.</div>
+    </div>
+  </div>
+
+  <div id="version-full" class="version-panel">
+    <div class="card" style="background:#dbeafe;">
+      <div style="font-weight:800; color:var(--blue);">💪 Full Version = Short Version + These Additions</div>
+      <div style="font-size:0.8rem; margin-top:4px; color:#1e40af;">Do everything in the Short version first, then add these. Off days and Thursday/Friday only.</div>
+    </div>
+
+    <div class="section-label">Add-On 1 — Deeper Hip Work</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Pigeon Pose — Deep Hip Opener</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">From tabletop, bring right shin forward toward your hands (angle it across your body). Left leg extends back. Square your hips. Fold forward over the front shin or stay upright. If this is too intense, do Supine Pigeon: lie on back, cross ankle over opposite thigh, pull both legs toward chest. 60–90 seconds per side.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=pigeon+pose+hip+opener+tutorial+safe" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Copenhagen Plank — Adductor Strength</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Side plank position with top foot elevated on a chair or bench. Keep your body in a straight line from shoulder to ankle. Bottom leg can hang or touch the ground lightly for balance. Hold and squeeze your inner thigh. 3 sets × 20–30 seconds per side. Directly strengthens the adductors — critical for soccer players and injury prevention.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=copenhagen+plank+hip+adductor+strength+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Add-On 2 — Ankle + Balance</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Single-Leg Balance — Proprioception</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Stand on one leg, other leg bent with knee raised. Hands on hips. Hold for 30–45 seconds. Progression: close your eyes. Further progression: stand on a folded towel or pillow. 3 sets per leg. Trains proprioception and the neural connection between your brain and the ankle — critical for injury prevention and athletic precision.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=single+leg+balance+proprioception+ankle+rehab" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Lacrosse Ball Foot Release</div>
+        <div class="ex-duration">4 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Place a lacrosse ball (or firm ball) under your arch. Apply gentle bodyweight pressure and slowly roll side-to-side and front-to-back. Pause on tender spots for 10 seconds. Then work the calf just above the Achilles. 2 minutes per foot. The plantar fascia and Achilles connect directly to the posterior chain — this is foot tensegrity work.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=lacrosse+ball+foot+release+plantar+fascia" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Add-On 3 — Full Flexibility</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Standing Quad Stretch</div>
+        <div class="ex-duration">2 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Standing on one leg, grab the opposite foot and pull heel toward your glute. Keep knees together and stand tall. If balance is tough, hold a wall. 45–60 seconds per leg. Pairs perfectly with the couch stretch — hits the rectus femoris portion of the quad that the couch stretch misses.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=standing+quad+stretch+proper+form" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Cat-Cow — Thoracic Spine Opener</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Tabletop position. Cow: drop your belly, lift your chest and gaze upward. Cat: round your spine upward, tuck chin to chest. Flow smoothly and slowly between the two positions. 15–20 reps × 2–3 sets. Opens the thoracic spine, improves posture, and directly helps with soccer positioning and aerial challenges.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=cat+cow+thoracic+spine+mobility+tutorial" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="section-label">Add-On 4 — Movement + Coordination</div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Single-Leg Stance with Arm Reaches</div>
+        <div class="ex-duration">3 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Stand on one leg. Slowly reach your arms in different directions — up, diagonal, across your body, down. Keep the standing leg stable. Go slow and controlled. 30–45 seconds per leg × 3 sets. Trains the neuromuscular system to maintain balance under movement — exactly what the ankle needs to rebuild after injury.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=single+leg+balance+arm+reaches+proprioception" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="exercise" onclick="toggleEx(this)">
+      <div class="exercise-header">
+        <div class="ex-num">+</div>
+        <div class="ex-name">Agility Ladder — Light Footwork</div>
+        <div class="ex-duration">7 min</div>
+        <div class="ex-arrow">▶</div>
+      </div>
+      <div class="exercise-body">
+        <div class="ex-how">Use an agility ladder or tape lines on the floor. Light, precise foot placement — slow tempo, no impact. Drills: one foot per square, lateral two-steps, in-in-out-out pattern. 3–4 passes through the ladder per drill. Focus on precision over speed. This is coordination training, not conditioning — keep it gentle during rest week.</div>
+        <div class="ex-meta"><span class="ex-tag tag-full">FULL ✓</span></div>
+        <a href="https://www.youtube.com/results?search_query=agility+ladder+footwork+drills+coordination" target="_blank" class="video-btn">▶ Watch Demo</a>
+      </div>
+    </div>
+
+    <div class="card" style="background:#d1fae5; border-color:#059669;">
+      <div style="font-weight:800; color:#059669; font-size:0.9rem;">💪 Full Version Total: ~55–60 minutes</div>
+      <div style="font-size:0.8rem; margin-top:4px; color:#065f46;">Thursday, Friday, off-day Saturdays. This is your full investment session.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== SOCCER ===================== -->
+<div id="tab-soccer" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>The Family Philosophy</h3>
+    <p>Forget flashy. A simple body fake — perfectly timed — will beat any defender. Superior ball control and reading of space will make you look like a different player than kids who've been playing for years. This is where we start.</p>
+    <ul>
+      <li>Ball control — the ball does what you tell it</li>
+      <li>First touch — your touch sets you up, never against you</li>
+      <li>Deception — body fakes, weight shifts, selling movement</li>
+      <li>Turns — quick, explosive, ball protected</li>
+      <li>Scanning — know what's behind you before it arrives</li>
+      <li>Anticipation — be in the right place a second early</li>
+    </ul>
+  </div>
+
+  <div class="section-label">🎯 Bread & Butter — Master These First</div>
+
+  <div class="skill-category">
+    <div class="skill-cat-title">⚽ Ball Control</div>
+    <div class="skill-cat-subtitle">The ball does exactly what you tell it. No exceptions.</div>
+
+    <div class="drill">
+      <div class="drill-name">Wall Rebound Control</div>
+      <div class="drill-desc">Pass or strike the ball at a wall and control the rebound. Start with inside of foot, progress to outside foot and sole. Keep ball within one step at all times. Build rhythm and feel — this is deliberate practice.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo</span>
+        <span class="drill-tag">5–10 min</span>
+        <span class="drill-tag">Needs wall</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+wall+rebound+ball+control+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Ball Mastery — Inside/Outside/Sole Progression</div>
+      <div class="drill-desc">Touch the ball continuously: inside of foot, outside, sole rolls, toe taps. No pattern — just stay loose and feel the ball. Every surface. Keep it tight — within 12 inches. Do this every single day. 10 minutes of this daily changes your touch in 3 weeks.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo</span>
+        <span class="drill-tag">10 min daily</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+ball+mastery+progression+inside+outside+sole" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Tight Space Dribble Circle</div>
+      <div class="drill-desc">Dribble in a very small 5-yard circle — use only tiny touches 1–2 inches from your foot. Keep it close. Change direction every 30 seconds. Head up when possible. This is pure touch development.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo</span>
+        <span class="drill-tag">3 × 3 min</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+tight+space+dribble+close+control" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--gold);">
+    <div class="skill-cat-title">👟 First Touch</div>
+    <div class="skill-cat-subtitle">Your touch sets you up — never against you.</div>
+
+    <div class="drill">
+      <div class="drill-name">First Touch Direction Control</div>
+      <div class="drill-desc">Partner passes to you from different angles. Your first touch must move the ball AWAY from where the pass came from — away from pressure, into space. Practice all surfaces. The question you ask on every touch: "where am I going next?" Answer that with your first touch.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner</span>
+        <span class="drill-tag">10 min, 40–50 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+first+touch+directional+control+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">First Touch Under Pressure</div>
+      <div class="drill-desc">Partner passes quickly at a rapid pace — no time to think. Control in one touch, immediately be ready to move or pass back. This is game-realistic. The pressure forces you to be decisive.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner</span>
+        <span class="drill-tag">8 min, 3×15 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+first+touch+under+pressure+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Receiving While Scanning</div>
+      <div class="drill-desc">Before receiving, make a deliberate head turn left and right. Then receive the pass and immediately move ball in the direction you just scanned. Links scanning and first touch together — as they are in a real game.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner</span>
+        <span class="drill-tag">10 min, 4×12 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+receiving+scanning+drill+head+turn" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--red);">
+    <div class="skill-cat-title">🎭 Deception & Feints</div>
+    <div class="skill-cat-subtitle">Simple. Timed. Committed. That's all deception is.</div>
+
+    <div class="drill">
+      <div class="drill-name">Basic Body Feint (The One That Actually Works)</div>
+      <div class="drill-desc">Dribble slowly. Touch ball slightly across your body, drop your shoulder hard and shift your weight to sell the fake. Then push ball with outside of foot into open space and accelerate. 90% of defenders will bite. The secret: commitment. Half-hearted fakes don't work. Full commitment does.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo first</span>
+        <span class="drill-tag">6 min, 3×10 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+body+feint+tutorial+how+to+beat+a+defender" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Sole Drag Feint</div>
+      <div class="drill-desc">Dribble forward. Drag the sole of your foot back across the ball — this stops your momentum completely and confuses a closing defender. Immediately push ball with outside of foot into space. Simple, game-effective, and most players never see it coming because it's so subtle.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo</span>
+        <span class="drill-tag">5 min, 3×15 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+sole+drag+feint+tutorial" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Body Feint in Live 1v1</div>
+      <div class="drill-desc">Once the solo version is clean, bring in a passive defender who slowly closes you down. Time your feint to when they commit. As they buy it, explode past. Progress: active defender. This is where it gets real — the timing is everything.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner/Defender</span>
+        <span class="drill-tag">8 min, 2×8 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+body+feint+1v1+live+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--green);">
+    <div class="skill-cat-title">🔄 Turns</div>
+    <div class="skill-cat-subtitle">Quick, explosive, ball protected. Create space instantly.</div>
+
+    <div class="drill">
+      <div class="drill-name">Cruyff Turn</div>
+      <div class="drill-desc">Dribble toward a cone at a slight angle. As if you're about to cross or pass, plant your outside foot next to the ball. Use the inside of your other foot to flick the ball sharply behind your plant leg. Explode in the new direction. Used to cut inside from wide positions — extremely effective in real games.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo</span>
+        <span class="drill-tag">6 min, 2×12 reps</span>
+        <a href="https://www.youtube.com/results?search_query=cruyff+turn+soccer+tutorial" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Inside Hook Turn at Cone</div>
+      <div class="drill-desc">Dribble to a cone with small, controlled touches. At the cone, use the inside of your foot to hook the ball 180° and immediately accelerate back the way you came. Your body weight shifts explosively. 3 sets × 8 turns each direction.</div>
+      <div class="drill-meta">
+        <span class="drill-tag solo">Solo</span>
+        <span class="drill-tag">7 min, 3×8 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+inside+hook+turn+cone+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Turn Under Pressure</div>
+      <div class="drill-desc">Partner passes to your feet. Defender applies passive pressure from behind. Receive, execute a turn (your choice), accelerate away. This makes every turn you've drilled game-functional. Builds urgency and timing.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner + Defender</span>
+        <span class="drill-tag">8 min, 2×10 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+turning+under+pressure+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: #7c3aed;">
+    <div class="skill-cat-title">👀 Scanning + Anticipation</div>
+    <div class="skill-cat-subtitle">Know what's around you before the ball arrives.</div>
+
+    <div class="drill">
+      <div class="drill-name">Cone Number Awareness Drill</div>
+      <div class="drill-desc">6 numbered cones in a circle around you, 8–10 yards out. Dribble slowly in the center. Every 5–10 touches, partner calls a number. You must look up, find that cone, and dribble toward it immediately. Builds the habit of scanning automatically while in possession.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner calling numbers</span>
+        <span class="drill-tag">10 min, 2×15 scans</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+scanning+awareness+cone+number+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Scan Before Every Receive</div>
+      <div class="drill-desc">Simple rule: before every time you receive a pass, you must make a deliberate look left AND right. It must become automatic. Start slow. Partner passes. You scan, receive, move in the open direction. Eventually this becomes muscle memory — you'll do it unconsciously in games.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Partner</span>
+        <span class="drill-tag">10 min, 3×15 reps</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+scanning+before+receiving+drill+head+movements" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+
+    <div class="drill">
+      <div class="drill-name">Anticipation — Move Before the Pass</div>
+      <div class="drill-desc">In a 4v2 or small-sided game, challenge yourself: can you start moving to receive BEFORE your teammate has decided to pass to you? Read their body, their weight, where the defender is. A player who arrives half a second early looks telepathic — it's just anticipation trained over time.</div>
+      <div class="drill-meta">
+        <span class="drill-tag partner">Small group</span>
+        <span class="drill-tag">15 min, game format</span>
+        <a href="https://www.youtube.com/results?search_query=soccer+anticipation+movement+off+the+ball+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">🔧 Technical Skills</div>
+
+  <div class="skill-category">
+    <div class="skill-cat-title">🥅 Finishing & Shooting</div>
+    <div class="drill">
+      <div class="drill-name">Corner Placement (Inside Foot)</div>
+      <div class="drill-desc">From 12 yards, shoot at the 4 corners of the goal using only inside-of-foot placement. 10 shots per corner. Accuracy before power — always. A placed shot into the corner is more dangerous than a blasted shot at the keeper.</div>
+      <div class="drill-meta"><span class="drill-tag solo">Solo</span><span class="drill-tag">8 min, 40 shots</span><a href="https://www.youtube.com/results?search_query=soccer+finishing+accuracy+inside+foot+corner+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a></div>
+    </div>
+    <div class="drill">
+      <div class="drill-name">First Touch and Shoot</div>
+      <div class="drill-desc">Partner plays ball across you. One touch to set up, one shot. This replicates 80% of real game finishing situations — you won't have time to dribble and compose yourself. Own this pattern.</div>
+      <div class="drill-meta"><span class="drill-tag partner">Partner</span><span class="drill-tag">8 min, 2×12 shots</span><a href="https://www.youtube.com/results?search_query=soccer+first+touch+finish+one+two+shooting+drill" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a></div>
+    </div>
+  </div>
+
+  <div class="skill-category">
+    <div class="skill-cat-title">🛡️ 1v1 Defending</div>
+    <div class="drill">
+      <div class="drill-name">Jockeying — Contain and Force</div>
+      <div class="drill-desc">Stay 1–2 feet from the attacker. Side-on body shape. Small, quick steps — never flat-footed or crossed. Don't dive in. Force them one direction (toward weak foot or sideline). You win when you make them predictable. 8 min, 2×10 reps in a small grid.</div>
+      <div class="drill-meta"><span class="drill-tag partner">Attacker needed</span><span class="drill-tag">8 min</span><a href="https://www.youtube.com/results?search_query=soccer+1v1+defending+jockeying+tutorial" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">▶ Demo</a></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== ALGEBRA ===================== -->
+<div id="tab-algebra" class="tab-panel">
+
+  <div class="card" style="background: linear-gradient(135deg, #1e40af, #1d4ed8); color:white;">
+    <div style="font-size:1rem; font-weight:800; margin-bottom:6px;">📐 Algebra 2 — Self-Study to Test Out</div>
+    <div style="font-size:0.82rem; opacity:0.9; line-height:1.6;">Goal: Master the entire Big Ideas Math Algebra 2 textbook by late July 2026 and test out for next year. No teacher. No class. Just you, this hub, and consistent daily work. Deadline moved — 6 weeks, ~4 days per chapter. Video-first, then practice.</div>
+    <div style="margin-top:12px;">
+      <div style="font-size:0.75rem; opacity:0.7; margin-bottom:4px;">Progress (1 of 11 chapters started)</div>
+      <div class="progress-bar-wrap" style="background:rgba(255,255,255,0.2);">
+        <div class="progress-bar-fill" style="width:9%; background:#fbbf24;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📘</span> Full Algebra Hub</div>
+    <div style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">Your dedicated Algebra 2 study hub has flashcards, quizzes, speed rounds, and sports math. Open it here:</div>
+    <a href="./Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:var(--blue); color:white; text-decoration:none; padding:10px 20px; border-radius:10px; font-weight:700; font-size:0.88rem;">📐 Open Algebra 2 Hub →</a>
+    <div style="font-size:0.78rem; color:var(--muted); margin-top:10px;">Textbook (free): <a href="https://bim.easyaccessmaterials.com/?level=13.00" target="_blank" style="color:var(--blue);">bim.easyaccessmaterials.com</a></div>
+  </div>
+
+  <div class="section-label">Chapter Tracker</div>
+  <div class="card">
+    <div class="chapter-row"><div class="ch-status">📖</div><div class="ch-name">Ch 1 — Linear Functions</div><span class="ch-label ch-current">IN PROGRESS</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 2 — Quadratic Functions</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 3 — Quadratic Equations & Complex Numbers</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 4 — Polynomial Functions</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 5 — Rational Exponents & Radical Functions</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 6 — Exponential & Logarithmic Functions</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 7 — Rational Functions</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 8 — Sequences & Series</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 9 — Trigonometric Ratios & Functions</div><span class="ch-label ch-hard">HARDEST — geometry-heavy</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 10 — Probability</div><span class="ch-label ch-pending">Not started</span></div>
+    <div class="chapter-row"><div class="ch-status">⬜</div><div class="ch-name">Ch 11 — Data Analysis & Statistics</div><span class="ch-label ch-pending">Not started</span></div>
+  </div>
+
+  <div class="card" style="background:#fffbeb; border-color:#fbbf24;">
+    <div style="font-weight:800; color:#92400e; margin-bottom:6px;">⚠️ Ibrahim hasn't started yet</div>
+    <div style="font-size:0.83rem; color:#78350f; line-height:1.6;">The textbook link has been available. A link alone isn't enough. Open the Algebra Hub above — it has structure, daily assignments, video playlists, sports-themed problems, and quiz tracking. That's your entry point. Start today.</div>
+  </div>
+
+</div>
+
+<!-- ===================== SPIRIT ===================== -->
+<div id="tab-spirit" class="tab-panel">
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📿</span> Quran</div>
+    <div style="font-size:0.85rem; line-height:1.7;">
+      <strong>In Progress:</strong><br>
+      ✦ Sura Al-Mulk — with tajweed<br>
+      ✦ Juz Amma — with tajweed<br><br>
+      Daily review slot: Evening (15–20 min)<br><br>
+      <a href="https://www.youtube.com/results?search_query=surah+al+mulk+tajweed+slow+recitation+learn" target="_blank" style="color:var(--blue); font-size:0.82rem;">▶ Al-Mulk Learning Resources</a><br>
+      <a href="https://www.youtube.com/results?search_query=juz+amma+tajweed+learn+memorize" target="_blank" style="color:var(--blue); font-size:0.82rem;">▶ Juz Amma Resources</a>
+    </div>
+    <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:8px;">
+      <a href="https://bayyinah.tv" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#0f2044; color:white; text-decoration:none; padding:10px 16px; border-radius:10px; font-weight:700; font-size:0.85rem;">📖 Bayyinah TV →</a>
+      <a href="https://zad.academy" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#d97706; color:white; text-decoration:none; padding:10px 16px; border-radius:10px; font-weight:700; font-size:0.85rem;">🕌 Zad Academy →</a>
+    </div>
+  </div>
+
+  <div class="card" style="background: var(--navy); color:white;">
+    <div style="font-weight:800; font-size:0.95rem; margin-bottom:8px; color:var(--gold);">The Long Game</div>
+    <div style="font-size:0.82rem; line-height:1.8; opacity:0.9;">
+      Quran memorized in tajweed ✦ Darija conversational ✦ MLS Next level athlete ✦ Morocco national team ✦ Mohamed VI Academy ✦ Harvard ✦ Behavioral research published ✦ App built.<br><br>
+      <em>None of this is far-fetched. All of it is in motion. You just have to show up every day.</em>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== READING ===================== -->
+<div id="tab-reading" class="tab-panel">
+
+  <div class="version-toggle">
+    <button class="version-btn active" onclick="switchReadingView('current')">📖 Currently Reading</button>
+    <button class="version-btn" onclick="switchReadingView('booksread')">✅ Books Read</button>
+  </div>
+
+  <div id="reading-current" class="version-panel active">
+    <div class="card" style="background: linear-gradient(135deg, #1e3a5f, #0f2044); color:white;">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; opacity:0.6; margin-bottom:6px;">Currently Reading</div>
+      <div style="font-size:1.3rem; font-weight:800; margin-bottom:4px;">Mindset</div>
+      <div style="font-size:0.85rem; opacity:0.75; margin-bottom:14px;">by Carol S. Dweck</div>
+      <div style="font-size:0.84rem; line-height:1.7; opacity:0.92;">The landmark psychology book on fixed vs. growth mindset. Dweck's research shows that the belief that abilities can be developed — through effort, strategy, and learning from failure — is the single biggest predictor of achievement. This is the book behind your story.</div>
+      <div style="margin-top:14px; font-size:0.78rem; opacity:0.65;">Target: 20–30 minutes daily · Heat window reading</div>
+      <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="https://www.amazon.com/Mindset-Psychology-Carol-S-Dweck/dp/0345472322" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#d97706; color:white; text-decoration:none; padding:9px 16px; border-radius:10px; font-weight:700; font-size:0.83rem;">📖 Get the Book →</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">💡</span> Key Ideas</div>
+      <div style="font-size:0.84rem; line-height:1.8;">
+        <strong>Fixed mindset:</strong> "I'm either good at it or I'm not." Talent is fixed. Effort is pointless.<br><br>
+        <strong>Growth mindset:</strong> "I can develop any ability with the right effort and strategy." Failure is information.<br><br>
+        ✦ The D-level team told you: fixed mindset. You proved: growth mindset.<br>
+        ✦ The kids who mocked your process? Fixed mindset — they've already capped themselves.<br>
+        ✦ This book is literally the science behind what happened to you.<br><br>
+        <em>"Becoming is better than being."</em>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">🔬</span> Why This Book Now</div>
+      <div style="font-size:0.84rem; line-height:1.7; color:var(--text);">This is also foundational research for his psychology direction. Dweck's work on growth mindset in young people is exactly the territory he wants to study and eventually research. Reading this is both personal development AND academic preparation — two birds, one book.</div>
+    </div>
+  </div>
+
+  <div id="reading-booksread" class="version-panel">
+    <div class="card" style="background:#f0fdf4; border-color:#059669;">
+      <div style="font-weight:800; color:#065f46; font-size:0.88rem; margin-bottom:4px;">📚 Your Reading Record</div>
+      <div style="font-size:0.8rem; color:#047857;">Every book you finish is an edge. Log it, own it.</div>
+    </div>
+    <div class="card">
+      <div style="font-size:0.78rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">In Progress</div>
+      <div style="display:flex; align-items:center; gap:12px; padding:10px 0;">
+        <div style="font-size:1.4rem;">📖</div>
+        <div><div style="font-weight:700; font-size:0.9rem;">Mindset</div><div style="font-size:0.78rem; color:var(--muted);">Carol S. Dweck · In progress</div></div>
+        <span class="pill pill-navy" style="margin-left:auto;">Reading</span>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:0.78rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Completed ✅</div>
+      <div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div style="font-size:1.4rem;">✅</div>
+        <div><div style="font-weight:700; font-size:0.9rem;">Essentialism</div><div style="font-size:0.78rem; color:var(--muted);">Greg McKeown · Finished June 2026</div></div>
+        <span class="pill pill-green" style="margin-left:auto;">Done</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== RESEARCH ===================== -->
+<div id="tab-research" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>Writing & Research</h3>
+    <p>This is your long-term intellectual identity. Research is how you contribute something original to the world — not just consume information, but generate it. Every great researcher started by learning the craft before they had anything to say. Start building that foundation now.</p>
+  </div>
+
+  <div class="skill-category">
+    <div class="skill-cat-title">🔬 Academic Research</div>
+    <div class="skill-cat-subtitle">Understanding what research is and how to enter the field.</div>
+    <div class="drill"><div class="drill-name">What Is Academic Research?</div><div class="drill-desc">Academic research is the systematic process of investigating a question no one has definitively answered. It involves a literature review, a hypothesis, a methodology, data or evidence, analysis, and a conclusion. The goal is to add something new to human knowledge.</div><div class="drill-meta"><span class="drill-tag">Foundation</span></div></div>
+    <div class="drill"><div class="drill-name">Fields to Explore</div><div class="drill-desc">Behavioral science, sports science, psychology, economics, public health, computer science. Read across fields and notice where your questions live.</div><div class="drill-meta"><span class="drill-tag">Exploration</span></div></div>
+    <div class="drill"><div class="drill-name">Start a Research Journal</div><div class="drill-desc">Keep a running document of questions that genuinely interest you. Not answers — questions. These become your first research directions.</div><div class="drill-meta"><span class="drill-tag solo">Solo</span><span class="drill-tag">Daily habit</span></div></div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--blue);">
+    <div class="skill-cat-title">🧭 How to Do Research</div>
+    <div class="skill-cat-subtitle">The actual process — step by step.</div>
+    <div class="drill"><div class="drill-name">Step 1 — Find a Question</div><div class="drill-desc">Start with genuine curiosity. A good research question is specific, answerable, and not already fully solved.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Step 2 — Literature Review</div><div class="drill-desc">Read everything already published on your topic. Summarize what's known, what's debated, and what's missing. That gap is where your research lives.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Step 3 — Methodology</div><div class="drill-desc">How will you answer your question? Survey? Experiment? Data analysis? Choose the method that fits your question and resources.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Step 4 — Analyze & Write</div><div class="drill-desc">Collect data, analyze it honestly, and write it up clearly. Structure: Abstract → Introduction → Methods → Results → Discussion → Conclusion.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--gold);">
+    <div class="skill-cat-title">📖 Read the Work of Others</div>
+    <div class="skill-cat-subtitle">You can't write what you haven't read.</div>
+    <div class="drill"><div class="drill-name">How to Read a Research Paper</div><div class="drill-desc">Use IMRaD: Abstract first → Introduction → Discussion/Conclusion → Methods/Results if needed. Most papers can be assessed in 10–15 minutes.</div><div class="drill-meta"><span class="drill-tag">Skill</span></div></div>
+    <div class="drill"><div class="drill-name">Where to Find Papers</div><div class="drill-desc">Google Scholar, PubMed, JSTOR, Semantic Scholar, ResearchGate. Authors often post free copies of their work.</div><div class="drill-meta"><span class="drill-tag">Resource</span></div></div>
+    <div class="drill"><div class="drill-name">Follow Researchers You Respect</div><div class="drill-desc">Find researchers in your area and follow their work. Google Scholar lets you follow authors and get alerts when they publish.</div><div class="drill-meta"><span class="drill-tag">Habit</span></div></div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--green);">
+    <div class="skill-cat-title">📝 Getting Published</div>
+    <div class="skill-cat-subtitle">The path from research to publication.</div>
+    <div class="drill"><div class="drill-name">Start with High School Journals</div><div class="drill-desc">Journal of Emerging Investigators (JEI), Regeneron Science Talent Search, Concord Review (humanities), American Junior Academy of Science. Legitimate, peer-reviewed, taken seriously.</div><div class="drill-meta"><span class="drill-tag">Entry point</span></div></div>
+    <div class="drill"><div class="drill-name">The Submission Process</div><div class="drill-desc">Write → format to journal guidelines → submit → peer review → revise → acceptance or rejection → publication. Rejection is normal. Every researcher gets rejected.</div><div class="drill-meta"><span class="drill-tag">Process</span></div></div>
+    <div class="drill"><div class="drill-name">Co-Author with a Mentor</div><div class="drill-desc">Find a professor or graduate student willing to mentor you. Reach out cold via email — one in ten will respond. That's enough.</div><div class="drill-meta"><span class="drill-tag">Strategy</span></div></div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: #7c3aed;">
+    <div class="skill-cat-title">🏛️ Programs</div>
+    <div class="skill-cat-subtitle">Research programs, internships, and competitions for high school students.</div>
+    <div class="drill"><div class="drill-name">Regeneron Science Talent Search</div><div class="drill-desc">Most prestigious US high school science competition. Submit original research. Top 40 finalists compete for $250,000. Deadline: mid-November each year.</div><div class="drill-meta"><span class="drill-tag">Competition</span><span class="drill-tag">High impact</span></div></div>
+    <div class="drill"><div class="drill-name">Research Science Institute (RSI)</div><div class="drill-desc">6-week free summer research program at MIT. ~80 spots globally. Apply junior year. Requires prior research experience — start building yours now.</div><div class="drill-meta"><span class="drill-tag">Summer program</span><span class="drill-tag">Highly selective</span></div></div>
+    <div class="drill"><div class="drill-name">University Summer Research Programs</div><div class="drill-desc">MIT PRIMES, Harvard Secondary School Program, Johns Hopkins CTY, Stanford OHS. Some are paid internships in labs.</div><div class="drill-meta"><span class="drill-tag">Summer</span></div></div>
+    <div class="drill"><div class="drill-name">Intel ISEF</div><div class="drill-desc">World's largest pre-college science competition. Qualify through local/state fairs. Over $9 million in awards. Strengthens college applications significantly.</div><div class="drill-meta"><span class="drill-tag">Competition</span><span class="drill-tag">International</span></div></div>
+  </div>
+
+  <div class="skill-category" style="border-left-color: var(--muted);">
+    <div class="skill-cat-title">🛠️ Tools</div>
+    <div class="skill-cat-subtitle">The researcher's toolkit.</div>
+    <div class="drill"><div class="drill-name">Zotero</div><div class="drill-desc">Free reference manager. Saves papers automatically via browser extension. Generates citations in any format.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://www.zotero.org" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ zotero.org</a></div></div>
+    <div class="drill"><div class="drill-name">Google Scholar</div><div class="drill-desc">Search engine for academic papers. Set up keyword alerts to get emailed when new papers are published in your area.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://scholar.google.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ scholar.google.com</a></div></div>
+    <div class="drill"><div class="drill-name">Notion or Obsidian</div><div class="drill-desc">Build a personal knowledge base. Every paper, idea, and question — log it. The more you add, the more valuable it becomes.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://www.notion.so" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ notion.so</a></div></div>
+    <div class="drill"><div class="drill-name">Connected Papers</div><div class="drill-desc">Visual graph of all papers related to any paper you enter. Maps a new field quickly and surfaces the key foundational papers.</div><div class="drill-meta"><span class="drill-tag">Free</span><a href="https://www.connectedpapers.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ connectedpapers.com</a></div></div>
+    <div class="drill"><div class="drill-name">Overleaf — LaTeX Writing</div><div class="drill-desc">Standard tool for writing academic papers. LaTeX produces professional-quality documents. Learning this now puts you ahead of most undergraduates.</div><div class="drill-meta"><span class="drill-tag">Free tier</span><a href="https://www.overleaf.com" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ overleaf.com</a></div></div>
+    <div class="drill" style="border-left: 3px solid var(--gold); background: rgba(212,175,55,0.05);">
+      <div class="drill-name">📚 Franklin Public Library — Free Online Databases</div>
+      <div class="drill-desc">Your library card unlocks free access to premium research databases — academic journals, newspapers, encyclopedias, and more. Same content universities pay thousands for, free for you.<br><br>
+      🔑 <strong>Your Library Card #:</strong> <span style="font-family:monospace; font-size:1rem; letter-spacing:1px; color:var(--gold);">26998000846068</span></div>
+      <div class="drill-meta">
+        <span class="drill-tag">Free with library card</span>
+        <a href="https://www.franklinma.gov/317/Free-Online-Databases" target="_blank" class="video-btn" style="font-size:0.68rem; padding:3px 10px;">→ Access Databases</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== DARIJA ===================== -->
+<div id="tab-darija" class="tab-panel">
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🇲🇦</span> Darija — Moroccan Arabic</div>
+    <div style="font-size:0.85rem; line-height:1.7;">
+      <strong>Goal by September 2026:</strong> Conversational level<br><br>
+      Daily slot: 7:00–8:00 PM (alternating with Quran)<br><br>
+      Start here:<br>
+      <a href="https://www.youtube.com/results?search_query=darija+moroccan+arabic+beginner+lesson" target="_blank" style="color:var(--blue); font-size:0.82rem;">▶ Darija Beginner Lessons</a><br>
+      <a href="https://www.youtube.com/results?search_query=moroccan+arabic+darija+daily+phrases" target="_blank" style="color:var(--blue); font-size:0.82rem;">▶ Daily Phrases</a>
+    </div>
+    <div style="margin-top:14px;">
+      <a href="https://e-madrassa.ma" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#059669; color:white; text-decoration:none; padding:10px 18px; border-radius:10px; font-weight:700; font-size:0.85rem;">🏫 e-Madrassa →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== BASKETBALL ===================== -->
+<div id="tab-basketball" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>🏀 Basketball — Phase 1: Light Introduction</h3>
+    <p>Right now basketball is not the main focus — soccer development comes first. But keeping the ball in your hands 2–3x/week builds the foundation so that when we ramp up in Phase 2, you're not starting from zero. Keep sessions short, high quality, and skills-focused. No conditioning yet.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🎯</span> Phase 1 Targets (June 2026)</div>
+    <div style="font-size:0.84rem; line-height:1.9;">
+      ✅ 2–3 sessions per week, 20–30 min each<br>
+      ✅ Focus: shooting form + ball handling only<br>
+      ✅ No conditioning — this is pure skill work<br>
+      📅 Phase 2 (July+): full-court handles, pull-up jumper, volume increase<br>
+      🎯 Goal by November: Make varsity basketball team
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🏹</span> Shooting Session Format</div>
+    <div class="schedule-block"><div class="sched-dot dot-blue"></div><div class="sched-time">1. Form shots</div><div class="sched-content"><div class="sched-title">3 feet from basket — one hand, perfect arc</div><div class="sched-note">No backboard. Feel the release. 25 makes, not 25 attempts.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-green"></div><div class="sched-time">2. Mid-range</div><div class="sched-content"><div class="sched-title">Right elbow, left elbow, straight on</div><div class="sched-note">10 attempts each spot. Footwork on every catch.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-gold"></div><div class="sched-time">3. Handles</div><div class="sched-content"><div class="sched-title">Stationary — between legs, behind back, figure 8</div><div class="sched-note">5 min. Low dribble, pound it, stay under control.</div></div></div>
+    <div class="schedule-block"><div class="sched-dot dot-purple"></div><div class="sched-time">4. Moves</div><div class="sched-content"><div class="sched-title">Crossover, behind back, through legs — while walking</div><div class="sched-note">5 min. Speed comes later. Clean mechanics first.</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📈</span> Phase 2 Additions (July+)</div>
+    <div style="font-size:0.84rem; color:var(--muted); line-height:1.8;">
+      • Full-court ball handling circuits<br>
+      • Pull-up jumper off 1–2 dribbles<br>
+      • Catch-and-shoot off movement (V-cuts, curls)<br>
+      • 1v0 attack moves: Euro step, floater, mid-range pull-up<br>
+      • Conditioning: court sprints, defensive slides<br>
+      • Dunk training: Jump Attack + PJF vert program<br>
+      • Dunk goal: August 2026
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ---- TAB SWITCHING ----
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ---- EXERCISE ACCORDION ----
+function toggleEx(el) {
+  el.classList.toggle('open');
+}
+
+// ---- VERSION TOGGLE ----
+function switchVersion(v) {
+  document.querySelectorAll('.version-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('version-' + v).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ---- READING VIEW TOGGLE ----
+function switchReadingView(v) {
+  const panel = document.getElementById('tab-reading');
+  panel.querySelectorAll('.version-panel').forEach(p => p.classList.remove('active'));
+  panel.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('reading-' + v).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ---- TODAY DYNAMIC ----
+const SCHEDULE = {
+  2: { // Tuesday June 10
+    title: 'Tuesday, June 10 — Foundation Phase',
+    events: [
+      { time: '6:30am', title: 'Wake — barefoot 5 min outside', note: 'Big toe extension holds. Ground yourself.', dot: 'dot-blue' },
+      { time: '7:00–8:30', title: '⚽ Field — Touch Day', note: 'Before the heat. Tiny touches, inside/outside, wall work.', dot: 'dot-green' },
+      { time: 'School', title: 'School', note: 'Minimal demands. Coast.', dot: 'dot-blue' },
+      { time: '3:00–4:00', title: '💪 Gym — Session A (Hip Hinge)', note: 'Single-leg RDL, Nordic curl, Paloff press, dead hang.', dot: 'dot-green' },
+      { time: '4:00–4:20', title: 'Recovery Stack', note: 'Foam roll, spiky ball, hip flexor stretch, child's pose.', dot: 'dot-gold' },
+      { time: '4:30–5:30', title: '📐 Algebra 2 — Ch1', note: 'Video → read → 10 problems.', dot: 'dot-blue' },
+      { time: '5:30–7pm', title: 'Reading + Quran', note: 'Essentialism 20 min. Quran 15 min.', dot: 'dot-purple' },
+      { time: '9:30pm', title: 'Bed — legs up wall 5 min before', note: '', dot: 'dot-gray' }
+    ],
+    priorities: [
+      { emoji: '⚽', text: 'Field session before 11am — heat rule is real', urgent: true },
+      { emoji: '💪', text: 'Gym: Session A — learn the movements, not just do the reps', urgent: false },
+      { emoji: '📐', text: 'Algebra Ch1 — 45 min minimum', urgent: false },
+      { emoji: '🌿', text: 'Barefoot outside first thing — 5 min, non-negotiable', urgent: false }
+    ]
+  },
+  3: { // Wednesday June 11
+    title: 'Wednesday, June 11',
+    events: [
+      { time: '6:30am', title: 'Wake — barefoot outside', note: '', dot: 'dot-blue' },
+      { time: '7:00–8:30', title: '💪 Gym — Session B (Single Leg)', note: 'Bulgarian split squat, Copenhagen plank, lateral band walk, soleus raises.', dot: 'dot-green' },
+      { time: 'School', title: 'School', note: '', dot: 'dot-blue' },
+      { time: '3:00–4:00', title: '📐 Algebra 2 — Ch1', note: '', dot: 'dot-blue' },
+      { time: '4:00–4:30', title: 'Fascia Deep Work', note: 'PNF stretching, posterior sling, foot intrinsics.', dot: 'dot-gold' },
+      { time: '4:30–5:30', title: 'Psychology + Reading', note: 'Start Carol Dweck — Growth Mindset.', dot: 'dot-purple' },
+      { time: '7:00–7:45', title: '🏀 Basketball — Shooting + Handles', note: 'Form shooting 25 makes. Ball handling 10 min.', dot: 'dot-green' },
+      { time: '9:30pm', title: 'Bed', note: '', dot: 'dot-gray' }
+    ],
+    priorities: [
+      { emoji: '💪', text: 'Gym before school — Session B, learn the split squat', urgent: true },
+      { emoji: '📐', text: 'Algebra: another 45 min on Ch1', urgent: false },
+      { emoji: '🏀', text: 'Basketball evening — short, skill-focused', urgent: false }
+    ]
+  },
+  4: { // Thursday June 12
+    title: 'Thursday, June 12',
+    events: [
+      { time: '6:30am', title: 'Wake — barefoot outside', note: '', dot: 'dot-blue' },
+      { time: '7:00–8:30', title: '⚽ Field — Turns Day', note: 'Cruyff, inside hook, outside chop, body feint. Cone approach + fake combos.', dot: 'dot-green' },
+      { time: 'School', title: 'School', note: '', dot: 'dot-blue' },
+      { time: '3:00–4:00', title: '📐 Algebra 2 — Ch1 wrap-up', note: 'Finish chapter. Hit the flashcards.', dot: 'dot-blue' },
+      { time: '4:00–4:30', title: '🧘 GOATA Work', note: 'Hip hinge at wall, GOATA squat, lateral bounding, depth drop.', dot: 'dot-gold' },
+      { time: '4:30–5:30', title: 'Quran + Islam study', note: 'Al-Mulk review. 15 min Islamic reading.', dot: 'dot-purple' },
+      { time: '9:30pm', title: 'Bed', note: '', dot: 'dot-gray' }
+    ],
+    priorities: [
+      { emoji: '⚽', text: 'Turns day — drill each turn 5 reps before adding speed', urgent: false },
+      { emoji: '📐', text: 'Finish Ch1 today — Ch2 starts tomorrow', urgent: true },
+      { emoji: '🧘', text: 'GOATA session — hip hinge at wall is the priority', urgent: false }
+    ]
+  },
+  5: { // Friday June 13 — World Cup
+    title: 'Friday, June 13 — 🇲🇦 World Cup Day',
+    events: [
+      { time: 'Morning', title: 'Light touch session (optional)', note: '30 min max. Juggling + wall. Keep energy for the match.', dot: 'dot-green' },
+      { time: 'Match time', title: '🇲🇦 Morocco World Cup — BLOCKED', note: 'Full attention. This is culture, identity, and joy.', dot: 'dot-purple' },
+      { time: 'Post-match', title: 'Light recovery + family time', note: 'Foam roll, legs up wall. Enjoy the day.', dot: 'dot-gold' }
+    ],
+    priorities: [
+      { emoji: '🇲🇦', text: 'Watch the match. Be fully present. No guilt.', urgent: true },
+      { emoji: '🌿', text: 'Light fascia only — no training on World Cup days', urgent: false }
+    ]
+  },
+  6: { // Saturday June 14
+    title: 'Saturday, June 14',
+    events: [
+      { time: '7:00am', title: 'Wake — barefoot outside', note: '', dot: 'dot-blue' },
+      { time: '7:30–9:00', title: '⚽ Field — Wall Day', note: 'Angled wall passes, both feet, speed ladder + wall combo.', dot: 'dot-green' },
+      { time: '9:30–11:00', title: '💪 Gym — Session C (Upper + Integrated)', note: 'Pull-up negatives, single-arm row, farmer carry, dead bug.', dot: 'dot-green' },
+      { time: '11:00–11:30', title: 'Recovery Stack', note: '', dot: 'dot-gold' },
+      { time: '11:30–1:00', title: '📐 Algebra 2 — Ch2 begin', note: 'Quadratic Functions. Watch Khan Academy intro first.', dot: 'dot-blue' },
+      { time: '1:00–7pm', title: 'Lunch + reading + free time', note: 'Heat window. Relax.', dot: 'dot-purple' },
+      { time: '7:00–7:45', title: '🏀 Basketball — Handles + Mid-range', note: '', dot: 'dot-green' }
+    ],
+    priorities: [
+      { emoji: '⚽', text: 'Wall Day — both feet, angled passes, don't just blast', urgent: false },
+      { emoji: '💪', text: 'Gym Session C — farmer carry and dead hang are the priority', urgent: false },
+      { emoji: '📐', text: 'Start Ch2 in the late morning window', urgent: true }
+    ]
+  },
+  0: { // Sunday June 15 — Rest
+    title: 'Sunday, June 15 — Rest + Plan',
+    events: [
+      { time: 'Morning', title: 'Light fascia only — 20 min', note: 'Foam roll, hip CARs, grounding barefoot. No gym, no field.', dot: 'dot-gold' },
+      { time: 'All day', title: 'Family time / free time', note: 'This is scheduled rest. Not laziness.', dot: 'dot-purple' },
+      { time: 'Evening', title: '📋 Weekly Planning', note: 'Any WC matches this week? Set Algebra targets. Check heat forecast.', dot: 'dot-blue' },
+      { time: 'Evening', title: 'Quran + Reading', note: 'Al-Mulk review. Essentialism.', dot: 'dot-blue' },
+      { time: '9:30pm', title: 'Bed', note: '', dot: 'dot-gray' }
+    ],
+    priorities: [
+      { emoji: '📋', text: 'Plan the week tonight — Algebra targets + session timing', urgent: true },
+      { emoji: '🧘', text: 'True rest day — light fascia only, no training', urgent: false },
+      { emoji: '📚', text: 'Quran review + reading before bed', urgent: false }
+    ]
+  },
+  1: { // Monday June 16 — Half days start
+    title: 'Monday, June 16 — ½ Days Begin',
+    events: [
+      { time: '7:00am', title: 'Wake — barefoot outside', note: '', dot: 'dot-blue' },
+      { time: '7:30–9:00', title: '⚽ Field — Game Intelligence Day', note: 'Shadow dribbling, cone defender, fake-and-go, finishing.', dot: 'dot-green' },
+      { time: '~9:30–12:30', title: 'School — Half Day', note: 'In and out. Coast.', dot: 'dot-blue' },
+      { time: '1:00–2:30', title: '💪 Gym — Session A', note: 'Indoor — fine during heat.', dot: 'dot-green' },
+      { time: '2:30–3:00', title: 'Recovery Stack', note: '', dot: 'dot-gold' },
+      { time: '3:00–4:30', title: '📐 Algebra 2 + SAT preview', note: 'Ch2 Quadratics. 10 min Khan SAT math intro.', dot: 'dot-blue' },
+      { time: '4:30–7pm', title: 'Reading / Quran / Psychology / Family', note: '', dot: 'dot-purple' },
+      { time: '9:30pm', title: 'Bed', note: '', dot: 'dot-gray' }
+    ],
+    priorities: [
+      { emoji: '⚽', text: 'Field before school — deception + fake-and-go focus', urgent: true },
+      { emoji: '💪', text: 'Gym after school — half day = more time', urgent: false },
+      { emoji: '📐', text: 'Algebra Ch2 — quadratics, use Khan Academy', urgent: false }
+    ]
+  }
+};
+
+function buildTodaySchedule() {
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun, 1=Mon, ... 6=Sat
+  const dateStr = now.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+  document.getElementById('headerDate').textContent = dateStr;
+
+  const sched = SCHEDULE[day];
+  if (!sched) return;
+
+  const schedEl = document.getElementById('todaySchedule');
+  let html = '';
+  sched.events.forEach(e => {
+    html += `<div class="schedule-block">
+      <div class="sched-dot ${e.dot}"></div>
+      <div class="sched-time">${e.time}</div>
+      <div class="sched-content">
+        <div class="sched-title">${e.title}</div>
+        ${e.note ? `<div class="sched-note">${e.note}</div>` : ''}
+      </div>
+    </div>`;
+  });
+  schedEl.innerHTML = html;
+
+  const prioEl = document.getElementById('todayPriorities');
+  let pHtml = '';
+  sched.priorities.forEach(p => {
+    pHtml += `<div style="display:flex; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); align-items:flex-start;">
+      <span style="font-size:1.1rem;">${p.emoji}</span>
+      <span style="font-size:0.85rem; ${p.urgent ? 'font-weight:700;' : ''}">${p.text}</span>
+      ${p.urgent ? '<span class="pill pill-red" style="margin-left:auto; flex-shrink:0;">NOW</span>' : ''}
+    </div>`;
+  });
+  prioEl.innerHTML = pHtml;
+
+  // Badge always shows Summer Mode
+  // (static — set in HTML, no dynamic override needed)
+
+  // Mark today in week grid
+  // Week starts Tuesday June 10: Tue=0,Wed=1,Thu=2,Fri=3,Sat=4,Sun=5,Mon=6
+  const colMap = {2:0, 3:1, 4:2, 5:3, 6:4, 0:5, 1:6};
+  const cols = document.querySelectorAll('.day-col');
+  cols.forEach(c => c.classList.remove('today'));
+  if (colMap[day] !== undefined && cols[colMap[day]]) {
+    cols[colMap[day]].classList.add('today');
+  }
+}
+
+buildTodaySchedule();
+</script>
+
+</body>
+</html>

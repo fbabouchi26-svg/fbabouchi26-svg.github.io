@@ -1,11 +1,13 @@
 # IBRAHIM — MASTER FILE
-### Last Updated: April 6, 2026
+### Last Updated: June 10, 2026
 
 ---
 
 ## WHO HE IS
 
-Ibrahim. 14 years old. Freshman. Regular school day (~6:30 AM departure – 2:30 PM home). MLS Next Academy soccer player recovering from a second stress fracture (fibula, Grade 2). Cleared by Dr. Corrado on March 12, 2026 for a structured 9-week return-to-play protocol. Physical therapist Amelia runs a separate jumping program. Compliance with both has been inconsistent due to reffing jobs, pickup basketball, and unstructured field sessions.
+Ibrahim. 14 years old. Freshman. Healthy — no injuries. Club soccer season (MLS Next Academy) is fully over. Still on a town team but participating only sporadically. School is wrapping up: half days starting around June 16, final day June 23. After June 23 = full summer, all-day availability.
+
+**The weather right now:** Very hot between 11am–7pm. All outdoor training happens before 11am or after 7pm.
 
 ---
 
@@ -29,17 +31,18 @@ This is his Harvard essay. Not a sob story — a discovery story. The kid who wa
 
 ## GOALS — RANKED BY DEADLINE
 
-### By June 2026
-- [ ] Re-learn Sura Al-Mulk (with tajweed)
-- [ ] Re-learn Juz Amma (with tajweed)
+### By June 23 (End of School)
+- [ ] Establish consistent daily structure (gym, field, recovery, academics)
+- [ ] Complete Algebra 2 Chapters 1–3
 
-### By Early July 2026
-- [ ] Complete Algebra 2 — entire textbook, test-ready on every chapter
+### By Late July 2026
+- [ ] Complete Algebra 2 — entire textbook, test-ready on every chapter (**new hard deadline**)
+- [ ] Solid base of SAT prep established
 
 ### By August 2026
 - [ ] Make varsity high school soccer team
 - [ ] Score 14+ on the beep test
-- [ ] Be in peak athletic form
+- [ ] Be in peak athletic form — fascia-driven, glute-dominant, spring athlete
 - [ ] Learn to dunk
 
 ### By September 2026
@@ -61,365 +64,457 @@ This is his Harvard essay. Not a sob story — a discovery story. The kid who wa
 
 ---
 
-## WEEKLY CONSTRAINTS
+## PHASE OVERVIEW
+
+### Phase 1 — Foundation (June 10–23)
+School still happening. Half days from ~June 16. Hot afternoons. Low external demands. Begin building habits: gym 4–5x/week (fascia-informed), field 4–5x/week (early or late), recovery daily, academics daily. Volume stays conservative — the goal is building the HABIT of structure, not crushing him.
+
+### Phase 2 — Summer Build (June 24–July 31)
+All day available. Algebra 2 deadline is late July — this is the sprint. Soccer volume increases, basketball introduced more formally, gym progressions advance. Structure is non-negotiable: he has no school, no excuse not to be locked in. Still monitor volume — increase gradually.
+
+### Phase 3 — Pre-Season Peak (August)
+Varsity soccer tryouts. Beep test target 14+. PJF + Jump Attack integrated. Dunk goal. All systems maximized.
+
+---
+
+## WORLD CUP / DAYS OFF
+
+### World Cup Blocks (Morocco or major match days — mostly off)
+- **June 13** — Block most of the day
+- **June 19** — Block most of the day
+- **June 24** — Block most of the day
+- Any other compelling match: flexible, use judgment
+
+### Family / Travel / Days Off
+Days off and family time are built into the system — not failures, they're scheduled. Every 7–10 days there should be a true rest/fun day. Travel weeks get a modified plan, not a blank week.
+
+**Rule:** A World Cup game is not a productivity day. Enjoy it fully.
+
+---
+
+## CURRENT CONSTRAINTS (Phase 1: June 10–23)
 
 ### School
-- **Monday–Friday:** ~6:30 AM (leave house) – 2:30 PM (home)
-- Homework volume varies week to week
+- School still running — minimal demands
+- Half days starting approximately June 16
+- **Last day of school: June 23**
+- Homework volume: near zero
 
-### Soccer Practice (MLS Next Academy)
-- **Monday:** 6:50 – 8:20 PM
-- **Tuesday:** 8:00 – 9:30 PM
-- **Wednesday:** 8:10 – 9:40 PM
-- **Travel time:** 40 minutes each way
-- Practice nights = late nights. Cannot maintain early bedtime.
+### Town Team Soccer
+- Sporadic only — may have a game here and there
+- Does NOT drive the weekly schedule
 
-### Sleep Rules
-- **Practice nights (Mon/Tue/Wed):** Bed by 10:45 PM, wake at 6:30 AM (~7.75 hours)
-- **Non-practice nights (Thu/Fri/Sat/Sun):** Bed by 9:30 PM, wake at 5:00 AM (7.5 hours)
-- **Target:** 8+ hours whenever possible. Sleep is recovery.
+### Heat Window
+- **Outdoor training (field/drills) must happen before 11am OR after 7pm**
+- 11am–7pm: academics, gym (indoor), recovery at home
+
+### Sleep
+- **Target:** 9–10 hours. He's a growing 14-year-old athlete. This is performance.
+- Bed: 9:30–10pm. Wake: 6:30–7am (flexible on days with no school commitment)
 
 ### YMCA
 - **Hours:** Opens 5:30 AM (Sunday 6:00 AM), Closes 9:00 PM (weekends 5:00 PM)
-- **Early slots (Fri–Mon mornings):** HIIT bike + optional lift before school
-- **Lift target:** 5x/week
-- **HIIT target:** 4x/week, preferably every other day
-- **⚠️ INJURY NOTE (active as of Apr 6):** While still nursing injury, YMCA sessions are AFTER SCHOOL or EVENING only — NOT early AM. Do not schedule 5am/early morning Y sessions until fully cleared.
-
-### Sporadic Commitments
-- Medical appointments (various, unscheduled)
-- Reffing jobs (weekends typically)
-- PT appointments with Amelia (varies)
-- These shift the schedule each week → need dynamic planning
+- Sessions: late morning or midday work fine for Phase 1 since school demand is minimal
 
 ---
 
-## DAILY TEMPLATE — NON-PRACTICE DAYS (Thu/Fri/Sat/Sun)
+## TRAINING PHILOSOPHY
 
-| Time | Activity |
-|------|----------|
-| 5:00 AM | Wake up |
-| 5:00 – 5:20 | Morning routine (wudu, get dressed) |
-| 5:20 – 5:30 | Drive to YMCA |
-| 5:30 – 6:45 | YMCA: Lift + HIIT bike |
-| 6:45 – 7:00 | Drive home / to school |
-| ~6:30 – 2:30 | School (Fri only if school; Sat/Sun = open) |
-| 2:30 – 2:45 | Transition home, snack |
-| 2:45 – 3:00 | Daily check-in: review schedule, adjust for weather/appointments |
-| 3:00 – 4:30 | Academics (Algebra 2 + homework) |
-| 4:30 – 4:40 | Break |
-| 4:40 – 5:30 | Athletic recovery: fascia + hip mobility + ankle mobility + structural strength |
-| 5:30 – 6:00 | Reading (20-30 min — currently: *Essentialism*) |
-| 6:00 – 7:00 | Dinner + family time |
-| 7:00 – 8:00 | Quran review / Darija study / homework overflow |
-| 8:00 – 9:00 | Free time / wind down |
-| 9:00 – 9:30 | Night routine + bed |
+### The Core Principle: Fascia-First, Not Muscle-First
 
----
+Ibrahim is a fascia-driven athlete in development. The goal is NOT to make him a gym bodybuilder who also plays soccer. The goal is to build a **spring athlete** — someone whose fascia stores and releases energy, whose body moves as an integrated tensegrity system, whose glutes fire properly, whose foot and big toe connect to the entire chain.
 
-## DAILY TEMPLATE — PRACTICE DAYS (Mon/Tue/Wed)
+This changes everything about how he trains.
 
-| Time | Activity |
-|------|----------|
-| 5:00 AM (Mon) / 6:30 AM (Tue/Wed) | Wake up |
-| 5:00 – 5:20 (Mon only) | Morning routine |
-| 5:20 – 6:45 (Mon only) | YMCA: Lift + HIIT bike |
-| ~6:30 – 2:30 | School |
-| 2:30 – 2:45 | Transition home, snack |
-| 2:45 – 3:00 | Daily check-in |
-| 3:00 – 4:30 | Academics (Algebra 2 + homework) |
-| 4:30 – 5:00 | Fascia + mobility stack (shortened — 20 min) |
-| 5:00 – 5:30 | Reading (20-30 min) |
-| 5:30 – 6:00 | Dinner |
-| 6:00/6:10 | Leave for soccer practice (40 min drive) |
-| 6:50/8:00/8:10 | Soccer practice |
-| 8:20/9:30/9:40 | Practice ends |
-| ~9:00/10:10/10:20 | Arrive home |
-| 9:30/10:30/10:45 | Quick shower + bed |
+**What this means in practice:**
+- In the gym: slow eccentrics, ISO holds, single-leg work, hip hinge patterns, Copenhagen planks, Nordic curls, hanging — NOT quad-dominant machines, NOT ego lifting
+- On the field: small precise touches, not brute-force kicking — training the nervous system, not just the legs
+- Recovery: not an afterthought. It IS the training. Fascia responds to sustained load and release, not just sweat.
+- Glute dominance is the foundation. Quad dominance = compensation = breakdown. Every session reinforces the glute pattern.
 
-**Monday is special:** Can hit YMCA at 5:30 AM before school AND has practice at 6:50 PM. Fullest day of the week.
+### The Five Pillars
 
-**Tuesday/Wednesday:** Wake at 6:30 (no early YMCA — late practice the night before or coming up). YMCA lift happens at a different slot or counts as a skip day for HIIT (practice itself is cardio).
+**1. Tensegrity**
+The body is a continuous web of fascia. The big toe connects to the hip. The foot arch connects to the spine. We train the SYSTEM, not isolated muscles. Every weak link in the chain is addressed.
+
+**2. GOATA Movement**
+Great Outdoor Athlete — bow-tension posture. Hips loaded, spine long, glutes engaged. This is how elite movers run, cut, jump. It's the opposite of the collapsed posture most kids walk around with. Every drill reinforces this pattern.
+
+**3. Elastic Recoil**
+Fascia stores energy like a loaded spring. Stiff, shortened fascia loses that spring. Warm, hydrated, properly loaded fascia amplifies every athletic movement. This is why stretching, grounding, and slow release work are not optional.
+
+**4. Piezoelectricity**
+Bone and fascia generate electrical charges when compressed or stretched. ISO holds and high-tension movements literally recharge the cellular matrix. This is science, not mysticism.
+
+**5. Progressive Overload — Applied Intelligently**
+Volume increases slowly and deliberately. The body adapts. We push it just enough, then recover. Rushing this is how athletes break down. Patience is part of the program.
 
 ---
 
-## WEEKLY WORKOUT STRUCTURE
+## GYM PROGRAM — FASCIA-INFORMED (June 2026)
 
-| Day | Lift | HIIT | Fascia/Mobility | Soccer Practice | Notes |
-|-----|------|------|-----------------|-----------------|-------|
-| **Monday** | AM (YMCA 5:30) | AM (YMCA) | PM (shortened) | 6:50-8:20 PM | Biggest day. AM gym + PM practice. |
-| **Tuesday** | PM (home or skip) | — | PM (shortened) | 8:00-9:30 PM | Late practice = no AM gym. Practice = cardio. |
-| **Wednesday** | PM (home or skip) | — | PM (shortened) | 8:10-9:40 PM | Same as Tuesday. Practice = cardio. |
-| **Thursday** | AM (YMCA 5:30) | AM (YMCA) | PM (full) | — | Recovery day from 3 practices. Full mobility. |
-| **Friday** | AM (YMCA 5:30) | AM (YMCA) | PM (full) | — | Strong training day. |
-| **Saturday** | AM (YMCA 5:30) | AM (YMCA) | PM (full) | — | Open day. Longest training window. |
-| **Sunday** | AM (YMCA 6:00) | — | Fascia only | — | Rest emphasis. Light. Weekly planning night. |
+**Frequency:** 4–5x/week
+**Duration:** 45–60 minutes per session
+**NOT:** Standard bro-split. No quad-dominant machine sessions. No ego lifting.
+**YES:** Loaded eccentrics, ISOs, single-leg patterns, hip hinges, hanging, core as anti-rotation
 
-**Lift days: Mon, Thu, Fri, Sat, Sun = 5x/week**
-**HIIT days: Mon, Thu, Fri, Sat = 4x/week (every other day roughly)**
-**Fascia/mobility: Daily (shortened on practice days, full on off days)**
+See full program: `Athletics/Training_Programs/GYM_PROGRAM_Fascia_Informed.md`
+
+### Gym Day Structure (every session)
+1. **Barefoot warm-up (5 min)** — foot intrinsics: arch lifts, toe yoga, short-foot activation. Big toe extension holds. This primes the entire fascial chain before anything else.
+2. **Hip activation (5 min)** — glute bridge, clamshells with band, lateral band walks. Every session. Non-negotiable. This is the reset for quad-dominant patterns.
+3. **Main work (30–35 min)** — rotating A/B/C focus (see below)
+4. **Fascial cool-down (10–15 min)** — spiky ball, foam roll, sustained stretches (45+ seconds), grounding if possible
+
+### Gym Sessions A / B / C (Weeks 1–2: Neural Reset Phase)
+Priority in weeks 1–2 is learning movement patterns, not loading. Bodyweight or very light weight. Mastery before intensity.
+
+**Session A — Hip Hinge & Posterior Chain**
+- Single-leg RDL (bodyweight or light DB): 3×8 each side — 4-second descent, pause at bottom, drive through heel
+- Nordic Curl (band-assisted or partner): 3×5 — just survive the eccentric, don't rush the concentric
+- Glute bridge ISO hold: 3×30 sec — squeeze at top, drive knees out
+- Paloff press (band): 3×12 each side — anti-rotation core
+- Dead hang: 3×20–30 sec — spine decompression, shoulder stability
+
+**Session B — Single Leg & Lateral**
+- Bulgarian split squat (slow): 3×8 each side — 3 sec down, 1 sec pause, drive through front heel
+- Copenhagen plank: 3×20–30 sec each side — adductor + hip stability
+- Lateral band walk: 3×15 each direction — GOATA position, not bent over
+- Single-leg calf raise (bent knee = soleus): 3×12 each side — 2 sec up, 3 sec down
+- Hanging leg raise (controlled): 3×8 — not swinging
+
+**Session C — Upper + Integrated**
+- Pull-up negatives or band-assisted pull-ups: 3×5 — 5-second descent
+- Push-up (slow, controlled): 3×12 — 3 sec down, full range
+- Single-arm DB row (hip hinge position): 3×10 each side
+- Farmer carry (heavy DBs): 3×30m — tall posture, glutes engaged
+- Dead bug: 3×8 each side — anti-extension core
+
+### What NOT to Do in the Gym
+- No leg press machine
+- No leg extension machine
+- No grinding reps with bad form
+- No skipping the barefoot warm-up
+- No skipping the fascial cool-down
+
+### Gym Progressions (Weeks 3–4, then July)
+- Weeks 3–4: add load where form is solid. Begin tracking weights. Add depth on split squat.
+- July: tempo work, heavier single-leg, plyometric eccentrics, drop landing holds. Jump Attack integrated.
 
 ---
 
-## RECOVERY PROTOCOL — DR. CORRADO (9 WEEKS FROM 3/12)
+## FIELD PROGRAM — SOCCER (June 2026)
 
-| Week | Dates | Load | Status |
-|------|-------|------|--------|
-| 1-2 | Mar 12 – Mar 25 | 25% | ← CURRENT |
-| 3 | Mar 26 – Apr 1 | REST WEEK | Full downgrade |
-| 4-5 | Apr 2 – Apr 15 | 50% | |
-| 6 | Apr 16 – Apr 22 | 25% (downgrade) | |
-| 7-8 | Apr 23 – May 6 | 100% | |
-| 9 | May 7 – May 13 | 50% (taper) | |
-| Post | May 14+ | FULL CLEARANCE | |
+**Frequency:** 4–5x/week
+**Duration:** 45–75 minutes (build gradually)
+**Timing:** Before 11am or after 7pm always
+**Core Principle:** Every session trains the nervous system and body intelligence. Fitness is a side effect of good movement done correctly and repeatedly.
 
-**Amelia's program:** Separate jumping protocol. Running in parallel. Ibrahim needs to follow BOTH without stacking unstructured load (pickup ball, reffing) on top.
+See full library: `Athletics/Soccer/FIELD_SESSIONS_Library.md`
 
-**Rule:** Reffing and pickup sessions count as load. If you ref on Saturday, that IS your impact activity. Don't also go to the field.
+### The Principles Behind Every Field Session
+
+These never change. Every drill must serve at least one of them.
+
+**Tiny Touches** — The ball should never travel more than 1–2 feet away from the body unless intentional. Big heavy touches kill sequences. Small, alive, directional touches are the foundation of elite control.
+
+**Not Killing the Ball** — A pass arrives: the first touch doesn't stop it — it redirects it, sets it, puts it where the next action happens. Dead first touches are the most common flaw at this age.
+
+**Inside/Outside** — Both surfaces of the foot are tools. Inside for control and direction. Outside for disguise, speed, and deception. Drills alternate constantly.
+
+**Turns** — The ability to turn under pressure is one of the most critical skills at the next level. Cruyff, inside hook, outside chop, body feint turn. Drilled until automatic.
+
+**First Touch** — The touch that opens space and time. A perfect first touch creates a second to breathe. A bad one creates chaos. Every receiving drill is a first touch drill.
+
+**Scanning** — Looking before receiving. Head up. Knowing where the pressure is before the ball arrives. This is the difference between youth-level and senior-level play. A trained habit.
+
+**Deception** — Fakes, feints, body language that misdirects defenders. Not tricks for show — functional deception that creates real space. Shoulder drops, fake-and-go, step-overs used sparingly but decisively.
+
+**Wall Work** — The wall is a silent training partner available every day. One-touch passes, angle manipulation, receiving at pace, driven vs. cushioned passes. Non-negotiable.
+
+### The 4 Field Session Types (Rotate Weekly)
+
+**Type 1: TOUCH DAY** — tiny touches, not killing the ball, inside/outside
+- Juggling warm-up: 5 min (thigh, foot, alternating — for feel, not tricks)
+- Wall: 1-touch passes, 10 min — vary angles, distances, surfaces
+- Cone dribble: 6 cones in line, thread through tight with alternating inside/outside. 3 sets × 5 passes. Walk back = rest.
+- Stop-start: dribble at pace, stop ball dead under foot on a signal, look up, continue. Teaches the controlled stop.
+- Receiving on the move: drop ball ahead, receive at pace, redirect inside/outside. 10 min.
+- Cool-down: juggling 5 min, barefoot if possible
+
+**Type 2: TURNS DAY** — turns, first touch, deception
+- Walk-through: Cruyff, inside hook, outside chop, body feint. 5 min no pressure.
+- Cone approach: dribble at cone, execute turn, accelerate away. 5 reps × 4 turns. Speed increases each set.
+- Turn + fake: approach cone, show fake one direction, execute turn the other.
+- 1v0 turn sequence: receive imaginary pass, turn under "pressure," accelerate into space.
+- Tight space turns: two cones 3 yards apart, continuous turns in that space × 30 sec.
+- Blind receive + turn: close eyes, open on ball contact, turn immediately.
+
+**Type 3: WALL DAY** — wall work, first touch, scanning
+- Driven passes to wall, right and left foot only: 5 min warm-up
+- Angled pass drill: stand at 45°, play to wall so it returns to moving foot
+- Receiving challenge: don't look at ball until 1 second before contact. Forces scanning.
+- Distance variation: 3 yards, 6 yards, 10 yards — different control demands each
+- Both feet mandatory: every drill includes non-dominant foot time. Aim for 40/60 ratio not 10/90.
+- Speed ladder + wall: do footwork, receive wall pass at end of ladder, play back.
+
+**Type 4: GAME INTELLIGENCE DAY** — scanning, deception, decision-making
+- Shadow dribbling: cone layout as defender positions, dribble "reading" where to go
+- Pressure passing: triangle of cones, 1–2 touch ball movement. Increase speed each set.
+- Cone defender: dribble toward cone, execute deceptive move (shoulder drop, step-over, body feint), go past. 10 reps each.
+- Fake-and-go: slow approach → stop → fake shot/pass → accelerate. Drill full sequence.
+- Finishing close: end every session, 10 min quality finishing. Inside of foot, accuracy to corners. No blasting.
+
+### Field Session Progressions (July+)
+- Add resistance band around ankles while dribbling (glute firing in movement)
+- Same drills at higher speed — same quality standard
+- Verbalize what you see before each action (forces scanning habit)
+- Combine session types: 20 min Touch + 20 min Turns + 15 min finishing
+- Add partner for actual pressure
 
 ---
 
-## ATHLETIC TRAINING PROGRAMS
+## RECOVERY PROGRAM
 
-### Currently Active
-1. **Daily fascia + mobility stack** (from recovery plan — non-negotiable)
-2. **Structural strengthening** (soleus, tibialis, glute, core — gym days)
-3. **YMCA lifts** (5x/week target)
-4. **HIIT bike** (4x/week target)
-5. **Soccer practice** (3x/week — MLS Next)
+**Recovery is training. Not optional. Not "when there's time." Scheduled first.**
 
-### Needs Integration
-- **PJF Vert Code Elite** — NOW IN FOLDER. Phase 1 program: 5-day cycle. Days 1 & 5 = Lower Body Base (foam roller, partial squats, calf raises, ankle hops, vertical jumps). Days 2 & 4 = Mobility/Core/Feet/Ankles (hip openers, ankle mobility, adductor work, toe raises). Day 3 = Jump Mechanics + Pool Work (approach jumps, hurdle hops, pogo jumps). Every exercise has a YouTube link. Aligns well with Dr. Corrado's recovery needs. **Note:** Amelia is running her own jumping program that doesn't strictly follow Dr. Corrado's protocol — it's a mix of both. Ibrahim needs to log what Amelia assigns vs what PJF prescribes so we can reconcile.
-- **Jump Attack** (Tim Grover) — PDF is in the Ibs folder. Plyometric/jumping program. Good for recovery and dunking goal. Need to extract the actual workout phases.
-- **Soccer drills** — user has saved videos on Facebook, Instagram, YouTube that need to be shared/cataloged
-- **Soleus + tibialis specific training** — user has saved content to share
-- **Ankle + hip mobility content** — user has saved videos to share
-- **Fascia training content** — user has saved content to share
-- **Mindset training** — user has content to share
+### Daily Recovery Stack (20–30 min total)
 
-### Basketball (PAUSED)
-- Early morning YMCA shooting practice slots reserved for future use
-- Goal: Make varsity by November. Learn to dunk by August.
-- Will resume once injury recovery is further along
+**Morning (5 min — anywhere):**
+- Barefoot on grass: 5 min. Grounding. Deliberate. Not scrolling while doing it.
+- Big toe extension hold: pull big toe back while standing, 10 sec each side. Primes the plantar fascia chain.
+
+**Post-session (15–20 min):**
+- Foam roll: quads (2 min), IT band (2 min), thoracic spine (2 min)
+- Spiky ball: plantar fascia arch (90 sec each foot)
+- Hip flexor lunge stretch: 45 sec each side — long hold, fascia needs time
+- Child's pose: 45 sec × 2 — breathe deeply, each exhale deeper
+- Hip CARs: slow full circles in the hip socket. 5 each direction each side.
+- GOATA breathing: 10 breaths — inhale through nose into belly, exhale fully. Reset the nervous system.
+
+**Evening (5 min — before bed):**
+- Legs up the wall: 5 min. Lymphatic drainage, reduces lower leg fatigue.
+- Ankle circles: 10 each direction each ankle
+- Body scan: deliberate attention feet to head, release tension. This is a skill.
+
+### Fascia-Specific Work (3×/week, 20 min sessions)
+Separate from daily stack — deeper work.
+- PNF stretching: contract-relax for hip flexors, hamstrings, calves
+- Posterior sling activation: lat to glute via fascia — bird dog, single-arm plank variations
+- Tensegrity drills from @zinsegrity and @hft.archives saved videos
+- Barefoot proprioception: wobble board, eyes closed balance, letter tracing with foot in air
+
+### GOATA-Specific Work (2×/week, 15 min)
+- GOATA squat: slow, loaded, hip-back, bow-tension maintained
+- Hip hinge at wall: nose and toes touching wall, hinge without losing contact (true hip hinge not squat-hinge)
+- Lateral bounding: GOATA position, bound side to side with controlled landing
+- Depth drop: step off low box, land soft, hold. Trains the fascial eccentric catch.
+
+---
+
+## BASKETBALL PROGRAM (Phase 1 — Light Introduction)
+
+Right now basketball is not the main focus. Keep the ball in his hands, begin building volume slowly. 2–3 sessions/week, 20–30 min. High quality, not conditioning.
+
+**Phase 1 targets (June 2026):**
+- Shooting form: 3 feet from basket, one hand, perfect arc. 25 makes.
+- Mid-range: right elbow, left elbow, straight on. 10 attempts each spot.
+- Ball handling: stationary — between legs, behind back, figure 8. 5 min.
+- 1-ball dribble moves: crossover, behind back, through legs while walking. 5 min.
+
+As volume builds: full-court handles, pull-up jumper off dribble, catch-and-shoot off movement.
 
 ---
 
 ## ACADEMICS
 
-### Algebra 2 — TEST-OUT MASTERY PLAN
-**Context:** Ibrahim is NOT currently taking Algebra 2 in school. He takes Geometry (finds it harder than expected). Algebra 2 is a SIDE PROJECT — he's teaching himself the entire course to test out of it for next year. The school provides only the textbook link or hard copy and says "you're on your own." No login, no auto-graded assignments, no teacher. That's why this system exists.
-**Textbook:** Big Ideas Math Algebra 2 — Free online: bim.easyaccessmaterials.com/?level=13.00
-**Interactive Study Hub (LIVE):** https://fbabouchi26-svg.github.io/Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html
-**Main Hub (LIVE):** https://fbabouchi26-svg.github.io/
-**GitHub Repo:** fbabouchi26-svg/fbabouchi26-svg.github.io (main branch, push to deploy)
-**Deadline:** Test-ready on ENTIRE book by early July 2026
-**Current position:** Chapter 1 (Linear Functions) — started March 25
-**Math strengths:** Strong in algebra fundamentals. Geometry-connected topics are harder for him.
-**Key geometry connections to watch:** Ch9 (Trigonometry) is the most geometry-heavy chapter and will need extra time. Transformations (Ch1-2) and conic sections also tie into geometry concepts.
+### Algebra 2 — ACCELERATED MASTERY PLAN
+**New Deadline: Last week of July 2026**
+**Reality check:** Entire course in ~6 weeks. 11 chapters. ~3–4 days per chapter. This is doable — but ONLY if it's engaging, broken down properly, and sports-themed.
 
-**Hub features (as of Apr 6):**
-- 5 working tabs: Lesson (4 sections w/ collapsible content), Practice (15 problems w/ checked answers + hints), Flashcards (13 cards w/ flip animation + Know It/Still Learning rating), Jeopardy (5×5 grid, 25 questions, multi-choice), Videos (4 curated YouTube links)
-- XP system (0–500 XP, stored in localStorage key `alg2xp`)
-- Sports-themed throughout: Morocco NT players (Hakimi, Brahim Díaz, Boufal, Ben Seghir, El Khanous, Abde Ezzalzouli, El Aynaoui, Louza, El Nassiri, Yassine Ghaesim), Liverpool FC (Szoboszlai, Salah, Trent, Núñez), Boston Celtics (Pritchard, J. Brown)
-- Data lives in external `alg2-data.js` (prevents apostrophe/syntax errors in CDN-cached HTML)
-- **Important:** If browser shows old version, do hard refresh: Cmd+Shift+R (Mac) / Ctrl+Shift+R (Windows)
+**Non-negotiables for making this work:**
+- Video-first: Khan Academy for concept introduction, then practice. Never staring at a textbook wondering what something means.
+- Interactive hub stays live and updated with each chapter
+- Sports-themed word problems — Morocco NT, NBA, real numbers that matter to him
+- Daily targets are specific (not "do chapter 3" — do sections 3.1 and 3.2, problems 1–10)
+- Progress is visible: XP, chapter tracker, streaks
 
-**Chapter structure (Big Ideas Math Algebra 2):**
-1. Linear Functions ← CURRENT
-2. Quadratic Functions
-3. Quadratic Equations and Complex Numbers
-4. Polynomial Functions
-5. Rational Exponents and Radical Functions
-6. Exponential and Logarithmic Functions
-7. Rational Functions
-8. Sequences and Series
-9. Trigonometric Ratios and Functions ← HARDEST for him (geometry-heavy)
-10. Probability
-11. Data Analysis and Statistics
+**Textbook:** Big Ideas Math Algebra 2 — bim.easyaccessmaterials.com/?level=13.00
+**Interactive Hub (LIVE):** https://fbabouchi26-svg.github.io/Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html
+**GitHub Repo:** fbabouchi26-svg/fbabouchi26-svg.github.io
 
-**Timeline:** ~14 weeks (late March to early July). 11 chapters. Average ~1.3 weeks per chapter. Some chapters heavier than others. Review weeks built in at weeks 5, 9, and 14.
+**Accelerated Chapter Schedule:**
+| Chapter | Topic | Target Dates |
+|---------|-------|--------------|
+| 1 | Linear Functions | June 10–13 |
+| 2 | Quadratic Functions | June 14–17 |
+| 3 | Quadratic Equations & Complex Numbers | June 18–22 |
+| 4 | Polynomial Functions | June 23–27 |
+| 5 | Rational Exponents & Radical Functions | June 28–July 2 |
+| 6 | Exponential & Logarithmic Functions | July 3–7 |
+| 7 | Rational Functions | July 8–12 |
+| 8 | Sequences & Series | July 13–16 |
+| 9 | Trigonometric Ratios & Functions | July 17–22 (**hardest**) |
+| 10 | Probability | July 23–25 |
+| 11 | Data Analysis & Statistics | July 26–28 |
+| Review | Full course review + practice tests | July 29–31 |
 
-**Materials in folder:** Ch1 flashcards, exercise sheets, performance task, chapter test, coordinate plane worksheets, 4-step problem solving template, various textbook screenshots, interactive study hub (HTML).
+**Daily Algebra structure (45–60 min):**
+1. Watch 1–2 concept videos (Khan Academy): 15 min
+2. Read textbook section: 10 min
+3. Practice 8–12 problems from hub or textbook: 20 min
+4. Review answers, note what went wrong and why: 10 min
 
-**Engagement approach:** Ibrahim has had the textbook link for a while and never used it. A link alone isn't enough — he needs structure (daily assignments), guidance (video playlists, worked examples), inspiration (sports-themed problems tied to his goals), and accountability (quiz scores, streak tracking). The study hub provides all of this in one shareable file.
+**Math notes:** Strong in algebra fundamentals. Ch9 (Trigonometry) is hardest — geometry-heavy. Build in extra time.
 
-**Sharing:** The HTML study hub can be shared via Google Drive, AirDrop, email, or any method. Ibrahim can open it on any device (phone, Chromebook, tablet) with no login required. The textbook is also accessible from any device.
+### SAT Prep
+**Start:** June 24 (summer begins)
+**Daily:** 30–45 min
+**Approach:** Khan Academy Official SAT Prep (free, standard). Start with diagnostics — find the weakest areas.
+**Phase 1 focus:** Math (Algebra-heavy = aligned with Algebra 2) + Reading
 
-### Other Academics
-- Regular school homework (daily — varies)
-- Stay afloat. Don't let anything slip.
+### Reading
+- **Current:** Essentialism by Greg McKeown
+- **Daily:** 20–30 min (heat-window activity)
+- **Next picks:** psychology/human behavior titles from FBC reading list
+
+### Quran & Islam
+- **Goals:** Re-learn Sura Al-Mulk + Juz Amma with proper tajweed
+- **Daily:** 15–20 min review/practice — evening slot
+- **Islam study:** 2–3x/week, 15–20 min — not just memorization, identity and values
+
+### Psychology Research
+- **Purpose:** Harvard application + genuine intellectual direction
+- **Format:** 2–3x/week, 30 min — reading papers, watching lectures, taking notes
+- **Start here:**
+  - Carol Dweck — Growth Mindset (directly mirrors his story)
+  - Angela Duckworth — Grit
+  - Robert Sapolsky — Stanford lectures on human behavioral biology (YouTube, free)
+  - Dan Ariely — irrational human behavior
+- **Goal:** By fall, have a clear research question forming. By spring, a hypothesis worth testing.
 
 ---
 
-## SPIRITUAL / PERSONAL DEVELOPMENT
+## DAILY SCHEDULE TEMPLATES
 
-### Quran
-- **By June:** Re-learn Sura Al-Mulk + Juz Amma with proper tajweed
-- Need to determine current memorization level
-- Daily review time slotted into 7:00-8:00 PM block
+### Phase 1: School Day (Full Day — through ~June 15)
+| Time | Block |
+|------|-------|
+| 6:30 AM | Wake, morning routine, barefoot 5 min outside |
+| 7:00–8:30 AM | Field session (before heat) OR gym if field was previous day |
+| School | School |
+| 2:30–3:00 PM | Transition, snack, check-in |
+| 3:00–4:00 PM | Academics (Algebra) |
+| 4:00–4:20 PM | Recovery stack |
+| 4:20–5:00 PM | Reading / Quran / Psychology |
+| 5:00–7:00 PM | Heat window — relax, family, free time |
+| 7:00–8:30 PM | Evening field OR basketball |
+| 8:30–9:00 PM | Dinner / family |
+| 9:30 PM | Bed |
 
-### Darija (Moroccan Arabic)
-- **By September:** Conversational level
-- Need to source learning materials (apps, tutors, YouTube channels)
-- Daily practice time slotted into 7:00-8:00 PM block (alternating with Quran)
+### Phase 1: Half Day (June 16–23)
+| Time | Block |
+|------|-------|
+| 7:00 AM | Wake, morning routine, barefoot |
+| 7:30–9:00 AM | Field session (before heat) |
+| 9:00–9:30 AM | Shower, snack |
+| ~9:30 AM–12:30 PM | School (half day) |
+| 12:30–1:00 PM | Home, lunch |
+| 1:00–2:30 PM | Gym (indoor — fine during heat) |
+| 2:30–3:00 PM | Recovery stack |
+| 3:00–4:30 PM | Academics (Algebra focus) |
+| 4:30–5:30 PM | Reading / Quran / Psychology |
+| 5:00–7:00 PM | Family time / free time |
+| 7:00–8:00 PM | Basketball or extra field (optional, light) |
+| 9:30 PM | Bed |
 
-### Reading
-- **Current book:** *Essentialism* by Greg McKeown (from FBC Part 4: Free Time Before Busyness)
-- **Target:** 20-30 minutes daily
-- Full FBC reading list available as reference for next picks
+### Phase 2: Full Summer Day (June 24+)
+| Time | Block |
+|------|-------|
+| 6:45 AM | Wake, morning routine, barefoot 5 min outside |
+| 7:00–8:30 AM | Field session (most important session of day) |
+| 8:30–9:00 AM | Shower, breakfast |
+| 9:00–10:30 AM | Gym (YMCA or home) |
+| 10:30–11:00 AM | Recovery stack (post-gym) |
+| 11:00 AM–12:00 PM | **HEAT: Algebra 2** (45–60 min) |
+| 12:00–1:00 PM | **HEAT: SAT prep** (30–40 min) + break |
+| 1:00–2:00 PM | Lunch + rest |
+| 2:00–3:00 PM | Reading + Psychology research |
+| 3:00–3:30 PM | Quran review |
+| 3:30–5:00 PM | Family time / free time / nap |
+| 5:00–6:00 PM | GOATA/Fascia deep work OR basketball |
+| 6:00–7:00 PM | Dinner |
+| 7:00–8:30 PM | Basketball handles/shooting OR second field session |
+| 8:30–9:00 PM | Evening recovery stack |
+| 9:30 PM | Bed |
+
+---
+
+## WEEKLY WORKOUT STRUCTURE (Phase 1)
+
+| Day | AM (before 11) | Midday/PM | Evening (after 7) |
+|-----|----------------|-----------|-------------------|
+| Mon | Field | Gym + Academics | Recovery |
+| Tue | Gym | Academics | Basketball |
+| Wed | Field | Academics | Recovery deep work |
+| Thu | Gym | Academics | Field |
+| Fri | Field | Gym | Basketball |
+| Sat | Field | Open/family | Basketball or extra field |
+| **Sun** | **Light fascia only** | Family | Weekly planning |
+
+**Volume rules:**
+- Field: max 5 sessions/week, 45–60 min each
+- Gym: 4–5 sessions/week, 45–60 min
+- Basketball: 2–3 sessions/week, 20–30 min
+- Recovery: every single day
+- True rest day: Sunday (light fascia/grounding only)
 
 ---
 
 ## SCHEDULING SYSTEM
 
 ### Sunday Night Check-In (Weekly Planning)
-Every Sunday evening, update the schedule for the upcoming week:
-- Confirm soccer practice times (any changes?)
-- Log any medical appointments, PT sessions, reffing jobs
-- Check homework load for the week
-- Adjust YMCA and training slots accordingly
-- Set specific Algebra 2 targets for the week (which sections, how many problems)
-- Check weather forecast (affects outdoor training, driving to practice)
+- Morocco/World Cup match this week? Block those windows.
+- Family plans / travel / days off?
+- Heat forecast — adjust outdoor session timing if needed
+- Set specific Algebra 2 targets (exact sections + problems)
+- Note any town team soccer games
+- Confirm gym and field session timing for each day
 
-### Daily 2:45 PM Check-In (After School Adjustment)
-When Ibrahim gets home from school:
-- What homework is due tomorrow?
-- Any schedule changes (appointment moved, practice cancelled, weather)?
-- Adjust afternoon blocks accordingly
-- Confirm evening plan (practice night vs. non-practice night)
-
-### Weather Awareness
-- Rain/ice → no outdoor field work, shift to indoor mobility/gym
-- Extreme cold → longer warm-up needed before YMCA
-- Check forecast at start of each day
+### Daily Check-In
+Morning: What are today's 3 athletic sessions? When does heat hit?
+Evening: Did sessions happen? Quality? What needs to change tomorrow?
 
 ---
 
-## FILES NEEDED / TO ORGANIZE
+## ATHLETICS FILES
 
-### In Ibs Folder Currently
-- `Final V 3.0 FBC- FBF Booklist.pdf` — Five Before College reading list ✓
-- `Jump Attack` zip → PDF confirmed (Tim Grover book) ✓
-- `Reading List` zip → duplicate of booklist ✓
-- `Algebra 2/` folder → Ch1 materials, exercises, flashcards ✓
-- `History of Me/` → athlete profile, recovery dossier, leg1 doc ✓
+- **Gym Program:** `Athletics/Training_Programs/GYM_PROGRAM_Fascia_Informed.md`
+- **Field Sessions:** `Athletics/Soccer/FIELD_SESSIONS_Library.md`
+- **Athletics Program Hub:** `Athletics/ATHLETICS_PROGRAM.html`
+- **PJF Vert Code Elite:** `Athletics/Training_Programs/PJF/` (Phase 2+)
+- **Jump Attack:** `Athletics/Training_Programs/Jump_Attack/` (Phase 2+)
 
-### Needs to Be Added
-- [x] PJF Vert Code Elite — ADDED (Athletics/Training_Programs/PJF/)
-- [x] GPT training plan with links — ADDED (Athletics/Untitled document.pdf)
-- [x] School Program of Studies — ADDED (Academics/_2026-2027 FHS Program of Studies.pdf)
-- [ ] Soccer drill videos — user to share from FB/IG/YouTube saves
-- [ ] Fascia training videos/content — user to share
-- [ ] Ankle + hip mobility content — user to share
-- [ ] Soleus + tibialis training content — user to share
-- [ ] Mindset training content — user to share
-- [ ] Complete Algebra 2 materials for chapters 2-11
-
-### Proposed Folder Structure
-```
-Ibs/
-├── IBRAHIM_MASTER_2026-03-24.md
-├── SCHEDULE_Week_Mar24-28.md
-├── Academics/
-│   ├── Algebra_2/
-│   │   ├── Ch01_Linear_Functions/
-│   │   ├── Ch02_Quadratic_Functions/
-│   │   ├── ... (through Ch11)
-│   │   ├── Flashcards/
-│   │   ├── Practice_Tests/
-│   │   └── ALGEBRA2_MASTERY_PLAN.md
-│   ├── Homework_Log/
-│   └── Other_Subjects/
-├── Athletics/
-│   ├── Recovery/
-│   │   ├── athlete_full_profile_summary.md
-│   │   ├── recovery_protocol_dr_corrado.md
-│   │   └── pt_amelia_exercises.md
-│   ├── Soccer/
-│   │   ├── Drills/
-│   │   └── Practice_Notes/
-│   ├── Basketball/
-│   │   └── (paused)
-│   ├── Training_Programs/
-│   │   ├── Jump_Attack/
-│   │   ├── PJF/ (pending)
-│   │   ├── Fascia_Training/
-│   │   ├── Mobility/
-│   │   └── Soleus_Tibialis/
-│   └── YMCA_Log/
-├── Reading/
-│   ├── Currently_Reading/ (Essentialism)
-│   └── FBC_Booklist.pdf
-├── Spiritual/
-│   ├── Quran/
-│   │   ├── Sura_Al_Mulk/
-│   │   └── Juz_Amma/
-│   └── Darija/
-├── College_Prep/
-│   ├── Essay_Draft/
-│   ├── Research_Ideas/
-│   └── Harvard_Profile_Builder.md
-└── Schedules/
-    ├── Weekly/ (archive of past weeks)
-    └── Templates/
-```
+**Instagram video principles:** All 30+ saved videos from @zinsegrity, @hft.archives, @garcia_effect_official, @pjfperformance, @drshah_neurovision are cataloged in `index_BACKUP.html` and mapped in `ATHLETICS_PROGRAM.html`.
 
 ---
 
----
+## ACADEMICS FILES
 
-## CONTENT PIPELINE — GOOGLE DOC WORKFLOW
-
-A Google Doc will be used as a drop zone for links and ideas that Claude then pulls into the live site. **Status: PENDING — user to create and share link.**
-
-**Planned doc structure:**
-```
-SOCCER VIDEOS
-- Title: ...
-  URL: ...
-  Note: ...
-
-RESEARCH IDEAS
-- Topic: ...
-  URL: ...
-
-ATHLETICISM STRATEGIES
-- Title: ...
-  URL: ...
-
-READING LIST
-- Book: ...
-  URL: ...
-```
-
-**How it works:** User drops links into the doc → tells Claude "pull the doc" → Claude fetches content and pushes updates to GitHub Pages. Doc must be shared as "Anyone with the link can view."
-
-**Tabs in hub waiting for content:**
-- Soccer Videos tab (needs actual YouTube/video links from user)
-- Research tab (needs specific researchers/papers to study)
-- Athletics tab (needs PT workout document — parent to upload)
+- **Algebra 2 Hub (LIVE):** https://fbabouchi26-svg.github.io/Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html
+- **Textbook:** bim.easyaccessmaterials.com/?level=13.00
+- **GitHub Repo:** fbabouchi26-svg/fbabouchi26-svg.github.io
 
 ---
 
-## RECOVERY PROTOCOL STATUS (as of Apr 6)
+## SITE — IBRAHIM'S HUB
 
-Per Dr. Corrado's 9-week plan starting Mar 12:
-- Weeks 4–5 (Apr 2–15): **50% load** ← CURRENT
-- Week 6 (Apr 16–22): 25% (downgrade)
-- Weeks 7–8 (Apr 23–May 6): 100%
-- Week 9 (May 7–13): 50% taper
-- Post May 14+: Full clearance
+**Live:** https://fbabouchi26-svg.github.io/
+**Local files:** `IBRAHIM_HUB.html`, `index.html`, `Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html`
+**Push to GitHub main branch to deploy.**
 
-**YMCA rule while in recovery:** After school / evening sessions ONLY. No early AM gym.
-**Reffing counts as load** — don't stack with gym on ref days.
+**Chatbot concept (future):** Claude chatbot embedded in site → Cloudflare Worker → Anthropic API. Build when API key ready.
 
 ---
 
-## SITE — CURRENT WEEK SCHEDULE (auto-updated weekly)
-
-Week of Apr 6–12, 2026. Week grid runs Mon–Sun. Today (Mon Apr 6) highlighted.
-Files: `index.html` (main hub) + `Academics/Algebra_2/IBRAHIM_ALGEBRA2_HUB.html` + `Academics/Algebra_2/alg2-data.js`
-
----
-
-*This is the single source of truth for the Ibrahim project. Update after every significant development.*
+*Single source of truth for the Ibrahim project. Update after every significant development.*

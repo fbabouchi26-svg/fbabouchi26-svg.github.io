@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim — Soccer Session · May 22, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f3ee; color: #1a1a1a; padding: 2rem; }
+
+  .page-header { text-align: center; margin-bottom: 2rem; }
+  .page-header h1 { font-size: 1.8rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.25rem; }
+  .page-header .meta { color: #888; font-size: 0.85rem; letter-spacing: 0.03em; }
+
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 20px; padding: 3px 10px; margin-right: 6px; }
+  .tag-return { background: #faeeda; color: #6b3f09; border: 1px solid #f5c97a; }
+  .tag-technical { background: #e1f5ee; color: #0a5c43; border: 1px solid #7dd5b5; }
+  .tag-today { background: #e6f1fb; color: #0f4b84; border: 1px solid #9ecaf5; }
+
+  .philosophy-box { background: #1c1c1c; color: #f0ede6; border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+  .philosophy-box h3 { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.75rem; }
+  .philosophy-box p { font-size: 13.5px; line-height: 1.7; color: #d4cfc8; }
+  .philosophy-box strong { color: #f0ede6; }
+
+  .phases { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .phase-card { background: white; border-radius: 14px; border: 1px solid #e5e3dd; overflow: hidden; }
+  .phase-head { padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .phase-head h2 { font-size: 0.95rem; font-weight: 600; color: white; }
+  .phase-time { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.15); border-radius: 10px; padding: 2px 10px; }
+  .phase-head-green { background: #1d9e75; }
+  .phase-head-blue { background: #378add; }
+  .phase-head-dark { background: #1c1c1c; }
+  .phase-head-coral { background: #d85a30; }
+
+  .phase-body { padding: 1.25rem; }
+  .phase-note { font-size: 12px; color: #888; margin-bottom: 1rem; line-height: 1.6; border-left: 3px solid #e5e3dd; padding-left: 10px; }
+  .phase-note strong { color: #555; }
+
+  .drill { border: 1px solid #edeae3; border-radius: 10px; padding: 1rem 1.1rem; margin-bottom: 0.85rem; }
+  .drill:last-child { margin-bottom: 0; }
+  .drill-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; gap: 1rem; }
+  .drill-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .drill-duration { font-size: 11px; font-weight: 500; color: #888; white-space: nowrap; background: #f5f3ee; border-radius: 8px; padding: 2px 8px; flex-shrink: 0; }
+  .drill-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 0.5rem; }
+  .drill-focus { font-size: 11.5px; color: #1d9e75; font-weight: 500; }
+  .drill-focus span { color: #888; font-weight: 400; }
+
+  .setup-line { font-size: 11.5px; color: #378add; font-weight: 500; margin-bottom: 0.4rem; }
+  .setup-line span { color: #888; font-weight: 400; }
+
+  .reps-line { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .rep-chip { font-size: 11px; background: #f5f3ee; border: 1px solid #e5e3dd; border-radius: 8px; padding: 2px 8px; color: #555; }
+
+  .injury-note { background: #faeeda; border: 1px solid #f5c97a; border-radius: 10px; padding: 0.75rem 1rem; margin-top: 1rem; font-size: 12.5px; color: #6b3f09; line-height: 1.6; }
+  .injury-note strong { font-weight: 600; }
+
+  .total-bar { max-width: 900px; margin: 1.5rem auto 0; background: white; border-radius: 12px; border: 1px solid #e5e3dd; padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .total-bar .label { font-size: 13px; color: #555; }
+  .total-bar .value { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+
+  .footer-note { max-width: 900px; margin: 1rem auto 0; text-align: center; font-size: 11.5px; color: #aaa; }
+
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    .page-header h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Ibrahim's Soccer Session</h1>
+  <p class="meta" style="margin-bottom: 0.6rem;">Friday, May 22, 2026</p>
+  <span class="tag tag-return">Return from Injury</span>
+  <span class="tag tag-technical">Technical Focus</span>
+  <span class="tag tag-today">Today</span>
+</div>
+
+<div class="philosophy-box">
+  <h3>Session Philosophy</h3>
+  <p>
+    <strong>Ball control is everything.</strong> If you can't receive the ball at any speed, from any angle, with any body part and bring it under control — nothing else works. That's where every session starts and what every drill points back to. Once control is solid, we layer in: first touch into a move, using the ball's momentum to turn and explode, deception through body positioning, and the ability to force a player out of your way. We <strong>never kill the ball</strong>. We scan, anticipate, and calculate — and that mental sharpness only becomes automatic through so much repetition that you can play fully relaxed and just flow.
+  </p>
+</div>
+
+<div class="phases">
+
+  <!-- PHASE 1 -->
+  <div class="phase-card">
+    <div class="phase-head phase-head-green">
+      <h2>Phase 1 — Core Technical Foundation</h2>
+      <span class="phase-time">15–20 min</span>
+    </div>
+    <div class="phase-body">
+      <p class="phase-note"><strong>Every session starts here.</strong> This is the non-negotiable base. No combining yet — pure quality of touch and control. Injury return: keep pace easy, no hard planting or sharp cuts. Focus entirely on the feel of the ball.</p>
+
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Out of the Air Ball Control</div>
+          <div class="drill-duration">5 min</div>
+        </div>
+        <div class="drill-desc">Fatima serves the ball from varying heights, angles, and speeds. Ibrahim controls with whatever surface the ball demands — instep, thigh, chest, outside. Goal is to bring it dead under control in one touch.</div>
+        <div class="setup-line"><span>Vary: </span>Height · Angle · Speed · Body part required</div>
+        <div class="drill-focus"><span>Focus: </span>The ball doesn't bounce away. One touch, under control, every time.</div>
+      </div>
+
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Inside / Outside Up the Line</div>
+          <div class="drill-duration">3 min</div>
+        </div>
+        <div class="drill-desc">Tight, quick touches up a line — inside of the foot, then outside of the foot, alternating. Both feet. Keep the ball close. Fast tempo but in control at all times.</div>
+        <div class="setup-line"><span>Setup: </span>Any line or 2 cones ~20 yards apart</div>
+        <div class="reps-line">
+          <span class="rep-chip">Right foot</span>
+          <span class="rep-chip">Left foot</span>
+          <span class="rep-chip">Alternate</span>
+        </div>
+        <div class="drill-focus" style="margin-top: 0.5rem;"><span>Focus: </span>Ball stays under the body. Tight touches, never overhit.</div>
+      </div>
+
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Tiny Touches — Straight Line Sprint</div>
+          <div class="drill-duration">2–3 min</div>
+        </div>
+        <div class="drill-desc">Fast, rapid small touches in a straight line. Feet moving constantly. Ball stays within a foot of the body. Not about speed — about touch frequency and feel. Today: easy pace only.</div>
+        <div class="drill-focus"><span>Focus: </span>High touch frequency. Ball attached to the foot.</div>
+      </div>
+
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Running with the Ball</div>
+          <div class="drill-duration">3 min</div>
+        </div>
+        <div class="drill-desc">Open stride running with the ball — longer touches, head up. Not dribbling tight. Moving with pace (controlled today — no full sprint). Simulates carrying the ball into space.</div>
+        <div class="drill-focus"><span>Focus: </span>Head stays up. Ball pushed ahead but never lost.</div>
+      </div>
+
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">First Touch — Serve & Control</div>
+          <div class="drill-duration">3–4 min</div>
+        </div>
+        <div class="drill-desc">Fatima serves rolling and bouncing balls from different sides. Ibrahim's job: receive with a first touch that sets up the next action — don't just stop the ball, set it where you want it to go. Vary surfaces: inside, outside, sole.</div>
+        <div class="drill-focus"><span>Focus: </span>The first touch is the first decision. Where does it go?</div>
+      </div>
+
+      <div class="injury-note">
+        <strong>⚠ Injury Return Note (Phase 1):</strong> Keep all movement at easy-to-moderate pace. No sharp directional cuts, no full sprints. If the foot or leg gives any signal — stop immediately. The goal today is quality touch work and getting back into the feel of the ball.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase-card">
+    <div class="phase-head phase-head-blue">
+      <h2>Phase 2 — Combination Structure Drills</h2>
+      <span class="phase-time">30–35 min</span>
+    </div>
+    <div class="phase-body">
+      <p class="phase-note"><strong>This is where concepts get chained.</strong> Each drill combines receive → control → move → outcome. One player, one coach. Simple cone setups. The ball never dies — each touch flows into the next.</p>
+
+      <!-- DRILL 1 -->
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Drill 1 — Receive → Turn → Gate</div>
+          <div class="drill-duration">8–10 min</div>
+        </div>
+        <div class="setup-line"><span>Setup: </span>Fatima 8–10 yards away as server · 2 cones as gate, 6–8 yards ahead of Ibrahim · Ibrahim starts standing</div>
+        <div class="drill-desc">
+          Fatima serves the ball — rolling, bouncing, in the air. Ibrahim receives it, <strong>uses the ball's energy and momentum to turn in one motion</strong>, and drives through the gate. No dead ball. Receive and turn is a single fluid movement — not two separate actions.
+        </div>
+        <div class="reps-line">
+          <span class="rep-chip">10 reps — roll from right</span>
+          <span class="rep-chip">10 reps — roll from left</span>
+          <span class="rep-chip">10 reps — in the air</span>
+        </div>
+        <div class="drill-focus" style="margin-top: 0.5rem;"><span>Focus: </span>The turn happens WITH the ball's momentum, not against it. One motion. No stutter.</div>
+      </div>
+
+      <!-- DRILL 2 -->
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Drill 2 — Drive → Deception → Escape</div>
+          <div class="drill-duration">8–10 min</div>
+        </div>
+        <div class="setup-line"><span>Setup: </span>1 cone as "defender" ~15 yards from start · gate (2 cones) 5 yards past the defender · Ibrahim starts with ball at feet</div>
+        <div class="drill-desc">
+          Ibrahim drives at the defender cone with intent — like he means to run straight through it. At 1–2 yards out: <strong>shoulder drop or body feint</strong> to one side, cut in the opposite direction, explode through the gate. Today's move: <strong>simple shoulder drop</strong> (no hard plant, injury-safe). The deception lives in the body commitment — you sell the direction before the touch.
+        </div>
+        <div class="reps-line">
+          <span class="rep-chip">5 reps — drop left, cut right</span>
+          <span class="rep-chip">5 reps — drop right, cut left</span>
+          <span class="rep-chip">5 reps — player's choice</span>
+        </div>
+        <div class="drill-focus" style="margin-top: 0.5rem;"><span>Focus: </span>The body commits BEFORE the ball moves. That's what makes the defender react. Pace today: 70% — no full acceleration through the gate.</div>
+      </div>
+
+      <!-- DRILL 3 -->
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Drill 3 — Pressure Receive → Scan → Decide</div>
+          <div class="drill-duration">8–10 min</div>
+        </div>
+        <div class="setup-line"><span>Setup: </span>3 small gates set out in front of Ibrahim — left (A), center (B), right (C) · Fatima serves from ~8 yards</div>
+        <div class="drill-desc">
+          Fatima calls out a gate — <strong>A, B, or C — as she serves</strong>. Ibrahim receives the ball and drives it to the called gate. The catch: the call comes at the same moment as the serve. Ibrahim has to scan before the ball arrives and process the call while receiving. This is the mental load of a real game: receive under information pressure.
+        </div>
+        <div class="reps-line">
+          <span class="rep-chip">Rolling serves</span>
+          <span class="rep-chip">Bouncing serves</span>
+          <span class="rep-chip">In the air</span>
+          <span class="rep-chip">From varying angles</span>
+        </div>
+        <div class="drill-focus" style="margin-top: 0.5rem;"><span>Focus: </span>Head up before the ball arrives. The receive sets the body toward the decision, not away from it.</div>
+      </div>
+
+      <!-- DRILL 4 -->
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Drill 4 — Receive → Defender → Finish</div>
+          <div class="drill-duration">8–10 min</div>
+        </div>
+        <div class="setup-line"><span>Setup: </span>Fatima serves from the side or behind · 1 defender cone ~5 yards ahead · small goal or gate 10 yards past defender</div>
+        <div class="drill-desc">
+          Full combination: Fatima serves. Ibrahim receives out of the air or off the ground, brings it under control, drives at the defender cone, executes a deceptive move (his choice — shoulder drop, step-over, or body feint), escapes past, and finishes through the gate. This is the full chain: receive → control → attack → deception → outcome.
+        </div>
+        <div class="reps-line">
+          <span class="rep-chip">10–15 reps total</span>
+          <span class="rep-chip">Vary the serve each time</span>
+          <span class="rep-chip">Vary the finishing move</span>
+        </div>
+        <div class="drill-focus" style="margin-top: 0.5rem;"><span>Focus: </span>No dead moments. Every touch flows into the next. The whole sequence feels like one thing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase-card">
+    <div class="phase-head phase-head-dark">
+      <h2>Phase 3 — Free Flow</h2>
+      <span class="phase-time">10–15 min</span>
+    </div>
+    <div class="phase-body">
+      <p class="phase-note">No structure. No rules. Ibrahim with the ball, alone. Moves come when they come. This is the flow state — where muscle memory takes over and the game feels natural. No coaching here. Let him play.</p>
+
+      <div class="drill">
+        <div class="drill-header">
+          <div class="drill-name">Free Dribble — No Rules</div>
+          <div class="drill-duration">10–15 min</div>
+        </div>
+        <div class="drill-desc">
+          Ibrahim has the ball. No cones, no gates, no prescribed moves. He dribbles, flicks, turns, stops, accelerates — whatever comes. The only rule is the ball stays close and moving. This is what all the repetition is for: the moment it stops being thinking and starts being playing.
+        </div>
+        <div class="drill-focus"><span>Focus: </span>Nothing. Just flow. Trust the work.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="total-bar">
+  <span class="label">Total session time</span>
+  <span class="value">55–65 minutes</span>
+</div>
+<div class="total-bar" style="margin-top: 0.5rem;">
+  <span class="label">Today's priority</span>
+  <span class="value">Touch quality &amp; flowing movement · No hard effort</span>
+</div>
+
+<p class="footer-note" style="margin-bottom: 2rem;">Return from injury · Familiar concepts · Technical focus · May 22, 2026</p>
+
+</body>
+</html>

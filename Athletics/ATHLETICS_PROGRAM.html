@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim — Athletics Program</title>
+<style>
+:root {
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --navy: #0f2044;
+  --blue: #1d4ed8;
+  --gold: #d97706;
+  --green: #059669;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --tab-h: 52px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: var(--navy);
+  color: white;
+  padding: 18px 20px 14px;
+  position: sticky; top: 0; z-index: 200;
+}
+.header-top { display:flex; align-items:center; justify-content:space-between; }
+.header h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+.header h1 span { color: var(--gold); }
+.header-sub { font-size: 0.78rem; opacity: 0.65; margin-top: 2px; }
+.phase-badge {
+  background: var(--green); color: white;
+  border-radius: 20px; padding: 3px 11px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* TAB NAV */
+.tab-nav {
+  display: flex; overflow-x: auto;
+  background: white; border-bottom: 2px solid var(--border);
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0; padding: 0 16px; height: var(--tab-h);
+  border: none; background: none; cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; color: var(--muted);
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: all 0.2s; white-space: nowrap;
+}
+.tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+
+/* PANELS */
+.tab-panel { display: none; padding: 16px; max-width: 760px; margin: 0 auto; }
+.tab-panel.active { display: block; }
+
+/* CARDS */
+.card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 18px 20px; margin-bottom: 14px;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.card-title {
+  font-size: 0.95rem; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted);
+  margin: 18px 0 8px;
+}
+
+/* PHILOSOPHY BOX */
+.philosophy {
+  background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+  color: white; border-radius: var(--radius);
+  padding: 20px; margin-bottom: 16px;
+}
+.philosophy h3 { font-size: 1rem; margin-bottom: 8px; color: var(--gold); }
+.philosophy p { font-size: 0.85rem; line-height: 1.7; opacity: 0.9; }
+.philosophy ul { padding-left: 18px; margin-top: 8px; }
+.philosophy li { font-size: 0.82rem; opacity: 0.9; margin-bottom: 5px; line-height: 1.5; }
+
+/* PILLS */
+.pill {
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 0.74rem; font-weight: 700; display: inline-block;
+}
+.pill-green { background: #d1fae5; color: var(--green); }
+.pill-gold { background: #fef3c7; color: var(--gold); }
+.pill-blue { background: #dbeafe; color: var(--blue); }
+.pill-red { background: #fee2e2; color: var(--red); }
+.pill-purple { background: #ede9fe; color: var(--purple); }
+.pill-navy { background: #e0e7ff; color: var(--navy); }
+.pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+
+/* EXERCISE BLOCKS — collapsible */
+.exercise {
+  border: 1px solid var(--border); border-radius: 10px;
+  margin-bottom: 10px; overflow: hidden;
+}
+.exercise-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; cursor: pointer;
+  background: white; transition: background 0.15s;
+  user-select: none;
+}
+.exercise-header:hover { background: #f8fafc; }
+.ex-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  color: white; font-size: 0.72rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.num-green { background: var(--green); }
+.num-orange { background: #ea580c; }
+.num-blue { background: var(--blue); }
+.num-purple { background: var(--purple); }
+.num-red { background: var(--red); }
+.num-gold { background: var(--gold); }
+.ex-name { font-weight: 700; font-size: 0.9rem; flex: 1; }
+.ex-duration {
+  font-size: 0.72rem; font-weight: 600;
+  background: #f1f5f9; color: var(--muted);
+  padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+}
+.ex-arrow { color: var(--muted); transition: transform 0.2s; font-size: 0.8rem; flex-shrink: 0; }
+.exercise.open .ex-arrow { transform: rotate(90deg); }
+.exercise-body {
+  display: none; padding: 0 14px 14px;
+  border-top: 1px solid var(--border); background: #fafafa;
+}
+.exercise.open .exercise-body { display: block; }
+.ex-how { font-size: 0.85rem; color: var(--text); margin: 10px 0 8px; line-height: 1.65; }
+.ex-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ex-tag {
+  font-size: 0.69rem; padding: 2px 8px; border-radius: 7px; font-weight: 600;
+}
+.tag-why { background: #fef3c7; color: var(--gold); }
+.tag-cue { background: #dbeafe; color: var(--blue); }
+.tag-prog { background: #ede9fe; color: var(--purple); }
+
+/* VIDEO BUTTONS — IG style */
+.vid-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.vid-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: white; text-decoration: none;
+  padding: 6px 13px; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 700;
+  transition: opacity 0.15s;
+}
+.vid-btn:hover { opacity: 0.85; }
+.vid-btn .acct { opacity: 0.85; font-weight: 500; }
+
+/* PHASE TIMELINE */
+.phase-row {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.phase-row:last-child { border-bottom: none; }
+.phase-dot-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; flex-shrink: 0; }
+.phase-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 3px;
+}
+.phase-line { width: 2px; background: var(--border); flex: 1; min-height: 20px; margin-top: 4px; }
+.phase-content { flex: 1; }
+.phase-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.phase-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
+.phase-desc { font-size: 0.82rem; color: var(--text); line-height: 1.6; }
+
+/* DAILY STACK TIMELINE */
+.stack-block {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 11px 0; border-bottom: 1px solid var(--border);
+}
+.stack-block:last-child { border-bottom: none; }
+.stack-time {
+  font-size: 0.74rem; font-weight: 700; color: var(--muted);
+  min-width: 72px; padding-top: 2px;
+}
+.stack-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 5px;
+}
+.stack-content { flex: 1; }
+.stack-title { font-weight: 700; font-size: 0.9rem; }
+.stack-note { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+/* WEEK SPLIT TABLE */
+.split-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.split-table th {
+  background: var(--navy); color: white;
+  padding: 8px 10px; text-align: left; font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.5px;
+}
+.split-table td {
+  padding: 9px 10px; border-bottom: 1px solid var(--border);
+  vertical-align: top; line-height: 1.5;
+}
+.split-table tr:last-child td { border-bottom: none; }
+.split-table tr:nth-child(even) td { background: #f8fafc; }
+.day-tag {
+  font-size: 0.68rem; font-weight: 700; padding: 2px 7px;
+  border-radius: 6px; display: inline-block; margin-bottom: 3px;
+}
+
+/* KPI CARDS */
+.kpi-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.kpi-card {
+  flex: 1; min-width: 130px;
+  background: white; border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px;
+}
+.kpi-num { font-size: 1.6rem; font-weight: 900; line-height: 1; }
+.kpi-label { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .tab-panel { padding: 12px; }
+  .kpi-card { min-width: 100px; }
+  .split-table { font-size: 0.76rem; }
+  .split-table th, .split-table td { padding: 7px 8px; }
+}
+@media (max-width: 420px) {
+  .header h1 { font-size: 1.05rem; }
+  .tab-btn { padding: 0 11px; font-size: 0.76rem; }
+  .card { padding: 13px 14px; }
+  .ex-name { font-size: 0.85rem; }
+  .phase-title { font-size: 0.88rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>Ibrahim — <span>Athletics</span></h1>
+      <div class="header-sub" id="headerDate">GOATA · Fascia · Mobility · Recovery</div>
+    </div>
+    <div class="phase-badge" id="phaseBadge">✅ Fully Cleared</div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('stack')">⚡ Daily Stack</button>
+  <button class="tab-btn" onclick="showTab('fascia')">🦶 Fascia</button>
+  <button class="tab-btn" onclick="showTab('mobility')">🔄 Mobility</button>
+  <button class="tab-btn" onclick="showTab('goata')">🏃 GOATA</button>
+  <button class="tab-btn" onclick="showTab('recovery')">🧊 Recovery</button>
+  <button class="tab-btn" onclick="showTab('phases')">📅 Phases</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 1 — DAILY STACK
+════════════════════════════════════════════════════════ -->
+<div id="tab-stack" class="tab-panel active">
+
+  <div class="philosophy">
+    <h3>The System</h3>
+    <p>Every session after school hits the same three layers: <strong>fascia release → mobility → structural strength</strong>. This is non-negotiable — not because it's punishment, but because these are the exact mechanisms that caused both fractures when they were skipped. The foot-ankle-tibula chain has to be rebuilt deliberately, every day, until it becomes background noise.</p>
+    <ul>
+      <li>Full stack (non-practice nights): ~45 min</li>
+      <li>Short stack (Mon/Tue/Wed — practice nights): ~20 min, no cuts on quality</li>
+      <li>Sunday: fascia only — full rest</li>
+    </ul>
+  </div>
+
+  <div class="section-label">After School — Full Stack (Thu / Fri / Sat)</div>
+  <div class="card" style="padding: 0 20px;">
+    <div class="stack-block">
+      <div class="stack-time">2:30 PM</div>
+      <div class="stack-dot" style="background:var(--muted)"></div>
+      <div class="stack-content">
+        <div class="stack-title">Home. Snack. Water.</div>
+        <div class="stack-note">Real food — protein + carbs. Don't train fasted after school.</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">2:45</div>
+      <div class="stack-dot" style="background:var(--green)"></div>
+      <div class="stack-content">
+        <div class="stack-title">🦶 Fascia Release — 10 min</div>
+        <div class="stack-note">Plantar roll · Towel curl · Marble cycle · Big Toe Pull · Short Foot</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">2:55</div>
+      <div class="stack-dot" style="background:#ea580c"></div>
+      <div class="stack-content">
+        <div class="stack-title">🔄 Hip Mobility — 10 min</div>
+        <div class="stack-note">Leg swings · 90/90 · Hip CARs · Hip flexor stretch · Pigeon</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">3:05</div>
+      <div class="stack-dot" style="background:var(--blue)"></div>
+      <div class="stack-content">
+        <div class="stack-title">🦵 Ankle Mobility — 7 min</div>
+        <div class="stack-note">Ankle CARs · Wall dorsiflexion · Ankle alphabet · Calf stretch</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">3:12</div>
+      <div class="stack-dot" style="background:var(--purple)"></div>
+      <div class="stack-content">
+        <div class="stack-title">💪 Structural Strength — 18 min</div>
+        <div class="stack-note">Seated soleus · Tibialis raises · Glute bridge · Clamshell · Dead bug</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">3:30</div>
+      <div class="stack-dot" style="background:var(--gold)"></div>
+      <div class="stack-content">
+        <div class="stack-title">☀️ Grounding (if possible) — 10–15 min</div>
+        <div class="stack-note">Barefoot on grass. Sunlight. Ziani bounces after lunch counted here too.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Short Stack — Practice Nights (Mon / Tue / Wed)</div>
+  <div class="card" style="padding: 0 20px;">
+    <div class="stack-block">
+      <div class="stack-time">After school</div>
+      <div class="stack-dot" style="background:var(--green)"></div>
+      <div class="stack-content">
+        <div class="stack-title">🦶 Fascia — 5 min</div>
+        <div class="stack-note">Plantar roll + Towel curl only. No skipping this on practice nights — feet take the most load tonight.</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">+5 min</div>
+      <div class="stack-dot" style="background:#ea580c"></div>
+      <div class="stack-content">
+        <div class="stack-title">🔄 Hip + Ankle — 10 min</div>
+        <div class="stack-note">Hip 90/90 · Ankle CARs · Calf stretch. Shortened but complete.</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">+10 min</div>
+      <div class="stack-dot" style="background:var(--purple)"></div>
+      <div class="stack-content">
+        <div class="stack-title">💪 Structural — 5 min</div>
+        <div class="stack-note">Tibialis raises + Seated soleus. That's it. Two sets each. Practice is the load tonight.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Morning (Daily Non-Negotiables)</div>
+  <div class="card" style="padding: 0 20px;">
+    <div class="stack-block">
+      <div class="stack-time">Wake</div>
+      <div class="stack-dot" style="background:var(--gold)"></div>
+      <div class="stack-content">
+        <div class="stack-title">☀️ Grounding — 10–15 min</div>
+        <div class="stack-note">Barefoot on grass before doing anything else. T3/T4 + cortisol rhythm. Non-negotiable.</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">+15 min</div>
+      <div class="stack-dot" style="background:var(--green)"></div>
+      <div class="stack-content">
+        <div class="stack-title">🦶 Big Toe Pull + Short Foot — 3 min</div>
+        <div class="stack-note">Before shoes go on. Every single day.</div>
+      </div>
+    </div>
+    <div class="stack-block">
+      <div class="stack-time">After meals</div>
+      <div class="stack-dot" style="background:var(--blue)"></div>
+      <div class="stack-content">
+        <div class="stack-title">🏃 Ziani Bounces — 2 min</div>
+        <div class="stack-note">Ball-of-foot bounces right after eating. Insulin sensitivity + bone blood flow stimulus.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 2 — FASCIA
+════════════════════════════════════════════════════════ -->
+<div id="tab-fascia" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>Why Fascia Comes First</h3>
+    <p>The fascia is a continuous web from your foot to your hip. Every time the arch collapses, the chain is broken — the load that should travel through the spring ends up hitting the fibula as torsion instead. These exercises rebuild the chain. Coach Chong Xie (HFT) reverse-engineered this from EMG data on elite athletes — their feet recruit differently. The goal is to train that same pattern.</p>
+  </div>
+
+  <div class="section-label">Daily Protocol — Do in This Order</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-green">1</div>
+      <div class="ex-name">Plantar Fascia Roll</div>
+      <div class="ex-duration">2 min / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Place a lacrosse ball or golf ball under the arch. Apply bodyweight pressure and roll slowly from heel to ball of foot. Find the tight spots and pause on them — don't rush through. Do the injured leg first.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Releases plantar fascia restriction before loading it</span>
+        <span class="ex-tag tag-cue">Slow — if it doesn't hurt a little, you're not pressing enough</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DXPK4RWCJR0/" target="_blank">▶ <span class="acct">@hft.archives</span> — Arch & foot protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-green">2</div>
+      <div class="ex-name">Towel Curl</div>
+      <div class="ex-duration">2–5 min / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Lay a small towel flat. Sit with foot on it. Curl the toes to scrunch the towel toward you — then release fully. The motion comes from the toes, not the whole foot. Keep the heel down throughout.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains intrinsic foot muscles that control arch load distribution</span>
+        <span class="ex-tag tag-cue">Heel stays planted — all movement from toes only</span>
+        <span class="ex-tag tag-prog">Progress: add resistance by weighting the towel edge</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DXIEl0GiBZ7/" target="_blank">▶ <span class="acct">@hft.archives</span> — Foot tensegrity drills</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-green">3</div>
+      <div class="ex-name">Big Toe Pull</div>
+      <div class="ex-duration">3 × 30 sec / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Sit and manually pull the big toe back into extension while keeping the ball of the foot pressed flat and spread wide. Hold and breathe. Feel the stretch up through the arch and into the calf.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Activates the plantar fascia chain — the foundation of the spring system</span>
+        <span class="ex-tag tag-cue">Ball of foot stays expanded, not scrunched, while you pull</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWnGTavjCeN/" target="_blank">▶ <span class="acct">@barefootstrength</span> — Arch building barefoot</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DUQlPFFiHyF/" target="_blank">▶ <span class="acct">@zinsegrity</span> — Barefoot foot activation</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-green">4</div>
+      <div class="ex-name">Short Foot Exercise</div>
+      <div class="ex-duration">3 × 15 reps / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Standing or seated. Try to "shorten" the foot by drawing the ball of the foot toward the heel — without curling the toes. The arch lifts as a dome. Hold 2 seconds at the top, then release completely. This is the most important drill for overpronation correction.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Wakes up the tibialis posterior — the primary anti-pronation muscle</span>
+        <span class="ex-tag tag-cue">Toes stay long and flat — only the arch moves</span>
+        <span class="ex-tag tag-prog">Progress: standing → single leg → eyes closed</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DXFgP31jfmw/" target="_blank">▶ <span class="acct">@theprehabguys</span> — Foot & ankle prehab</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DXRrY5-DphM/" target="_blank">▶ <span class="acct">@tailoredfitpt</span> — Pronation correction</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DUT8DfbjrWR/" target="_blank">▶ <span class="acct">@dr.schutza.pt</span> — Stress fracture prevention</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-green">5</div>
+      <div class="ex-name">Single Leg Forefoot Hold</div>
+      <div class="ex-duration">30–60 sec / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Stand barefoot on the ball of one foot — heel lifted, toes spread on the ground. Hold the position with control. Don't let the arch collapse inward. Build toward 60 seconds each side without wobbling.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Loads the full fascial chain from foot to hip under balance demand</span>
+        <span class="ex-tag tag-cue">Big toe presses actively into the floor — don't let it lift</span>
+        <span class="ex-tag tag-prog">Progress: add arm reaches → eyes closed</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWJ21vjjXGN/" target="_blank">▶ <span class="acct">@zinsegrity</span> — Tensegrity in motion</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWtrgZsEcNt/" target="_blank">▶ <span class="acct">@zinsegrity</span> — Bow-tension pattern</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Phase 2 Addition (Weeks 5–12) — Add When Foundation is Solid</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-gold">+</div>
+      <div class="ex-name">Hyperarch Hop</div>
+      <div class="ex-duration">2–5 min</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Low-amplitude hops on the ball of the foot — barely leaving the ground. The goal is elastic rebound, not height. Think Ziani running — the foot touches and immediately springs back. Land with a spread foot and active arch every single rep.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains the spring reflex — piezoelectric loading of the fascial chain under impact</span>
+        <span class="ex-tag tag-cue">Sound should be soft — if it slaps, you're heel striking</span>
+        <span class="ex-tag tag-prog">Start at 50% intensity for 6–8 weeks of tendon accommodation</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DXRi6xMjcwP/" target="_blank">▶ <span class="acct">@zinsegrity</span> — Fascial chain loading</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWv4LLgE4l3/" target="_blank">▶ <span class="acct">@elastaboy</span> — Elastic recoil drills</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DVeNFPmkpAG/" target="_blank">▶ <span class="acct">@elastaboy</span> — Spring athlete mechanics</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 3 — MOBILITY
+════════════════════════════════════════════════════════ -->
+<div id="tab-mobility" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>Mobility is Performance</h3>
+    <p>Hip and ankle restriction changes how ground forces travel through the lower leg during cutting and direction changes — they concentrate load into the fibula. Every degree of ankle dorsiflexion gained and every degree of hip rotation opened is literally injury prevention. This isn't stretching for the sake of stretching. It's structural engineering.</p>
+  </div>
+
+  <div class="section-label">Hip Mobility — Daily (10 min)</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-orange">1</div>
+      <div class="ex-name">Leg Swings — Forward + Lateral</div>
+      <div class="ex-duration">20 reps / leg / direction</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Hold a wall for balance. Forward swings: kick the leg forward and let it swing back past neutral — relaxed, pendulum motion, gradually increasing range. Lateral swings: same concept, side to side across the body. Both directions, both legs.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Warms the hip joint, increases synovial fluid, opens hip flexors and hamstrings</span>
+        <span class="ex-tag tag-cue">Relaxed — don't force range. Let momentum do the work.</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWad3SEExhr/" target="_blank">▶ <span class="acct">@quintin.torres36</span> — Hip dissociation drill</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-orange">2</div>
+      <div class="ex-name">Hip 90/90 Stretch</div>
+      <div class="ex-duration">60–90 sec / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Sit on the floor with both legs in 90/90 position — front shin parallel, back shin also at 90°. Sit tall on both sit bones. Lean slightly forward over the front leg without rounding the back. Switch sides. Stay for a full minute minimum per side.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Targets hip internal and external rotators simultaneously — the most loaded joints during cutting</span>
+        <span class="ex-tag tag-cue">Hips flat on ground — if one lifts, back off the lean</span>
+        <span class="ex-tag tag-prog">Add: lean forward → rotate torso toward shin</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-orange">3</div>
+      <div class="ex-name">Hip CARs (Controlled Articular Rotations)</div>
+      <div class="ex-duration">5 reps / direction / leg</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Standing on one leg, draw the biggest possible circle with the lifted knee — slowly and with full control throughout the entire range. Forward-up-out-back. Then reverse. This is active mobility, not passive stretching — you're owning the range, not just entering it.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Builds active control throughout the full hip range of motion</span>
+        <span class="ex-tag tag-cue">Slow — 5 full seconds per circle minimum. Zero momentum.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-orange">4</div>
+      <div class="ex-name">Kneeling Hip Flexor Stretch</div>
+      <div class="ex-duration">3 × 45 sec / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Half-kneeling: back knee on ground, front foot flat. Posterior tilt the pelvis (tuck the tailbone under) before shifting forward — this is what actually stretches the hip flexor. Without the tuck you're just bending. Shift forward, breathe out, hold.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Tight hip flexors tilt the pelvis and compress the lower back — changes your running mechanics</span>
+        <span class="ex-tag tag-cue">Tuck pelvis FIRST, then shift forward. The sequence matters.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-orange">5</div>
+      <div class="ex-name">Pigeon Pose</div>
+      <div class="ex-duration">90 sec / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">From plank, bring one shin forward parallel to your hands. Lower the back leg flat. Square your hips toward the floor and fold forward over the front shin. Breathe into the tightness — this takes time. Don't rush the 90 seconds.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Deepest glute and hip rotator stretch — directly affects soccer cutting mechanics</span>
+        <span class="ex-tag tag-cue">Hips square — don't let them tilt to one side</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Ankle Mobility — Daily (7 min)</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-blue">1</div>
+      <div class="ex-name">Ankle CARs</div>
+      <div class="ex-duration">10 reps / direction / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Seated or standing on one leg. Draw the largest possible circle with the foot — dorsiflexion, inversion, plantarflexion, eversion. Slow and deliberate. Feel the end ranges. Then reverse. Both feet.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Active joint ownership — builds ankle stability in the ranges that matter during cutting</span>
+        <span class="ex-tag tag-cue">Isolate the ankle — don't rotate the whole shin</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-blue">2</div>
+      <div class="ex-name">Wall Ankle Dorsiflexion Stretch</div>
+      <div class="ex-duration">3 × 30 sec / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Stand facing a wall, foot a few inches away. Drive the knee straight over the middle toe toward the wall while keeping the heel flat on the floor. Measure progress by how far back you can move the foot while still touching the wall with your knee.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Dorsiflexion range is the #1 predictor of ankle injury risk in soccer</span>
+        <span class="ex-tag tag-cue">Heel flat the entire time — the second it lifts, you've run out of range</span>
+        <span class="ex-tag tag-prog">Track: distance from wall when heel lifts. Aim to increase 1–2cm/week.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-blue">3</div>
+      <div class="ex-name">Ankle Alphabet</div>
+      <div class="ex-duration">A–Z / foot</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Seated with leg extended. Write the full alphabet in the air with your foot, using only ankle movement. Capital letters, big and deliberate. Covers every plane of ankle motion in one drill.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Comprehensive joint lubrication and neuromuscular activation in all planes</span>
+        <span class="ex-tag tag-cue">Big letters — small movement = no benefit</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-blue">4</div>
+      <div class="ex-name">Bow External Sit ISO (GOATA)</div>
+      <div class="ex-duration">3 × 60 sec</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Sit on the floor with legs extended, externally rotated outward in a "V". Maintain arch in both feet and press both big toes into the ground. Hold the tension through the entire fascial chain — foot → ankle → hip. Don't collapse the arch or let knees cave.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Creates hip-to-ankle tensegrity chain — the foundation of bow-tension movement</span>
+        <span class="ex-tag tag-cue">Feel tension from big toe through inner thigh. That's the chain working.</span>
+        <span class="ex-tag tag-prog">Week 3: increase to 75 sec per hold</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWtrgZsEcNt/" target="_blank">▶ <span class="acct">@zinsegrity</span> — Bow-tension pattern</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWJ21vjjXGN/" target="_blank">▶ <span class="acct">@zinsegrity</span> — Tensegrity in motion</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 4 — GOATA
+════════════════════════════════════════════════════════ -->
+<div id="tab-goata" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>GOATA — Greatest Of All Time Athlete</h3>
+    <p>GOATA is a movement system based on how elite athletes actually move — not how textbooks say humans should move. The core idea: the body is a spring. When the fascia loads and releases correctly, movement becomes elastic and effortless. When it doesn't, the bones and joints absorb the load instead. The Garcia Effect documented this by filming the greatest athletes of all time in slow motion and identifying the shared pattern.</p>
+  </div>
+
+  <div class="section-label">The 3 Core Principles</div>
+
+  <div class="card">
+    <div class="card-title"><span>⚡</span> 1. Bow Tension</div>
+    <p style="font-size:0.85rem; line-height:1.65;">The body moves like a drawn bow. The spine, hips, and limbs create tension against each other — never collapsing, always loading. The GOATA running pattern keeps this tension throughout the gait cycle so every step releases elastic energy rather than dissipating it.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>🌀</span> 2. Hip Dissociation</div>
+    <p style="font-size:0.85rem; line-height:1.65;">The hips and lumbar spine move independently — the pelvis can tilt and rotate without the lower back compensating. When they're locked together, power leaks and injury risk spikes. Hip dissociation drills train this separation so the hip does its job and the spine stays neutral.</p>
+    <div class="vid-strip" style="margin-top:10px;">
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWad3SEExhr/" target="_blank">▶ <span class="acct">@quintin.torres36</span> — Hip dissociation drill</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DV2-ECfDH0n/" target="_blank">▶ <span class="acct">@garcia_effect_official</span> — GOATA movement pattern</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWmLZscDD8n/" target="_blank">▶ <span class="acct">@garcia_effect_official</span> — Bow-tension running</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>🦶</span> 3. Forefoot Strike Pattern</div>
+    <p style="font-size:0.85rem; line-height:1.65;">Elite athletes land on the ball of the foot, not the heel. This loads the calf-Achilles-plantar fascia spring system and lets it return energy. Heel striking sends a shockwave straight up the tibia and fibula — exactly the mechanism behind both of Ibrahim's fractures. Retraining this pattern is the single highest-leverage change he can make.</p>
+    <div class="vid-strip" style="margin-top:10px;">
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWv4LLgE4l3/" target="_blank">▶ <span class="acct">@elastaboy</span> — Elastic recoil drills</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DVeNFPmkpAG/" target="_blank">▶ <span class="acct">@elastaboy</span> — Spring athlete mechanics</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWND7ynijJ6/" target="_blank">▶ <span class="acct">@parisibrothers2.0</span> — Athletic spring mechanics</a>
+    </div>
+  </div>
+
+  <div class="section-label">GOATA Drills — Start Phase 2 (Weeks 5+)</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-red">1</div>
+      <div class="ex-name">Ziani Bounce</div>
+      <div class="ex-duration">2 min after meals</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Stand on the balls of both feet. Small, rapid, relaxed hops — barely leaving the ground. The energy comes from calf-Achilles elasticity, not muscular effort. Should feel effortless. If your calves burn immediately, you're muscling it. Relax and let the spring work.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains the spring reflex. Also drives insulin into muscle (not fat) post-meal.</span>
+        <span class="ex-tag tag-cue">Sound should be near-silent. Loud = heel strike.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-red">2</div>
+      <div class="ex-name">High-Speed Eccentric Squat</div>
+      <div class="ex-duration">3 × 8 reps</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Drop fast into a squat and "catch" yourself at the bottom — don't slow the descent, let the fascia absorb it. Pause 1 second at the bottom, then stand. The speed of the drop is what trains the elastic recoil response. Start bodyweight only.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains myofibroblasts in the fascia to absorb and return energy under load</span>
+        <span class="ex-tag tag-cue">Chest up, knees track toes, land soft — no knee cave</span>
+        <span class="ex-tag tag-prog">Add load only after 3 weeks of consistent bodyweight reps</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWYrXUaDZcD/" target="_blank">▶ <span class="acct">@pjfperformance</span> — Eccentric loading & vert</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DVtG8wClLar/" target="_blank">▶ <span class="acct">@pjfperformance</span> — Elastic power training</a>
+        <a class="vid-btn" href="https://www.instagram.com/reel/DWa_c8-DFtU/" target="_blank">▶ <span class="acct">@workout_athletics</span> — Plyometric progressions</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-red">3</div>
+      <div class="ex-name">Hip Flexor ISO — Knee Above Hip</div>
+      <div class="ex-duration">3 × 30 sec / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Standing on one leg, lift the opposite knee above hip height and hold it there — no wall, no support. The standing hip must stay neutral (no tilting). This is a deep psoas activation drill. If the back arches or the standing hip drops, you've lost the position.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains deep psoas for hip control independent of the lumbar spine</span>
+        <span class="ex-tag tag-cue">Standing hip stays level — no tilting toward the lifted knee</span>
+      </div>
+      <div class="vid-strip">
+        <a class="vid-btn" href="https://www.instagram.com/reel/DW4Kytakhj7/" target="_blank">▶ <span class="acct">@maxi_move_</span> — Movement & coordination</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Neuro-Vision (Morning Add-On)</div>
+  <div class="card">
+    <p style="font-size:0.85rem; line-height:1.65; margin-bottom:12px;">Eye tracking and depth perception training enhances body dissociation awareness — the ability to know where your limbs are in space without looking. This directly improves reaction time and spatial awareness on the field. 3–5 minutes each morning before school.</p>
+    <div class="vid-strip">
+      <a class="vid-btn" href="https://www.instagram.com/p/DXDqDdYDtgx/" target="_blank">▶ <span class="acct">@drshah_neurovision</span> — Vision & athletic performance</a>
+      <a class="vid-btn" href="https://www.instagram.com/p/DVITYgZiI1z/" target="_blank">▶ <span class="acct">@drshah_neurovision</span> — Eye tracking drills</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DS9b_bEEdwd/" target="_blank">▶ <span class="acct">@drshah_neurovision</span> — Depth perception training</a>
+    </div>
+  </div>
+
+  <div class="section-label">Natural Movement Reference</div>
+  <div class="card">
+    <p style="font-size:0.85rem; line-height:1.65; margin-bottom:12px;">The ancestral athlete context — how humans moved before modern shoes and chairs changed our mechanics. Useful for understanding what "natural" gait and posture actually looks like.</p>
+    <div class="vid-strip">
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWSufMCksNK/" target="_blank">▶ <span class="acct">@the.ancestral.athlete</span> — Natural movement patterns</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 5 — RECOVERY
+════════════════════════════════════════════════════════ -->
+<div id="tab-recovery" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>Recovery is Training</h3>
+    <p>The adaptation doesn't happen during the session — it happens in the 22 hours after it. Sleep, sunlight, cold, and ground contact are the inputs. Skip them and the training volume is wasted. For an athlete who's had two stress fractures, this isn't optional maintenance. It's the foundation everything else is built on.</p>
+  </div>
+
+  <div class="section-label">Non-Negotiable Daily</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-gold">1</div>
+      <div class="ex-name">Sleep — 8+ Hours, Pitch Black</div>
+      <div class="ex-duration">Every night</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">This is when growth hormone pulses — the primary driver of bone and tendon remodeling. Practice nights: bed by 10:45 PM. All other nights: bed by 9:30 PM. Room must be completely dark. Phone out. This is not negotiable and cannot be compensated for elsewhere.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">GH + IGF-1 secretion during sleep is the primary driver of tissue repair</span>
+        <span class="ex-tag tag-cue">One night of poor sleep blunts next-day training adaptation by up to 20%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-gold">2</div>
+      <div class="ex-name">Morning Grounding — Barefoot on Grass</div>
+      <div class="ex-duration">10–15 min</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Immediately after waking, go outside barefoot on grass or dirt in direct sunlight. This does three things simultaneously: sets T3/T4 thyroid conversion (energy metabolism), establishes the healthy morning cortisol spike (focus and drive), and allows EZ water formation in the fascia (tissue viscosity). Simple but powerful.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Sets circadian rhythm, thyroid conversion, and cortisol curve for the entire day</span>
+        <span class="ex-tag tag-cue">Do it before checking the phone. Literally the first thing.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-gold">3</div>
+      <div class="ex-name">Hydration — Mineral-Rich Water</div>
+      <div class="ex-duration">Throughout day</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Drink water consistently throughout the day — not in huge boluses. Add a pinch of sea salt or use mineral water when possible. The fascia's EZ water layer (per Gerald Pollack's research) depends on proper hydration and mineral content. Dehydrated fascia is stiff fascia.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Fascial viscoelasticity depends on EZ water phase — this requires minerals + sunlight</span>
+        <span class="ex-tag tag-cue">Urine should be pale yellow — not clear (over-hydrated) and not dark</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Structural Strengthening (Gym Days)</div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-purple">1</div>
+      <div class="ex-name">Seated Soleus Raise</div>
+      <div class="ex-duration">3 × 15–20 reps</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Sit with knees bent at 90°. Place a weight plate or dumbbell on the thigh just above the knee. Raise the heel as high as possible — full range — then lower slowly (3 seconds down). The seated position isolates the soleus (not the gastrocnemius). This is the most direct exercise for fixing the root cause of the fractures.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Soleus = primary shock absorber for the fibula. When it's weak, bone compensates.</span>
+        <span class="ex-tag tag-cue">Full range — heel touches floor at bottom. Slow eccentric is the money.</span>
+        <span class="ex-tag tag-prog">Add weight (5–10 lbs on thigh) as reps become easy</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-purple">2</div>
+      <div class="ex-name">Tibialis Raise</div>
+      <div class="ex-duration">3 × 20–25 reps</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Stand with back flat against a wall, heels 6 inches out from the base. Raise both toes/feet toward the shin as high as possible, then lower slowly. Keep the heels on the ground throughout. Simple, brutal, and one of the most underdone exercises in all of sports.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Tibialis anterior supports the front of the lower leg — protects the fibula on lateral load</span>
+        <span class="ex-tag tag-cue">Back flat to wall the whole set — don't arch away</span>
+        <span class="ex-tag tag-prog">Add load: weight on top of foot, or use a resistance band</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-purple">3</div>
+      <div class="ex-name">Single Leg Glute Bridge</div>
+      <div class="ex-duration">3 × 12 / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Lie on your back, one knee bent, the other leg extended or held up. Drive through the planted heel to lift the hips — squeeze the glute hard at the top and hold 2 seconds. Lower slowly. Keep the extended leg in line with the body — don't let the hip drop.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Glute weakness forces the knee to cave inward during cutting — changes fibula load path</span>
+        <span class="ex-tag tag-cue">Drive through heel, not toe. Squeeze at the top before lowering.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-purple">4</div>
+      <div class="ex-name">Clamshell</div>
+      <div class="ex-duration">3 × 20 / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Lie on your side, hips stacked, knees bent at ~45°. Keep feet together and rotate the top knee up toward the ceiling — like a clamshell opening. Hold 1 second at the top. Don't let the hip roll back. The pelvis stays stacked throughout.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains glute medius — the hip stabilizer that prevents knee collapse during running</span>
+        <span class="ex-tag tag-cue">Hips don't move. Only the knee moves. Add resistance band to progress.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header" onclick="toggleEx(this)">
+      <div class="ex-num num-purple">5</div>
+      <div class="ex-name">Dead Bug</div>
+      <div class="ex-duration">3 × 8–10 / side</div>
+      <span class="ex-arrow">›</span>
+    </div>
+    <div class="exercise-body">
+      <div class="ex-how">Lie on your back, arms up toward ceiling, knees at 90° over hips. Press lower back into the floor — hold that pressure the entire set. Slowly lower opposite arm and leg toward the floor (don't touch it), return, switch sides. Breathe out as you lower.</div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-why">Trains lumbo-pelvic stability — the base all lower body power transfers through</span>
+        <span class="ex-tag tag-cue">Lower back stays flat on the floor the entire time. If it arches, reduce range.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Phase 2 — Cold Exposure (Add Week 5+)</div>
+  <div class="card">
+    <div class="card-title"><span>🧊</span> Cold Shower / Plunge</div>
+    <p style="font-size:0.85rem; line-height:1.65; margin-bottom:10px;">Cold induces CIRP (Cold Inducible RNA Binding Protein) — a systemic anti-inflammatory response that accelerates tissue repair throughout the body. Even a 2-minute cold shower at the end of a regular shower counts. Ice bath or cold plunge is better if available.</p>
+    <div class="vid-strip">
+      <a class="vid-btn" href="https://www.instagram.com/reel/DVwxvEFDlro/" target="_blank">▶ <span class="acct">@strong_by_science</span> — Science of recovery</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWCly46kZi1/" target="_blank">▶ <span class="acct">@elevatemethods</span> — Elevate recovery method</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DWo0RiRjCBs/" target="_blank">▶ <span class="acct">@youngeryoudoc</span> — Longevity & tissue health</a>
+      <a class="vid-btn" href="https://www.instagram.com/p/DWrmXuYDdnZ/" target="_blank">▶ <span class="acct">@yourpainmechanic</span> — Pain & tissue mechanics</a>
+      <a class="vid-btn" href="https://www.instagram.com/reel/DXIK3cbjVNi/" target="_blank">▶ <span class="acct">@prehabnyc</span> — Injury prevention drills</a>
+      <a class="vid-btn" href="https://www.instagram.com/p/DWcIOC7lBpi/" target="_blank">▶ <span class="acct">@neurolab._</span> — Neuromuscular recovery</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 6 — PHASES
+════════════════════════════════════════════════════════ -->
+<div id="tab-phases" class="tab-panel">
+
+  <div class="philosophy">
+    <h3>The Roadmap</h3>
+    <p>Three phases, one direction: build the foundation now so summer training can be explosive, and arrive at pre-season as a genuinely different athlete than the one who got hurt. The daily stack stays constant throughout — what changes is the intensity layer added on top.</p>
+  </div>
+
+  <div class="section-label">Phase Overview</div>
+
+  <div class="card" style="padding: 0 20px;">
+    <div class="phase-row">
+      <div class="phase-dot-wrap">
+        <div class="phase-dot" style="background:var(--green)"></div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <div class="phase-label">Now → July 4 · 5 Weeks</div>
+        <div class="phase-title">Phase 1 — Foundation</div>
+        <div class="phase-desc">Daily stack locked in as habit. Structural strength progressing. Fascia and mobility becoming automatic. Soccer practice Mon/Tue/Wed. Algebra 2 through Chapter 8. No unstructured stacking — reffing and pickup count as load.</div>
+        <div style="margin-top:8px;">
+          <span class="pill pill-green">✅ Fully Cleared</span>
+          <span class="pill pill-blue" style="margin-left:6px;">GOATA Level 1</span>
+          <span class="pill pill-navy" style="margin-left:6px;">Fascia Daily</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-row">
+      <div class="phase-dot-wrap">
+        <div class="phase-dot" style="background:var(--gold)"></div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <div class="phase-label">July 5 → Aug 1 · 4 Weeks</div>
+        <div class="phase-title">Phase 2 — Summer Escalation</div>
+        <div class="phase-desc">Algebra 2 complete. School is out — training window doubles. Add GOATA Level 2: Hyperarch Hop, High-Speed Eccentric Squats, Hip Flexor ISO. Cold exposure added. Vertical jump protocol (PJF + Jump Attack) running in parallel. Basketball shooting practice introduced. Beep test training starts.</div>
+        <div style="margin-top:8px;">
+          <span class="pill pill-gold">GOATA Level 2</span>
+          <span class="pill pill-purple" style="margin-left:6px;">PJF + Jump Attack</span>
+          <span class="pill pill-blue" style="margin-left:6px;">🏀 Basketball</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-row">
+      <div class="phase-dot-wrap">
+        <div class="phase-dot" style="background:var(--red)"></div>
+      </div>
+      <div class="phase-content">
+        <div class="phase-label">Aug 1 → Aug 25 · Pre-Season</div>
+        <div class="phase-title">Phase 3 — Peak & Test</div>
+        <div class="phase-desc">Varsity soccer tryouts. Everything converges. Conditioning (beep test 14+), technical soccer sharpness, spring mechanics active in play. Daily stack continues but cuts to 30 min — energy preserved for field sessions. Goal: arrive at tryouts as the most prepared, most structurally sound athlete there.</div>
+        <div style="margin-top:8px;">
+          <span class="pill pill-red">Varsity Tryouts</span>
+          <span class="pill pill-green" style="margin-left:6px;">Beep Test 14+</span>
+          <span class="pill pill-gold" style="margin-left:6px;">Dunk by Aug</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Weekly Split — Phase 1 (Now)</div>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table class="split-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>After School Stack</th>
+          <th>Evening</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="day-tag" style="background:#dbeafe;color:var(--blue)">MON</span></td>
+          <td>Short stack (20 min) — fascia + hip/ankle + tibialis/soleus</td>
+          <td>⚽ MLS Next 6:50–8:20 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-tag" style="background:#dbeafe;color:var(--blue)">TUE</span></td>
+          <td>Short stack (20 min)</td>
+          <td>⚽ MLS Next 8:00–9:30 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-tag" style="background:#dbeafe;color:var(--blue)">WED</span></td>
+          <td>Short stack (20 min)</td>
+          <td>⚽ MLS Next 8:10–9:40 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-tag" style="background:#d1fae5;color:var(--green)">THU</span></td>
+          <td>Full stack (45 min) + YMCA PM lift</td>
+          <td>Open — Quran / Academics</td>
+        </tr>
+        <tr>
+          <td><span class="day-tag" style="background:#d1fae5;color:var(--green)">FRI</span></td>
+          <td>Full stack (45 min)</td>
+          <td>Open</td>
+        </tr>
+        <tr>
+          <td><span class="day-tag" style="background:#fef3c7;color:var(--gold)">SAT</span></td>
+          <td>Full stack (45 min) — biggest training day</td>
+          <td>Open / Reffing (counts as load)</td>
+        </tr>
+        <tr>
+          <td><span class="day-tag" style="background:#ede9fe;color:var(--purple)">SUN</span></td>
+          <td>Fascia only — 15 min</td>
+          <td>Weekly planning 8 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label">KPIs — Track These Weekly</div>
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--blue)">📐</div>
+      <div class="kpi-label">Ankle dorsiflexion range — distance from wall (cm)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--green)">🦶</div>
+      <div class="kpi-label">Toe splay — visible gap between all 5 toes standing?</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--gold)">⚡</div>
+      <div class="kpi-label">Elastic recoil — do sprints feel light or heavy?</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-left: 4px solid var(--gold);">
+    <div class="card-title"><span>⚠️</span> Load Rules — Phase 1</div>
+    <p style="font-size:0.85rem; line-height:1.65;">Reffing and pickup sessions <strong>count as impact load</strong>. If Ibrahim refs on Saturday, that is his impact activity for the day — no field session on top of it. YMCA is fine on any day. The rule is: no unplanned stacking of impact on top of impact. Both fractures happened when load exceeded what the system could absorb. This is how we prevent a third.</p>
+  </div>
+
+</div>
+
+<script>
+// Tab switching
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Collapsible exercises
+function toggleEx(header) {
+  const ex = header.parentElement;
+  ex.classList.toggle('open');
+}
+
+// Date in header
+const d = new Date();
+document.getElementById('headerDate').textContent =
+  d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+
+// Phase badge based on date
+const now = new Date();
+const phase2Start = new Date('2025-07-05');
+const phase3Start = new Date('2025-08-01');
+const badge = document.getElementById('phaseBadge');
+if (now >= phase3Start) {
+  badge.textContent = '🔥 Phase 3 — Peak';
+  badge.style.background = 'var(--red)';
+} else if (now >= phase2Start) {
+  badge.textContent = '⚡ Phase 2 — Summer';
+  badge.style.background = 'var(--gold)';
+} else {
+  badge.textContent = '✅ Phase 1 — Foundation';
+  badge.style.background = 'var(--green)';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#4f46e5">
+<title>Ibrahim · Saturday</title>
+<style>
+:root{
+  --bg:#eef1f7; --card:#ffffff; --ink:#161a23; --muted:#6b7280; --line:#e6e9f0;
+  --indigo:#4f46e5; --green:#16a34a; --amber:#d97706; --red:#dc2626; --sky:#0284c7; --violet:#7c3aed; --slate:#475569;
+  --shadow:0 1px 3px rgba(16,24,40,.06),0 6px 20px rgba(16,24,40,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.5;padding-bottom:48px;}
+.wrap{max-width:600px;margin:0 auto;padding:0 14px;}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(238,241,247,.9);backdrop-filter:blur(10px);padding:16px 14px 12px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--indigo);}
+h1{font-size:1.65rem;font-weight:850;letter-spacing:-.5px;margin-top:1px;}
+.sub{font-size:.82rem;color:var(--muted);margin-top:2px;}
+.ptrack{height:8px;background:#dfe3ec;border-radius:8px;overflow:hidden;margin-top:12px;}
+.pfill{height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--violet));border-radius:8px;transition:width .4s;}
+.pcount{font-size:.72rem;font-weight:700;color:var(--muted);margin-top:5px;}
+
+/* timeline */
+.block{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin:12px 0;overflow:hidden;}
+.bhead{display:flex;align-items:center;gap:12px;padding:14px 15px;cursor:pointer;}
+.btime{font-size:.7rem;font-weight:800;color:var(--muted);min-width:64px;line-height:1.25;}
+.bemoji{font-size:1.4rem;}
+.bmid{flex:1;min-width:0;}
+.btitle{font-size:.98rem;font-weight:750;}
+.bmeta{font-size:.74rem;color:var(--muted);margin-top:1px;}
+.btag{font-size:.58rem;font-weight:800;letter-spacing:.4px;padding:3px 8px;border-radius:7px;text-transform:uppercase;}
+.tag-impact{background:#fde8e8;color:var(--red);}
+.tag-low{background:#e7f6ee;color:var(--green);}
+.tag-focus{background:#ecebf9;color:var(--indigo);}
+.tag-free{background:#eef2f6;color:var(--slate);}
+.tag-start{background:#fff3e0;color:var(--amber);}
+.bchev{color:#aab2c5;font-size:.8rem;transition:transform .2s;}
+.block.open .bchev{transform:rotate(90deg);}
+.bbody{display:none;padding:0 15px 15px;border-top:1px solid var(--line);}
+.block.open .bbody{display:block;}
+.intro{font-size:.84rem;color:#3a4252;line-height:1.6;margin:12px 0 6px;}
+
+/* items */
+.item{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line);}
+.item:last-child{border-bottom:none;}
+.ck{width:24px;height:24px;border-radius:7px;border:2px solid #cdd3e0;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:900;color:#fff;cursor:pointer;transition:.15s;margin-top:1px;}
+.item.done .ck{background:var(--green);border-color:var(--green);}
+.idata{flex:1;min-width:0;}
+.iname{font-size:.88rem;font-weight:650;}
+.item.done .iname{color:var(--muted);text-decoration:line-through;}
+.idose{font-size:.76rem;font-weight:700;color:var(--indigo);margin-top:1px;}
+.ihow{font-size:.79rem;color:#56607a;margin-top:3px;line-height:1.5;}
+.vid{display:inline-flex;align-items:center;gap:5px;margin-top:6px;background:#fdecec;color:var(--red);
+  text-decoration:none;font-size:.72rem;font-weight:800;padding:5px 10px;border-radius:8px;}
+.linkbtn{display:inline-flex;align-items:center;gap:5px;margin:8px 6px 0 0;background:#eef0f7;color:var(--ink);
+  text-decoration:none;font-size:.74rem;font-weight:800;padding:7px 12px;border-radius:9px;border:1px solid var(--line);}
+
+/* checkin */
+.checkin{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px;margin:18px 0;}
+.checkin h3{font-size:1rem;font-weight:800;}
+.checkin p{font-size:.8rem;color:var(--muted);margin:2px 0 12px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{flex:1;min-width:fit-content;text-align:center;border:1.5px solid var(--line);background:#fff;border-radius:11px;
+  padding:11px 8px;font-size:.82rem;font-weight:700;cursor:pointer;color:var(--ink);}
+.chip.sel-g{background:#e7f6ee;border-color:var(--green);color:var(--green);}
+.chip.sel-a{background:#fff3e0;border-color:var(--amber);color:var(--amber);}
+.chip.sel-r{background:#fde8e8;border-color:var(--red);color:var(--red);}
+textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px;font-family:inherit;font-size:.85rem;
+  resize:vertical;min-height:60px;margin-top:10px;background:#fbfcfe;}
+.save{width:100%;margin-top:12px;background:var(--indigo);color:#fff;border:none;border-radius:12px;padding:13px;
+  font-size:.9rem;font-weight:800;cursor:pointer;}
+.note{font-size:.74rem;color:var(--muted);margin-top:8px;}
+.label{font-size:.74rem;font-weight:800;color:var(--slate);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.5px;}
+.celebrate{display:none;text-align:center;background:#e7f6ee;border:1px solid #bbe6cd;border-radius:14px;padding:18px;margin:14px 0;font-weight:800;color:var(--green);}
+.celebrate.show{display:block;}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Saturday · June 27</div>
+  <h1>Today’s Plan</h1>
+  <div class="sub">Free & clear day. One field session, then lock in. Run it top to bottom. ⚽📐🏀</div>
+  <div class="ptrack"><div class="pfill" id="pfill"></div></div>
+  <div class="pcount" id="pcount">0 of 0 done</div>
+</div></div>
+
+<div class="wrap">
+  <div id="timeline"></div>
+
+  <div class="celebrate" id="celebrate">🔥 That’s a full day, done right. Legs up the wall, sunrise tomorrow.</div>
+
+  <div class="checkin">
+    <h3>🌙 End-of-day check-in</h3>
+    <p>30 seconds before bed. This is how we keep you healthy and plan tomorrow.</p>
+    <div class="label">How did the body feel?</div>
+    <div class="row" id="feelRow">
+      <div class="chip" data-f="1" onclick="setFeel(1)">1 · wrecked</div>
+      <div class="chip" data-f="2" onclick="setFeel(2)">2</div>
+      <div class="chip" data-f="3" onclick="setFeel(3)">3 · ok</div>
+      <div class="chip" data-f="4" onclick="setFeel(4)">4</div>
+      <div class="chip" data-f="5" onclick="setFeel(5)">5 · great</div>
+    </div>
+    <div class="label">Any pain?</div>
+    <div class="row" id="painRow">
+      <div class="chip" data-p="none" onclick="setPain('none')">😀 None</div>
+      <div class="chip" data-p="niggle" onclick="setPain('niggle')">😐 Niggle</div>
+      <div class="chip" data-p="pain" onclick="setPain('pain')">🤕 Pain</div>
+    </div>
+    <div id="painExtra" style="display:none">
+      <div class="label">Where, and what sets it off?</div>
+      <textarea id="painNote" placeholder="e.g., left shin, aches after running / sharp when I jump"></textarea>
+    </div>
+    <div class="label">Anything else for mom?</div>
+    <textarea id="dayNote" placeholder="How it went, what was hard, what you skipped..."></textarea>
+    <button class="save" onclick="saveCheckin()">Save check-in</button>
+    <div class="note" id="ciStatus"></div>
+  </div>
+</div>
+
+<script>
+const KEY='ibday_2026-06-27';
+function load(){ try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}} }
+function save(s){ localStorage.setItem(KEY,JSON.stringify(s)); }
+function yt(q){ return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q); }
+const TEXTBOOK='https://bim.easyaccessmaterials.com/?level=13.00';
+
+// item: [name, dose, how, videoQuery]   (videoQuery '' = no video)
+const BLOCKS=[
+ {time:'6:45–7:00', emoji:'🌅', title:'Wake & Ground', meta:'15 min · phone stays inside', tag:'start',
+  intro:'Best 15 minutes of your day. Barefoot on the grass, sun on your face, breathe. This is the one you love — start here every day.',
+  items:[
+   ['Barefoot grounding','5 min','Stand or walk slow on the grass. Nose breathing, belly breaths. No phone.','grounding barefoot morning routine'],
+   ['Big-toe extension holds','3 × 10s / foot','Pull the big toe back, feel the arch wake up. Primes the whole chain.','big toe extension exercise foot'],
+   ['Hip CARs','5 / dir / hip','Slow controlled circles in the hip socket. Own every degree.','hip CARs controlled articular rotations']
+  ]},
+ {time:'7:00–8:15', emoji:'⚽', title:'Field Session — Touch & Turns', meta:'75 min · cool morning, before heat', tag:'impact',
+  intro:'Your ONE impact session today — quality touches, not sweat. Both feet on everything. Game speed on the catch.',
+  items:[
+   ['Juggling warm-up','5 min','Thigh, foot, alternating. For feel, not tricks.','soccer juggling warm up'],
+   ['Wall — 1-touch passes','10 min','Vary angle and surface. Both feet. The wall never misses.','soccer wall passing both feet drill'],
+   ['Cone dribble (6 cones)','3 × 5 passes','Thread tight, alternating inside/outside. Walk back = rest.','tight cone dribbling drill soccer'],
+   ['Turns — walk-through','5 reps each','Cruyff, inside hook, outside chop, body feint. No pressure first.','cruyff turn inside hook outside chop tutorial'],
+   ['Cone approach + turn + go','5 × 4 turns','Dribble in, execute the turn, explode away. Speed up each set.','soccer turn acceleration cone drill'],
+   ['Receiving on the move','10 min','Drop it ahead, receive at pace, redirect inside/outside.','receiving on the move soccer drill'],
+   ['Finishing — placement','10 each foot','Inside of foot to the corners. No blasting. Accuracy wins.','soccer finishing placement drill']
+  ]},
+ {time:'8:15–8:45', emoji:'🧊', title:'Recovery Stack', meta:'30 min · right after the field', tag:'low',
+  intro:'Recovery IS training. Do it now while you’re warm, not “later.”',
+  items:[
+   ['Foam roll circuit','6 min','Calves, quads, hams, IT band, glutes, upper back. Pause on tender spots.','foam rolling full body technique'],
+   ['Spiky ball — feet','90s / foot','Roll the arch, pause on knots. Foot tensegrity.','lacrosse ball foot release plantar fascia'],
+   ['Hip flexor lunge stretch','45s / side','Long hold, squeeze the down glute, tuck the pelvis.','couch stretch hip flexor tutorial'],
+   ['Child’s pose','45s × 2','Breathe deep, sink a little more each exhale.','childs pose stretch'],
+   ['Legs up the wall','5 min','Drains the legs. Just breathe.','legs up the wall recovery']
+  ]},
+ {time:'8:45–12:00', emoji:'🍳', title:'Fuel · Shower · Free', meta:'morning off · hydrate hard', tag:'free',
+  intro:'Eat real food, shower, relax out of the sun. Drink a ton of water — it’s about to get hot. Heat block (algebra) is next.',
+  items:[
+   ['Breakfast + hydrate','—','Protein + carbs. Big glass of water now and another before algebra.','']
+  ]},
+ {time:'12:00–2:00', emoji:'📐', title:'Algebra — Chapter 1, Sections 1.1–1.3', meta:'2 hrs · watch the lesson FIRST', tag:'focus',
+  intro:'Heat block — you’re inside anyway. Rule: never stare at the book confused. Watch the lesson video, THEN read the section, THEN do the odd problems. Photo every page of your work and send it to mom — she’ll get it checked.',
+  items:[
+   ['§1.1 Parent Functions & Transformations','watch → read → ODD #s','Learn the parent graphs and how they shift/stretch/flip. Then all odd problems in 1.1.','parent functions and transformations algebra 2 lesson'],
+   ['§1.2 Transformations of Linear & Absolute Value','watch → read → ODD #s','How y=|x| and lines move around. Then all odd problems in 1.2.','transformations of linear and absolute value functions'],
+   ['§1.3 Modeling with Linear Functions','watch → read → ODD #s','Turning real situations into y=mx+b. Then all odd problems in 1.3.','writing linear equations from word problems algebra 2'],
+   ['📸 Send your work to be checked','all 3 sections','Clear photos of every problem you did. Mom forwards them to get checked + corrected.','']
+  ], links:[['📘 Open the textbook',TEXTBOOK]]},
+ {time:'2:00–3:00', emoji:'🍽️', title:'Lunch & Recharge', meta:'1 hr · real food, out of the heat', tag:'free',
+  intro:'You already got your one hard session in this morning (the field). Today is NOT a basketball day — one impact activity, that’s the rule. Refuel, hydrate, stay out of the sun. Fascia is next.',
+  items:[
+   ['Lunch + hydrate','—','Protein + carbs + a big glass of water. Rebuild from the field session.','']
+  ]},
+ {time:'3:00–4:00', emoji:'🧘', title:'Fascia — 10 Exercises, 3 Rounds', meta:'1 hr · slow & deliberate · video on each', tag:'low',
+  intro:'This is the stuff you actually love and it’s what keeps you springy and off the injury list. Watch each video once, then own it. 3 rounds through the list.',
+  items:[
+   ['1 · Spiky ball foot release','3 × 60s / foot','Slow roll the arch + calf above the Achilles.','lacrosse ball foot release'],
+   ['2 · Big-toe extension holds','3 × 10 / side','Wakes the plantar chain.','big toe mobility exercise'],
+   ['3 · 90/90 hip stretch','3 × 45s / side','Tall spine, lean over the front leg. Best hip opener there is.','90 90 hip stretch mobility'],
+   ['4 · Couch stretch','3 × 45s / side','Knee down, glute squeezed, chest tall. Don’t arch the back.','couch stretch hip flexor'],
+   ['5 · Glute bridge ISO','3 × 30s','Squeeze hard at the top, drive knees out.','glute bridge iso hold'],
+   ['6 · Lateral band walk','3 × 15 / dir','GOATA position, not bent over. Keep tension.','lateral band walk glute med'],
+   ['7 · Single-leg soleus calf raise','3 × 12 / side','Knee slightly bent. 2 up, 3 down.','soleus calf raise bent knee'],
+   ['8 · Bird dog','3 × 10 / side','Flat back, no rotation, 3-sec holds. Posterior sling.','bird dog exercise form'],
+   ['9 · Copenhagen plank','3 × 20s / side','Top foot on a bench. Straight line. Adductor armor.','copenhagen plank'],
+   ['10 · Cat-cow + child’s pose','3 × 10 + 45s','Open the spine, finish with a breathe-out hold.','cat cow thoracic spine']
+  ]},
+ {time:'4:00–4:30', emoji:'🎮', title:'Free Time', meta:'30 min · earned it', tag:'free',
+  intro:'Off the clock. Game, music, whatever. You earned it.', items:[['Free time','30 min','Relax. Reading is right after.','']]},
+ {time:'4:30–5:00', emoji:'📖', title:'Reading — The Prince (Machiavelli)', meta:'30 min · end with one line', tag:'focus',
+  intro:'The Prince is 500 years old and it’s basically a cold-eyed manual on power and why people really act the way they do — exactly the stuff you’re into. Read a chapter, slow. It’s dense, so quality over pages.',
+  items:[
+   ['Read one chapter','20–30 min','Phone in another room. If a sentence is confusing, re-read it — this book rewards slow.',''],
+   ['One takeaway','1 line','Where does this match something you’ve actually seen in people? Text it to mom.',''],
+   ['Optional: 5-min explainer','if stuck','A quick breakdown of the chapter you read — context helps it click.','The Prince Machiavelli chapter summary explained']
+  ]},
+ {time:'after Maghrib', emoji:'☪️', title:'Quran — Review Check', meta:'20 min · find your baseline', tag:'focus',
+  intro:'Before we build a memorization plan, we need to know exactly where you stand. Recite through everything you think you know, honestly, and write down what’s solid and what’s shaky. This list is gold — it tells you and your tutor precisely what to work on. No pressure, just an honest audit.',
+  items:[
+   ['Recite Al-Mulk from memory','as far as you can','Slow, out loud. When you blank or get unsure, that’s data — don’t peek yet, just note where it happened.','Surah Al-Mulk recitation Mishary Alafasy'],
+   ['Recite the short surahs you know','work back from An-Nas','Go through Juz Amma from the end — An-Nas, Al-Falaq, Al-Ikhlas, and up as far as you’ve got.',''],
+   ['Be honest: solid vs shaky','as you go','Solid = smooth, no hesitation, tajweed feels right. Shaky = blanked, guessed, or unsure on a word. Log both below.','']
+  ],
+  note:'quranReview', noteLabel:'✍️ Where I’m at (solid vs needs review)',
+  notePh:'SOLID: e.g. An-Nas, Al-Falaq, Al-Ikhlas, Al-Mulk v.1–10...\nNEEDS REVIEW: e.g. Al-Mulk v.11+, An-Naba, tajweed on heavy letters...',
+  links:[['📖 Read & verify — Al-Mulk','https://quran.com/67'],['📖 Juz Amma','https://quran.com/78']]},
+ {time:'optional', emoji:'🏊', title:'Easy Swim (if the Y’s open)', meta:'final hour @ Y · recovery only', tag:'low',
+  intro:'Only if you’ve got the energy. Zero-impact, flushes the legs after the field session. Easy laps — this is recovery, not a workout.',
+  items:[['Easy swim','15–20 min','Smooth and relaxed. No sets, no racing. Just move the body.','']]},
+ {time:'10:30 pm', emoji:'😴', title:'Wind Down', meta:'lights out · up at sunrise', tag:'start',
+  intro:'Sleep is when bones heal and you actually get better. Screens off early.',
+  items:[['Legs up the wall','5 min','Last reset of the day.','legs up the wall before bed'],
+         ['Lights out','10:30','8+ hours. Up at sunrise tomorrow.','']]}
+];
+
+function render(){
+  const s=load();
+  let html='';
+  BLOCKS.forEach((b,bi)=>{
+    const tagcls={impact:'tag-impact',low:'tag-low',focus:'tag-focus',free:'tag-free',start:'tag-start'}[b.tag]||'tag-free';
+    let items='';
+    b.items.forEach((it,ii)=>{
+      const id='b'+bi+'i'+ii; const done=!!s[id];
+      items+=`<div class="item ${done?'done':''}">
+        <div class="ck" onclick="toggle('${id}')">✓</div>
+        <div class="idata">
+          <div class="iname">${it[0]}</div>
+          ${it[1]&&it[1]!=='—'?`<div class="idose">${it[1]}</div>`:''}
+          ${it[2]?`<div class="ihow">${it[2]}</div>`:''}
+          ${it[3]?`<a class="vid" href="${yt(it[3])}" target="_blank">▶ Watch how</a>`:''}
+        </div></div>`;
+    });
+    let links=''; if(b.links){ b.links.forEach(l=>{ links+=`<a class="linkbtn" href="${l[1]}" target="_blank">${l[0]}</a>`; }); }
+    let noteBox=''; if(b.note){ noteBox=`<div class="label">${b.noteLabel||'Notes'}</div><textarea oninput="saveBlockNote('${b.note}',this.value)" placeholder="${b.notePh||''}">${(s[b.note]||'')}</textarea>`; }
+    html+=`<div class="block" id="blk${bi}">
+      <div class="bhead" onclick="document.getElementById('blk${bi}').classList.toggle('open')">
+        <div class="btime">${b.time}</div><div class="bemoji">${b.emoji}</div>
+        <div class="bmid"><div class="btitle">${b.title}</div><div class="bmeta">${b.meta}</div></div>
+        <span class="btag ${tagcls}">${b.tag}</span><span class="bchev">▶</span>
+      </div>
+      <div class="bbody"><div class="intro">${b.intro}</div>${items}${noteBox}${links}</div>
+    </div>`;
+  });
+  document.getElementById('timeline').innerHTML=html;
+  updateProgress();
+}
+function toggle(id){ const s=load(); s[id]=!s[id]; save(s); render(); }
+function saveBlockNote(id,val){ const s=load(); s[id]=val; save(s); }
+function updateProgress(){
+  const s=load(); let total=0,done=0;
+  BLOCKS.forEach((b,bi)=>b.items.forEach((it,ii)=>{ total++; if(s['b'+bi+'i'+ii]) done++; }));
+  document.getElementById('pfill').style.width=(total?Math.round(done/total*100):0)+'%';
+  document.getElementById('pcount').textContent=done+' of '+total+' done';
+  document.getElementById('celebrate').classList.toggle('show',done===total&&total>0);
+}
+
+/* check-in */
+let FEEL=null,PAIN=null;
+function setFeel(n){ FEEL=n; document.querySelectorAll('#feelRow .chip').forEach(c=>c.classList.toggle('sel-g',+c.dataset.f===n)); }
+function setPain(p){ PAIN=p; document.querySelectorAll('#painRow .chip').forEach(c=>{ c.classList.remove('sel-g','sel-a','sel-r'); if(c.dataset.p===p)c.classList.add(p==='none'?'sel-g':p==='niggle'?'sel-a':'sel-r'); });
+  document.getElementById('painExtra').style.display=p==='none'?'none':'block'; }
+function saveCheckin(){
+  const s=load();
+  s._checkin={feel:FEEL,pain:PAIN,painNote:document.getElementById('painNote').value,note:document.getElementById('dayNote').value,at:new Date().toISOString()};
+  save(s);
+  document.getElementById('ciStatus').textContent='✓ Saved'+(PAIN&&PAIN!=='none'?' — pain flagged for tomorrow.':'. Nice work today.');
+}
+function restoreCheckin(){ const c=load()._checkin; if(!c)return; if(c.feel)setFeel(c.feel); if(c.pain)setPain(c.pain);
+  if(c.painNote)document.getElementById('painNote').value=c.painNote; if(c.note)document.getElementById('dayNote').value=c.note; }
+
+render(); restoreCheckin();
+// open the first not-fully-done block for focus
+(function(){ const s=load(); for(let bi=0;bi<BLOCKS.length;bi++){ const all=BLOCKS[bi].items.every((it,ii)=>s['b'+bi+'i'+ii]); if(!all){ document.getElementById('blk'+bi).classList.add('open'); break; } } })();
+</script>
+</body>
+</html>

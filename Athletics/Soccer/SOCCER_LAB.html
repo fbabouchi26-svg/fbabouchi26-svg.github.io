@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b5e3b">
+<title>Ibrahim · Soccer Lab</title>
+<style>
+:root{
+  --bg:#eef1f7; --card:#fff; --ink:#161a23; --muted:#6b7280; --line:#e6e9f0;
+  --green:#0b7a4b; --green2:#16a34a; --indigo:#4f46e5; --amber:#d97706; --red:#dc2626; --sky:#0284c7; --violet:#7c3aed; --slate:#475569;
+  --shadow:0 1px 3px rgba(16,24,40,.06),0 6px 20px rgba(16,24,40,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:620px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#0b7a4b,#0e9f63);color:#fff;padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.6rem;font-weight:850;letter-spacing:-.5px;margin-top:1px;}
+.tops{font-size:.82rem;opacity:.9;margin-top:2px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:9px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:var(--green);}
+.view{display:none;}
+.view.active{display:block;}
+
+/* day selector */
+.nav{display:flex;align-items:center;gap:8px;margin:14px 0;}
+.navbtn{background:var(--card);border:1px solid var(--line);border-radius:11px;font-size:1.1rem;font-weight:900;width:44px;height:44px;cursor:pointer;color:var(--ink);}
+.dsel{flex:1;display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:6px;box-shadow:var(--shadow);}
+.dsel select{border:none;background:none;font-size:1.05rem;font-weight:850;text-align:center;color:var(--ink);}
+.dsel small{font-size:.66rem;color:var(--muted);font-weight:700;}
+
+.phasebar{border-radius:14px;padding:13px 15px;margin-bottom:12px;color:#fff;}
+.phasebar h2{font-size:1.05rem;font-weight:850;}
+.phasebar p{font-size:.8rem;opacity:.92;margin-top:2px;}
+.todayfocus{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px;}
+.chip{font-size:.66rem;font-weight:800;padding:5px 10px;border-radius:20px;background:#eef2f6;color:var(--slate);}
+.chip.g{background:#e3f5ec;color:var(--green);}
+.chip.a{background:#fff3e0;color:var(--amber);}
+.chip.r{background:#fde8e8;color:var(--red);}
+
+.block{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);margin:11px 0;overflow:hidden;}
+.bh{display:flex;align-items:center;gap:11px;padding:13px 14px;cursor:pointer;}
+.bn{width:30px;height:30px;border-radius:9px;background:#e3f5ec;color:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.bm{flex:1;min-width:0;}
+.bt{font-size:.94rem;font-weight:800;}
+.bsub{font-size:.72rem;color:var(--muted);margin-top:1px;}
+.bdur{font-size:.68rem;font-weight:800;color:var(--green);background:#e3f5ec;padding:3px 8px;border-radius:8px;flex-shrink:0;}
+.chev{color:#aab2c5;font-size:.8rem;transition:.2s;}
+.block.open .chev{transform:rotate(90deg);}
+.bb{display:none;padding:0 14px 14px;border-top:1px solid var(--line);}
+.block.open .bb{display:block;}
+.drill{padding:11px 0;border-bottom:1px solid var(--line);}
+.drill:last-child{border-bottom:none;}
+.dname{font-size:.86rem;font-weight:800;}
+.dfield{font-size:.78rem;color:#56607a;margin-top:3px;line-height:1.55;}
+.dfield b{color:var(--ink);}
+.cue{font-size:.78rem;color:var(--green);font-weight:600;background:#f0faf4;border-left:3px solid var(--green2);padding:7px 10px;border-radius:6px;margin-top:7px;}
+.vid{display:inline-flex;align-items:center;gap:5px;margin-top:8px;background:#fdecec;color:var(--red);text-decoration:none;font-size:.72rem;font-weight:800;padding:5px 10px;border-radius:8px;}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:14px;margin:14px 0;}
+.metric h3{font-size:.95rem;font-weight:850;}
+.metric p{font-size:.78rem;color:var(--muted);margin:2px 0 10px;}
+.mrow{display:flex;gap:10px;align-items:center;}
+input.mi{flex:1;border:1px solid var(--line);border-radius:10px;padding:11px;font-size:.9rem;font-family:inherit;background:#fbfcfe;}
+.savedtag{font-size:.74rem;color:var(--green);font-weight:700;margin-top:8px;}
+.printbtn{width:100%;background:var(--green);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:.86rem;cursor:pointer;margin:6px 0 4px;}
+
+/* overview + iq */
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:15px;margin:12px 0;}
+.card h3{font-size:1rem;font-weight:850;margin-bottom:4px;}
+.card p,.card li{font-size:.83rem;color:#3a4252;line-height:1.6;}
+.card ul{margin:6px 0 0 18px;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:20px 4px 8px;}
+.note{background:#fff8ec;border:1px solid #f3e2bf;border-radius:12px;padding:13px;font-size:.8rem;color:#7a5a16;line-height:1.55;}
+.iqrow{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line);align-items:center;}
+.iqrow:last-child{border-bottom:none;}
+.iqi{flex:1;}
+.iqt{font-size:.86rem;font-weight:750;}
+.iqd{font-size:.75rem;color:var(--muted);margin-top:1px;}
+.iqbtn{background:#fdecec;color:var(--red);text-decoration:none;font-size:.72rem;font-weight:800;padding:8px 12px;border-radius:9px;white-space:nowrap;}
+.embed{position:relative;border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9;margin-top:9px;cursor:pointer;}
+.embed img{width:100%;height:100%;object-fit:cover;display:block;opacity:.82;}
+.embed .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.embed .play span{width:56px;height:56px;border-radius:50%;background:rgba(220,38,38,.94);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;box-shadow:0 4px 16px rgba(0,0,0,.4);}
+.embed iframe{width:100%;height:100%;border:0;display:block;}
+.ytlink{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:700;color:var(--sky);text-decoration:none;}
+.move{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:15px;margin:12px 0;}
+.move h4{font-size:1rem;font-weight:850;}
+.move .plain{font-size:.84rem;color:#3a4252;line-height:1.6;margin-top:3px;}
+@media print{
+  body{background:#fff;padding:0;} .tabs,.nav,.metric,.printbtn,.top .tabs,.chev{display:none!important;}
+  .block .bb{display:block!important;} .view{display:block!important;} #v-program,#v-iq{display:none!important;}
+  .top{background:#0b7a4b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Deliberate Practice · Persianball Style</div>
+  <h1>⚽ Soccer Lab</h1>
+  <div class="tops">45-session progressive program · ~90–110 min each · build mechanical consistency + fast-twitch execution.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="showView('day',this)">Today</button>
+    <button class="tab" onclick="showView('moves',this)">Moves 🎬</button>
+    <button class="tab" onclick="showView('program',this)">Program</button>
+    <button class="tab" onclick="showView('iq',this)">IQ</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <!-- DAY VIEW -->
+  <div id="v-day" class="view active">
+    <div class="nav">
+      <button class="navbtn" onclick="stepDay(-1)">‹</button>
+      <div class="dsel"><select id="daySel" onchange="setDay(+this.value)"></select><small id="daySub"></small></div>
+      <button class="navbtn" onclick="stepDay(1)">›</button>
+    </div>
+    <div id="dayBody"></div>
+    <button class="printbtn" onclick="window.print()">🖨️ Print / save this day</button>
+  </div>
+
+  <!-- MOVES VIEW -->
+  <div id="v-moves" class="view"></div>
+
+  <!-- PROGRAM VIEW -->
+  <div id="v-program" class="view"></div>
+
+  <!-- IQ VIEW -->
+  <div id="v-iq" class="view"></div>
+</div>
+
+<script>
+function yt(q){ return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q); }
+function ytEmbed(id){ return `<div class="embed" onclick="playVid(this,'${id}')"><img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="video"><div class="play"><span>▶</span></div></div><a class="ytlink" href="https://www.youtube.com/watch?v=${id}" target="_blank">Open on YouTube ↗</a>`; }
+function playVid(el,id){ el.outerHTML=`<div class="embed"><iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div>`; }
+const MOVES=[
+ {n:'The Persianball style',plain:'The whole style this program is built on — super-fast little touches with the body calm and balanced. Notice his feet move a mile a minute but his upper body barely moves.',id:'QFyUK62fCxU'},
+ {n:'Ball mastery / soft touch',plain:'The foundation: keeping the ball glued to the feet with tiny controlled touches. (“Sole rolls” = rolling the ball with the bottom of your foot. “Weaving cones” = dribbling in and out of a line of cones.)',id:'Er0M0ELgS94'},
+ {n:'La Croqueta',plain:'A quick little shuffle of the ball from one foot to the other to slip past someone in a tight space. Messi and Iniesta do it constantly.',id:'7nFvh7ITZm8'},
+ {n:'Elastico (the “flip-flap”)',plain:'Push the ball one way with the OUTSIDE of your foot, then instantly snap it back the other way with the INSIDE. It fakes the defender right out of their shoes.',id:'1_D_U-T8b_M'},
+ {n:'Cruyff turn',plain:'Fake like you’re about to pass or shoot, then drag the ball behind your standing leg and go the opposite way. Simple and deadly.',id:'V9klCWR_nKk'},
+ {n:'Stepover / Scissors',plain:'Swing your foot around the ball (without touching it) to make the defender lean one way — then push it the other way and explode past.',id:'biZKX2zE0dQ'},
+ {n:'Body feint',plain:'No fancy footwork — just drop your shoulder and hip one way to send the defender the wrong direction, then go the other way.',id:'Y1c7BENDrLE'}
+];
+function renderMoves(){
+  let cards=MOVES.map(m=>`<div class="move"><h4>${m.n}</h4><div class="plain">${m.plain}</div>${ytEmbed(m.id)}</div>`).join('');
+  document.getElementById('v-moves').innerHTML=`
+    <div class="sec">Every move in plain English</div>
+    <div class="card"><p>This is the dictionary. Any skill name you see in a session, find it here and <b>press play</b> to see exactly what it looks like. Watch it a couple times before heading out.</p></div>
+    ${cards}
+    <div class="card"><h3>A few other words you’ll see</h3><ul>
+      <li><b>Gate</b> — two cones a couple feet apart that you dribble through.</li>
+      <li><b>V-cut</b> — pull the ball back, then push it out at an angle, tracing a “V”.</li>
+      <li><b>1–2 touches to finish</b> — come out of the move and shoot within one or two touches, no extra dribbling.</li>
+      <li><b>Clean %</b> — out of all your reps, how many you did without a mistake (hit a cone or missed = doesn’t count).</li>
+    </ul></div>`;
+}
+function load(){ try{return JSON.parse(localStorage.getItem('soccerlab'))||{}}catch(e){return {}} }
+function save(s){ localStorage.setItem('soccerlab',JSON.stringify(s)); }
+
+const PHASES=[
+ {id:1,range:[1,15],color:'#0b7a4b',name:'Phase 1 — Isolation & High-Frequency Rhythm',
+  goal:'Build hyper-dense foot turnover, joint compliance, and eccentric braking. Master the rhythm slow, then crank the speed.',
+  mastery:'High-density close control in a 2×2 yd square — keep it glued to your feet.',
+  skills:['Inside/Outside (same foot)','La Croqueta','Sole-roll → chop','V-cuts','Behind-the-leg L-turn'],
+  core:[
+   {n:'Linear Rhythm Weave',setup:'6–8 cones, ~1–1.5 ft apart; last cone 18–20 yds from the net.',
+    work:'Weave with high-frequency touches (today’s skill variation). Clear the final cone → immediately execute a signature deceptive shift (sharp stepover / fake-shot turn) → explode into space and finish within 2 touches.',
+    cue:'Count touches out loud to lock the cadence. If the ball clicks a cone, the rep = 0.',video:'Coach Ahmadreza Falsafi power dribbling session'},
+   {n:'The “L” Corridor',setup:'Two parallel lines of 4 cones forming a 2-ft hallway that bends into an L.',
+    work:'Navigate it entirely backwards & sideways — sole rolls, V-cuts, behind-the-leg L-turns only. Full-speed runs.',
+    cue:'Stay low and coiled, weight on a springy arch. Eyes up between touches.',video:'sole roll v-cut backwards dribbling drill'},
+   {n:'Static Mastery → Explosive Finish',setup:'2×2 yd square, net 18–20 yds out.',
+    work:'Continuous freestyle manipulation inside the square; every 30s explode out into a first-time strike to a corner.',
+    cue:'Never let it settle. Heavy touch out of the box before the cue = reset.',video:'tight ball mastery box to finish drill'}
+  ]},
+ {id:2,range:[16,30],color:'#b45309',name:'Phase 2 — Staggered Deception & Multi-Angle Cuts',
+  goal:'Turn smooth rhythm into multi-directional violence. Wide body feints + heavy deceleration-to-acceleration.',
+  mastery:'Close control while changing direction — shift a “defender” left and right before exploding.',
+  skills:['Elastico','Cruyff turn','Scissors → chop','Double stepover','Inside-out snap'],
+  core:[
+   {n:'Zig-Zag Feint Circuit',setup:'5 cones in a lightning-bolt zig-zag, 4 yds apart at 45° angles.',
+    work:'Dribble at 90% to a cone, drop your hip hard to fake entry, slide today’s move (Elastico / inside-out snap) around it, instantly accelerate to the next.',
+    cue:'The rep is about the fraction of a second between finishing the move and your first explosive step.',video:'elastico inside out dribbling zig zag drill'},
+   {n:'Staggered 3-Gate Deception & Escape',setup:'3 staggered 2-ft gates leading to the box.',
+    work:'Drive through Gate 1 with an active skill move → cut hard laterally to Gate 2 with a tight Cruyff → blast through Gate 3 into a 1-touch clinical finish.',
+    cue:'Body shape resets before each gate. Disguise first, speed second.',video:'cruyff turn gate dribbling finishing drill'},
+   {n:'Wall-Turn Transition',setup:'Net post or wall + a tight 3-cone triangle behind you.',
+    work:'Fire the ball hard at the wall, receive on the half-turn with a blind sole-roll, escape the 3-cone triangle immediately, and finish.',
+    cue:'Scan over your shoulder BEFORE the ball arrives. First touch sets the escape.',video:'half turn first touch wall rebound drill'}
+  ]},
+ {id:3,range:[31,45],color:'#991b1b',name:'Phase 3 — Reactive Chaos & Game-Speed',
+  goal:'Total automation. Execute complex sequences under fatigue with minimal setup touches before finishing.',
+  mastery:'Keep the ball alive while facing away from goal, surrounded — then escape and strike.',
+  skills:['Behind-the-leg hook','Scissors-chop combo','Triple stepover','Blind sole-turn','L-turn burst'],
+  core:[
+   {n:'Double-Move Matrix (Chaos Box)',setup:'4×4 yd box, 25 yds from goal; balls outside the box.',
+    work:'Settle a tossed ball inside, keep it alive via juggles/thigh control 5s without it touching the ground or leaving the square, execute a back-facing turn (behind-the-leg hook), drive to goal and finish.',
+    cue:'Count touches that stay strictly inside the box. Heavy touch out = reset the rep.',video:'chaos box turn and finish soccer drill'},
+   {n:'Endless Wing-Cut Challenge',setup:'Start wide on the touchline; 2-cone gate at the edge of the box.',
+    work:'Dribble at 100% sprint down the line; on a self-cue execute a violent scissors-chop to cut inside 90°, thread the gate, strike on the run. Split reps L/R wing.',
+    cue:'Full sprint first — the move only counts if you were truly at top speed.',video:'wing cut inside scissors finish on the run'},
+   {n:'Fatigue Finishes',setup:'5 balls at random angles around the 18-yd box; 1 marker cone each.',
+    work:'Sprint to Ball 1, triple-stepover around the marker, finish. Instantly to Ball 2 — zero rest until all 5 are buried. Repeat cycles.',
+    cue:'Technique must hold while winded. Sloppy finish = doesn’t count.',video:'fatigue finishing 1v1 move shooting drill'}
+  ]}
+];
+function phaseOf(day){ return PHASES.find(p=>day>=p.range[0]&&day<=p.range[1]); }
+function blockOf(day,p){ return Math.ceil((day-p.range[0]+1)/5); } // 1,2,3 within phase
+const INTENS={1:[[60,75],[78,86],[88,95]],2:[[78,85],[86,92],[93,97]],3:[[90,95],[96,99],[100,100]]};
+const CLEAN={1:[70,80,88],2:[72,82,90],3:[75,85,92]};
+const REPS={1:[8,10,12],2:[8,10,12],3:[10,12,14]};
+
+function dayData(day){
+  const p=phaseOf(day); const blk=blockOf(day,p);
+  const skill=p.skills[(day-1)%p.skills.length];
+  const intensity=INTENS[p.id][blk-1];
+  const cleanTarget=CLEAN[p.id][blk-1];
+  const reps=REPS[p.id][blk-1];
+  return {p,blk,skill,intensity,cleanTarget,reps};
+}
+
+function buildSession(day){
+  const d=dayData(day); const p=d.p;
+  const blocks=[];
+  blocks.push({icon:'🔥',title:'Warm-up & Prime',dur:'12 min',sub:'Fascia-informed, get the feet awake',
+    drills:[{n:'Mobility + foot/ankle prime',f:'Ankle circles, leg swings, walking lunges, world’s-greatest-stretch. Then barefoot foot intrinsics + 3×10s big-toe holds (ties to your fascia work).',cue:'',v:'dynamic soccer warm up foot ankle mobility'},
+            {n:'Juggling rhythm',f:'3 min — thigh/foot, both feet, low and controlled. Wake up the touch.',cue:'',v:'soccer juggling control warm up'}]});
+  blocks.push({icon:'🎛️',title:'Ball Mastery — Rhythm',dur:'18 min',sub:'Today’s skill: '+d.skill,
+    drills:[{n:'High-density close control',f:p.mastery+' Focus the whole block on <b>'+d.skill+'</b> at '+d.intensity[0]+'–'+d.intensity[1]+'% speed.',cue:'Master the rhythm slow first, THEN crank the feet. Low, coiled, springy arch.',v:'Persianball ball mastery '+d.skill+' drill'}]});
+  blocks.push({icon:'🎯',title:'Technical Core',dur:'35 min',sub:p.name.split('—')[1].trim(),
+    drills:p.core.map(c=>({n:c.n,f:'<b>Setup:</b> '+c.setup+'<br><b>Work:</b> '+c.work+'<br><b>Today:</b> '+d.reps+' quality reps @ '+d.intensity[0]+'–'+d.intensity[1]+'% · rest 45–60s full recovery between sets.',cue:c.cue,v:c.video}))});
+  blocks.push({icon:'⚡',title:'Finishing Under Fatigue',dur:'22 min',sub:'Bury the move into a clean strike',
+    drills:[{n:'High-volume striking',f:'40–50 strikes total, both feet, into the corners. Every strike comes OUT of a skill move (today: '+d.skill+') in 1–2 touches. No blasting — placement and repeatability.',cue:'Plant foot, locked ankle, follow through to target. A miss off a clean move still trains the move.',v:'finishing placement both feet corners drill'}]});
+  blocks.push({icon:'🧊',title:'Cooldown & Fascia',dur:'13 min',sub:'Lock in the session',
+    drills:[{n:'Recovery stack',f:'Foam roll calves/quads/hams, spiky ball under each foot 90s, hip-flexor lunge 45s/side, calf stretch, legs up the wall 3 min.',cue:'This is part of the training, not optional — it’s how the fast-twitch work sticks.',v:'soccer recovery fascia cooldown routine'}]});
+  return {d,blocks};
+}
+
+let CUR=load().lastDay||1;
+function renderDaySelect(){
+  const sel=document.getElementById('daySel'); let o='';
+  for(let i=1;i<=45;i++){ const p=phaseOf(i); o+=`<option value="${i}" ${i===CUR?'selected':''}>Day ${i} / 45</option>`; }
+  sel.innerHTML=o;
+}
+function setDay(n){ CUR=Math.max(1,Math.min(45,n)); const s=load(); s.lastDay=CUR; save(s); renderDay(); document.getElementById('daySel').value=CUR; }
+function stepDay(d){ setDay(CUR+d); }
+function renderDay(){
+  const {d,blocks}=buildSession(CUR); const p=d.p; const s=load();
+  document.getElementById('daySub').textContent='Phase '+p.id+' · Block '+d.blk+' of 3';
+  const intensTag=d.p.id===3?'r':(d.blk===3?'a':'g');
+  let bh='';
+  blocks.forEach((b,bi)=>{
+    let drills='';
+    b.drills.forEach(dr=>{ drills+=`<div class="drill"><div class="dname">${dr.n}</div><div class="dfield">${dr.f}</div>${dr.cue?`<div class="cue">🎯 ${dr.cue}</div>`:''}${dr.v?`<a class="vid" href="${yt(dr.v)}" target="_blank">▶ Watch reference</a>`:''}</div>`; });
+    bh+=`<div class="block ${bi===0?'open':''}" id="blk${bi}">
+      <div class="bh" onclick="document.getElementById('blk${bi}').classList.toggle('open')">
+        <div class="bn">${b.icon}</div><div class="bm"><div class="bt">${b.title}</div><div class="bsub">${b.sub}</div></div>
+        <div class="bdur">${b.dur}</div><span class="chev">▶</span></div>
+      <div class="bb">${drills}</div></div>`;
+  });
+  const mk=load()['m'+CUR]||'';
+  document.getElementById('dayBody').innerHTML=`
+    <div class="phasebar" style="background:${p.color}"><h2>${p.name}</h2><p>${p.goal}</p></div>
+    <div style="font-size:.79rem;color:var(--sky);font-weight:700;margin:2px 4px 9px">🎬 Don’t know a move? Tap <b>“Moves”</b> at the top — every skill has a press-play video.</div>
+    <div class="todayfocus">
+      <span class="chip g">Today’s skill: ${d.skill}</span>
+      <span class="chip ${intensTag}">Intensity ${d.intensity[0]}–${d.intensity[1]}%</span>
+      <span class="chip">Target ${d.cleanTarget}% clean</span>
+      <span class="chip">~100 min</span>
+    </div>
+    ${bh}
+    <div class="metric"><h3>📊 Today’s metric</h3><p>Deliberate practice = honest tracking. Log your clean-completion % (cone clicks & missed targets = a 0). Beat ${d.cleanTarget}% to progress.</p>
+      <div class="mrow"><input class="mi" id="mInput" placeholder="Clean % today (e.g. 82)" value="${mk}">
+      <button class="navbtn" style="width:auto;padding:0 16px" onclick="saveMetric()">Save</button></div>
+      <div class="savedtag" id="mSaved"></div></div>`;
+}
+function saveMetric(){ const s=load(); s['m'+CUR]=document.getElementById('mInput').value; save(s); document.getElementById('mSaved').textContent='✓ Logged for Day '+CUR; }
+
+function renderProgram(){
+  let ph=''; PHASES.forEach(p=>{ ph+=`<div class="card"><h3 style="color:${p.color}">${p.name}</h3>
+    <p><b>Days ${p.range[0]}–${p.range[1]}.</b> ${p.goal}</p>
+    <p style="margin-top:6px"><b>Signature moves:</b> ${p.skills.join(' · ')}</p>
+    <p style="margin-top:6px"><b>Core circuits:</b> ${p.core.map(c=>c.n).join(' · ')}</p></div>`; });
+  document.getElementById('v-program').innerHTML=`
+    <div class="sec">The 45-day arc</div>
+    <div class="card"><p>Three 15-day phases that ramp the technical, chaotic, and physical load. Each phase has 3 five-day blocks that step up speed, volume, and the clean-% target. You already have a foundation, so we skip basic toe-taps and go straight into complex movement chains.</p></div>
+    ${ph}
+    <div class="sec">Every session (~100 min)</div>
+    <div class="card"><ul>
+      <li><b>Warm-up & Prime (12)</b> — mobility, foot/ankle, juggling.</li>
+      <li><b>Ball Mastery — Rhythm (18)</b> — the day’s skill, hyper-dense touches.</li>
+      <li><b>Technical Core (35)</b> — the phase’s signature circuits.</li>
+      <li><b>Finishing Under Fatigue (22)</b> — bury the move into a clean strike.</li>
+      <li><b>Cooldown & Fascia (13)</b> — recovery is part of the work.</li>
+    </ul><p style="margin-top:8px"><b>Want 120?</b> Add a 15-min block of 1v1 shadow work or extra finishing.</p></div>
+    <div class="sec">The deliberate-practice rules</div>
+    <div class="card"><ul>
+      <li><b>Track the metric.</b> Clean-completion % every session. Click a cone or miss the target = that rep is a 0.</li>
+      <li><b>Fast-twitch rest.</b> 45–60s FULL rest between sets in Phases 1–2 — technical mastery is neurological, not cardio. Footwork while winded teaches sluggish patterns.</li>
+      <li><b>Low & coiled.</b> Center of gravity dropped, knees bent, weight on a springy arch every rep.</li>
+      <li><b>Quality over speed.</b> Master the rhythm slow, then crank the feet.</li>
+    </ul></div>
+    <div class="sec">Load note (important)</div>
+    <div class="note">⚠️ These are full <b>impact</b> field sessions. Given Ibrahim’s stress-fracture history, run them on his <b>field days (~3×/week)</b>, not 45 days back-to-back — one impact session per day, never stacked with basketball. So the 45 sessions are a <b>progression to move through</b>, roughly 3 per week ≈ ~15 weeks. Watch the daily pain check-in and back off on any niggle.</div>`;
+}
+
+const IQ=[
+ {cat:'🌀 The Persianball style (watch first)',items:[
+   ['Coach Ahmadreza Falsafi — power dribbling','See the upper body stay stacked while the feet do hyper-fast micro-touches.','Coach Ahmadreza Falsafi 1 hour power dribbling session'],
+   ['PersianBall Drills — full archive','How he chains fast ball-carrying into sharp direction changes. Copy these in Phase 1–2.','https://www.youtube.com/@PersianballDrills/videos'],
+   ['Art of Football Training','Overall rhythm and concept of the style.','Art of Football Training dribbling']
+ ]},
+ {cat:'🎓 Signature move tutorials',items:[
+   ['La Croqueta','The lateral “tick-tock” slide foot-to-foot to escape pressure.','La Croqueta tutorial Simply Soccer'],
+   ['Elastico','Outside of the pinky toe pushes out, inside of the same foot snaps it back.','Elastico tutorial Simply Soccer 7mlc'],
+   ['Cruyff turn','Disguise a pass/shot, drag it behind the standing leg, explode the other way.','Cruyff turn tutorial'],
+   ['Scissors / stepover chop','Sell the body feint, exit the other direction at speed.','scissors stepover to chop tutorial']
+ ]},
+ {cat:'🧠 Game IQ — read the game',items:[
+   ['Scanning (Geir Jordet)','The #1 separator at the next level — checking shoulders before the ball arrives.','Geir Jordet scanning football research'],
+   ['Body shape & first touch','Receiving on the half-turn, opening up, touch that buys time.','body orientation first touch football'],
+   ['1v1 attacking principles','When to use the move, attacking the defender’s hip, change of pace.','1v1 attacking principles winger'],
+   ['How to watch a match tactically','Train the eye — watch space, runs, and decisions, not just the ball.','how to watch football tactically analysis'],
+   ['Decision-making in the final third','Pass vs shoot vs dribble — speed of decision.','final third decision making football']
+ ]}
+];
+function renderIQ(){
+  let h=`<div class="sec">Soccer IQ — film study</div><div class="card"><p>Skill makes you dangerous; IQ makes you effective. Watch with intent — pause, rewind, copy. 15–20 min a few times a week (great for a heat-window or rest day).</p></div>`;
+  IQ.forEach(g=>{ h+=`<div class="sec">${g.cat}</div><div class="card">`;
+    g.items.forEach(it=>{ const url=it[2].startsWith('http')?it[2]:yt(it[2]);
+      h+=`<div class="iqrow"><div class="iqi"><div class="iqt">${it[0]}</div><div class="iqd">${it[1]}</div></div><a class="iqbtn" href="${url}" target="_blank">▶ Watch</a></div>`; });
+    h+=`</div>`; });
+  document.getElementById('v-iq').innerHTML=h;
+}
+
+function showView(v,btn){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+renderDaySelect(); renderDay(); renderMoves(); renderProgram(); renderIQ();
+</script>
+</body>
+</html>
