@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H · Unit 7 Mastery</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#9d174d,#4338ca);padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.45rem;font-weight:850;margin-top:2px;line-height:1.15;}
+.tops{font-size:.82rem;opacity:.92;margin-top:4px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#9d174d;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.q{font-size:.95rem;font-weight:600;line-height:1.55;margin-bottom:10px;}
+.q b,.q strong{color:var(--cyan);}
+.qnum{color:var(--mut);font-weight:800;font-size:.78rem;margin-right:6px;}
+.arow{display:flex;gap:8px;}
+input.ans{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:.95rem;font-family:inherit;}
+input.ans:focus{outline:none;border-color:var(--blue);}
+.btn{border:none;border-radius:10px;font-weight:800;font-size:.85rem;padding:11px 15px;cursor:pointer;color:#fff;}
+.btn-b{background:var(--blue);}.btn-g{background:var(--grn);color:#04220f;}.btn-ghost{background:var(--card2);border:1px solid var(--line);color:var(--ink);}
+.fb{margin-top:9px;font-size:.85rem;font-weight:700;display:none;}
+.fb.show{display:block;}
+.fb.ok{color:#86efac;}.fb.no{color:#fca5a5;}
+.sol{margin-top:8px;font-size:.84rem;color:#c3cbe8;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px;display:none;line-height:1.6;}
+.sol.show{display:block;}
+.reveal{font-size:.78rem;color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;margin-top:8px;padding:0;}
+.scorebar{position:sticky;top:0;z-index:5;background:rgba(14,18,32,.92);backdrop-filter:blur(8px);padding:10px 0;font-size:.82rem;font-weight:800;color:var(--mut);border-bottom:1px solid var(--line);}
+.hero-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:14px;font-size:.86rem;color:#c3cbe8;line-height:1.6;}
+.hero-note b{color:var(--gold);}
+.gate{border-radius:14px;padding:18px;margin:14px 0;text-align:center;font-weight:800;}
+.gate.locked{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4);color:#fca5a5;}
+.gate.pass{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.45);color:#86efac;}
+.big{font-size:2.4rem;font-weight:900;}
+.testq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;}
+.testq.correct{border-color:rgba(34,197,94,.5);}
+.testq.wrong{border-color:rgba(239,68,68,.5);}
+.ref{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;font-size:.82rem;line-height:1.75;color:#c3cbe8;}
+.ref b{color:var(--cyan);}
+a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:none;font-size:.85rem;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>📐 Unit 7 — Exponential & Logarithmic Functions</h1>
+  <div class="tops">Growth/decay, e, logs, log properties, and solving. <b>Pass the test</b> to unlock Unit 8.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('practice',this)">Practice</button>
+    <button class="tab" onclick="show('test',this)">Unit Test 🔒</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-practice" class="view active">
+    <div class="ref">
+      <b>Exponential:</b> y = a·bˣ. b &gt; 1 → growth · 0 &lt; b &lt; 1 → decay. <b>e</b> ≈ 2.718 (continuous growth).<br>
+      <b>Log ↔ exponent:</b> log_b(x) = y means <b>bʸ = x</b>. So log₂8 = 3 because 2³ = 8. (ln = log base e.)<br>
+      <b>log_b(1) = 0 · log_b(b) = 1</b><br>
+      <b>Properties:</b> log(xy)=log x+log y · log(x/y)=log x−log y · log(xⁿ)=n·log x<br>
+      <b>Change of base:</b> log_b(x) = (log x)/(log b).
+    </div>
+    <a class="lesson" href="IBRAHIM_ALGEBRA2_HUB.html">← Lessons & videos (tutor)</a>
+    <div class="scorebar"><span id="pScore">Practice score: 0 correct</span></div>
+    <div id="practiceBody"></div>
+  </div>
+  <div id="v-test" class="view"><div id="testIntro"></div><div id="testBody"></div></div>
+</div>
+
+<script>
+function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
+function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
+
+const PRACTICE=[
+ {name:"Lesson 1 · Exponential Functions & the base e", probs:[
+  {q:"Is <b>y = 3(2)ˣ</b> exponential growth or decay?", acc:["growth"], sol:"Base 2 > 1 → growth."},
+  {q:"Is <b>y = 5(0.8)ˣ</b> growth or decay?", acc:["decay"], sol:"Base 0.8 is between 0 and 1 → decay."},
+  {q:"In y = a·bˣ, if the outputs triple each step (20, 60, 180, …), what is b?", acc:["3"], sol:"Common ratio = 3 → b = 3."},
+  {q:"In y = a·bˣ, if the outputs double each step, b = ?", acc:["2"], sol:"Common ratio 2 → b = 2."},
+  {q:"Evaluate <b>2⁰</b>.", acc:["1"], sol:"Anything to the 0 power is 1."},
+  {q:"For exponential GROWTH, the base b is ___ than 1 (greater/less).", acc:["greater","more",">1"], sol:"Growth means b > 1."},
+  {q:"The natural base e (≈ 2.718) models ___ growth.", acc:["continuous"], sol:"e is used for continuous growth."}
+ ]},
+ {name:"Lesson 2 · Logarithms — Evaluate & Meaning", probs:[
+  {q:"Evaluate <b>log₂ 8</b>.", acc:["3"], sol:"2³ = 8 → 3."},
+  {q:"Evaluate <b>log₅ 125</b>.", acc:["3"], sol:"5³ = 125 → 3."},
+  {q:"Evaluate <b>log₃ 81</b>.", acc:["4"], sol:"3⁴ = 81 → 4."},
+  {q:"Evaluate <b>log₄ 256</b>.", acc:["4"], sol:"4⁴ = 256 → 4."},
+  {q:"Evaluate <b>log 1000</b> (base 10).", acc:["3"], sol:"10³ = 1000 → 3."},
+  {q:"Evaluate <b>ln(e)</b>.", acc:["1"], sol:"log base e of e = 1."},
+  {q:"Evaluate <b>ln(1/e³)</b>.", acc:["-3"], sol:"1/e³ = e⁻³ → ln = −3."},
+  {q:"log_b(x) = y means b to the y power equals ___.", acc:["x"], sol:"b^y = x — that's the definition."},
+  {q:"<b>log_b(1)</b> = ?", acc:["0"], sol:"b⁰ = 1 → log = 0."},
+  {q:"<b>log_b(b)</b> = ?", acc:["1"], sol:"b¹ = b → log = 1."}
+ ]},
+ {name:"Lesson 3 · Log Properties & Solving", probs:[
+  {q:"log(xy) = log x + ___.", acc:["logy","log y"], sol:"Product rule → + log y."},
+  {q:"log(x/y) = log x − ___.", acc:["logy","log y"], sol:"Quotient rule → − log y."},
+  {q:"log(x⁵) = ___ · log x.", acc:["5"], sol:"Power rule → 5·log x."},
+  {q:"Condense: <b>log 3 + log 4</b> = log ___.", acc:["12"], sol:"Product rule → log(3·4) = log 12."},
+  {q:"Condense: <b>2 log x</b> = log ___.", acc:["x^2","x²"], sol:"Power rule → log(x²)."},
+  {q:"Condense: <b>log 12 − log 3</b> = log ___.", acc:["4"], sol:"Quotient rule → log(12/3) = log 4."},
+  {q:"Solve <b>log₂ x = 5</b>.", acc:["32","x=32"], sol:"x = 2⁵ = 32."},
+  {q:"Solve <b>log₃ x = 2</b>.", acc:["9","x=9"], sol:"x = 3² = 9."},
+  {q:"Solve <b>2ˣ = 16</b>.", acc:["4","x=4"], sol:"2⁴ = 16 → x = 4."},
+  {q:"Solve <b>5ˣ = 125</b>.", acc:["3","x=3"], sol:"5³ = 125 → x = 3."},
+  {q:"Change of base: log_b(x) = (log x)/(log ___).", acc:["b"], sol:"Divide by log b."}
+ ]}
+];
+
+function renderPractice(){
+  let h=''; PRACTICE.forEach((s,si)=>{
+    h+=`<div class="sec">${s.name}</div>`;
+    s.probs.forEach((p,pi)=>{ const id=si+'_'+pi;
+      h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+        <div class="arow"><input class="ans" id="in${id}" placeholder="your answer" onkeydown="if(event.key==='Enter')checkP('${id}',${si},${pi})"><button class="btn btn-b" onclick="checkP('${id}',${si},${pi})">Check</button></div>
+        <div class="fb" id="fb${id}"></div>
+        <button class="reveal" onclick="document.getElementById('sol${id}').classList.toggle('show')">Show solution ▾</button>
+        <div class="sol" id="sol${id}">${p.sol}</div></div>`;
+    });
+  });
+  document.getElementById('practiceBody').innerHTML=h;
+}
+let pDone={};
+function checkP(id,si,pi){
+  const p=PRACTICE[si].probs[pi]; const val=document.getElementById('in'+id).value;
+  const fb=document.getElementById('fb'+id); fb.classList.add('show');
+  if(accepts(val,p.acc)){ fb.className='fb show ok'; fb.textContent='✓ Correct!'; pDone[id]=true; }
+  else { fb.className='fb show no'; fb.textContent='✗ Not yet — try again, or tap Show solution.'; }
+  document.getElementById('pScore').textContent='Practice score: '+Object.keys(pDone).length+' correct';
+}
+
+const TEST=[
+ {q:"Is y = 4(3)ˣ growth or decay?", acc:["growth"], sol:"Base 3 > 1 → growth."},
+ {q:"Is y = 2(1/2)ˣ growth or decay?", acc:["decay"], sol:"Base 1/2 between 0 and 1 → decay."},
+ {q:"Evaluate log₂ 16.", acc:["4"], sol:"2⁴ = 16 → 4."},
+ {q:"Evaluate log₃ 27.", acc:["3"], sol:"3³ = 27 → 3."},
+ {q:"Evaluate log₅ 25.", acc:["2"], sol:"5² = 25 → 2."},
+ {q:"Evaluate ln(e).", acc:["1"], sol:"1."},
+ {q:"Evaluate ln(1/e²).", acc:["-2"], sol:"e⁻² → −2."},
+ {q:"log_b(x) = y means b^y = ___.", acc:["x"], sol:"x."},
+ {q:"log(x³) = ___ · log x.", acc:["3"], sol:"Power rule → 3."},
+ {q:"Condense: log 2 + log 5 = log ___.", acc:["10"], sol:"log(2·5) = log 10."},
+ {q:"Condense: log 20 − log 4 = log ___.", acc:["5"], sol:"log(20/4) = log 5."},
+ {q:"Solve log₄ x = 3.", acc:["64","x=64"], sol:"x = 4³ = 64."},
+ {q:"Solve 3ˣ = 81.", acc:["4","x=4"], sol:"3⁴ = 81 → x = 4."},
+ {q:"log_b(1) = ?", acc:["0"], sol:"0."},
+ {q:"For exponential DECAY, the base b is ___ than 1 (greater/less).", acc:["less","<1"], sol:"Decay means 0 < b < 1, i.e., less than 1."}
+];
+const PASS=13;
+function mastered(){ return localStorage.getItem('alg2_unit7_mastered')==='1'; }
+function renderTest(){
+  const intro=document.getElementById('testIntro');
+  if(mastered()){
+    intro.innerHTML=`<div class="gate pass"><div>🏆 UNIT 7 MASTERED</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 8 (Compositions & Transformations) unlocked.</div></div>`;
+  } else {
+    intro.innerHTML=`<div class="hero-note">The real thing — <b>no solutions until you submit.</b> Need <b>${PASS} of ${TEST.length} (87%)</b> to master Unit 7 and unlock Unit 8. Work it on paper.</div>`;
+  }
+  let h=''; TEST.forEach((t,i)=>{ h+=`<div class="testq" id="tq${i}"><div class="q"><span class="qnum">${i+1}.</span>${t.q}</div><input class="ans" id="tin${i}" placeholder="your answer"><div class="sol" id="tsol${i}">${t.sol}</div></div>`; });
+  h+=`<button class="btn btn-g" style="width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:6px" onclick="gradeTest()">Submit test</button><div id="testResult" style="margin-top:14px"></div>`;
+  document.getElementById('testBody').innerHTML=h;
+}
+function gradeTest(){
+  let score=0;
+  TEST.forEach((t,i)=>{ const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
+    const ok=accepts(val,t.acc); box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
+    document.getElementById('tsol'+i).classList.add('show'); if(ok) score++; });
+  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit7_mastered','1');
+  const res=document.getElementById('testResult');
+  res.innerHTML = passed
+    ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🏆 PASSED — Unit 7 MASTERED!</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 8 unlocked.</div></div>`
+    : `<div class="gate locked"><div class="big">${score}/${TEST.length}</div><div>Not yet — you need ${PASS}.</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Study the red ones, then <button class="reveal" style="color:#93c5fd" onclick="renderTest();window.scrollTo(0,0)">retake →</button></div></div>`;
+  window.scrollTo(0, document.getElementById('testResult').offsetTop-80);
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); if(v==='test')renderTest(); }
+renderPractice(); renderTest();
+</script>
+</body>
+</html>
