@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H · Unit 5 Mastery</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#0f766e,#7c3aed);padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.45rem;font-weight:850;margin-top:2px;line-height:1.15;}
+.tops{font-size:.82rem;opacity:.92;margin-top:4px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#0f766e;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.q{font-size:.95rem;font-weight:600;line-height:1.55;margin-bottom:10px;}
+.q b,.q strong{color:var(--cyan);}
+.qnum{color:var(--mut);font-weight:800;font-size:.78rem;margin-right:6px;}
+.arow{display:flex;gap:8px;}
+input.ans{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:.95rem;font-family:inherit;}
+input.ans:focus{outline:none;border-color:var(--blue);}
+.btn{border:none;border-radius:10px;font-weight:800;font-size:.85rem;padding:11px 15px;cursor:pointer;color:#fff;}
+.btn-b{background:var(--blue);}.btn-g{background:var(--grn);color:#04220f;}.btn-ghost{background:var(--card2);border:1px solid var(--line);color:var(--ink);}
+.fb{margin-top:9px;font-size:.85rem;font-weight:700;display:none;}
+.fb.show{display:block;}
+.fb.ok{color:#86efac;}.fb.no{color:#fca5a5;}
+.sol{margin-top:8px;font-size:.84rem;color:#c3cbe8;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px;display:none;line-height:1.6;}
+.sol.show{display:block;}
+.reveal{font-size:.78rem;color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;margin-top:8px;padding:0;}
+.scorebar{position:sticky;top:0;z-index:5;background:rgba(14,18,32,.92);backdrop-filter:blur(8px);padding:10px 0;font-size:.82rem;font-weight:800;color:var(--mut);border-bottom:1px solid var(--line);}
+.hero-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:14px;font-size:.86rem;color:#c3cbe8;line-height:1.6;}
+.hero-note b{color:var(--gold);}
+.gate{border-radius:14px;padding:18px;margin:14px 0;text-align:center;font-weight:800;}
+.gate.locked{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4);color:#fca5a5;}
+.gate.pass{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.45);color:#86efac;}
+.big{font-size:2.4rem;font-weight:900;}
+.testq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;}
+.testq.correct{border-color:rgba(34,197,94,.5);}
+.testq.wrong{border-color:rgba(239,68,68,.5);}
+.ref{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;font-size:.82rem;line-height:1.75;color:#c3cbe8;}
+.ref b{color:var(--cyan);}
+a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:none;font-size:.85rem;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>📐 Unit 5 — Rational Functions</h1>
+  <div class="tops">Asymptotes, intercepts, operations, and solving (watch for extraneous!). <b>Pass the test</b> to unlock Unit 6.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('practice',this)">Practice</button>
+    <button class="tab" onclick="show('test',this)">Unit Test 🔒</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-practice" class="view active">
+    <div class="ref">
+      <b>Vertical asymptote:</b> set the denominator = 0.<br>
+      <b>Horizontal asymptote:</b> deg(top) &lt; deg(bottom) → y = 0 · equal degrees → y = (ratio of leading coeffs) · top bigger → none.<br>
+      <b>Form a/(x−h) + k:</b> VA x = h, HA y = k.<br>
+      <b>x-int:</b> numerator = 0 · <b>y-int:</b> plug in x = 0 · <b>domain:</b> all reals except the VA.<br>
+      <b>Solving:</b> cross-multiply or clear with the LCD. <b>Extraneous:</b> any answer that makes an original denominator = 0 → reject it.
+    </div>
+    <a class="lesson" href="IBRAHIM_ALGEBRA2_HUB.html">← Lessons & videos (tutor)</a>
+    <div class="scorebar"><span id="pScore">Practice score: 0 correct</span></div>
+    <div id="practiceBody"></div>
+  </div>
+  <div id="v-test" class="view"><div id="testIntro"></div><div id="testBody"></div></div>
+</div>
+
+<script>
+function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
+function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
+
+const PRACTICE=[
+ {name:"Lesson 1 · Asymptotes, Intercepts & Domain", probs:[
+  {q:"Vertical asymptote of <b>f(x) = 3/x</b>?", acc:["x=0","0"], sol:"Denominator x = 0 → VA at x = 0."},
+  {q:"Horizontal asymptote of <b>f(x) = 3/x</b>?", acc:["y=0","0"], sol:"Top degree 0 < bottom degree 1 → HA at y = 0."},
+  {q:"Vertical asymptote of <b>g(x) = 4/(x + 3)</b>?", acc:["x=-3","-3"], sol:"x + 3 = 0 → x = −3."},
+  {q:"For <b>y = 3/(x − 4) − 1</b>, the vertical asymptote is?", acc:["x=4","4"], sol:"a/(x−h)+k form → VA at x = h = 4."},
+  {q:"For <b>y = 3/(x − 4) − 1</b>, the horizontal asymptote is?", acc:["y=-1","-1"], sol:"a/(x−h)+k form → HA at y = k = −1."},
+  {q:"Vertical asymptote of <b>f(x) = (2x − 6)/(x + 2)</b>?", acc:["x=-2","-2"], sol:"x + 2 = 0 → x = −2."},
+  {q:"Horizontal asymptote of <b>f(x) = (2x − 6)/(x + 2)</b>?", acc:["y=2","2"], sol:"Equal degrees → HA = ratio of leading coeffs = 2/1 = 2."},
+  {q:"Horizontal asymptote of <b>f(x) = (4x + 3)/(x + 1)</b>?", acc:["y=4","4"], sol:"Equal degrees → y = 4/1 = 4."},
+  {q:"Domain of <b>f(x) = 5/(x − 3)</b>: what x-value is excluded?", acc:["3","x=3","x≠3"], sol:"Denominator ≠ 0 → x ≠ 3."},
+  {q:"x-intercept of <b>f(x) = (2x − 6)/(x + 2)</b>? (x-value)", acc:["3","x=3","(3,0)","3,0"], sol:"Set numerator = 0: 2x − 6 = 0 → x = 3."},
+  {q:"y-intercept of <b>f(x) = (2x − 6)/(x + 2)</b>? (y-value)", acc:["-3","(0,-3)","0,-3"], sol:"f(0) = −6/2 = −3."},
+  {q:"Horizontal asymptote of <b>f(x) = x/(x² + 1)</b>?", acc:["y=0","0"], sol:"Top degree 1 < bottom degree 2 → y = 0."}
+ ]},
+ {name:"Lesson 2 · Simplify, Multiply, Divide, Add", probs:[
+  {q:"Simplify <b>(x² − 4)/(x + 2)</b>.", acc:["x-2"], sol:"(x−2)(x+2)/(x+2) = x − 2."},
+  {q:"Simplify <b>(x² − 25)/(x − 5)</b>.", acc:["x+5"], sol:"(x−5)(x+5)/(x−5) = x + 5."},
+  {q:"Simplify <b>(3x² − 5x − 2)/(x² − 4)</b>.", acc:["(3x+1)/(x+2)"], sol:"(3x+1)(x−2) / (x−2)(x+2) = (3x+1)/(x+2)."},
+  {q:"Multiply: <b>(2/x) · (x/3)</b>.", acc:["2/3"], sol:"2x/3x = 2/3."},
+  {q:"Multiply: <b>(3/(x + 1)) · ((x + 1)/6)</b>.", acc:["1/2"], sol:"3(x+1) / 6(x+1) = 3/6 = 1/2."},
+  {q:"Divide: <b>(x/4) ÷ (x/8)</b>.", acc:["2"], sol:"x/4 · 8/x = 8/4 = 2."},
+  {q:"Add: <b>1/x + 2/x</b>.", acc:["3/x"], sol:"Same denominator → 3/x."},
+  {q:"Subtract: <b>5/x − 2/x</b>.", acc:["3/x"], sol:"Same denominator → 3/x."}
+ ]},
+ {name:"Lesson 3 · Solving Equations & Extraneous Solutions", probs:[
+  {q:"Solve <b>2/x = 1/6</b>.", acc:["12","x=12"], sol:"Cross-multiply: 12 = x → x = 12."},
+  {q:"Solve <b>x/4 = 3/2</b>.", acc:["6","x=6"], sol:"2x = 12 → x = 6."},
+  {q:"Solve <b>1/(x − 2) = 3/(x + 4)</b>.", acc:["5","x=5"], sol:"x + 4 = 3(x − 2) → x + 4 = 3x − 6 → 10 = 2x → x = 5."},
+  {q:"Solve <b>6/x = 2</b>.", acc:["3","x=3"], sol:"6 = 2x → x = 3."},
+  {q:"When solving a rational equation, an answer that makes a denominator zero is called ___.", acc:["extraneous"], sol:"An extraneous solution — you reject it."},
+  {q:"If your algebra gives x = 2 but the equation has a denominator (x − 2), then x = 2 is ___.", acc:["extraneous"], sol:"It makes the denominator 0, so it's extraneous."},
+  {q:"When solving an equation with a denominator (x + 5), which x-value must be excluded/checked?", acc:["-5","x=-5","x≠-5"], sol:"x + 5 = 0 → x = −5 must be excluded."}
+ ]}
+];
+
+function renderPractice(){
+  let h=''; PRACTICE.forEach((s,si)=>{
+    h+=`<div class="sec">${s.name}</div>`;
+    s.probs.forEach((p,pi)=>{ const id=si+'_'+pi;
+      h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+        <div class="arow"><input class="ans" id="in${id}" placeholder="your answer" onkeydown="if(event.key==='Enter')checkP('${id}',${si},${pi})"><button class="btn btn-b" onclick="checkP('${id}',${si},${pi})">Check</button></div>
+        <div class="fb" id="fb${id}"></div>
+        <button class="reveal" onclick="document.getElementById('sol${id}').classList.toggle('show')">Show solution ▾</button>
+        <div class="sol" id="sol${id}">${p.sol}</div></div>`;
+    });
+  });
+  document.getElementById('practiceBody').innerHTML=h;
+}
+let pDone={};
+function checkP(id,si,pi){
+  const p=PRACTICE[si].probs[pi]; const val=document.getElementById('in'+id).value;
+  const fb=document.getElementById('fb'+id); fb.classList.add('show');
+  if(accepts(val,p.acc)){ fb.className='fb show ok'; fb.textContent='✓ Correct!'; pDone[id]=true; }
+  else { fb.className='fb show no'; fb.textContent='✗ Not yet — try again, or tap Show solution.'; }
+  document.getElementById('pScore').textContent='Practice score: '+Object.keys(pDone).length+' correct';
+}
+
+const TEST=[
+ {q:"Vertical asymptote of f(x) = 5/(x − 2)?", acc:["x=2","2"], sol:"x − 2 = 0 → x = 2."},
+ {q:"Horizontal asymptote of f(x) = 5/(x − 2)?", acc:["y=0","0"], sol:"Top degree < bottom → y = 0."},
+ {q:"For y = 2/(x + 1) + 3, the vertical asymptote is?", acc:["x=-1","-1"], sol:"VA at x = h = −1."},
+ {q:"For y = 2/(x + 1) + 3, the horizontal asymptote is?", acc:["y=3","3"], sol:"HA at y = k = 3."},
+ {q:"Horizontal asymptote of f(x) = (3x + 2)/(x − 4)?", acc:["y=3","3"], sol:"Equal degrees → 3/1 = 3."},
+ {q:"Domain of f(x) = 7/(x + 6): excluded x-value?", acc:["-6","x=-6","x≠-6"], sol:"x + 6 = 0 → x ≠ −6."},
+ {q:"x-intercept of f(x) = (x − 5)/(x + 2)? (x-value)", acc:["5","x=5","(5,0)","5,0"], sol:"Numerator 0: x − 5 = 0 → x = 5."},
+ {q:"y-intercept of f(x) = (x − 5)/(x + 2)? (y-value)", acc:["-5/2","-2.5","(0,-5/2)","0,-5/2"], sol:"f(0) = −5/2."},
+ {q:"Simplify (x² − 9)/(x − 3).", acc:["x+3"], sol:"(x−3)(x+3)/(x−3) = x + 3."},
+ {q:"Simplify (x² − 16)/(x + 4).", acc:["x-4"], sol:"(x−4)(x+4)/(x+4) = x − 4."},
+ {q:"Multiply: (4/x) · (x/2).", acc:["2"], sol:"4x/2x = 2."},
+ {q:"Add: 3/x + 5/x.", acc:["8/x"], sol:"Same denominator → 8/x."},
+ {q:"Solve 3/x = 1/4.", acc:["12","x=12"], sol:"Cross-multiply: 12 = x."},
+ {q:"Solve 1/(x − 1) = 2/(x + 3).", acc:["5","x=5"], sol:"x + 3 = 2(x − 1) → x + 3 = 2x − 2 → x = 5."},
+ {q:"A solution that makes an original denominator zero is called ___.", acc:["extraneous"], sol:"Extraneous — reject it."}
+];
+const PASS=13;
+function mastered(){ return localStorage.getItem('alg2_unit5_mastered')==='1'; }
+function renderTest(){
+  const intro=document.getElementById('testIntro');
+  if(mastered()){
+    intro.innerHTML=`<div class="gate pass"><div>🏆 UNIT 5 MASTERED</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 6 (Radicals & Rational Exponents) unlocked.</div></div>`;
+  } else {
+    intro.innerHTML=`<div class="hero-note">The real thing — <b>no solutions until you submit.</b> Need <b>${PASS} of ${TEST.length} (87%)</b> to master Unit 5 and unlock Unit 6. Work it on paper — and always check for extraneous solutions.</div>`;
+  }
+  let h=''; TEST.forEach((t,i)=>{ h+=`<div class="testq" id="tq${i}"><div class="q"><span class="qnum">${i+1}.</span>${t.q}</div><input class="ans" id="tin${i}" placeholder="your answer"><div class="sol" id="tsol${i}">${t.sol}</div></div>`; });
+  h+=`<button class="btn btn-g" style="width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:6px" onclick="gradeTest()">Submit test</button><div id="testResult" style="margin-top:14px"></div>`;
+  document.getElementById('testBody').innerHTML=h;
+}
+function gradeTest(){
+  let score=0;
+  TEST.forEach((t,i)=>{ const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
+    const ok=accepts(val,t.acc); box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
+    document.getElementById('tsol'+i).classList.add('show'); if(ok) score++; });
+  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit5_mastered','1');
+  const res=document.getElementById('testResult');
+  res.innerHTML = passed
+    ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🏆 PASSED — Unit 5 MASTERED!</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 6 unlocked.</div></div>`
+    : `<div class="gate locked"><div class="big">${score}/${TEST.length}</div><div>Not yet — you need ${PASS}.</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Study the red ones, then <button class="reveal" style="color:#93c5fd" onclick="renderTest();window.scrollTo(0,0)">retake →</button></div></div>`;
+  window.scrollTo(0, document.getElementById('testResult').offsetTop-80);
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); if(v==='test')renderTest(); }
+renderPractice(); renderTest();
+</script>
+</body>
+</html>
