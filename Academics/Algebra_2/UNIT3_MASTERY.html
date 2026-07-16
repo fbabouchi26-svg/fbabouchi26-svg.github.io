@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H · Unit 3 Mastery</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#7c3aed,#be185d);padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.45rem;font-weight:850;margin-top:2px;line-height:1.15;}
+.tops{font-size:.82rem;opacity:.92;margin-top:4px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#7c3aed;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.q{font-size:.95rem;font-weight:600;line-height:1.55;margin-bottom:10px;}
+.q b,.q strong{color:var(--cyan);}
+.qnum{color:var(--mut);font-weight:800;font-size:.78rem;margin-right:6px;}
+.arow{display:flex;gap:8px;}
+input.ans{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:.95rem;font-family:inherit;}
+input.ans:focus{outline:none;border-color:var(--blue);}
+.btn{border:none;border-radius:10px;font-weight:800;font-size:.85rem;padding:11px 15px;cursor:pointer;color:#fff;}
+.btn-b{background:var(--blue);}.btn-g{background:var(--grn);color:#04220f;}.btn-ghost{background:var(--card2);border:1px solid var(--line);color:var(--ink);}
+.fb{margin-top:9px;font-size:.85rem;font-weight:700;display:none;}
+.fb.show{display:block;}
+.fb.ok{color:#86efac;}.fb.no{color:#fca5a5;}
+.sol{margin-top:8px;font-size:.84rem;color:#c3cbe8;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px;display:none;line-height:1.6;}
+.sol.show{display:block;}
+.reveal{font-size:.78rem;color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;margin-top:8px;padding:0;}
+.scorebar{position:sticky;top:0;z-index:5;background:rgba(14,18,32,.92);backdrop-filter:blur(8px);padding:10px 0;font-size:.82rem;font-weight:800;color:var(--mut);border-bottom:1px solid var(--line);}
+.hero-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:14px;font-size:.86rem;color:#c3cbe8;line-height:1.6;}
+.hero-note b{color:var(--gold);}
+.gate{border-radius:14px;padding:18px;margin:14px 0;text-align:center;font-weight:800;}
+.gate.locked{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4);color:#fca5a5;}
+.gate.pass{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.45);color:#86efac;}
+.big{font-size:2.4rem;font-weight:900;}
+.testq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;}
+.testq.correct{border-color:rgba(34,197,94,.5);}
+.testq.wrong{border-color:rgba(239,68,68,.5);}
+.ref{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;font-size:.82rem;line-height:1.8;color:#c3cbe8;}
+.ref b{color:var(--cyan);}
+a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:none;font-size:.85rem;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>📐 Unit 3 — Quadratic Equations & Complex Numbers</h1>
+  <div class="tops">Solving every way, the discriminant, and imaginary numbers. <b>Pass the test</b> to unlock Unit 4.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('practice',this)">Practice</button>
+    <button class="tab" onclick="show('test',this)">Unit Test 🔒</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-practice" class="view active">
+    <div class="ref">
+      <b>Ways to solve ax²+bx+c=0:</b> factor (zero-product) · square roots (if no bx) · completing the square · quadratic formula <b>x = (−b ± √(b²−4ac)) / 2a</b><br>
+      <b>Discriminant b²−4ac:</b> &gt;0 → 2 real · =0 → 1 real · &lt;0 → 2 complex<br>
+      <b>Complete the square:</b> for x²+bx, add <b>(b/2)²</b><br>
+      <b>Complex numbers:</b> i = √(−1), so <b>i² = −1</b>. Form a + bi. Combine like terms.
+    </div>
+    <a class="lesson" href="IBRAHIM_ALGEBRA2_HUB.html">← Lessons & videos (tutor)</a>
+    <div class="scorebar"><span id="pScore">Practice score: 0 correct</span></div>
+    <div id="practiceBody"></div>
+  </div>
+  <div id="v-test" class="view"><div id="testIntro"></div><div id="testBody"></div></div>
+</div>
+
+<script>
+function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
+function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
+
+const PRACTICE=[
+ {name:"Lesson 1 · Solving by Factoring & Square Roots", probs:[
+  {q:"Solve <b>x² = 49</b>. (both solutions)", acc:["±7","7,-7","-7,7"], sol:"Square-root both sides, keep ±: x = ±7."},
+  {q:"Solve <b>x² − 5x + 6 = 0</b>.", acc:["2,3","3,2","x=2,x=3"], sol:"(x−2)(x−3)=0 → x = 2, 3."},
+  {q:"Solve <b>x² + 7x + 12 = 0</b>.", acc:["-3,-4","-4,-3"], sol:"(x+3)(x+4)=0 → x = −3, −4."},
+  {q:"Solve <b>x² − 9 = 0</b>. (both)", acc:["±3","3,-3","-3,3"], sol:"x² = 9 → x = ±3."},
+  {q:"Solve <b>(x − 4)² = 25</b>.", acc:["9,-1","-1,9"], sol:"x−4 = ±5 → x = 9 or −1."},
+  {q:"Solve <b>x² − 2x − 15 = 0</b>.", acc:["5,-3","-3,5"], sol:"(x−5)(x+3)=0 → x = 5, −3."},
+  {q:"Solve <b>2x² = 32</b>. (both)", acc:["±4","4,-4","-4,4"], sol:"x² = 16 → x = ±4."},
+  {q:"Factor <b>x² − 16</b>.", acc:["(x-4)(x+4)","(x+4)(x-4)"], sol:"Difference of squares → (x−4)(x+4)."}
+ ]},
+ {name:"Lesson 2 · Quadratic Formula, Completing the Square & Discriminant", probs:[
+  {q:"Solve <b>x² + 2x − 8 = 0</b>.", acc:["2,-4","-4,2"], sol:"(x−2)(x+4)=0 → x = 2, −4."},
+  {q:"In the quadratic formula, the denominator is ___.", acc:["2a"], sol:"x = (−b ± √(b²−4ac)) / 2a."},
+  {q:"Discriminant (b²−4ac) of <b>x² + 4x + 4</b>?", acc:["0"], sol:"16 − 4(1)(4) = 16 − 16 = 0."},
+  {q:"So <b>x² + 4x + 4 = 0</b> has how many real solutions?", acc:["1","one"], sol:"Discriminant = 0 → exactly 1 real solution."},
+  {q:"Discriminant (b²−4ac) of <b>x² + 2x + 5</b>?", acc:["-16"], sol:"4 − 4(1)(5) = 4 − 20 = −16."},
+  {q:"So <b>x² + 2x + 5 = 0</b> has how many REAL solutions?", acc:["0","none","zero"], sol:"Negative discriminant → 0 real (2 complex)."},
+  {q:"For <b>x² − 4x + 1 = 0</b>, the formula gives x = 2 ± √__. What's under the root?", acc:["3"], sol:"b²−4ac = 16−4 = 12; x = (4 ± √12)/2 = 2 ± √3."},
+  {q:"To complete the square for <b>x² + 6x</b>, add what number?", acc:["9"], sol:"(6/2)² = 3² = 9."},
+  {q:"Solve <b>x² + 6x + 5 = 0</b>.", acc:["-1,-5","-5,-1"], sol:"(x+1)(x+5)=0 → x = −1, −5."}
+ ]},
+ {name:"Lesson 3 · Complex Numbers", probs:[
+  {q:"<b>i²</b> = ?", acc:["-1"], sol:"By definition i = √(−1), so i² = −1."},
+  {q:"Simplify <b>√(−9)</b>.", acc:["3i"], sol:"√(−9) = √9 · √(−1) = 3i."},
+  {q:"<b>(3 + 2i) + (1 − 5i)</b> = ?", acc:["4-3i"], sol:"Real: 3+1=4; imaginary: 2−5=−3 → 4 − 3i."},
+  {q:"<b>(5 + 3i) − (2 + i)</b> = ?", acc:["3+2i"], sol:"5−2=3; 3−1=2 → 3 + 2i."},
+  {q:"<b>(2i)(3i)</b> = ?", acc:["-6"], sol:"6i² = 6(−1) = −6."},
+  {q:"<b>(1 + i)(1 − i)</b> = ?", acc:["2"], sol:"1 − i² = 1 − (−1) = 2."},
+  {q:"Solve <b>x² + 16 = 0</b>. (both)", acc:["±4i","4i,-4i","-4i,4i"], sol:"x² = −16 → x = ±4i."},
+  {q:"Solve <b>x² = −25</b>. (both)", acc:["±5i","5i,-5i","-5i,5i"], sol:"x = ±√(−25) = ±5i."}
+ ]}
+];
+
+function renderPractice(){
+  let h=''; PRACTICE.forEach((s,si)=>{
+    h+=`<div class="sec">${s.name}</div>`;
+    s.probs.forEach((p,pi)=>{ const id=si+'_'+pi;
+      h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+        <div class="arow"><input class="ans" id="in${id}" placeholder="your answer" onkeydown="if(event.key==='Enter')checkP('${id}',${si},${pi})"><button class="btn btn-b" onclick="checkP('${id}',${si},${pi})">Check</button></div>
+        <div class="fb" id="fb${id}"></div>
+        <button class="reveal" onclick="document.getElementById('sol${id}').classList.toggle('show')">Show solution ▾</button>
+        <div class="sol" id="sol${id}">${p.sol}</div></div>`;
+    });
+  });
+  document.getElementById('practiceBody').innerHTML=h;
+}
+let pDone={};
+function checkP(id,si,pi){
+  const p=PRACTICE[si].probs[pi]; const val=document.getElementById('in'+id).value;
+  const fb=document.getElementById('fb'+id); fb.classList.add('show');
+  if(accepts(val,p.acc)){ fb.className='fb show ok'; fb.textContent='✓ Correct!'; pDone[id]=true; }
+  else { fb.className='fb show no'; fb.textContent='✗ Not yet — try again, or tap Show solution.'; }
+  document.getElementById('pScore').textContent='Practice score: '+Object.keys(pDone).length+' correct';
+}
+
+const TEST=[
+ {q:"Solve x² = 64. (both)", acc:["±8","8,-8","-8,8"], sol:"x = ±8."},
+ {q:"Solve x² − 7x + 10 = 0.", acc:["2,5","5,2"], sol:"(x−2)(x−5)=0 → 2, 5."},
+ {q:"Solve x² + x − 12 = 0.", acc:["3,-4","-4,3"], sol:"(x+4)(x−3)=0 → 3, −4."},
+ {q:"Solve (x + 2)² = 9.", acc:["1,-5","-5,1"], sol:"x+2 = ±3 → x = 1 or −5."},
+ {q:"The quadratic-formula denominator is ___.", acc:["2a"], sol:"2a."},
+ {q:"Discriminant (b²−4ac) of x² − 6x + 9?", acc:["0"], sol:"36 − 36 = 0."},
+ {q:"x² − 6x + 9 = 0 has how many real solutions?", acc:["1","one"], sol:"Discriminant 0 → 1 real."},
+ {q:"Discriminant (b²−4ac) of 2x² + x + 3?", acc:["-23"], sol:"1 − 4(2)(3) = 1 − 24 = −23."},
+ {q:"To complete the square for x² + 10x, add ___.", acc:["25"], sol:"(10/2)² = 25."},
+ {q:"i² = ?", acc:["-1"], sol:"i² = −1."},
+ {q:"Simplify √(−49).", acc:["7i"], sol:"√49 · i = 7i."},
+ {q:"(4 + 3i) + (2 − 7i) = ?", acc:["6-4i"], sol:"6 − 4i."},
+ {q:"(3i)(4i) = ?", acc:["-12"], sol:"12i² = −12."},
+ {q:"Solve x² + 9 = 0. (both)", acc:["±3i","3i,-3i","-3i,3i"], sol:"x² = −9 → x = ±3i."},
+ {q:"Solve x² − 2x + 5 = 0. (both, form a±bi)", acc:["1±2i","1+2i,1-2i","1-2i,1+2i"], sol:"x = (2 ± √(4−20))/2 = (2 ± 4i)/2 = 1 ± 2i."}
+];
+const PASS=13;
+function mastered(){ return localStorage.getItem('alg2_unit3_mastered')==='1'; }
+function renderTest(){
+  const intro=document.getElementById('testIntro');
+  if(mastered()){
+    intro.innerHTML=`<div class="gate pass"><div>🏆 UNIT 3 MASTERED</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 4 (Polynomial Functions) unlocked.</div></div>`;
+  } else {
+    intro.innerHTML=`<div class="hero-note">The real thing — <b>no solutions until you submit.</b> Need <b>${PASS} of ${TEST.length} (87%)</b> to master Unit 3 and unlock Unit 4. Work it on paper. Miss it → review & retake.</div>`;
+  }
+  let h=''; TEST.forEach((t,i)=>{ h+=`<div class="testq" id="tq${i}"><div class="q"><span class="qnum">${i+1}.</span>${t.q}</div><input class="ans" id="tin${i}" placeholder="your answer"><div class="sol" id="tsol${i}">${t.sol}</div></div>`; });
+  h+=`<button class="btn btn-g" style="width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:6px" onclick="gradeTest()">Submit test</button><div id="testResult" style="margin-top:14px"></div>`;
+  document.getElementById('testBody').innerHTML=h;
+}
+function gradeTest(){
+  let score=0;
+  TEST.forEach((t,i)=>{ const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
+    const ok=accepts(val,t.acc); box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
+    document.getElementById('tsol'+i).classList.add('show'); if(ok) score++; });
+  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit3_mastered','1');
+  const res=document.getElementById('testResult');
+  res.innerHTML = passed
+    ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🏆 PASSED — Unit 3 MASTERED!</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 4 unlocked.</div></div>`
+    : `<div class="gate locked"><div class="big">${score}/${TEST.length}</div><div>Not yet — you need ${PASS}.</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Study the red ones, then <button class="reveal" style="color:#93c5fd" onclick="renderTest();window.scrollTo(0,0)">retake →</button></div></div>`;
+  window.scrollTo(0, document.getElementById('testResult').offsetTop-80);
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); if(v==='test')renderTest(); }
+renderPractice(); renderTest();
+</script>
+</body>
+</html>
