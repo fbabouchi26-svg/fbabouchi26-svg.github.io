@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H · Unit 8 Mastery</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#1e40af,#0e7490);padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.45rem;font-weight:850;margin-top:2px;line-height:1.15;}
+.tops{font-size:.82rem;opacity:.92;margin-top:4px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#1e40af;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.q{font-size:.95rem;font-weight:600;line-height:1.55;margin-bottom:10px;}
+.q b,.q strong{color:var(--cyan);}
+.qnum{color:var(--mut);font-weight:800;font-size:.78rem;margin-right:6px;}
+.arow{display:flex;gap:8px;}
+input.ans{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:.95rem;font-family:inherit;}
+input.ans:focus{outline:none;border-color:var(--blue);}
+.btn{border:none;border-radius:10px;font-weight:800;font-size:.85rem;padding:11px 15px;cursor:pointer;color:#fff;}
+.btn-b{background:var(--blue);}.btn-g{background:var(--grn);color:#04220f;}.btn-ghost{background:var(--card2);border:1px solid var(--line);color:var(--ink);}
+.fb{margin-top:9px;font-size:.85rem;font-weight:700;display:none;}
+.fb.show{display:block;}
+.fb.ok{color:#86efac;}.fb.no{color:#fca5a5;}
+.sol{margin-top:8px;font-size:.84rem;color:#c3cbe8;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px;display:none;line-height:1.6;}
+.sol.show{display:block;}
+.reveal{font-size:.78rem;color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;margin-top:8px;padding:0;}
+.scorebar{position:sticky;top:0;z-index:5;background:rgba(14,18,32,.92);backdrop-filter:blur(8px);padding:10px 0;font-size:.82rem;font-weight:800;color:var(--mut);border-bottom:1px solid var(--line);}
+.hero-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:14px;font-size:.86rem;color:#c3cbe8;line-height:1.6;}
+.hero-note b{color:var(--gold);}
+.gate{border-radius:14px;padding:18px;margin:14px 0;text-align:center;font-weight:800;}
+.gate.locked{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4);color:#fca5a5;}
+.gate.pass{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.45);color:#86efac;}
+.big{font-size:2.4rem;font-weight:900;}
+.testq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;}
+.testq.correct{border-color:rgba(34,197,94,.5);}
+.testq.wrong{border-color:rgba(239,68,68,.5);}
+.ref{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;font-size:.82rem;line-height:1.75;color:#c3cbe8;}
+.ref b{color:var(--cyan);}
+a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:none;font-size:.85rem;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>📐 Unit 8 — Compositions & Inverses</h1>
+  <div class="tops">Function operations, compositions, and inverses. <b>Pass the test</b> to unlock Unit 9.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('practice',this)">Practice</button>
+    <button class="tab" onclick="show('test',this)">Unit Test 🔒</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-practice" class="view active">
+    <div class="ref">
+      <b>Operations:</b> (f+g)(x)=f(x)+g(x) · (f·g)(x)=f(x)·g(x).<br>
+      <b>Composition f(g(x)):</b> plug g INTO f. Work inside-out: f(g(2)) → do g(2) first, then f of that.<br>
+      <b>Find an inverse:</b> swap x and y, then solve for y. (Inverse of mx+b is (x−b)/m.)<br>
+      <b>Inverses check:</b> f and g are inverses if f(g(x)) = x AND g(f(x)) = x.<br>
+      <b>Graphically:</b> inverses are reflections over the line y = x. x² needs a domain restriction to have an inverse.
+    </div>
+    <a class="lesson" href="IBRAHIM_ALGEBRA2_HUB.html">← Lessons & videos (tutor)</a>
+    <div class="scorebar"><span id="pScore">Practice score: 0 correct</span></div>
+    <div id="practiceBody"></div>
+  </div>
+  <div id="v-test" class="view"><div id="testIntro"></div><div id="testBody"></div></div>
+</div>
+
+<script>
+function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
+function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
+
+const PRACTICE=[
+ {name:"Lesson 1 · Operations & Compositions", probs:[
+  {q:"f(x) = x − 4, g(x) = x² − x + 12. Find <b>(f + g)(x)</b>.", acc:["x^2+8","x²+8"], sol:"(x−4)+(x²−x+12) = x² + 8 (the x's cancel)."},
+  {q:"Same f, g. Find <b>f(g(x))</b>.", acc:["x^2-x+8","x²-x+8"], sol:"Plug g into f: g(x) − 4 = x²−x+12−4 = x²−x+8."},
+  {q:"Same f, g. Find <b>(f − g)(x)</b>.", acc:["-x^2+2x-16","-x²+2x-16"], sol:"(x−4)−(x²−x+12) = −x²+2x−16."},
+  {q:"f(x) = 2x + 1, g(x) = x − 3. Find <b>f(g(x))</b>.", acc:["2x-5"], sol:"2(x−3)+1 = 2x−5."},
+  {q:"Same f, g. Find <b>g(f(x))</b>.", acc:["2x-2"], sol:"(2x+1)−3 = 2x−2."},
+  {q:"f(x) = x², g(x) = x + 1. Evaluate <b>f(g(2))</b>.", acc:["9"], sol:"g(2)=3, then f(3)=9."},
+  {q:"Same f, g. Evaluate <b>g(f(2))</b>.", acc:["5"], sol:"f(2)=4, then g(4)=5."},
+  {q:"f(x) = x + 3, g(x) = 2x. Evaluate <b>f(g(4))</b>.", acc:["11"], sol:"g(4)=8, then f(8)=11."},
+  {q:"f(x) = x + 2, g(x) = 3x. Find <b>(f · g)(x)</b>.", acc:["3x^2+6x","3x²+6x"], sol:"(x+2)(3x) = 3x² + 6x."},
+  {q:"f(x) = x − 1, g(x) = x². Evaluate <b>f(g(3))</b>.", acc:["8"], sol:"g(3)=9, then f(9)=8."},
+  {q:"Table: f(2)=4, f(3)=2, f(4)=3, f(7)=7. Evaluate <b>f(f(4))</b>.", acc:["2"], sol:"f(4)=3, then f(3)=2."},
+  {q:"Same table. Evaluate <b>f(f(7))</b>.", acc:["7"], sol:"f(7)=7, then f(7)=7."}
+ ]},
+ {name:"Lesson 2 · Inverses", probs:[
+  {q:"Find the inverse of <b>f(x) = 3x + 1</b>.", acc:["(x-1)/3","x/3-1/3"], sol:"y=3x+1 → swap → x=3y+1 → y=(x−1)/3."},
+  {q:"Find the inverse of <b>f(x) = x + 5</b>.", acc:["x-5"], sol:"Swap & solve → x − 5."},
+  {q:"Find the inverse of <b>f(x) = 2x</b>.", acc:["x/2","(1/2)x"], sol:"y=2x → x=2y → y = x/2."},
+  {q:"Find the inverse of <b>f(x) = x − 7</b>.", acc:["x+7"], sol:"x + 7."},
+  {q:"Find <b>f⁻¹(x)</b> for f(x) = 4x − 3.", acc:["(x+3)/4","x/4+3/4"], sol:"y=4x−3 → x=4y−3 → y=(x+3)/4."},
+  {q:"To find an inverse, swap x and y, then solve for ___.", acc:["y"], sol:"Solve for y."},
+  {q:"f and g are inverses if f(g(x)) = ___ (and g(f(x)) = x).", acc:["x"], sol:"Both compositions must give x."},
+  {q:"Does f(x) = x² (all real x) have an inverse function without a restriction? (yes/no)", acc:["no"], sol:"No — it's not one-to-one (fails horizontal line test)."},
+  {q:"f(x) = x² needs a ___ restriction to have an inverse function.", acc:["domain"], sol:"A domain restriction (like x ≥ 0)."},
+  {q:"To undo cubing (inverse of x³), you take the ___ root.", acc:["cube","cuberoot","3rd"], sol:"The cube root."},
+  {q:"Inverse functions are reflections over the line ___.", acc:["y=x"], sol:"Over y = x."},
+  {q:"Are f(x) = 2x − 9 and g(x) = (x/2) + 9 inverses? (yes/no)", acc:["no"], sol:"f(g(x)) = 2((x/2)+9)−9 = x+9 ≠ x → No."},
+  {q:"Are f(x) = (x − 3)/4 and g(x) = 4x + 3 inverses? (yes/no)", acc:["yes"], sol:"f(g(x)) = ((4x+3)−3)/4 = x → Yes."},
+  {q:"f⁻¹ undoes f, so <b>f(f⁻¹(5))</b> = ?", acc:["5"], sol:"An inverse undoes the function → 5."}
+ ]}
+];
+
+function renderPractice(){
+  let h=''; PRACTICE.forEach((s,si)=>{
+    h+=`<div class="sec">${s.name}</div>`;
+    s.probs.forEach((p,pi)=>{ const id=si+'_'+pi;
+      h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+        <div class="arow"><input class="ans" id="in${id}" placeholder="your answer" onkeydown="if(event.key==='Enter')checkP('${id}',${si},${pi})"><button class="btn btn-b" onclick="checkP('${id}',${si},${pi})">Check</button></div>
+        <div class="fb" id="fb${id}"></div>
+        <button class="reveal" onclick="document.getElementById('sol${id}').classList.toggle('show')">Show solution ▾</button>
+        <div class="sol" id="sol${id}">${p.sol}</div></div>`;
+    });
+  });
+  document.getElementById('practiceBody').innerHTML=h;
+}
+let pDone={};
+function checkP(id,si,pi){
+  const p=PRACTICE[si].probs[pi]; const val=document.getElementById('in'+id).value;
+  const fb=document.getElementById('fb'+id); fb.classList.add('show');
+  if(accepts(val,p.acc)){ fb.className='fb show ok'; fb.textContent='✓ Correct!'; pDone[id]=true; }
+  else { fb.className='fb show no'; fb.textContent='✗ Not yet — try again, or tap Show solution.'; }
+  document.getElementById('pScore').textContent='Practice score: '+Object.keys(pDone).length+' correct';
+}
+
+const TEST=[
+ {q:"f(x) = x + 2, g(x) = x². Find f(g(x)).", acc:["x^2+2","x²+2"], sol:"g(x)+2 = x² + 2."},
+ {q:"Same f, g. Find g(f(x)).", acc:["x^2+4x+4","x²+4x+4","(x+2)^2","(x+2)²"], sol:"(x+2)² = x²+4x+4."},
+ {q:"f(x) = 2x, g(x) = x − 5. Find f(g(x)).", acc:["2x-10"], sol:"2(x−5) = 2x − 10."},
+ {q:"f(x) = x², g(x) = x − 1. Evaluate f(g(4)).", acc:["9"], sol:"g(4)=3, f(3)=9."},
+ {q:"f(x) = 3x, g(x) = x + 2. Evaluate g(f(2)).", acc:["8"], sol:"f(2)=6, g(6)=8."},
+ {q:"f(x) = x + 1, g(x) = x − 1. Find (f · g)(x).", acc:["x^2-1","x²-1"], sol:"(x+1)(x−1) = x² − 1."},
+ {q:"Find the inverse of f(x) = x − 9.", acc:["x+9"], sol:"x + 9."},
+ {q:"Find the inverse of f(x) = 5x.", acc:["x/5","(1/5)x"], sol:"y = x/5."},
+ {q:"Find f⁻¹(x) for f(x) = 2x + 6.", acc:["(x-6)/2","x/2-3","(1/2)x-3"], sol:"y=2x+6 → x=2y+6 → y=(x−6)/2."},
+ {q:"To find an inverse you swap x and ___.", acc:["y"], sol:"Swap x and y."},
+ {q:"f and g are inverses if both compositions equal ___.", acc:["x"], sol:"Both f(g(x)) and g(f(x)) equal x."},
+ {q:"Inverse functions are reflections over the line ___.", acc:["y=x"], sol:"y = x."},
+ {q:"Does f(x) = x² (all real x) have an inverse function without a restriction? (yes/no)", acc:["no"], sol:"No — not one-to-one."},
+ {q:"Are f(x) = (x − 3)/4 and g(x) = 4x + 3 inverses? (yes/no)", acc:["yes"], sol:"f(g(x)) = x → Yes."},
+ {q:"f(f⁻¹(8)) = ?", acc:["8"], sol:"An inverse undoes f → 8."}
+];
+const PASS=13;
+function mastered(){ return localStorage.getItem('alg2_unit8_mastered')==='1'; }
+function renderTest(){
+  const intro=document.getElementById('testIntro');
+  if(mastered()){
+    intro.innerHTML=`<div class="gate pass"><div>🏆 UNIT 8 MASTERED</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 9 (Trigonometry) unlocked.</div></div>`;
+  } else {
+    intro.innerHTML=`<div class="hero-note">The real thing — <b>no solutions until you submit.</b> Need <b>${PASS} of ${TEST.length} (87%)</b> to master Unit 8 and unlock Unit 9. Work compositions inside-out.</div>`;
+  }
+  let h=''; TEST.forEach((t,i)=>{ h+=`<div class="testq" id="tq${i}"><div class="q"><span class="qnum">${i+1}.</span>${t.q}</div><input class="ans" id="tin${i}" placeholder="your answer"><div class="sol" id="tsol${i}">${t.sol}</div></div>`; });
+  h+=`<button class="btn btn-g" style="width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:6px" onclick="gradeTest()">Submit test</button><div id="testResult" style="margin-top:14px"></div>`;
+  document.getElementById('testBody').innerHTML=h;
+}
+function gradeTest(){
+  let score=0;
+  TEST.forEach((t,i)=>{ const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
+    const ok=accepts(val,t.acc); box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
+    document.getElementById('tsol'+i).classList.add('show'); if(ok) score++; });
+  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit8_mastered','1');
+  const res=document.getElementById('testResult');
+  res.innerHTML = passed
+    ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🏆 PASSED — Unit 8 MASTERED!</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 9 unlocked.</div></div>`
+    : `<div class="gate locked"><div class="big">${score}/${TEST.length}</div><div>Not yet — you need ${PASS}.</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Study the red ones, then <button class="reveal" style="color:#93c5fd" onclick="renderTest();window.scrollTo(0,0)">retake →</button></div></div>`;
+  window.scrollTo(0, document.getElementById('testResult').offsetTop-80);
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); if(v==='test')renderTest(); }
+renderPractice(); renderTest();
+</script>
+</body>
+</html>
