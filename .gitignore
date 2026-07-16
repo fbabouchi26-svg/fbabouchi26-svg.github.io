@@ -6,6 +6,3 @@ swe-jobs/
 # Claude working dir + mac junk
 .claude/
 .DS_Store
-
-# Another student's course PDFs — keep local, don't publish publicly
-Academics/Algebra_2/COURSE_MATERIALS_RICE/

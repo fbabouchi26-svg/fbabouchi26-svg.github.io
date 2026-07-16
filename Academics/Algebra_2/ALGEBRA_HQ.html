@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H — HQ</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;--red:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:660px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#1d4ed8,#7c3aed);padding:18px 14px 16px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.5rem;font-weight:850;margin-top:2px;}
+.tops{font-size:.83rem;opacity:.92;margin-top:3px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.8rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#1d4ed8;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:11px;}
+a.row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 14px;margin-bottom:9px;text-decoration:none;color:var(--ink);}
+a.row:active{transform:scale(.99);}
+.ic{width:34px;height:34px;border-radius:10px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.rbody{flex:1;min-width:0;}
+.rt{font-size:.9rem;font-weight:750;}
+.rs{font-size:.74rem;color:var(--mut);margin-top:1px;}
+.tag{font-size:.58rem;font-weight:800;padding:3px 8px;border-radius:8px;letter-spacing:.4px;flex-shrink:0;}
+.t-live{background:rgba(34,197,94,.16);color:#86efac;}
+.t-soon{background:var(--card2);color:var(--mut);}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:9px;}
+.dtitle{font-weight:800;font-size:.9rem;color:var(--cyan);}
+.dlist{font-size:.8rem;color:#c3cbe8;margin-top:5px;line-height:1.7;}
+.lock{color:var(--gold);font-weight:800;}
+.note{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:.82rem;color:#c3cbe8;line-height:1.6;margin-bottom:12px;}
+.wk{font-size:.78rem;font-weight:900;letter-spacing:.5px;color:var(--gold);text-transform:uppercase;margin:18px 4px 8px;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>🧮 Algebra HQ</h1>
+  <div class="tops">Everything in one place — the 21-day plan, every unit, and the real class materials.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('units',this)">Units</button>
+    <button class="tab" onclick="show('plan',this)">21-Day Plan</button>
+    <button class="tab" onclick="show('mats',this)">Materials</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-units" class="view active">
+    <div class="note">Work through the units <b>in order</b>. Each ends with a test — pass 13/15 to unlock the next. The lessons live in the tutor; the practice + test in each unit page.</div>
+    <a class="row" href="IBRAHIM_ALGEBRA2_HUB.html"><div class="ic">📖</div><div class="rbody"><div class="rt">Lessons + Videos (tutor)</div><div class="rs">Taught in your language, with worked examples</div></div><span class="tag t-live">OPEN</span></a>
+    <div class="sec">The 10 units</div>
+    <a class="row" href="CH1_MASTERY.html"><div class="ic">1️⃣</div><div class="rbody"><div class="rt">Parent Functions & Transformations</div><div class="rs">32 practice + gated test</div></div><span class="tag t-live">LIVE</span></a>
+    <div class="row"><div class="ic">2️⃣</div><div class="rbody"><div class="rt">Quadratic Functions</div><div class="rs">Building next</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">3️⃣</div><div class="rbody"><div class="rt">Quadratic Equations & Complex Numbers</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">4️⃣</div><div class="rbody"><div class="rt">Polynomial Functions</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">5️⃣</div><div class="rbody"><div class="rt">Rational Functions</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">6️⃣</div><div class="rbody"><div class="rt">Rational Exponents & Radical Functions</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">7️⃣</div><div class="rbody"><div class="rt">Exponential & Logarithmic Functions</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">8️⃣</div><div class="rbody"><div class="rt">Compositions & Transformations</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">9️⃣</div><div class="rbody"><div class="rt">Trigonometry</div></div><span class="tag t-soon">SOON</span></div>
+    <div class="row"><div class="ic">🔟</div><div class="rbody"><div class="rt">Probability</div></div><span class="tag t-soon">SOON</span></div>
+  </div>
+
+  <div id="v-plan" class="view"></div>
+
+  <div id="v-mats" class="view">
+    <div class="note">The real class materials from Mr. Rice's course — syllabus, unit study guides, the final-exam guide, and actual tests. This is the source of truth for scope and difficulty.</div>
+    <div class="sec">Course overview</div>
+    <a class="row" href="COURSE_MATERIALS_RICE/SYLLABUS.pdf" target="_blank"><div class="ic">📋</div><div class="rbody"><div class="rt">Syllabus 2025-2026</div><div class="rs">The 10 units, grading, expectations</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/FinalExam_StudyGuide.pdf" target="_blank"><div class="ic">🎯</div><div class="rbody"><div class="rt">Final Exam Study Guide</div><div class="rs">Cumulative — everything</div></div><span class="tag t-live">PDF</span></a>
+    <div class="sec">Unit study guides</div>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit1_StudyGuide.pdf" target="_blank"><div class="ic">📝</div><div class="rbody"><div class="rt">Unit 1 — Parent Functions & Transformations</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit1_GraphCharacteristics.pdf" target="_blank"><div class="ic">📊</div><div class="rbody"><div class="rt">Unit 1 — Graph Characteristics (slides)</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit4_StudyGuide.pdf" target="_blank"><div class="ic">📝</div><div class="rbody"><div class="rt">Unit 4 — Polynomials</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit5_StudyGuide.pdf" target="_blank"><div class="ic">📝</div><div class="rbody"><div class="rt">Unit 5 — Rational Functions</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit6_StudyGuide.pdf" target="_blank"><div class="ic">📝</div><div class="rbody"><div class="rt">Unit 6 — Radicals & Rational Exponents</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit8_StudyGuide.pdf" target="_blank"><div class="ic">📝</div><div class="rbody"><div class="rt">Unit 8 — Compositions & Inverses</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Unit9_StudyGuide.pdf" target="_blank"><div class="ic">📝</div><div class="rbody"><div class="rt">Unit 9 — Trigonometry</div></div><span class="tag t-live">PDF</span></a>
+    <div class="sec">Real tests & reviews</div>
+    <a class="row" href="COURSE_MATERIALS_RICE/Test_2A.pdf" target="_blank"><div class="ic">🧪</div><div class="rbody"><div class="rt">Assessment 2 — Test A</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Test_2B.pdf" target="_blank"><div class="ic">🧪</div><div class="rbody"><div class="rt">Assessment 2 — Test B</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Test_StudyGuide_Review.pdf" target="_blank"><div class="ic">📖</div><div class="rbody"><div class="rt">Test Study Guide & Review</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Extra_Materials_1.pdf" target="_blank"><div class="ic">📎</div><div class="rbody"><div class="rt">Extra materials 1</div></div><span class="tag t-live">PDF</span></a>
+    <a class="row" href="COURSE_MATERIALS_RICE/Extra_Materials_2.pdf" target="_blank"><div class="ic">📎</div><div class="rbody"><div class="rt">Extra materials 2</div></div><span class="tag t-live">PDF</span></a>
+  </div>
+</div>
+
+<script>
+const PLAN=[
+ ["Week 1 — Functions, Quadratics & Complex Numbers",[
+  ["Day 1 · Unit 1","S1 Parent functions · S2 Translate/reflect · S3 Stretch-shrink + describe · S4 Analyzing graphs"],
+  ["Day 2 · Unit 1 → 2","S1 Unit 1 review · S2 🔒 Unit 1 Test · S3 Unit 2 vertex form · S4 Vertex-form practice"],
+  ["Day 3 · Unit 2","S1 Standard/intercept form · S2 Axis of symmetry, min/max · S3 Transformations · S4 Mixed practice"],
+  ["Day 4 · Unit 2 → 3","S1 🔒 Unit 2 Test · S2 Solve by factoring · S3 Square roots + completing square · S4 Quadratic formula"],
+  ["Day 5 · Unit 3","S1 Complex numbers (i) · S2 Multiplying complex · S3 Complex solutions · S4 Mixed practice"],
+  ["Day 6 · Unit 3 → 4","S1 🔒 Unit 3 Test · S2 End behavior/degree · S3 Graphing polynomials · S4 Zeros & multiplicity"],
+  ["Day 7 · Unit 4","S1 Factoring · S2 Long division · S3 Synthetic division · S4 Mixed practice"]
+ ]],
+ ["Week 2 — Rationals, Radicals, Exp/Log & Compositions",[
+  ["Day 8 · Unit 4 → 5","S1 🔒 Unit 4 Test · S2 Simplify rationals · S3 Multiply/divide · S4 Add/subtract"],
+  ["Day 9 · Unit 5","S1 Common denominators · S2 Asymptotes · S3 Graphing rationals · S4 Solving rational eqns"],
+  ["Day 10 · Unit 5 → 6","S1 Rational-eqn practice · S2 🔒 Unit 5 Test · S3 nth roots & rational exponents · S4 Practice"],
+  ["Day 11 · Unit 6","S1 Exponent properties · S2 Solving radical eqns · S3 Graphing radicals · S4 Mixed practice"],
+  ["Day 12 · Unit 6 → 7","S1 🔒 Unit 6 Test · S2 Exp growth/decay, e · S3 Exp practice · S4 Logs as inverses"],
+  ["Day 13 · Unit 7","S1 Log properties · S2 Solving exp eqns · S3 Solving log eqns · S4 Mixed practice"],
+  ["Day 14 · Unit 7 → 8","S1 🔒 Unit 7 Test · S2 Composition of functions · S3 Inverse functions · S4 🔒 Unit 8 Test"]
+ ]],
+ ["Week 3 — Trig, Probability & Final Review",[
+  ["Day 15 · Unit 9 (Trig)","S1 Degrees ↔ radians · S2 Reference angles · S3 Unit circle intro · S4 Unit-circle practice"],
+  ["Day 16 · Unit 9","S1 sin/cos/tan, SOH-CAH-TOA · S2 Right-triangle trig · S3 Special angles · S4 Unit circle values"],
+  ["Day 17 · Unit 9","S1 Graphs of sine · S2 Graphs of cosine · S3 Mixed practice · S4 🔒 Unit 9 Test"],
+  ["Day 18 · Unit 10","S1 Permutations & combinations · S2 Independent/dependent · S3 Conditional · S4 🔒 Unit 10 Test"],
+  ["Day 19 · Review #1","Mixed problems, Units 1–5 (Final Exam Study Guide)"],
+  ["Day 20 · Review #2","Mixed Units 6–10 + weakest spots"],
+  ["Day 21 · Final Push","Full timed practice test; fix last gaps"]
+ ]]
+];
+function renderPlan(){
+  let h=`<div class="note"><b>30-minute sessions, up to 4 a day (2 hrs max).</b> Each unit gates on its test — pass 13/15 to unlock the next. ~72 half-hour sessions over 18 days, then 3 review days.</div>`;
+  PLAN.forEach(wk=>{ h+=`<div class="wk">${wk[0]}</div>`;
+    wk[1].forEach(d=>{ h+=`<div class="day"><div class="dtitle">${d[0]}</div><div class="dlist">${d[1].replace(/🔒/g,'<span class="lock">🔒</span>')}</div></div>`; });
+  });
+  document.getElementById('v-plan').innerHTML=h;
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); }
+renderPlan();
+</script>
+</body>
+</html>
