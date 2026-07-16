@@ -1,0 +1,11 @@
+# Stray folders that carry their own .git — if added they become broken
+# submodules and kill the GitHub Pages publish. Keep them out.
+internship-tracker/
+swe-jobs/
+
+# Claude working dir + mac junk
+.claude/
+.DS_Store
+
+# Another student's course PDFs — keep local, don't publish publicly
+Academics/Algebra_2/COURSE_MATERIALS_RICE/

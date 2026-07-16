@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H · Unit 1 Mastery</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#1d4ed8,#7c3aed);padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.45rem;font-weight:850;margin-top:2px;line-height:1.15;}
+.tops{font-size:.82rem;opacity:.92;margin-top:4px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#1d4ed8;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.q{font-size:.95rem;font-weight:600;line-height:1.55;margin-bottom:10px;}
+.q b,.q strong{color:var(--cyan);}
+.qnum{color:var(--mut);font-weight:800;font-size:.78rem;margin-right:6px;}
+.arow{display:flex;gap:8px;}
+input.ans{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:.95rem;font-family:inherit;}
+input.ans:focus{outline:none;border-color:var(--blue);}
+.btn{border:none;border-radius:10px;font-weight:800;font-size:.85rem;padding:11px 15px;cursor:pointer;color:#fff;}
+.btn-b{background:var(--blue);}.btn-g{background:var(--grn);color:#04220f;}.btn-ghost{background:var(--card2);border:1px solid var(--line);color:var(--ink);}
+.fb{margin-top:9px;font-size:.85rem;font-weight:700;display:none;}
+.fb.show{display:block;}
+.fb.ok{color:#86efac;}.fb.no{color:#fca5a5;}
+.sol{margin-top:8px;font-size:.84rem;color:#c3cbe8;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px;display:none;line-height:1.6;}
+.sol.show{display:block;}
+.reveal{font-size:.78rem;color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;margin-top:8px;padding:0;}
+.scorebar{position:sticky;top:0;z-index:5;background:rgba(14,18,32,.92);backdrop-filter:blur(8px);padding:10px 0;font-size:.82rem;font-weight:800;color:var(--mut);border-bottom:1px solid var(--line);}
+.selfrow{display:flex;gap:8px;margin-top:8px;}
+.hero-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:14px;font-size:.86rem;color:#c3cbe8;line-height:1.6;}
+.hero-note b{color:var(--gold);}
+.gate{border-radius:14px;padding:18px;margin:14px 0;text-align:center;font-weight:800;}
+.gate.locked{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4);color:#fca5a5;}
+.gate.pass{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.45);color:#86efac;}
+.big{font-size:2.4rem;font-weight:900;}
+.testq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;}
+.testq.correct{border-color:rgba(34,197,94,.5);}
+.testq.wrong{border-color:rgba(239,68,68,.5);}
+a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:none;font-size:.85rem;}
+.ref{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;font-size:.82rem;line-height:1.7;color:#c3cbe8;}
+.ref b{color:var(--cyan);}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>📐 Unit 1 — Parent Functions & Transformations</h1>
+  <div class="tops">The 9 parent functions, transformations, and reading graphs. Practice hard, then <b>pass the test</b> to move on.</div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('practice',this)">Practice</button>
+    <button class="tab" onclick="show('test',this)">Unit Test 🔒</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-practice" class="view active">
+    <div class="ref">
+      <b>The 9 parent functions (memorize these):</b><br>
+      Linear <b>y = x</b> · Absolute value <b>y = |x|</b> · Quadratic <b>y = x²</b> · Cubic <b>y = x³</b> · Rational <b>y = 1/x</b> · Square root <b>y = √x</b> · Cube root <b>y = ∛x</b> · Exponential <b>y = bˣ</b> · Logarithmic <b>y = log x</b><br><br>
+      <b>Transformation rules:</b> +k up · −k down · (x−h) right · (x+h) left · −f(x) flips over x-axis · f(−x) flips over y-axis · a·f(x): a&gt;1 stretch, 0&lt;a&lt;1 shrink.
+    </div>
+    <div class="scorebar"><span id="pScore">Practice score: 0 correct</span></div>
+    <div id="practiceBody"></div>
+  </div>
+  <div id="v-test" class="view">
+    <div id="testIntro"></div>
+    <div id="testBody"></div>
+  </div>
+</div>
+
+<script>
+function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
+function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
+
+const PRACTICE=[
+ {name:"Lesson 1 · Parent Functions", probs:[
+  {q:"Name the parent function of <b>y = x²</b>.", acc:["quadratic"], sol:"y=x² is the quadratic parent — its graph is a parabola (U-shape)."},
+  {q:"Name the parent function of <b>y = |x|</b>.", acc:["absolutevalue","absolute","absval","abs"], sol:"y=|x| is the absolute value parent — a V-shape."},
+  {q:"Write the equation of the <b>linear</b> parent function.", acc:["y=x","f(x)=x","x"], sol:"The linear parent is y=x (a line through the origin, slope 1)."},
+  {q:"Name the parent function <b>y = √x</b>.", acc:["squareroot","sqrt","sqroot"], sol:"y=√x is the square root parent (starts at the origin, curves right)."},
+  {q:"Which parent function has a <b>V-shape</b>?", acc:["absolutevalue","absolute","absval"], sol:"The absolute value function y=|x| makes a V."},
+  {q:"Which parent function is a <b>parabola (U-shape)</b>?", acc:["quadratic"], sol:"The quadratic y=x² is a parabola."},
+  {q:"The parent function <b>y = 1/x</b> is called the ___ function.", acc:["rational"], sol:"y=1/x is the rational parent (two curves, asymptotes at the axes)."},
+  {q:"Name the parent function of <b>y = x³</b>.", acc:["cubic"], sol:"y=x³ is the cubic parent (S-shaped through the origin)."},
+  {q:"Write the equation of the <b>quadratic</b> parent function.", acc:["y=x^2","y=x²","x^2","x²","f(x)=x^2"], sol:"The quadratic parent is y=x²."},
+  {q:"Which parent function has a domain of all real numbers <b>EXCEPT 0</b>?", acc:["rational","1/x","y=1/x"], sol:"y=1/x — you can't divide by zero, so x≠0."}
+ ]},
+ {name:"Lesson 2 · Transformations", probs:[
+  {q:"<b>g(x) = f(x) + 5</b>. Does the graph move up or down?", acc:["up"], sol:"Adding outside (+5) shifts UP 5."},
+  {q:"<b>g(x) = f(x) − 3</b>. Up or down?", acc:["down"], sol:"Subtracting outside (−3) shifts DOWN 3."},
+  {q:"<b>g(x) = f(x − 4)</b>. Left or right?", acc:["right"], sol:"Inside is opposite: (x−4) shifts RIGHT 4."},
+  {q:"<b>g(x) = f(x + 2)</b>. Left or right?", acc:["left"], sol:"Inside is opposite: (x+2) shifts LEFT 2."},
+  {q:"<b>g(x) = −f(x)</b>. Reflects over which axis?", acc:["x-axis","xaxis","x"], sol:"A negative in FRONT flips over the x-axis (upside down)."},
+  {q:"<b>g(x) = f(−x)</b>. Reflects over which axis?", acc:["y-axis","yaxis","y"], sol:"A negative INSIDE (on x) flips over the y-axis (left-right mirror)."},
+  {q:"<b>g(x) = 4·f(x)</b>. Vertical stretch or shrink?", acc:["stretch"], sol:"a=4 > 1 → vertical STRETCH (taller/steeper)."},
+  {q:"<b>g(x) = ½·f(x)</b>. Stretch or shrink?", acc:["shrink"], sol:"0 < a < 1 → vertical SHRINK (flatter)."},
+  {q:"Describe every transformation of <b>g(x) = (x − 3)² + 2</b> from the parent x². (reveal & self-check)", selfcheck:true, sol:"Shift RIGHT 3 (inside −3) and UP 2 (outside +2). Vertex at (3, 2)."},
+  {q:"Write g(x): the quadratic parent shifted <b>left 1 and down 5</b>.", acc:["g(x)=(x+1)^2-5","(x+1)^2-5","y=(x+1)^2-5","(x+1)²-5"], sol:"Left 1 → (x+1); down 5 → −5: g(x)=(x+1)²−5."},
+  {q:"Describe <b>g(x) = −|x|</b> from the parent |x|. (reveal & self-check)", selfcheck:true, sol:"Reflection over the x-axis — the V now opens downward."},
+  {q:"Vertex of <b>g(x) = |x − 5| + 1</b>?", acc:["(5,1)","5,1"], sol:"|x−5|+1 → vertex (5, 1)."}
+ ]},
+ {name:"Lesson 3 · Analyzing Graphs", probs:[
+  {q:"Domain of <b>y = √x</b> (as an inequality)?", acc:["x≥0","x>=0"], sol:"You can't square-root a negative → x ≥ 0."},
+  {q:"Range of <b>y = x²</b> (as an inequality)?", acc:["y≥0","y>=0"], sol:"A parabola opening up never goes below 0 → y ≥ 0."},
+  {q:"Range of <b>y = |x|</b> (as an inequality)?", acc:["y≥0","y>=0"], sol:"Absolute value is never negative → y ≥ 0."},
+  {q:"Domain of <b>y = x²</b>?", acc:["allreals","allrealnumbers","reals","(-∞,∞)","allreal","r"], sol:"You can square any number → all real numbers."},
+  {q:"Is the parent <b>y = x³</b> increasing or decreasing overall?", acc:["increasing"], sol:"The cubic rises left-to-right the whole way → increasing."},
+  {q:"Does <b>y = x²</b> have a maximum or a minimum?", acc:["minimum","min"], sol:"A parabola opening up has a MINIMUM (at the vertex)."},
+  {q:"The minimum point (vertex) of <b>y = x²</b> is at what point?", acc:["(0,0)","0,0"], sol:"The parent parabola bottoms out at the origin (0, 0)."},
+  {q:"What value is excluded from the domain of <b>y = 1/x</b>?", acc:["0","x≠0","x!=0"], sol:"You can't divide by 0 → x ≠ 0."},
+  {q:"On what interval is <b>y = x²</b> decreasing? (as an inequality)", acc:["x<0","(-∞,0)","(-infinity,0)"], sol:"Left of the vertex the parabola falls → decreasing for x < 0."},
+  {q:"Domain of <b>y = |x|</b>?", acc:["allreals","allrealnumbers","reals","(-∞,∞)","r"], sol:"You can take absolute value of anything → all real numbers."}
+ ]}
+];
+
+function renderPractice(){
+  let h=''; PRACTICE.forEach((s,si)=>{
+    h+=`<div class="sec">${s.name}</div>`;
+    s.probs.forEach((p,pi)=>{
+      const id=si+'_'+pi;
+      if(p.selfcheck){
+        h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+          <button class="reveal" onclick="revealSelf('${id}')">Reveal answer ▾</button>
+          <div class="sol" id="sol${id}">${p.sol}</div>
+          <div class="selfrow" id="self${id}" style="display:none"><button class="btn btn-g" onclick="selfMark('${id}',true)">I got it ✓</button><button class="btn btn-ghost" onclick="selfMark('${id}',false)">Missed it</button></div>
+          <div class="fb" id="fb${id}"></div></div>`;
+      } else {
+        h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+          <div class="arow"><input class="ans" id="in${id}" placeholder="your answer" onkeydown="if(event.key==='Enter')checkP('${id}',${si},${pi})"><button class="btn btn-b" onclick="checkP('${id}',${si},${pi})">Check</button></div>
+          <div class="fb" id="fb${id}"></div>
+          <button class="reveal" onclick="document.getElementById('sol${id}').classList.toggle('show')">Show solution ▾</button>
+          <div class="sol" id="sol${id}">${p.sol}</div></div>`;
+      }
+    });
+  });
+  document.getElementById('practiceBody').innerHTML=h;
+}
+let pDone={};
+function checkP(id,si,pi){
+  const p=PRACTICE[si].probs[pi]; const val=document.getElementById('in'+id).value;
+  const fb=document.getElementById('fb'+id); fb.classList.add('show');
+  if(accepts(val,p.acc)){ fb.className='fb show ok'; fb.textContent='✓ Correct!'; pDone[id]=true; }
+  else { fb.className='fb show no'; fb.textContent='✗ Not yet — try again, or tap Show solution.'; }
+  updatePScore();
+}
+function revealSelf(id){ document.getElementById('sol'+id).classList.add('show'); document.getElementById('self'+id).style.display='flex'; }
+function selfMark(id,ok){ const fb=document.getElementById('fb'+id); fb.classList.add('show'); if(ok){fb.className='fb show ok';fb.textContent='✓ Nice — logged.';pDone[id]=true;} else {fb.className='fb show no';fb.textContent='Review it and redo it later.';delete pDone[id];} updatePScore(); }
+function updatePScore(){ document.getElementById('pScore').textContent='Practice score: '+Object.keys(pDone).length+' correct'; }
+
+/* ===== UNIT 1 TEST (15 Q · pass 13/15 = 87% to unlock Unit 2) ===== */
+const TEST=[
+ {q:"Name the parent function of y = x³.", acc:["cubic"], sol:"y=x³ is the cubic parent."},
+ {q:"Write the equation of the ABSOLUTE VALUE parent function.", acc:["y=|x|","|x|","f(x)=|x|"], sol:"The absolute value parent is y=|x|."},
+ {q:"Which parent function is written y = 1/x?", acc:["rational"], sol:"y=1/x is the rational parent."},
+ {q:"g(x) = f(x) − 6. Does the graph move up or down?", acc:["down"], sol:"−6 outside → shifts DOWN 6."},
+ {q:"g(x) = f(x + 3). Left or right?", acc:["left"], sol:"Inside opposite: (x+3) → LEFT 3."},
+ {q:"g(x) = −f(x). Reflects over which axis?", acc:["x-axis","xaxis","x"], sol:"Negative in front → flip over the x-axis."},
+ {q:"g(x) = f(−x). Reflects over which axis?", acc:["y-axis","yaxis","y"], sol:"Negative inside on x → flip over the y-axis."},
+ {q:"g(x) = 5·f(x). Vertical stretch or shrink?", acc:["stretch"], sol:"a=5 > 1 → vertical stretch."},
+ {q:"Write g(x): the quadratic parent shifted RIGHT 2 and UP 3.", acc:["g(x)=(x-2)^2+3","(x-2)^2+3","y=(x-2)^2+3","(x-2)²+3"], sol:"Right 2 → (x−2); up 3 → +3: g(x)=(x−2)²+3."},
+ {q:"Vertex of g(x) = |x + 4| − 2?", acc:["(-4,-2)","-4,-2"], sol:"|x+4|−2 → vertex (−4, −2)."},
+ {q:"Domain of y = √x (as an inequality)?", acc:["x≥0","x>=0"], sol:"Can't root a negative → x ≥ 0."},
+ {q:"Range of y = x² (as an inequality)?", acc:["y≥0","y>=0"], sol:"Opens up, bottom at 0 → y ≥ 0."},
+ {q:"Does the parent y = x² have a maximum or a minimum?", acc:["minimum","min"], sol:"Opens up → minimum at the vertex."},
+ {q:"Is the parent y = x³ increasing or decreasing?", acc:["increasing"], sol:"Rises the whole way → increasing."},
+ {q:"What x-value is excluded from the domain of y = 1/x?", acc:["0","x≠0","x!=0"], sol:"Can't divide by 0 → x ≠ 0."}
+];
+const PASS=13;
+function mastered(){ return localStorage.getItem('alg2_unit1_mastered')==='1'; }
+function renderTest(){
+  const intro=document.getElementById('testIntro');
+  if(mastered()){
+    intro.innerHTML=`<div class="gate pass"><div>🏆 UNIT 1 MASTERED</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 2 (Quadratic Functions) is unlocked. Retake anytime to stay sharp.</div></div>`;
+  } else {
+    intro.innerHTML=`<div class="hero-note">The real thing — <b>no solutions shown until you submit.</b> You need <b>${PASS} of ${TEST.length} (87%)</b> to master Unit 1 and unlock Unit 2. Do it on paper. Miss it? You review and retake. That's how you get ready for Mr. Rice's actual test.</div>`;
+  }
+  let h=''; TEST.forEach((t,i)=>{
+    h+=`<div class="testq" id="tq${i}"><div class="q"><span class="qnum">${i+1}.</span>${t.q}</div>
+      <input class="ans" id="tin${i}" placeholder="your answer">
+      <div class="sol" id="tsol${i}">${t.sol}</div></div>`;
+  });
+  h+=`<button class="btn btn-g" style="width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:6px" onclick="gradeTest()">Submit test</button><div id="testResult" style="margin-top:14px"></div>`;
+  document.getElementById('testBody').innerHTML=h;
+}
+function gradeTest(){
+  let score=0;
+  TEST.forEach((t,i)=>{
+    const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
+    const ok=accepts(val,t.acc);
+    box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
+    document.getElementById('tsol'+i).classList.add('show');
+    if(ok) score++;
+  });
+  const passed=score>=PASS;
+  if(passed) localStorage.setItem('alg2_unit1_mastered','1');
+  const res=document.getElementById('testResult');
+  res.innerHTML = passed
+    ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🏆 PASSED — Unit 1 MASTERED!</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 2 unlocked. Now you're actually ready for the test.</div></div>`
+    : `<div class="gate locked"><div class="big">${score}/${TEST.length}</div><div>Not yet — you need ${PASS}.</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Study the ones in red (solutions shown), then <button class="reveal" style="color:#93c5fd" onclick="renderTest();window.scrollTo(0,0)">retake the test →</button></div></div>`;
+  window.scrollTo(0, document.getElementById('testResult').offsetTop-80);
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); if(v==='test')renderTest(); }
+renderPractice(); renderTest();
+</script>
+</body>
+</html>
