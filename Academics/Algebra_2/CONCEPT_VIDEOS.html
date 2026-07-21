@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 — Concept Videos</title>
+<style>
+  :root{--bg:#0a0e1a;--card:#141a2e;--card2:#1b2340;--line:#25304f;--tx:#eaf0ff;--muted:#93a0c4;--blue:#3b82f6;--cyan:#22d3ee;--green:#22c55e;--gold:#fbbf24;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:60px;}
+  .top{background:linear-gradient(135deg,#6d28d9,#db2777);padding:22px 18px 26px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+  h1{font-size:1.7rem;margin-top:4px;color:#fff;}
+  .tops{font-size:.9rem;color:rgba(255,255,255,.92);margin-top:8px;line-height:1.5;}
+  .back{display:inline-block;margin-top:14px;background:rgba(255,255,255,.18);color:#fff;text-decoration:none;font-weight:800;font-size:.82rem;padding:9px 14px;border-radius:10px;}
+  .note{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:16px 0;font-size:.86rem;line-height:1.6;color:var(--muted);}
+  .note b{color:var(--tx);}
+  .unit{margin-top:22px;}
+  .uhead{display:flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:800;padding:6px 2px 10px;border-bottom:1px solid var(--line);}
+  .ubadge{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#03122e;font-size:.78rem;font-weight:900;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;}
+  .concept{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;margin-top:10px;}
+  .cname{font-size:.98rem;font-weight:800;}
+  .cblurb{font-size:.84rem;color:var(--muted);line-height:1.55;margin:5px 0 11px;}
+  .watch{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#ef4444,#f97316);color:#fff;text-decoration:none;font-weight:800;font-size:.83rem;padding:9px 15px;border-radius:10px;}
+  .watch .yt{font-size:1rem;}
+  .chan{font-size:.72rem;color:var(--muted);margin-left:10px;}
+  .foot{max-width:720px;margin:26px auto 0;padding:0 18px;font-size:.78rem;color:var(--muted);line-height:1.6;text-align:center;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>🎬 Concept Videos</h1>
+  <div class="tops">Stuck on something? Pop over here, tap the concept, and watch a short explainer. Every topic in the course, one quick video each.</div>
+  <a class="back" href="ALGEBRA_HQ.html">← Back to Algebra HQ</a>
+</div></div>
+
+<div class="wrap" style="padding:0 18px;">
+  <div class="note"><b>How to use this:</b> These are your "I don't get it" button. If a concept isn't clicking while you practice, find it below and watch the 5–10 minute video, then go back and try the problem again. Each button opens a short, no-fluff explainer on YouTube.</div>
+  <div id="list"></div>
+</div>
+<div class="foot">Videos open a curated YouTube search for that exact concept, mostly from <b>The Organic Chemistry Tutor</b> and <b>Khan Academy</b> — short, clear, worked-example channels. The top result is the one to watch.</div>
+
+<script>
+// [Unit number, Unit title, [ [concept, plain-English blurb, search query], ... ] ]
+const UNITS=[
+ [1,"Parent Functions & Transformations",[
+   ["The 9 parent functions","The basic shapes everything is built from: line, quadratic, cubic, square root, absolute value, and more. Know each shape on sight.","the parent functions and their graphs organic chemistry tutor"],
+   ["Translations (shifts)","Sliding a graph up, down, left, or right without changing its shape.","graphing transformations of functions translations organic chemistry tutor"],
+   ["Reflections","Flipping a graph over the x-axis or y-axis.","reflections of functions over x axis y axis organic chemistry tutor"],
+   ["Stretches & shrinks","Making a graph taller, shorter, wider, or narrower.","vertical and horizontal stretches and compressions of functions organic chemistry tutor"],
+   ["Describing transformations","Reading an equation like y = -2(x+3)^2 and saying exactly what it did to the parent.","how to describe transformations of functions from equation khan academy"],
+   ["Domain, range & analyzing graphs","Reading a graph: where it lives, how high and low it goes, where it rises and falls.","domain and range increasing decreasing intervals from a graph organic chemistry tutor"]
+ ]],
+ [2,"Quadratic Functions",[
+   ["Parabolas & vertex form","The U-shaped curve. Vertex form y = a(x-h)^2 + k tells you the peak instantly.","graphing quadratic functions in vertex form organic chemistry tutor"],
+   ["Standard & intercept form","The other two ways to write a parabola, and how to switch between them.","standard form vs intercept form of a quadratic organic chemistry tutor"],
+   ["Axis of symmetry & min/max","The mirror line x = -b/2a and the highest or lowest point.","axis of symmetry vertex minimum maximum of a quadratic organic chemistry tutor"],
+   ["Transformations of parabolas","Shifting and stretching the basic x^2 curve.","transformations of quadratic functions organic chemistry tutor"]
+ ]],
+ [3,"Quadratic Equations & Complex Numbers",[
+   ["Solving by factoring","Split the quadratic into two pieces to find where it hits zero.","solving quadratic equations by factoring organic chemistry tutor"],
+   ["Completing the square","Reshape the equation so you can square-root both sides.","completing the square to solve quadratics organic chemistry tutor"],
+   ["The quadratic formula","The tool that solves any quadratic, every time.","quadratic formula organic chemistry tutor"],
+   ["The discriminant","The b^2-4ac part that tells you how many solutions and what kind.","discriminant number of solutions quadratic organic chemistry tutor"],
+   ["Imaginary & complex numbers","i is the square root of -1. Adding, subtracting, and multiplying a + bi numbers.","introduction to complex numbers and imaginary numbers organic chemistry tutor"],
+   ["Complex solutions","When a quadratic has no real answer, the answers are complex.","solving quadratic equations with complex solutions organic chemistry tutor"]
+ ]],
+ [4,"Polynomial Functions",[
+   ["End behavior & degree","The degree and leading sign tell you which way the ends of the graph point.","end behavior of polynomial functions organic chemistry tutor"],
+   ["Graphing polynomials","Putting zeros, end behavior, and turns together into a curve.","how to graph polynomial functions organic chemistry tutor"],
+   ["Zeros & multiplicity","The roots, and whether the graph crosses or just bounces off the axis.","zeros of polynomials multiplicity crossing or bouncing organic chemistry tutor"],
+   ["Factoring polynomials","Breaking higher-degree polynomials into factors.","factoring higher degree polynomials organic chemistry tutor"],
+   ["Long division","Dividing one polynomial by another the long way.","polynomial long division organic chemistry tutor"],
+   ["Synthetic division","The fast shortcut for dividing by (x - a).","synthetic division organic chemistry tutor"]
+ ]],
+ [5,"Rational Functions",[
+   ["Simplifying rational expressions","Factor top and bottom, then cancel what matches.","simplifying rational expressions organic chemistry tutor"],
+   ["Multiplying & dividing","Multiply straight across; divide by flipping and multiplying.","multiplying and dividing rational expressions organic chemistry tutor"],
+   ["Adding & subtracting","Get a common denominator first, then combine.","adding and subtracting rational expressions organic chemistry tutor"],
+   ["Asymptotes","The invisible walls the graph gets close to but never touches.","vertical and horizontal asymptotes of rational functions organic chemistry tutor"],
+   ["Graphing rational functions","Using asymptotes and intercepts to draw the curve.","graphing rational functions organic chemistry tutor"],
+   ["Solving rational equations","Clear the fractions, solve, and check for fake answers.","solving rational equations organic chemistry tutor"]
+ ]],
+ [6,"Rational Exponents & Radical Functions",[
+   ["nth roots","Square roots, cube roots, and beyond.","nth roots and radicals organic chemistry tutor"],
+   ["Rational (fractional) exponents","x^(1/2) is just a square root wearing a costume.","rational exponents and radicals organic chemistry tutor"],
+   ["Properties of exponents","The rules for multiplying, dividing, and stacking powers.","properties of exponents rules organic chemistry tutor"],
+   ["Solving radical equations","Isolate the root, raise both sides to a power, check answers.","solving radical equations organic chemistry tutor"],
+   ["Graphing radical functions","The shape of square-root and cube-root graphs.","graphing radical functions square root cube root organic chemistry tutor"]
+ ]],
+ [7,"Exponential & Logarithmic Functions",[
+   ["Exponential growth & decay","y = a*b^x. Bigger than 1 grows fast, between 0 and 1 shrinks.","exponential growth and decay functions organic chemistry tutor"],
+   ["The number e","The special base for continuous growth, about 2.718.","the number e and natural exponential function organic chemistry tutor"],
+   ["Logs are inverses","A logarithm asks: what power gets me to this number?","introduction to logarithms organic chemistry tutor"],
+   ["Log properties","Product, quotient, and power rules to expand or condense logs.","properties of logarithms expand condense organic chemistry tutor"],
+   ["Solving exponential equations","Finding the exponent, often using logs.","solving exponential equations with logarithms organic chemistry tutor"],
+   ["Solving log equations","Undoing a log to solve for the variable.","solving logarithmic equations organic chemistry tutor"]
+ ]],
+ [8,"Compositions & Inverses",[
+   ["Composition of functions","Feeding one function into another: f(g(x)).","composite functions organic chemistry tutor"],
+   ["Operations on functions","Adding, subtracting, multiplying, and dividing functions.","operations on functions add subtract multiply divide organic chemistry tutor"],
+   ["Inverse functions","The function that undoes another one.","how to find the inverse of a function organic chemistry tutor"],
+   ["Verifying inverses","Checking two functions really undo each other.","verify inverse functions using composition organic chemistry tutor"]
+ ]],
+ [9,"Trigonometry (the boss)",[
+   ["Degrees & radians","Two ways to measure angles, and how to convert.","converting between degrees and radians organic chemistry tutor"],
+   ["Coterminal & reference angles","Angles that land in the same spot, and the acute angle to the x-axis.","coterminal and reference angles organic chemistry tutor"],
+   ["The unit circle","The circle of radius 1 that gives sine and cosine of every angle.","unit circle explained organic chemistry tutor"],
+   ["SOH-CAH-TOA","Right-triangle trig: sine, cosine, tangent from the sides.","soh cah toa right triangle trigonometry organic chemistry tutor"],
+   ["Special angles (30-45-60)","The exact values you should just know.","special right triangles 30 60 90 45 45 90 trig values organic chemistry tutor"],
+   ["Graphs of sine & cosine","Waves: amplitude, period, and shifts.","graphing sine and cosine functions amplitude period organic chemistry tutor"]
+ ]],
+ [10,"Probability",[
+   ["Sample space & basic probability","All the possible outcomes, and the chance of one.","introduction to probability sample space organic chemistry tutor"],
+   ["Permutations vs combinations","Order matters (permutations) versus order does not (combinations).","permutations and combinations organic chemistry tutor"],
+   ["Independent vs dependent events","Does one event change the odds of the next?","independent and dependent events probability organic chemistry tutor"],
+   ["Conditional probability","The probability of A once you already know B happened.","conditional probability organic chemistry tutor"]
+ ]]
+];
+function ytURL(q){ return "https://www.youtube.com/results?search_query="+encodeURIComponent(q); }
+let html="";
+UNITS.forEach(u=>{
+  html+='<div class="unit"><div class="uhead"><span class="ubadge">'+u[0]+'</span>'+u[1]+'</div>';
+  u[2].forEach(c=>{
+    html+='<div class="concept"><div class="cname">'+c[0]+'</div><div class="cblurb">'+c[1]+'</div>'
+        + '<a class="watch" href="'+ytURL(c[2])+'" target="_blank" rel="noopener"><span class="yt">▶</span> Watch a quick video</a></div>';
+  });
+  html+='</div>';
+});
+document.getElementById("list").innerHTML=html;
+</script>
+</body>
+</html>

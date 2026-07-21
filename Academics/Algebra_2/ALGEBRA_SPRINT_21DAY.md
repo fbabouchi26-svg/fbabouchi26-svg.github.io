@@ -1,6 +1,8 @@
-# Algebra 2 H — 21-Day Sprint (Mr. Rice, FHS)
+# Algebra 2 H — Study Plan to the Aug 14 Test (Mr. Rice, FHS)
 
-**Goal:** Finish all 10 units + review in **3 weeks** (buffer to 4).
+**Official test date: Friday, August 14, 2026.** Live dated version lives in Algebra HQ → "Plan → Aug 14" tab. All 10 units done by ~Aug 11, then a full review week before test day.
+
+**Goal:** Finish all 10 units + review before the Aug 14 test.
 **Format:** **30-minute sessions, up to 4 a day (max 2 hrs/day).** Spread them out — he doesn't have to do them back-to-back.
 **The rule:** Each unit ends with a **mastery test — pass 13/15 (87%) to unlock the next unit.** Fail it → review the misses, retake. No breezing through.
 

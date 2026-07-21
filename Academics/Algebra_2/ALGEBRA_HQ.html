@@ -42,10 +42,10 @@ a.row:active{transform:scale(.99);}
 <div class="top"><div class="wrap">
   <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
   <h1>🧮 Algebra HQ</h1>
-  <div class="tops">Everything in one place — the 21-day plan, every unit, and the real class materials.</div>
+  <div class="tops">Everything in one place — your study plan to the Aug 14 test, every unit, quick concept videos, and the real class materials.</div>
   <div class="tabs">
     <button class="tab active" onclick="show('units',this)">Units</button>
-    <button class="tab" onclick="show('plan',this)">21-Day Plan</button>
+    <button class="tab" onclick="show('plan',this)">Plan → Aug 14</button>
     <button class="tab" onclick="show('mats',this)">Materials</button>
   </div>
 </div></div>
@@ -54,6 +54,7 @@ a.row:active{transform:scale(.99);}
   <div id="v-units" class="view active">
     <div class="note">Work through the units <b>in order</b>. Each ends with a test — pass 13/15 to unlock the next. The lessons live in the tutor; the practice + test in each unit page.</div>
     <a class="row" href="IBRAHIM_ALGEBRA2_HUB.html"><div class="ic">📖</div><div class="rbody"><div class="rt">Lessons + Videos (tutor)</div><div class="rs">Taught in your language, with worked examples</div></div><span class="tag t-live">OPEN</span></a>
+    <a class="row" href="CONCEPT_VIDEOS.html"><div class="ic">🎬</div><div class="rbody"><div class="rt">Concept Videos — the "I don't get it" button</div><div class="rs">Stuck on a topic? One short video for every concept</div></div><span class="tag t-live">OPEN</span></a>
     <div class="sec">The 10 units</div>
     <a class="row" href="CH1_MASTERY.html"><div class="ic">1️⃣</div><div class="rbody"><div class="rt">Parent Functions & Transformations</div><div class="rs">32 practice + gated test</div></div><span class="tag t-live">LIVE</span></a>
     <a class="row" href="UNIT2_MASTERY.html"><div class="ic">2️⃣</div><div class="rbody"><div class="rt">Quadratic Functions</div><div class="rs">28 practice + gated test</div></div><span class="tag t-live">LIVE</span></a>
@@ -93,36 +94,39 @@ a.row:active{transform:scale(.99);}
 
 <script>
 const PLAN=[
- ["Week 1 — Functions, Quadratics & Complex Numbers",[
-  ["Day 1 · Unit 1","S1 Parent functions · S2 Translate/reflect · S3 Stretch-shrink + describe · S4 Analyzing graphs"],
-  ["Day 2 · Unit 1 → 2","S1 Unit 1 review · S2 🔒 Unit 1 Test · S3 Unit 2 vertex form · S4 Vertex-form practice"],
-  ["Day 3 · Unit 2","S1 Standard/intercept form · S2 Axis of symmetry, min/max · S3 Transformations · S4 Mixed practice"],
-  ["Day 4 · Unit 2 → 3","S1 🔒 Unit 2 Test · S2 Solve by factoring · S3 Square roots + completing square · S4 Quadratic formula"],
-  ["Day 5 · Unit 3","S1 Complex numbers (i) · S2 Multiplying complex · S3 Complex solutions · S4 Mixed practice"],
-  ["Day 6 · Unit 3 → 4","S1 🔒 Unit 3 Test · S2 End behavior/degree · S3 Graphing polynomials · S4 Zeros & multiplicity"],
-  ["Day 7 · Unit 4","S1 Factoring · S2 Long division · S3 Synthetic division · S4 Mixed practice"]
+ ["Week of Jul 21 — Units 1–2 (get rolling)",[
+  ["Tue Jul 21 · Unit 1","S1 Finish parent functions · S2 Translations (shifts) · S3 Reflections"],
+  ["Wed Jul 22 · Unit 1","S1 Stretches/shrinks · S2 Describe transformations · S3 Domain/range + analyzing graphs · S4 Mixed practice"],
+  ["Thu Jul 23 · Unit 1 → 2","S1 Unit 1 review · S2 🔒 Unit 1 Test · S3 Unit 2 vertex form · S4 Vertex-form practice"],
+  ["Fri Jul 24 · Unit 2","S1 Standard/intercept form · S2 Axis of symmetry, min/max · S3 Transformations of parabolas"],
+  ["Sat–Sun Jul 25–26","Lighter: Unit 2 mixed practice, or rest. Catch up if a day slipped."]
  ]],
- ["Week 2 — Rationals, Radicals, Exp/Log & Compositions",[
-  ["Day 8 · Unit 4 → 5","S1 🔒 Unit 4 Test · S2 Simplify rationals · S3 Multiply/divide · S4 Add/subtract"],
-  ["Day 9 · Unit 5","S1 Common denominators · S2 Asymptotes · S3 Graphing rationals · S4 Solving rational eqns"],
-  ["Day 10 · Unit 5 → 6","S1 Rational-eqn practice · S2 🔒 Unit 5 Test · S3 nth roots & rational exponents · S4 Practice"],
-  ["Day 11 · Unit 6","S1 Exponent properties · S2 Solving radical eqns · S3 Graphing radicals · S4 Mixed practice"],
-  ["Day 12 · Unit 6 → 7","S1 🔒 Unit 6 Test · S2 Exp growth/decay, e · S3 Exp practice · S4 Logs as inverses"],
-  ["Day 13 · Unit 7","S1 Log properties · S2 Solving exp eqns · S3 Solving log eqns · S4 Mixed practice"],
-  ["Day 14 · Unit 7 → 8","S1 🔒 Unit 7 Test · S2 Composition of functions · S3 Inverse functions · S4 🔒 Unit 8 Test"]
+ ["Week of Jul 27 — Units 2–4",[
+  ["Mon Jul 27 · Unit 2 → 3","S1 🔒 Unit 2 Test · S2 Solve by factoring · S3 Completing the square · S4 Quadratic formula"],
+  ["Tue Jul 28 · Unit 3","S1 Discriminant · S2 Imaginary/complex numbers (i) · S3 Multiplying complex · S4 Complex solutions"],
+  ["Wed Jul 29 · Unit 3 → 4","S1 Unit 3 review · S2 🔒 Unit 3 Test · S3 End behavior/degree · S4 Graphing polynomials"],
+  ["Thu Jul 30 · Unit 4","S1 Zeros & multiplicity · S2 Factoring · S3 Long division · S4 Synthetic division"],
+  ["Fri Jul 31 · Unit 4","S1 Unit 4 mixed practice · S2 🔒 Unit 4 Test"],
+  ["Sat–Sun Aug 1–2","Lighter: start Unit 5 (simplify + multiply/divide rationals), or rest."]
  ]],
- ["Week 3 — Trig, Probability & Final Review",[
-  ["Day 15 · Unit 9 (Trig)","S1 Degrees ↔ radians · S2 Reference angles · S3 Unit circle intro · S4 Unit-circle practice"],
-  ["Day 16 · Unit 9","S1 sin/cos/tan, SOH-CAH-TOA · S2 Right-triangle trig · S3 Special angles · S4 Unit circle values"],
-  ["Day 17 · Unit 9","S1 Graphs of sine · S2 Graphs of cosine · S3 Mixed practice · S4 🔒 Unit 9 Test"],
-  ["Day 18 · Unit 10","S1 Permutations & combinations · S2 Independent/dependent · S3 Conditional · S4 🔒 Unit 10 Test"],
-  ["Day 19 · Review #1","Mixed problems, Units 1–5 (Final Exam Study Guide)"],
-  ["Day 20 · Review #2","Mixed Units 6–10 + weakest spots"],
-  ["Day 21 · Final Push","Full timed practice test; fix last gaps"]
+ ["Week of Aug 3 — Units 5–8",[
+  ["Mon Aug 3 · Unit 5","S1 Add/subtract rationals · S2 Asymptotes · S3 Graphing rationals · S4 Solving rational eqns → 🔒 Unit 5 Test"],
+  ["Tue Aug 4 · Unit 6","S1 nth roots & rational exponents · S2 Properties of exponents · S3 Solving radical eqns · S4 Graphing radicals"],
+  ["Wed Aug 5 · Unit 6 → 7","S1 🔒 Unit 6 Test · S2 Exp growth/decay, e · S3 Logs as inverses · S4 Log properties"],
+  ["Thu Aug 6 · Unit 7","S1 Solving exp eqns · S2 Solving log eqns · S3 Mixed practice · S4 🔒 Unit 7 Test"],
+  ["Fri Aug 7 · Unit 8","S1 Composition of functions · S2 Operations on functions · S3 Inverse functions · S4 🔒 Unit 8 Test"],
+  ["Sat–Sun Aug 8–9","Unit 9 (Trig) start: degrees↔radians, reference angles, unit-circle intro. Give trig extra time."]
+ ]],
+ ["Week of Aug 10 — Trig, Probability & Final Review",[
+  ["Mon Aug 10 · Unit 9 (Trig)","S1 SOH-CAH-TOA · S2 Special angles (30-45-60) · S3 Graphs of sine/cosine · S4 🔒 Unit 9 Test"],
+  ["Tue Aug 11 · Unit 10","S1 Perms & combinations · S2 Independent/dependent · S3 Conditional probability (use study guide + videos)"],
+  ["Wed Aug 12 · Review #1","Cumulative: Units 1–5. Use the Final Exam Study Guide. Log every miss."],
+  ["Thu Aug 13 · Review #2","Cumulative: Units 6–10 + drill your weakest spots. Short timed set."],
+  ["Fri Aug 14 · 🎯 TEST DAY","Morning: quick confidence pass over your error log. You are ready. Go get it."]
  ]]
 ];
 function renderPlan(){
-  let h=`<div class="note"><b>30-minute sessions, up to 4 a day (2 hrs max).</b> Each unit gates on its test — pass 13/15 to unlock the next. ~72 half-hour sessions over 18 days, then 3 review days.</div>`;
+  let h=`<div class="note"><b>Official test: Friday, Aug 14 (Mr. Rice).</b> Work in 30-minute sessions, up to 4 a day. Each unit gates on its test — pass 13/15 to unlock the next. All 10 units done by ~Aug 11, then a full review week before test day. Weekends are lighter/catch-up on purpose.</div>`;
   PLAN.forEach(wk=>{ h+=`<div class="wk">${wk[0]}</div>`;
     wk[1].forEach(d=>{ h+=`<div class="day"><div class="dtitle">${d[0]}</div><div class="dlist">${d[1].replace(/🔒/g,'<span class="lock">🔒</span>')}</div></div>`; });
   });

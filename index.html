@@ -811,7 +811,7 @@ RENDERERS.push(renderBasketball);
 /* ============================================================
    ALGEBRA — gamified chapter map + lessons + quiz engine
    ============================================================ */
-const ALG_DEADLINE=new Date(2026,6,31); // Jul 31 2026
+const ALG_DEADLINE=new Date(2026,7,14); // Aug 14 2026 — official test (Mr. Rice)
 const TEXTBOOK='https://bim.easyaccessmaterials.com/?level=13.00';
 const ALG_CHAPTERS=[
   {n:1,title:'Linear Functions',due:'Jun 13',
@@ -896,8 +896,9 @@ function renderAlgebra(){
   });
   const pct=Math.round(doneCount/ALG_CHAPTERS.length*100);
   document.getElementById('p-algebra').innerHTML=`
-    <div class="hero" style="background:linear-gradient(135deg,#3b82f6,#22d3ee)"><h2>🧮 Algebra 2 Quest</h2><p>Beat the whole textbook by Jul 31. Each chapter cleared = +150 XP and a level.</p></div>
-    <a class="btn btn-grad" href="Academics/Algebra_2/ALGEBRA_HQ.html" style="width:100%;justify-content:center;padding:14px;margin-bottom:14px">📐 Algebra HQ — units · 21-day plan · class materials →</a>
+    <div class="hero" style="background:linear-gradient(135deg,#3b82f6,#22d3ee)"><h2>🧮 Algebra 2 Quest</h2><p>Official test: <b>Fri Aug 14</b>. Clear every unit before then. Each cleared = +150 XP and a level.</p></div>
+    <a class="btn btn-grad" href="Academics/Algebra_2/ALGEBRA_HQ.html" style="width:100%;justify-content:center;padding:14px;margin-bottom:10px">📐 Algebra HQ — units · plan · class materials →</a>
+    <a class="btn btn-grad" href="Academics/Algebra_2/CONCEPT_VIDEOS.html" style="width:100%;justify-content:center;padding:14px;margin-bottom:14px;background:linear-gradient(135deg,#ef4444,#f97316)">🎬 Concept Videos — stuck? watch a quick explainer →</a>
     <div class="card glow"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <div><div style="font-size:1.6rem;font-weight:900;color:var(--cyan)">${doneCount}/12</div><small class="muted">chapters cleared</small></div>
       <div style="text-align:right"><div style="font-size:1.6rem;font-weight:900;color:${days<14?'var(--red)':'var(--gold)'}">${days}</div><small class="muted">days to deadline</small></div></div>
