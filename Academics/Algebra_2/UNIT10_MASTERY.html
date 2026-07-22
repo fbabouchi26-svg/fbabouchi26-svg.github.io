@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 H · Unit 10 Mastery</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:40px;}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#047857,#7c3aed);padding:18px 14px 14px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.45rem;font-weight:850;margin-top:2px;line-height:1.15;}
+.tops{font-size:.82rem;opacity:.92;margin-top:4px;}
+.tabs{display:flex;gap:6px;margin-top:14px;}
+.tab{flex:1;text-align:center;background:rgba(255,255,255,.16);border:none;color:#fff;font-weight:800;font-size:.82rem;padding:10px 0;border-radius:10px;cursor:pointer;}
+.tab.active{background:#fff;color:#047857;}
+.view{display:none;}.view.active{display:block;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.q{font-size:.95rem;font-weight:600;line-height:1.55;margin-bottom:10px;}
+.q b,.q strong{color:var(--cyan);}
+.qnum{color:var(--mut);font-weight:800;font-size:.78rem;margin-right:6px;}
+.arow{display:flex;gap:8px;}
+input.ans{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:.95rem;font-family:inherit;}
+input.ans:focus{outline:none;border-color:var(--blue);}
+.btn{border:none;border-radius:10px;font-weight:800;font-size:.85rem;padding:11px 15px;cursor:pointer;color:#fff;}
+.btn-b{background:var(--blue);}.btn-g{background:var(--grn);color:#04220f;}.btn-ghost{background:var(--card2);border:1px solid var(--line);color:var(--ink);}
+.fb{margin-top:9px;font-size:.85rem;font-weight:700;display:none;}
+.fb.show{display:block;}
+.fb.ok{color:#86efac;}.fb.no{color:#fca5a5;}
+.sol{margin-top:8px;font-size:.84rem;color:#c3cbe8;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px;display:none;line-height:1.6;}
+.sol.show{display:block;}
+.reveal{font-size:.78rem;color:var(--cyan);font-weight:700;background:none;border:none;cursor:pointer;margin-top:8px;padding:0;}
+.scorebar{position:sticky;top:0;z-index:5;background:rgba(14,18,32,.92);backdrop-filter:blur(8px);padding:10px 0;font-size:.82rem;font-weight:800;color:var(--mut);border-bottom:1px solid var(--line);}
+.hero-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:14px;font-size:.86rem;color:#c3cbe8;line-height:1.6;}
+.hero-note b{color:var(--gold);}
+.gate{border-radius:14px;padding:18px;margin:14px 0;text-align:center;font-weight:800;}
+.gate.locked{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4);color:#fca5a5;}
+.gate.pass{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.45);color:#86efac;}
+.big{font-size:2.4rem;font-weight:900;}
+.testq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:10px;}
+.testq.correct{border-color:rgba(34,197,94,.5);}
+.testq.wrong{border-color:rgba(239,68,68,.5);}
+.ref{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:12px;font-size:.82rem;line-height:1.75;color:#c3cbe8;}
+.ref b{color:var(--cyan);}
+a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:none;font-size:.85rem;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS · 🏁 FINAL UNIT</div>
+  <h1>📐 Unit 10 — Probability</h1>
+  <div class="tops">Odds, permutations & combinations, independent/dependent, and conditional. <b>Pass to finish the course.</b></div>
+  <div class="tabs">
+    <button class="tab active" onclick="show('practice',this)">Practice</button>
+    <button class="tab" onclick="show('test',this)">Unit Test 🔒</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div id="v-practice" class="view active">
+    <div class="ref">
+      <b>Probability:</b> P(event) = favorable / total. <b>Complement:</b> P(not A) = 1 − P(A).<br>
+      <b>Permutation</b> (order matters): ₙPᵣ = n!/(n−r)!. <b>Combination</b> (order doesn't): ₙCᵣ = n!/(r!(n−r)!).<br>
+      <b>Independent:</b> P(A and B) = P(A)·P(B). <b>Dependent:</b> use P(B given A).<br>
+      <b>Mutually exclusive:</b> P(A or B) = P(A) + P(B). <b>Conditional:</b> P(B|A) = P(A and B)/P(A).<br>
+      <small>(Type fractions like 1/6, or decimals like 0.5.)</small>
+    </div>
+    <a class="lesson" href="IBRAHIM_ALGEBRA2_HUB.html">← Lessons & videos (tutor)</a>
+    <div class="scorebar"><span id="pScore">Practice score: 0 correct</span></div>
+    <div id="practiceBody"></div>
+  </div>
+  <div id="v-test" class="view"><div id="testIntro"></div><div id="testBody"></div></div>
+</div>
+
+<script>
+function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
+function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
+
+const PRACTICE=[
+ {name:"Lesson 1 · Probability, Sample Space & Complement", probs:[
+  {q:"Rolling a fair die, <b>P(rolling a 4)</b>?", acc:["1/6"], sol:"1 favorable out of 6 → 1/6."},
+  {q:"Rolling a die, <b>P(an even number)</b>?", acc:["1/2","3/6","0.5"], sol:"{2,4,6} → 3/6 = 1/2."},
+  {q:"A bag has 3 red and 2 blue. <b>P(red)</b>?", acc:["3/5","0.6"], sol:"3 red out of 5 → 3/5."},
+  {q:"If P(A) = 0.3, then <b>P(not A)</b> = ?", acc:["0.7","7/10"], sol:"Complement: 1 − 0.3 = 0.7."},
+  {q:"Flipping a coin, <b>P(heads)</b>?", acc:["1/2","0.5"], sol:"1 of 2 → 1/2."},
+  {q:"How many outcomes in the sample space of rolling <b>two dice</b>?", acc:["36"], sol:"6 × 6 = 36."},
+  {q:"<b>P(rolling a 7)</b> on one die?", acc:["0"], sol:"Impossible → 0."},
+  {q:"<b>P(rolling a number ≤ 6)</b> on a die?", acc:["1"], sol:"Certain → 1."}
+ ]},
+ {name:"Lesson 2 · Permutations & Combinations", probs:[
+  {q:"Does order matter in a <b>permutation</b>? (yes/no)", acc:["yes"], sol:"Yes — order matters."},
+  {q:"Does order matter in a <b>combination</b>? (yes/no)", acc:["no"], sol:"No — order doesn't matter."},
+  {q:"Evaluate <b>5!</b> (5 factorial).", acc:["120"], sol:"5·4·3·2·1 = 120."},
+  {q:"Evaluate <b>4!</b>.", acc:["24"], sol:"4·3·2·1 = 24."},
+  {q:"How many ways to arrange 3 books in a row (3!)?", acc:["6"], sol:"3·2·1 = 6."},
+  {q:"<b>₅P₂</b> = 5·4 = ?", acc:["20"], sol:"5!/(5−2)! = 5·4 = 20."},
+  {q:"<b>₆C₂</b> = (6·5)/2 = ?", acc:["15"], sol:"6!/(2!·4!) = 15."},
+  {q:"<b>₄C₄</b> = ?", acc:["1"], sol:"Only 1 way to choose all → 1."},
+  {q:"<b>₇C₁</b> = ?", acc:["7"], sol:"7 ways to choose 1 → 7."}
+ ]},
+ {name:"Lesson 3 · Independent, Dependent & Conditional", probs:[
+  {q:"Two coin flips, <b>P(both heads)</b>?", acc:["1/4","0.25"], sol:"(1/2)(1/2) = 1/4."},
+  {q:"P(A) = 1/2, P(B) = 1/3, independent. <b>P(A and B)</b>?", acc:["1/6"], sol:"(1/2)(1/3) = 1/6."},
+  {q:"Rolling a die twice, <b>P(6 then 6)</b>?", acc:["1/36"], sol:"(1/6)(1/6) = 1/36."},
+  {q:"P(A) = 0.2, P(B) = 0.3, mutually exclusive. <b>P(A or B)</b>?", acc:["0.5","1/2"], sol:"0.2 + 0.3 = 0.5."},
+  {q:"Drawing 2 cards WITHOUT replacement — independent or dependent?", acc:["dependent"], sol:"The first draw changes the second → dependent."},
+  {q:"Drawing WITH replacement — independent or dependent?", acc:["independent"], sol:"Nothing changes → independent."},
+  {q:"P(B | A) means the probability of B ___ A has happened.", acc:["given","after"], sol:"Given (after) A has happened."},
+  {q:"P(A and B) = 0.2, P(A) = 0.5. Find <b>P(B | A)</b>.", acc:["0.4","2/5"], sol:"0.2 / 0.5 = 0.4."}
+ ]}
+];
+
+function renderPractice(){
+  let h=''; PRACTICE.forEach((s,si)=>{
+    h+=`<div class="sec">${s.name}</div>`;
+    s.probs.forEach((p,pi)=>{ const id=si+'_'+pi;
+      h+=`<div class="card"><div class="q"><span class="qnum">${pi+1}.</span>${p.q}</div>
+        <div class="arow"><input class="ans" id="in${id}" placeholder="your answer" onkeydown="if(event.key==='Enter')checkP('${id}',${si},${pi})"><button class="btn btn-b" onclick="checkP('${id}',${si},${pi})">Check</button></div>
+        <div class="fb" id="fb${id}"></div>
+        <button class="reveal" onclick="document.getElementById('sol${id}').classList.toggle('show')">Show solution ▾</button>
+        <div class="sol" id="sol${id}">${p.sol}</div></div>`;
+    });
+  });
+  document.getElementById('practiceBody').innerHTML=h;
+}
+let pDone={};
+function checkP(id,si,pi){
+  const p=PRACTICE[si].probs[pi]; const val=document.getElementById('in'+id).value;
+  const fb=document.getElementById('fb'+id); fb.classList.add('show');
+  if(accepts(val,p.acc)){ fb.className='fb show ok'; fb.textContent='✓ Correct!'; pDone[id]=true; }
+  else { fb.className='fb show no'; fb.textContent='✗ Not yet — try again, or tap Show solution.'; }
+  document.getElementById('pScore').textContent='Practice score: '+Object.keys(pDone).length+' correct';
+}
+
+const TEST=[
+ {q:"Rolling a die, P(rolling a 3)?", acc:["1/6"], sol:"1/6."},
+ {q:"Rolling a die, P(an odd number)?", acc:["1/2","3/6","0.5"], sol:"{1,3,5} → 3/6 = 1/2."},
+ {q:"Bag: 4 red, 6 blue. P(blue)?", acc:["3/5","0.6","6/10"], sol:"6/10 = 3/5."},
+ {q:"P(A) = 0.25. Find P(not A).", acc:["0.75","3/4"], sol:"1 − 0.25 = 0.75."},
+ {q:"Sample space size of flipping 3 coins?", acc:["8"], sol:"2³ = 8."},
+ {q:"Does order matter in a combination? (yes/no)", acc:["no"], sol:"No."},
+ {q:"Evaluate 6!.", acc:["720"], sol:"6·5·4·3·2·1 = 720."},
+ {q:"₅P₃ = 5·4·3 = ?", acc:["60"], sol:"60."},
+ {q:"₈C₂ = (8·7)/2 = ?", acc:["28"], sol:"28."},
+ {q:"Two dice, P(both show 1)?", acc:["1/36"], sol:"(1/6)(1/6) = 1/36."},
+ {q:"P(A)=1/3, P(B)=1/4, independent. P(A and B)?", acc:["1/12"], sol:"(1/3)(1/4) = 1/12."},
+ {q:"P(A)=0.4, P(B)=0.1, mutually exclusive. P(A or B)?", acc:["0.5","1/2"], sol:"0.4 + 0.1 = 0.5."},
+ {q:"Drawing 2 marbles without replacement: independent or dependent?", acc:["dependent"], sol:"Dependent."},
+ {q:"P(A and B)=0.3, P(A)=0.6. Find P(B | A).", acc:["0.5","1/2"], sol:"0.3/0.6 = 0.5."},
+ {q:"₉C₉ = ?", acc:["1"], sol:"1."}
+];
+const PASS=13;
+function mastered(){ return localStorage.getItem('alg2_unit10_mastered')==='1'; }
+function renderTest(){
+  const intro=document.getElementById('testIntro');
+  if(mastered()){
+    intro.innerHTML=`<div class="gate pass"><div>🏆 UNIT 10 MASTERED — COURSE COMPLETE! 🎓🔥</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">All 10 units done. Now hit the cumulative final review.</div></div>`;
+  } else {
+    intro.innerHTML=`<div class="hero-note">Last test of the whole course — <b>no solutions until you submit.</b> Need <b>${PASS} of ${TEST.length} (87%)</b> to finish Algebra 2. Let's close it out.</div>`;
+  }
+  let h=''; TEST.forEach((t,i)=>{ h+=`<div class="testq" id="tq${i}"><div class="q"><span class="qnum">${i+1}.</span>${t.q}</div><input class="ans" id="tin${i}" placeholder="your answer"><div class="sol" id="tsol${i}">${t.sol}</div></div>`; });
+  h+=`<button class="btn btn-g" style="width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:6px" onclick="gradeTest()">Submit test</button><div id="testResult" style="margin-top:14px"></div>`;
+  document.getElementById('testBody').innerHTML=h;
+}
+function gradeTest(){
+  let score=0;
+  TEST.forEach((t,i)=>{ const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
+    const ok=accepts(val,t.acc); box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
+    document.getElementById('tsol'+i).classList.add('show'); if(ok) score++; });
+  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit10_mastered','1');
+  const res=document.getElementById('testResult');
+  res.innerHTML = passed
+    ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🎓 PASSED — ALGEBRA 2 COMPLETE! 🔥</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">All 10 units mastered. Incredible work. On to the cumulative final review.</div></div>`
+    : `<div class="gate locked"><div class="big">${score}/${TEST.length}</div><div>Not yet — you need ${PASS}.</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Study the red ones, then <button class="reveal" style="color:#93c5fd" onclick="renderTest();window.scrollTo(0,0)">retake →</button></div></div>`;
+  window.scrollTo(0, document.getElementById('testResult').offsetTop-80);
+}
+function show(v,btn){ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.getElementById('v-'+v).classList.add('active'); btn.classList.add('active'); window.scrollTo(0,0); if(v==='test')renderTest(); }
+renderPractice(); renderTest();
+</script>
+</body>
+</html>
