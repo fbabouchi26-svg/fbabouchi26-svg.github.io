@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 — Today's Plan</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;--amber:#f59e0b;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:46px;}
+.wrap{max-width:680px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#b45309,#7c3aed);padding:18px 14px 16px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.5rem;font-weight:850;margin-top:2px;}
+.tops{font-size:.83rem;opacity:.94;margin-top:3px;}
+.back{display:inline-block;margin-top:12px;background:rgba(255,255,255,.18);color:#fff;text-decoration:none;font-weight:800;font-size:.8rem;padding:8px 13px;border-radius:10px;}
+.pace{border-radius:16px;padding:15px 16px;margin:16px 0 6px;border:1px solid var(--line);}
+.pace.ok{background:linear-gradient(135deg,rgba(34,197,94,.16),rgba(34,197,94,.04));border-color:rgba(34,197,94,.45);}
+.pace.behind{background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(245,158,11,.04));border-color:rgba(245,158,11,.5);}
+.pace .big{font-size:1.12rem;font-weight:900;} .pace.ok .big{color:#86efac;} .pace.behind .big{color:#fcd34d;}
+.pace .sub{font-size:.87rem;color:#c3cbe8;margin-top:5px;}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:10px 0 4px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 8px;text-align:center;}
+.stat .num{font-size:1.4rem;font-weight:900;color:var(--cyan);line-height:1;}
+.stat .lab{font-size:.64rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--mut);margin-top:6px;}
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 9px;}
+.todo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:13px;}
+.todo .u{font-size:1.05rem;font-weight:850;}
+.todo .goal{font-size:.8rem;color:var(--gold);font-weight:800;margin-top:2px;margin-bottom:12px;}
+.step{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--line);}
+.step:first-of-type{border-top:none;}
+.chk{width:26px;height:26px;border-radius:8px;border:2px solid var(--line);background:var(--card2);flex:0 0 auto;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:transparent;transition:all .15s;}
+.chk.on{background:var(--grn);border-color:var(--grn);color:#04220f;}
+.sbody{flex:1;min-width:0;}
+.stitle{font-size:.92rem;font-weight:750;}
+.sdesc{font-size:.78rem;color:var(--mut);margin-top:1px;}
+.slink{display:inline-block;margin-top:7px;font-size:.8rem;font-weight:800;text-decoration:none;color:#fff;background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:7px 12px;}
+.slink.play{background:linear-gradient(135deg,#dc2626,#ef4444);border:none;}
+.slink.prac{background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;}
+.slink.test{background:linear-gradient(135deg,#065f46,#059669);border:none;}
+.done-note{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.4);color:#86efac;border-radius:12px;padding:13px;font-size:.9rem;font-weight:700;text-align:center;margin-bottom:12px;}
+.next{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;opacity:.85;}
+.next .n{width:28px;height:28px;border-radius:8px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8rem;flex:0 0 auto;}
+.next .t{font-size:.86rem;font-weight:700;}
+.next .d{font-size:.72rem;color:var(--mut);margin-left:auto;white-space:nowrap;}
+.note{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:.82rem;color:#c3cbe8;line-height:1.6;margin:14px 0;}
+.note b{color:var(--ink);}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.lnk{flex:1;min-width:150px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--ink);text-decoration:none;font-weight:800;font-size:.84rem;}
+.mini{font-size:.72rem;color:var(--mut);text-align:center;margin-top:16px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>🎯 Today's Plan</h1>
+  <div class="tops" id="dateLine">Your exact next steps to be ready for the Aug 14 test.</div>
+  <a class="back" href="ALGEBRA_HQ.html">← Back to Algebra HQ</a>
+</div></div>
+
+<div class="wrap">
+  <div id="paceBox"></div>
+  <div class="stats" id="statsBox"></div>
+
+  <div class="sec">Do this today</div>
+  <div id="todayBox"></div>
+
+  <div class="sec">Coming up next</div>
+  <div id="nextBox"></div>
+
+  <div class="note" id="howNote"></div>
+
+  <div class="links">
+    <a class="lnk" href="PROGRESS.html">📊 Full progress</a>
+    <a class="lnk" href="TEACHER_TRACK.html">🎓 All teacher videos</a>
+    <a class="lnk" href="ALGEBRA_HQ.html">🧮 Algebra HQ</a>
+  </div>
+  <div class="mini" id="deviceNote"></div>
+</div>
+
+<script src="alg2-progress.js"></script>
+<script>
+// ── per-unit links: full-unit teacher, unit practice/test page ──
+function yt(q){ return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q); }
+function pl(id){ return 'https://www.youtube.com/playlist?list='+id; }
+const TEACHER={
+ 1:pl('PLl3EGyVmnmtFJdUjDeDeZ_RQXtVFSN_FS'),
+ 2:yt('Big Ideas Math Algebra 2 Chapter 2 quadratic functions'),
+ 3:pl('PLl3EGyVmnmtEGO9615oxrh8zwl6js4_MM'),
+ 4:yt('Big Ideas Math Algebra 2 Chapter 4 polynomial functions'),
+ 5:yt('Big Ideas Math Algebra 2 Chapter 7 rational functions'),
+ 6:yt('Big Ideas Math Algebra 2 Chapter 5 radical functions rational exponents'),
+ 7:pl('PLl3EGyVmnmtHMosUYVwii1luMXoQ9Rdf-'),
+ 8:yt('Algebra 2 operations on functions composition inverse functions full lesson'),
+ 9:pl('PLl3EGyVmnmtGqUcKapmZEoHYnPkvIyZTx'),
+ 10:yt('Big Ideas Math Algebra 2 Chapter 10 probability')
+};
+function unitPage(n){ return n===1?'CH1_MASTERY.html':('UNIT'+n+'_MASTERY.html'); }
+
+// ── daily checkbox persistence (resets each calendar day) ──
+function todayKey(){ const d=new Date(); return 'alg2_daily_'+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+function getChecks(){ try{return JSON.parse(localStorage.getItem(todayKey()))||{};}catch(e){return {};} }
+function setCheck(id,on){ const c=getChecks(); c[id]=on; localStorage.setItem(todayKey(),JSON.stringify(c)); }
+
+const UNITS_DEADLINE='2026-08-11';  // finish all units by here, review Aug 12-14
+
+function render(){
+  const S=Alg2Progress.summary();
+  const today=new Date();
+  document.getElementById('dateLine').textContent=
+    today.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})+' · '+S.daysToTest+' days to the test';
+
+  // how many units still to master, and per-day pace to finish by Aug 11
+  const remaining=S.total-S.masteredCount;
+  const msPerDay=86400000;
+  let studyDays=Math.ceil((new Date(UNITS_DEADLINE+'T23:59:59')-today)/msPerDay);
+  studyDays=Math.max(1,studyDays);
+  const perDay=remaining>0?Math.max(1,Math.ceil(remaining/studyDays)):0;
+
+  // pace banner
+  const pb=document.getElementById('paceBox');
+  if(remaining===0){
+    pb.className='pace ok';
+    pb.innerHTML='<div class="big">🎓 All 10 units mastered!</div><div class="sub">Now it\'s review time. Redo your weakest units and work the Final Exam Study Guide until Aug 14.</div>';
+  } else if(S.onTrack){
+    pb.className='pace ok';
+    pb.innerHTML='<div class="big">✅ On pace — keep the streak</div><div class="sub">Master about <b>'+perDay+' unit'+(perDay>1?'s':'')+' per study day</b> and you finish all units by Aug 11 with a review cushion before the test.</div>';
+  } else {
+    pb.className='pace behind';
+    pb.innerHTML='<div class="big">⚠️ A little behind — here\'s the catch-up</div><div class="sub">To still finish on time, aim for <b>'+perDay+' unit'+(perDay>1?'s':'')+' today</b>. Do the steps below in order — that\'s all you have to think about.</div>';
+  }
+
+  // stat chips
+  document.getElementById('statsBox').innerHTML=
+     '<div class="stat"><div class="num">'+S.masteredCount+'/'+S.total+'</div><div class="lab">Units done</div></div>'
+    +'<div class="stat"><div class="num">'+perDay+'</div><div class="lab">Aim today</div></div>'
+    +'<div class="stat"><div class="num">'+S.daysToTest+'</div><div class="lab">Days to test</div></div>';
+
+  // today's units = next `perDay` not-yet-passed
+  const todo=S.rows.filter(r=>!r.passed).slice(0,Math.max(1,perDay));
+  const box=document.getElementById('todayBox');
+  if(remaining===0){
+    box.innerHTML='<div class="done-note">Nothing left to unlock — you\'re in review mode. 🔁</div>';
+  } else {
+    box.innerHTML=todo.map(r=>{
+      const steps=[
+        {id:'u'+r.n+'_watch',cls:'play',ic:'▶',t:'Watch a teacher teach Unit '+r.n,d:'Full unit, straight from the Big Ideas Math book',label:'Watch the teacher →',url:TEACHER[r.n]},
+        {id:'u'+r.n+'_prac',cls:'prac',ic:'✍️',t:'Do the practice set',d:'Work every problem on paper first',label:'Open practice →',url:unitPage(r.n)},
+        {id:'u'+r.n+'_test',cls:'test',ic:'✅',t:'Take the unit test — score 13/15 to master it',d:'Passing unlocks the next unit and turns it green on your tracker',label:'Take the test →',url:unitPage(r.n)}
+      ];
+      const checks=getChecks();
+      const stepHTML=steps.map(s=>
+        '<div class="step">'
+        +'<div class="chk'+(checks[s.id]?' on':'')+'" onclick="toggle(\''+s.id+'\',this)">✓</div>'
+        +'<div class="sbody"><div class="stitle">'+s.t+'</div><div class="sdesc">'+s.d+'</div>'
+        +'<a class="slink '+s.cls+'" href="'+s.url+'"'+(s.cls==='play'?' target="_blank" rel="noopener"':'')+'>'+s.label+'</a></div></div>'
+      ).join('');
+      return '<div class="todo"><div class="u">Unit '+r.n+' — '+r.title+'</div>'
+        +'<div class="goal">🎯 Goal: master this unit'+(todo.length>1?' (one of '+todo.length+' for today)':' today')+'</div>'
+        +stepHTML+'</div>';
+    }).join('');
+  }
+
+  // coming up next (the units after today's batch)
+  const upcoming=S.rows.filter(r=>!r.passed).slice(Math.max(1,perDay));
+  const nb=document.getElementById('nextBox');
+  nb.innerHTML = upcoming.length? upcoming.map(r=>{
+    const tgt=new Date(r.target+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'});
+    return '<div class="next"><div class="n">'+r.n+'</div><div class="t">Unit '+r.n+' — '+r.title+'</div><div class="d">by '+tgt+'</div></div>';
+  }).join('') : '<div class="note">Nothing else in the queue — after today you\'re into review. 🎉</div>';
+
+  document.getElementById('howNote').innerHTML=
+    '<b>How to use this page:</b> just do the steps in the box above, top to bottom, and tick each one off. Come back tomorrow and it\'ll show your next target automatically based on what you\'ve passed. The red button is your teacher — a real instructor going through your book, unit by unit.';
+  document.getElementById('deviceNote').innerHTML=
+    'Your check-offs and progress save in this browser on this device. · Official test: <b>Fri Aug 14</b>.';
+}
+function toggle(id,el){ const on=!el.classList.contains('on'); el.classList.toggle('on',on); setCheck(id,on); }
+render();
+</script>
+</body>
+</html>
