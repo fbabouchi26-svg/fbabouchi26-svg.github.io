@@ -77,6 +77,8 @@ a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:
   <div id="v-test" class="view"><div id="testIntro"></div><div id="testBody"></div></div>
 </div>
 
+<script src="alg2-progress.js"></script>
+<script>window.addEventListener("load",function(){window.Alg2Progress&&Alg2Progress.touch(10);});</script>
 <script>
 function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
 function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
@@ -172,7 +174,7 @@ function gradeTest(){
   TEST.forEach((t,i)=>{ const val=document.getElementById('tin'+i).value; const box=document.getElementById('tq'+i);
     const ok=accepts(val,t.acc); box.classList.remove('correct','wrong'); box.classList.add(ok?'correct':'wrong');
     document.getElementById('tsol'+i).classList.add('show'); if(ok) score++; });
-  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit10_mastered','1');
+  const passed=score>=PASS; if(passed) localStorage.setItem('alg2_unit10_mastered','1'); if(window.Alg2Progress)Alg2Progress.recordTest(10,score,TEST.length);
   const res=document.getElementById('testResult');
   res.innerHTML = passed
     ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🎓 PASSED — ALGEBRA 2 COMPLETE! 🔥</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">All 10 units mastered. Incredible work. On to the cumulative final review.</div></div>`

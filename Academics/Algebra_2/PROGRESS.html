@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 — Progress Tracker</title>
+<style>
+:root{--bg:#0e1220;--card:#171d2e;--card2:#1e2540;--line:#2a3350;--ink:#e9edff;--mut:#93a0c4;
+--blue:#3b82f6;--grn:#22c55e;--red:#ef4444;--gold:#fbbf24;--cyan:#22d3ee;--pur:#a855f7;--amber:#f59e0b;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:44px;}
+.wrap{max-width:680px;margin:0 auto;padding:0 14px;}
+.top{background:linear-gradient(135deg,#1d4ed8,#7c3aed);padding:18px 14px 16px;}
+.top .wrap{padding:0;}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+h1{font-size:1.5rem;font-weight:850;margin-top:2px;}
+.tops{font-size:.83rem;opacity:.92;margin-top:3px;}
+.back{display:inline-block;margin-top:12px;background:rgba(255,255,255,.18);color:#fff;text-decoration:none;font-weight:800;font-size:.8rem;padding:8px 13px;border-radius:10px;}
+/* status banner */
+.status{border-radius:16px;padding:18px 18px;margin:16px 0 6px;border:1px solid var(--line);}
+.status.ok{background:linear-gradient(135deg,rgba(34,197,94,.16),rgba(34,197,94,.05));border-color:rgba(34,197,94,.45);}
+.status.behind{background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(245,158,11,.05));border-color:rgba(245,158,11,.5);}
+.status .big{font-size:1.25rem;font-weight:900;line-height:1.25;}
+.status .sub{font-size:.9rem;color:#c3cbe8;margin-top:6px;}
+.status.ok .big{color:#86efac;} .status.behind .big{color:#fcd34d;}
+/* stat chips */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:10px 0 4px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 10px;text-align:center;}
+.stat .num{font-size:1.5rem;font-weight:900;color:var(--cyan);line-height:1;}
+.stat .lab{font-size:.66rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);margin-top:6px;}
+/* overall bar */
+.barwrap{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;margin:12px 0;}
+.barwrap .h{font-size:.78rem;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;display:flex;justify-content:space-between;}
+.track{background:#0b0f1c;border:1px solid var(--line);border-radius:20px;height:14px;overflow:hidden;}
+.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--grn),#4ade80);transition:width .6s;}
+/* unit rows */
+.sec{font-size:.72rem;font-weight:850;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin:20px 4px 8px;}
+.u{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:9px;}
+.u.done{border-color:rgba(34,197,94,.4);}
+.u.overdue{border-color:rgba(239,68,68,.45);}
+.u.current{border-color:rgba(59,130,246,.6);box-shadow:0 0 0 1px rgba(59,130,246,.25);}
+.ubadge{width:34px;height:34px;border-radius:10px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;flex-shrink:0;}
+.u.done .ubadge{background:rgba(34,197,94,.16);color:#86efac;}
+.ubody{flex:1;min-width:0;}
+.ut{font-size:.9rem;font-weight:750;}
+.us{font-size:.74rem;color:var(--mut);margin-top:2px;}
+.tag{font-size:.6rem;font-weight:800;padding:4px 9px;border-radius:8px;letter-spacing:.4px;flex-shrink:0;white-space:nowrap;}
+.t-done{background:rgba(34,197,94,.16);color:#86efac;}
+.t-prog{background:rgba(59,130,246,.16);color:#93c5fd;}
+.t-late{background:rgba(239,68,68,.16);color:#fca5a5;}
+.t-soon{background:var(--card2);color:var(--mut);}
+.note{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:.82rem;color:#c3cbe8;line-height:1.6;margin:14px 0;}
+.note b{color:var(--ink);}
+.row-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.lnk{flex:1;min-width:150px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--ink);text-decoration:none;font-weight:800;font-size:.84rem;}
+.lnk.pri{background:linear-gradient(135deg,#1d4ed8,#7c3aed);border:none;}
+.mini{font-size:.72rem;color:var(--mut);text-align:center;margin-top:16px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS</div>
+  <h1>📊 Progress Tracker</h1>
+  <div class="tops">Where Ibrahim stands right now, and whether he's on pace for the Aug 14 test.</div>
+  <a class="back" href="ALGEBRA_HQ.html">← Back to Algebra HQ</a>
+</div></div>
+
+<div class="wrap">
+  <div id="statusBox"></div>
+  <div class="stats" id="statsBox"></div>
+  <div class="barwrap">
+    <div class="h"><span>Course completion</span><span id="pctLabel">0%</span></div>
+    <div class="track"><div class="fill" id="overallFill" style="width:0%"></div></div>
+  </div>
+
+  <div class="sec">Unit by unit</div>
+  <div id="unitList"></div>
+
+  <div class="note" id="howNote"></div>
+
+  <div class="row-links">
+    <a class="lnk pri" href="ALGEBRA_HQ.html">Open Algebra HQ</a>
+    <a class="lnk" href="TEACHER_TRACK.html">🎓 Teacher Track</a>
+    <a class="lnk" href="#" onclick="render();return false;">↻ Refresh</a>
+  </div>
+
+  <div class="mini" id="deviceNote"></div>
+</div>
+
+<script src="alg2-progress.js"></script>
+<script>
+function fmt(iso){ if(!iso) return null; const d=new Date(iso);
+  return d.toLocaleDateString(undefined,{month:'short',day:'numeric'}); }
+
+function render(){
+  const S = Alg2Progress.summary();     // uses today's real date
+  // ── status banner ──
+  const sb=document.getElementById('statusBox');
+  if(S.onTrack){
+    sb.className='status ok';
+    sb.innerHTML=`<div class="big">✅ On track for Aug 14</div>
+      <div class="sub">Ibrahim has mastered <b>${S.masteredCount} of ${S.total}</b> units. By today's spot in the plan he needed <b>${S.expected}</b> — he's caught up or ahead. Right now he's working on <b>Unit ${S.current}</b>.</div>`;
+  } else {
+    sb.className='status behind';
+    sb.innerHTML=`<div class="big">⚠️ ${S.behind} unit${S.behind===1?'':'s'} behind pace</div>
+      <div class="sub">He's mastered <b>${S.masteredCount} of ${S.total}</b>, but the plan expects <b>${S.expected}</b> done by today. He's on <b>Unit ${S.current}</b>. Not a crisis — a couple of focused study sessions closes the gap.</div>`;
+  }
+  // ── stat chips ──
+  document.getElementById('statsBox').innerHTML=
+     `<div class="stat"><div class="num">${S.masteredCount}/${S.total}</div><div class="lab">Units mastered</div></div>`
+    +`<div class="stat"><div class="num">${S.current}</div><div class="lab">Current unit</div></div>`
+    +`<div class="stat"><div class="num">${S.daysToTest}</div><div class="lab">Days to test</div></div>`;
+  // ── overall bar ──
+  const pct=Math.round(S.masteredCount/S.total*100);
+  document.getElementById('overallFill').style.width=pct+'%';
+  document.getElementById('pctLabel').textContent=pct+'%';
+  // ── unit rows ──
+  let h='';
+  S.rows.forEach(r=>{
+    let cls='u', tag='', sub='';
+    const tgt=new Date(r.target+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'});
+    if(r.passed){
+      cls+=' done';
+      tag='<span class="tag t-done">MASTERED ✓</span>';
+      const best = r.best?`best ${r.best}/${r.total}`:'passed';
+      const when = fmt(r.passedISO);
+      sub = `${best}${when?' · '+when:''}`;
+    } else if(r.n===S.current){
+      cls+=' current';
+      if(r.due){ cls+=' overdue'; tag='<span class="tag t-late">BEHIND</span>'; }
+      else tag='<span class="tag t-prog">IN PROGRESS</span>';
+      const best = r.best?`best so far ${r.best}/${r.total} · `:'';
+      const att = r.attempts?`${r.attempts} attempt${r.attempts===1?'':'s'} · `:'';
+      sub = `${best}${att}target ${tgt}`;
+    } else {
+      if(r.due){ cls+=' overdue'; tag='<span class="tag t-late">OVERDUE</span>'; }
+      else tag='<span class="tag t-soon">UPCOMING</span>';
+      sub = `target ${tgt}`;
+    }
+    const badge = r.passed ? '✓' : r.n;
+    h+=`<div class="${cls}">
+          <div class="ubadge">${badge}</div>
+          <div class="ubody"><div class="ut">Unit ${r.n} — ${r.title}</div><div class="us">${sub}</div></div>
+          ${tag}
+        </div>`;
+  });
+  document.getElementById('unitList').innerHTML=h;
+
+  // ── explanatory note ──
+  document.getElementById('howNote').innerHTML=
+    `<b>How this fills in:</b> every time Ibrahim submits a unit test on the unit pages, his score and the date save automatically and show up here — no logging needed. A unit turns green the moment he scores ${Alg2Progress.PASS}/15 or better. Current XP from the tutor: <b>${S.xp}</b>.`;
+
+  document.getElementById('deviceNote').innerHTML=
+    `Progress is saved in this browser on this device — open this page in the same browser Ibrahim studies in to see his real numbers. · Official test: <b>Fri Aug 14</b>.`;
+}
+render();
+</script>
+</body>
+</html>

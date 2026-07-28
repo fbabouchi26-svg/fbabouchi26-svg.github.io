@@ -78,6 +78,8 @@ a.lesson{display:inline-block;color:var(--cyan);font-weight:700;text-decoration:
   </div>
 </div>
 
+<script src="alg2-progress.js"></script>
+<script>window.addEventListener("load",function(){window.Alg2Progress&&Alg2Progress.touch(1);});</script>
 <script>
 function norm(s){ return (s||'').toString().toLowerCase().replace(/\s+/g,'').replace(/[−–—]/g,'-').replace(/^\+/,''); }
 function accepts(user, acc){ const u=norm(user); return acc.some(a=>norm(a)===u); }
@@ -202,7 +204,7 @@ function gradeTest(){
     if(ok) score++;
   });
   const passed=score>=PASS;
-  if(passed) localStorage.setItem('alg2_unit1_mastered','1');
+  if(passed) localStorage.setItem('alg2_unit1_mastered','1'); if(window.Alg2Progress)Alg2Progress.recordTest(1,score,TEST.length);
   const res=document.getElementById('testResult');
   res.innerHTML = passed
     ? `<div class="gate pass"><div class="big">${score}/${TEST.length}</div><div>🏆 PASSED — Unit 1 MASTERED!</div><div style="font-weight:600;font-size:.85rem;margin-top:6px;color:#c3cbe8">Unit 2 unlocked. Now you're actually ready for the test.</div></div>`

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 — Teacher Track</title>
+<style>
+:root{--bg:#0a0e1a;--card:#141a2e;--card2:#1b2340;--line:#25304f;--tx:#eaf0ff;--muted:#93a0c4;
+--blue:#3b82f6;--cyan:#22d3ee;--green:#22c55e;--gold:#fbbf24;--red:#ef4444;--pur:#a855f7;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:60px;}
+.top{background:linear-gradient(135deg,#0e7490,#1d4ed8);padding:22px 18px 24px;}
+.wrap{max-width:760px;margin:0 auto;}
+.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+h1{font-size:1.7rem;margin-top:4px;color:#fff;}
+.tops{font-size:.9rem;color:rgba(255,255,255,.92);margin-top:8px;line-height:1.5;}
+.back{display:inline-block;margin-top:14px;background:rgba(255,255,255,.18);color:#fff;text-decoration:none;font-weight:800;font-size:.82rem;padding:9px 14px;border-radius:10px;}
+.note{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:16px 0;font-size:.86rem;line-height:1.6;color:var(--muted);}
+.note b{color:var(--tx);}
+.u{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:12px;}
+.uhead{display:flex;align-items:center;gap:11px;margin-bottom:4px;}
+.ubadge{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#03122e;font-size:.85rem;font-weight:900;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.utitle{font-size:1.02rem;font-weight:800;line-height:1.2;}
+.uch{font-size:.72rem;color:var(--gold);font-weight:800;margin-top:2px;letter-spacing:.3px;}
+.covers{font-size:.8rem;color:var(--muted);margin:8px 0 12px;line-height:1.5;}
+.links{display:flex;gap:9px;flex-wrap:wrap;}
+.tlink{flex:1;min-width:210px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tx);
+  background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;transition:border-color .15s;}
+.tlink:hover{border-color:var(--cyan);}
+.tlink.primary{background:linear-gradient(135deg,rgba(34,197,94,.14),rgba(34,197,94,.04));border-color:rgba(34,197,94,.4);}
+.tlink .ic{font-size:1.15rem;flex:0 0 auto;}
+.tlink .tt{font-size:.86rem;font-weight:800;}
+.tlink .ts{font-size:.72rem;color:var(--muted);margin-top:1px;}
+.ver{font-size:.6rem;font-weight:800;color:#86efac;background:rgba(34,197,94,.16);padding:2px 7px;border-radius:7px;margin-left:6px;}
+.foot{max-width:760px;margin:26px auto 0;padding:0 18px;font-size:.78rem;color:var(--muted);line-height:1.6;text-align:center;}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="eyebrow">Algebra 2 Honors · Mr. Rice · FHS · Big Ideas Math</div>
+  <h1>🎓 Teacher Track</h1>
+  <div class="tops">A real teacher who walks through the <b>whole unit, start to finish</b>, matched to the exact chapter in Ibrahim's Big Ideas Math book. Prefer a live teacher over the tutor for a unit? Start here.</div>
+  <a class="back" href="ALGEBRA_HQ.html">← Back to Algebra HQ</a>
+</div></div>
+
+<div class="wrap" style="padding:0 18px;">
+  <div class="note"><b>Two kinds of video, two jobs.</b> This <b>Teacher Track</b> is for learning a unit the first time — a teacher takes you through the chapter in order. The <a href="CONCEPT_VIDEOS.html" style="color:var(--cyan)">Concept Videos</a> page is the "I'm stuck on this one thing" button — one short clip per concept. The green <b>full-unit</b> links go straight to a verified playlist; the others open a YouTube results page for that exact chapter so the link never dies.</div>
+  <div id="list"></div>
+</div>
+<div class="foot">Chapter numbers here are the <b>Big Ideas Math</b> textbook chapters — a few differ from Mr. Rice's unit numbers because he teaches them in a slightly different order. Each card tells you which chapter to open in the book.</div>
+
+<script>
+function search(q){ return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q); }
+function playlist(id){ return 'https://www.youtube.com/playlist?list='+id; }
+
+// n = Rice unit · bimCh = textbook chapter · primary = full-unit teacher · more = extra teachers search
+const UNITS=[
+ {n:1,title:'Parent Functions & Transformations',bim:1,covers:'The parent functions, translations, reflections, stretches/shrinks, describing transformations, domain & range.',
+   primary:{label:'kozmosis — Big Ideas Ch 1',sub:'Full chapter, section by section',url:playlist('PLl3EGyVmnmtFJdUjDeDeZ_RQXtVFSN_FS'),ver:true},
+   more:search('Big Ideas Math Algebra 2 Chapter 1 parent functions transformations full lesson')},
+ {n:2,title:'Quadratic Functions',bim:2,covers:'Vertex / standard / intercept form, axis of symmetry, min & max, transforming parabolas, modeling.',
+   primary:{label:'Big Ideas Ch 2 — full unit',sub:'Teacher playlists for the whole chapter',url:search('Big Ideas Math Algebra 2 Chapter 2 quadratic functions')},
+   more:search('Algebra 2 quadratic functions vertex form graphing full lesson')},
+ {n:3,title:'Quadratic Equations & Complex Numbers',bim:3,covers:'Factoring, completing the square, the quadratic formula, the discriminant, and imaginary/complex numbers.',
+   primary:{label:'kozmosis — Big Ideas Ch 3',sub:'Full chapter, section by section',url:playlist('PLl3EGyVmnmtEGO9615oxrh8zwl6js4_MM'),ver:true},
+   more:search('Algebra 2 complex numbers quadratic formula completing the square full lesson')},
+ {n:4,title:'Polynomial Functions',bim:4,covers:'End behavior & degree, graphing, zeros & multiplicity, long division, synthetic division, theorems.',
+   primary:{label:'Big Ideas Ch 4 — full unit',sub:'Teacher playlists for the whole chapter',url:search('Big Ideas Math Algebra 2 Chapter 4 polynomial functions')},
+   more:search('Algebra 2 polynomial functions graphing synthetic division full lesson')},
+ {n:5,title:'Rational Functions',bim:7,covers:'Simplify / multiply / divide / add / subtract rationals, asymptotes, graphing, solving (watch extraneous).',
+   primary:{label:'Big Ideas Ch 7 — full unit',sub:'Rational functions is Ch 7 in the book',url:search('Big Ideas Math Algebra 2 Chapter 7 rational functions')},
+   more:search('Algebra 2 rational functions asymptotes graphing solving full lesson')},
+ {n:6,title:'Rational Exponents & Radical Functions',bim:5,covers:'nth roots, rational exponents, properties of exponents, solving radical equations, graphing radicals.',
+   primary:{label:'Big Ideas Ch 5 — full unit',sub:'Radicals is Ch 5 in the book',url:search('Big Ideas Math Algebra 2 Chapter 5 radical functions rational exponents')},
+   more:search('Algebra 2 rational exponents radical functions solving full lesson')},
+ {n:7,title:'Exponential & Logarithmic Functions',bim:6,covers:'Growth & decay, e, logs as inverses, log properties, solving exponential & log equations.',
+   primary:{label:'kozmosis — Big Ideas Ch 6',sub:'Full chapter, section by section',url:playlist('PLl3EGyVmnmtHMosUYVwii1luMXoQ9Rdf-'),ver:true},
+   more:search('Algebra 2 logarithms exponential functions properties solving full lesson')},
+ {n:8,title:'Compositions & Inverses',bim:null,covers:'Operations on functions, composition f(g(x)), and finding & verifying inverse functions.',
+   primary:{label:'Full-unit teacher lessons',sub:'Operations, compositions & inverses',url:search('Algebra 2 operations on functions composition of functions inverse functions full lesson')},
+   more:search('Algebra 2 composition of functions inverse functions worked examples')},
+ {n:9,title:'Trigonometry',bim:9,covers:'Degrees & radians, reference & coterminal angles, the unit circle, SOH-CAH-TOA, graphs of sine & cosine.',
+   primary:{label:'kozmosis — Big Ideas Ch 9',sub:'Full chapter, section by section',url:playlist('PLl3EGyVmnmtGqUcKapmZEoHYnPkvIyZTx'),ver:true},
+   more:search('Algebra 2 trigonometry unit circle radians graphing sine cosine full lesson')},
+ {n:10,title:'Probability',bim:10,covers:'Permutations vs combinations, independent vs dependent events, conditional probability.',
+   primary:{label:'Big Ideas Ch 10 — full unit',sub:'Teacher playlists for the whole chapter',url:search('Big Ideas Math Algebra 2 Chapter 10 probability')},
+   more:search('Algebra 2 probability permutations combinations conditional full lesson')}
+];
+
+function card(u){
+  const chLabel = u.bim ? ('📕 Big Ideas Math — Chapter '+u.bim) : '📕 Big Ideas Math — spans Ch 5–6';
+  const p=u.primary;
+  const primaryHTML =
+    '<a class="tlink primary" href="'+p.url+'" target="_blank" rel="noopener">'
+    +'<span class="ic">▶</span><span><span class="tt">'+p.label+(p.ver?'<span class="ver">FULL UNIT ✓</span>':'')+'</span>'
+    +'<span class="ts">'+p.sub+'</span></span></a>';
+  const moreHTML =
+    '<a class="tlink" href="'+u.more+'" target="_blank" rel="noopener">'
+    +'<span class="ic">🔎</span><span><span class="tt">More teachers for this unit</span>'
+    +'<span class="ts">Pick whichever explains it best for you</span></span></a>';
+  return '<div class="u"><div class="uhead"><span class="ubadge">'+u.n+'</span>'
+    +'<div><div class="utitle">Unit '+u.n+' — '+u.title+'</div><div class="uch">'+chLabel+'</div></div></div>'
+    +'<div class="covers">'+u.covers+'</div>'
+    +'<div class="links">'+primaryHTML+moreHTML+'</div></div>';
+}
+document.getElementById('list').innerHTML = UNITS.map(card).join('');
+</script>
+</body>
+</html>
